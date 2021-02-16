@@ -9,23 +9,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{EF0DB893-E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{12C54B77-515B-4380-9D9F-E3709BA1F0F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Domain", "App.Domain\App.Domain.csproj", "{9B7526BE-831B-4010-966C-82A5EC2B9E02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Domain", "App.Domain\App.Domain.csproj", "{9B7526BE-831B-4010-966C-82A5EC2B9E02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Application", "App.Application\App.Application.csproj", "{B2E69487-0B92-4441-81E5-CD8CB88B98A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Application", "App.Application\App.Application.csproj", "{B2E69487-0B92-4441-81E5-CD8CB88B98A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Identity", "App.Identity\App.Identity.csproj", "{C2343BFC-BD8B-44E2-BD84-D95476EB06B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Identity", "App.Identity\App.Identity.csproj", "{C2343BFC-BD8B-44E2-BD84-D95476EB06B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Infrastructure", "App.Infrastructure\App.Infrastructure.csproj", "{A8F59643-3165-4BC8-A31D-49C99AA88896}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Infrastructure", "App.Infrastructure\App.Infrastructure.csproj", "{A8F59643-3165-4BC8-A31D-49C99AA88896}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Persistence", "App.Persistence\App.Persistence.csproj", "{1B08B52C-0543-4929-ACC3-096EA424FF77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Persistence", "App.Persistence\App.Persistence.csproj", "{1B08B52C-0543-4929-ACC3-096EA424FF77}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{CEDBD9F7-CCBC-4C25-BBBF-BDB4B7EB3558}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Building.Api", "Building.Api\Building.Api.csproj", "{F34E080B-281B-4E88-9B63-96167B224CAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Building.Api", "Building.Api\Building.Api.csproj", "{F34E080B-281B-4E88-9B63-96167B224CAA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{CF47A65D-C0F3-4B75-9395-F3212F763278}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bulding.Web", "Bulding.Web\Bulding.Web.csproj", "{43A24EC7-ED84-480B-8EEA-CAF51F38C35D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Building.Web", "Bulding.Web\Building.Web.csproj", "{43A24EC7-ED84-480B-8EEA-CAF51F38C35D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
