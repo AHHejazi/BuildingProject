@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App.Application.Contracts.Persistence
 {
-    interface IBuildingComponants
+   public interface IApartmentRepository
     {
     }
 }
