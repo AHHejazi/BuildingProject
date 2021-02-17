@@ -5,7 +5,7 @@ using System.Text;
 
 namespace App.Domain.Entities
 {
-    public class Income : AuditableEntity
+    public class Incomes : AuditableEntity
     {
         public Guid Id { get; set; }
 
