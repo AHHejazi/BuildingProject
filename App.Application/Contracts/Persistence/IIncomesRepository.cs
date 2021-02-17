@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App.Application.Contracts.Persistence
 {
-    public interface IShareHolders
+   public interface IIncomesRepository
     {
     }
 }
