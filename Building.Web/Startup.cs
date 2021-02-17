@@ -1,4 +1,4 @@
-using Bulding.Web.Data;
+using Building.Web.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bulding.Web
+namespace Building.Web
 {
     public class Startup
     {
