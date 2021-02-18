@@ -22,7 +22,10 @@ namespace App.Domain.Entities
         public string PropertyLongitude { get; set; }
         public bool IsActive { get; set; }
         public string SerialNumber { get; set; }
-        ////
+
+        // To check if we need to add 
+        public IEnumerable<Building> Buildings { get; set; }
+        //// Added Attributes
         public int ProjectType { get; set; }
         public int TotalArea { get; set; }
         public int InstrumentNumber { get; set; }
@@ -30,7 +33,6 @@ namespace App.Domain.Entities
         public int FloorsNumber { get; set; }
         public string BuildingTechnique { get; set; }
         public int EstimatedCost { get; set; }
-        ////
         public string InstrumentAttachment { get; set; }
         public string BuildingLicenseAttachment { get; set; }
         public string ConstructionDiagrams { get; set; }

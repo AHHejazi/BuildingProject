@@ -7,7 +7,7 @@ using System.Text;
 
 namespace App.Persistence.Configurations
 {
-    class ApartmentConfiguration : IEntityTypeConfiguration<Apartment>
+   public class ApartmentConfiguration : IEntityTypeConfiguration<Apartment>
     {
         public void Configure(EntityTypeBuilder<Apartment> entity)
         {
@@ -23,6 +23,8 @@ namespace App.Persistence.Configurations
             entity.HasOne(d => d.Building)
                .WithMany(p => p.Apartments)
                .HasForeignKey(d => d.BuildingId);
+
+
                    
         }
     }
