@@ -9,7 +9,7 @@ using System;
 namespace App.Domain.Common
 {
 
-    public partial class Attachment : AuditableEntity
+    public partial class Attachment : AuditableEntit
     {
         public Guid Id { get; set; }
         public string FileName { get; set; }

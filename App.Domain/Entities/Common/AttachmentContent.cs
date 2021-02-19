@@ -2,7 +2,7 @@
 
 namespace App.Domain.Common
 {
-    public partial class AttachmentContent
+    public partial class AttachmentConten
     {
         public Guid Id { get; set; }
         public byte[] FileContent { get; set; }
