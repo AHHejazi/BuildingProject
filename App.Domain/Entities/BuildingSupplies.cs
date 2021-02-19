@@ -6,7 +6,7 @@ using System.Text;
 
 namespace App.Domain.Entities
 {
-    class BuildingSupplies : AuditableEntity
+   public class BuildingSupplies : AuditableEntity
     {
         public Guid Id { get; set; }
 

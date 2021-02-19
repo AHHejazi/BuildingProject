@@ -26,7 +26,10 @@ namespace App.Domain.Entities
 
         public IEnumerable<Outbuildings> Outbuildings { get; set; }
 
-        //to checkif we need to add
+        //to check if I need to add this
+        public IEnumerable<BuildingSupplies> BuildingSupplies { get; set; }
+
+        //to check if we need to add
 
         public Project Project { get; set; }
 
