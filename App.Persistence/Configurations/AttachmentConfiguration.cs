@@ -11,8 +11,8 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Attachment> entity)
         {
-
-        entity.HasKey(e => e.Id);
+            entity.ToTable(nameof(Attachment), MappingDefaults.CommonSchema);
+            entity.HasKey(e => e.Id);
         entity.Property(e => e.FileName).IsRequired();
         entity.Property(e => e.Extension).IsRequired();
         entity.Property(e => e.FilePath).IsRequired();

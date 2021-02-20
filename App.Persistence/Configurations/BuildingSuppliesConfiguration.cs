@@ -11,6 +11,7 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<BuildingSupplies> entity)
         {
+            entity.ToTable(nameof(BuildingSupplies), MappingDefaults.BuildingSchema);
             entity.Property(t => t.Payment).IsRequired();
             entity.Property(e => e.BuildingId).IsRequired();
             entity.Property(e => e.SuppliesId).IsRequired();

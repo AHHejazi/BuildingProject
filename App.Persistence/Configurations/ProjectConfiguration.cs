@@ -8,6 +8,7 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Project> entity)
         {
+            entity.ToTable(nameof(Project), MappingDefaults.BuildingSchema);
             entity.HasKey(e => e.Id);
             entity.Property(e => e.NameAr).IsRequired();
             entity.Property(e => e.NameEn).IsRequired();

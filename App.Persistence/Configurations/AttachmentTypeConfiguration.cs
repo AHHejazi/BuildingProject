@@ -11,6 +11,7 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<AttachmentType> entity)
         {
+            entity.ToTable(nameof(AttachmentType), MappingDefaults.LookupSchema);
             entity.HasKey(e => e.Id);
             entity.Property(e => e.NameAr).IsRequired();
             entity.Property(e => e.NameEn);

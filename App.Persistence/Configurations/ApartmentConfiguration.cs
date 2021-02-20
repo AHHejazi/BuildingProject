@@ -11,6 +11,7 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Apartment> entity)
         {
+            entity.ToTable(nameof(Apartment), MappingDefaults.BuildingSchema);
             entity.HasKey(o => o.Id);
             entity.Property(t => t.Number).IsRequired().HasMaxLength(15);
             entity.Property(e => e.TotalSurfaceArea).IsRequired();

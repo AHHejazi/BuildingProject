@@ -12,6 +12,7 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Outbuildings> entity)
         {
+            entity.ToTable(nameof(Outbuildings), MappingDefaults.BuildingSchema);
             entity.HasKey(o => o.Id);
             entity.Property(t => t.BuildingId).IsRequired();
             entity.Property(e => e.TotalSurfaceArea).IsRequired();
@@ -19,9 +20,6 @@ namespace App.Persistence.Configurations
             entity.Property(e => e.CreatedOn).IsRequired();
             entity.Property(e => e.CreatedBy).IsRequired().HasMaxLength(250);
             entity.Property(e => e.UpdatedBy).HasMaxLength(250);
-
-            // to ask for relations 
-            
 
         }
     }

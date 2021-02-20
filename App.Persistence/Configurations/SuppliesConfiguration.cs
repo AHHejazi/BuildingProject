@@ -11,6 +11,7 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Supplies> entity)
         {
+            entity.ToTable(nameof(Supplies), MappingDefaults.LookupSchema);
             entity.HasKey(o => o.Id);
             entity.Property(e => e.NameAr).IsRequired();
             entity.Property(e => e.NameEn);

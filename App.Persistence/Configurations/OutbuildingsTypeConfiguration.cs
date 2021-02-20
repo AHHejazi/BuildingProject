@@ -11,6 +11,7 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<OutbuildingsType> entity)
         {
+            entity.ToTable(nameof(OutbuildingsType), MappingDefaults.LookupSchema);
             entity.HasKey(o => o.Id);
    
             entity.Property(e => e.NameAr).IsRequired();
