@@ -14,6 +14,10 @@ namespace App.Persistence.Repositories
         {
 
         }
-        
+
+        public Task<bool> IsProjectNameUnique(string nameAr, string nameEn)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
