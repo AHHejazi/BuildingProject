@@ -19,9 +19,17 @@ namespace App.Persistence.Configurations
             entity.Property(e => e.CreatedBy).IsRequired().HasMaxLength(250);
             entity.Property(e => e.UpdatedBy).HasMaxLength(250);
 
-            entity.HasOne(d => d.Building)
-               .WithMany(p => p.BuildingSupplies)
-               .HasForeignKey(d => d.BuildingId);
+
+            //modelBuilder.Entity<Student>()
+            //    .HasMany<Course>(s => s.Courses)
+            //    .WithMany(c => c.Students)
+            //    .Map(cs =>
+            //    {
+            //        cs.MapLeftKey("StudentRefId");
+            //        cs.MapRightKey("CourseRefId");
+            //        cs.ToTable("StudentCourse");
+            //    });
+            
 
         }
     }

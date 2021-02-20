@@ -1,4 +1,5 @@
 ﻿using App.Domain.Common;
+using pp.Domain.Entities.Lookup;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,8 +8,15 @@ namespace App.Domain.Entities
 {
    public class Building : AuditableEntity
     {
+
+        public Building()
+        {
+            this.Supplies = new HashSet<Supplies>();
+        }
+
         public Guid Id { get; set; }
 
+        public virtual ICollection<Supplies> Supplies { get; set; }
         public string Number { get; set; }
         public decimal EstimatedCost { get; set; }
 
