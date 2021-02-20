@@ -13,11 +13,10 @@ namespace App.Persistence.Configurations
         {
             entity.HasKey(e => e.Id);
             entity.Property(e => e.FileContent).IsRequired();
-            //entity.Property(e => e.CreatedOn).IsRequired();
-            //entity.Property(e => e.CreatedBy).IsRequired().HasMaxLength(250);
-            //entity.Property(e => e.UpdatedBy).HasMaxLength(250);
-            // to check entity.Property(e => e.AttachmentId).IsRequired();
-            // to check for relation
+
+            entity.HasOne(a => a.Attachment)
+       .WithOne(b => b.AttachmentContent)
+       .HasForeignKey<Attachment>(b => b.Id);
         }
     }
 }

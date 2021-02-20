@@ -8,7 +8,6 @@ namespace App.Domain.Entities
 {
    public class BuildingSupplies : AuditableEntity
     {
-        public Guid Id { get; set; }
 
         public Building Building { get; set; }
 
@@ -23,6 +22,7 @@ namespace App.Domain.Entities
 
         public decimal Payment { get; set; }
 
+       
 
     }
 }

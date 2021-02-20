@@ -3,7 +3,7 @@ using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace GloboTicket.TicketManagement.Application
+namespace App.Application
 {
     public static class ApplicationServiceRegistration
     {
