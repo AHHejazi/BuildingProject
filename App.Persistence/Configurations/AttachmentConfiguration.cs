@@ -27,7 +27,6 @@ namespace App.Persistence.Configurations
         entity.Property(e => e.CreatedBy).IsRequired().HasMaxLength(250);
         entity.Property(e => e.UpdatedBy).HasMaxLength(250);
 
-        
         }
     }
 }

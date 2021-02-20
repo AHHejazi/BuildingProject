@@ -16,7 +16,7 @@ namespace App.Domain.Common
             Attachments = new HashSet<Attachment>();
         }
 
-
+        public int Id { get; set; }
         public string NameAr { get; set; } 
 
         public string NameEn { get; set; }

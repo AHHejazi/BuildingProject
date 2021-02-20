@@ -24,7 +24,7 @@ namespace App.Domain.Entities
         public string SerialNumber { get; set; }
 
         // To check if we need to add 
-        public IEnumerable<Building> Buildings { get; set; }
+        public ICollection<Building> Buildings { get; set; }
         //// Added Attributes
         public int ProjectType { get; set; }
         public int TotalArea { get; set; }

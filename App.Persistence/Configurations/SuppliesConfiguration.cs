@@ -13,10 +13,8 @@ namespace App.Persistence.Configurations
         {
             entity.HasKey(o => o.Id);
             entity.Property(e => e.NameAr).IsRequired();
-            entity.Property(e => e.NameEn).IsRequired();
+            entity.Property(e => e.NameEn);
 
-
-            
         }
     }
 }

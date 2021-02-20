@@ -11,9 +11,9 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<AttachmentType> entity)
         {
-            //to ask about entity.HasKey(e => e.Id);
+            entity.HasKey(e => e.Id);
             entity.Property(e => e.NameAr).IsRequired();
-            entity.Property(e => e.NameEn).IsRequired();
+            entity.Property(e => e.NameEn);
             entity.Property(e => e.Code).IsRequired();
             entity.Property(e => e.ImageMaxHeight).IsRequired();
             entity.Property(e => e.ImageMaxWidth).IsRequired();
@@ -23,12 +23,7 @@ namespace App.Persistence.Configurations
             entity.Property(e => e.CreatedOn).IsRequired();
             entity.Property(e => e.CreatedBy).IsRequired().HasMaxLength(250);
             entity.Property(e => e.UpdatedBy).HasMaxLength(250);
-            // to check entity.Property(e => e.AttachmentId).IsRequired();
 
-            //to check 
-            //entity.HasOne(d => d.Attachment)
-            //   .WithMany(p => p.Attachments)
-            //   .HasForeignKey(d => d.AttachmentId);
         }
     }
 }

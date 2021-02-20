@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Contracts\Infrastructure\" />
+    <Folder Include="Specifications\" />
   </ItemGroup>
 
   <ItemGroup>

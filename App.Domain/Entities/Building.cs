@@ -9,10 +9,6 @@ namespace App.Domain.Entities
    public class Building : AuditableEntity
     {
 
-        public Building()
-        {
-            this.Supplies = new HashSet<Supplies>();
-        }
 
         public Guid Id { get; set; }
 
@@ -29,13 +25,16 @@ namespace App.Domain.Entities
 
         public string NumberOfApartment { get; set; }
 
-        public IEnumerable<Apartment> Apartments { get; set; }
+        public ICollection<Apartment> Apartments { get; set; }
 
 
-        public IEnumerable<Outbuildings> Outbuildings { get; set; }
+        public ICollection<Outbuildings> Outbuildings { get; set; }
 
         //to check if I need to add this
-        public IEnumerable<BuildingSupplies> BuildingSupplies { get; set; }
+        public ICollection<BuildingSupplies> BuildingSupplies { get; set; }
+
+
+
 
         //to check if we need to add
 
