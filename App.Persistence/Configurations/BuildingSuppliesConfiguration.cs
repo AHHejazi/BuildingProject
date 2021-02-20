@@ -1,6 +1,7 @@
 ﻿using App.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using pp.Domain.Entities.Lookup;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,16 +21,15 @@ namespace App.Persistence.Configurations
             entity.Property(e => e.UpdatedBy).HasMaxLength(250);
 
 
-            //modelBuilder.Entity<Student>()
-            //    .HasMany<Course>(s => s.Courses)
-            //    .WithMany(c => c.Students)
-            //    .Map(cs =>
-            //    {
-            //        cs.MapLeftKey("StudentRefId");
-            //        cs.MapRightKey("CourseRefId");
-            //        cs.ToTable("StudentCourse");
-            //    });
-            
+            entity.HasMany<Supplies>(s => s.Supplies)
+                .WithMany(c => c.Buildings)
+                .Map(cs =>
+                {
+                    cs.MapLeftKey("BuildingRefId");
+                    cs.MapRightKey("SuppliesRefId");
+                    cs.ToTable("BuildingSupplies");
+                });
+
 
         }
     }
