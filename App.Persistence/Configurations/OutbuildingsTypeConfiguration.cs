@@ -16,6 +16,8 @@ namespace App.Persistence.Configurations
    
             entity.Property(e => e.NameAr).IsRequired();
             entity.Property(e => e.NameEn);
+
+            
         }
     }
 }

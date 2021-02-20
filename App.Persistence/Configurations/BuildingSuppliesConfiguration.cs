@@ -1,6 +1,7 @@
 ﻿using App.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using pp.Domain.Entities.Lookup;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,8 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<BuildingSupplies> entity)
         {
-            entity.ToTable(nameof(BuildingSupplies), MappingDefaults.BuildingSchema);
+
+
             entity.Property(t => t.Payment).IsRequired();
             entity.Property(e => e.BuildingId).IsRequired();
             entity.Property(e => e.SuppliesId).IsRequired();
@@ -28,7 +30,6 @@ namespace App.Persistence.Configurations
             entity.HasOne(d => d.Supplies)
                 .WithMany(p => p.BuildingSupplies)
                 .HasForeignKey(d => d.SuppliesId);
-
         }
     }
 }

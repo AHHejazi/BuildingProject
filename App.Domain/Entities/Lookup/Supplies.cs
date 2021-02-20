@@ -5,7 +5,7 @@ using System.Text;
 
 namespace pp.Domain.Entities.Lookup
 {
-   public class Supplies
+    public class Supplies
     {
         public int Id { get; set; }
 

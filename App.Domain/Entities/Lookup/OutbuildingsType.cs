@@ -11,5 +11,7 @@ namespace App.Domain.Entities.Lookup
         public string NameAr { get; set; }
 
         public string NameEn { get; set; }
+
+        public ICollection<Outbuildings> Outbuildings { get; set; }
     }
 }
