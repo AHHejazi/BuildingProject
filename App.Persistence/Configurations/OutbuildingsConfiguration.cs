@@ -20,8 +20,10 @@ namespace App.Persistence.Configurations
             entity.Property(e => e.CreatedBy).IsRequired().HasMaxLength(250);
             entity.Property(e => e.UpdatedBy).HasMaxLength(250);
 
-            // to ask for relations 
             
+            entity.HasOne(d => d.OutbuildingsType)
+               .WithMany(p => p.Outbuildings)
+               .HasForeignKey(d => d.OutbuildingsTypeId);
 
         }
     }
