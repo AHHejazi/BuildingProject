@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Application.Contracts.Profiles
+namespace App.Application.Profiles
 {
     public class MappingProfile
     {
