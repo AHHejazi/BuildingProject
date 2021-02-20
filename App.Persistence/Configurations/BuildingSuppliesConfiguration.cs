@@ -12,6 +12,8 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<BuildingSupplies> entity)
         {
+
+
             entity.Property(t => t.Payment).IsRequired();
             entity.Property(e => e.BuildingId).IsRequired();
             entity.Property(e => e.SuppliesId).IsRequired();
@@ -21,17 +23,13 @@ namespace App.Persistence.Configurations
 
             entity.HasKey(bc => new { bc.BuildingId, bc.SuppliesId });
 
-            //modelBuilder.Entity<Student>()
-            //    .HasMany<Course>(s => s.Courses)
-            //    .WithMany(c => c.Students)
-            //    .Map(cs =>
-            //    {
-            //        cs.MapLeftKey("StudentRefId");
-            //        cs.MapRightKey("CourseRefId");
-            //        cs.ToTable("StudentCourse");
-            //    });
-            
+            entity.HasOne(d => d.Building)
+             .WithMany(p => p.BuildingSupplies)
+             .HasForeignKey(d => d.BuildingId);
 
+            entity.HasOne(d => d.Supplies)
+                .WithMany(p => p.BuildingSupplies)
+                .HasForeignKey(d => d.SuppliesId);
         }
     }
 }
