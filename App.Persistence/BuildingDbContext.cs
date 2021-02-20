@@ -26,7 +26,8 @@ namespace App.Persistence
             _loggedInUserService = loggedInUserService;
         }
 
-        public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<SystemSetting> Attachments { get; set; }
+        public virtual DbSet<SystemSetting> SystemSettings { get; set; }
         public DbSet<AttachmentContent> AttachmentContents { get; set; }
         public DbSet<AttachmentType> AttachmentTypes { get; set; }
         public DbSet<OutbuildingsType> OutbuildingsTypes { get; set; }
