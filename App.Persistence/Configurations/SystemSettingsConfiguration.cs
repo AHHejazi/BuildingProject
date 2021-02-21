@@ -11,7 +11,7 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<SystemSetting> entity)
         {
-
+            entity.ToTable(nameof(SystemSetting), MappingDefaults.CommonSchema);
             entity.HasKey(x=>x.Id);
             entity.Property(e => e.ApplicationId).IsRequired(false);
             entity.Property(e => e.GroupName).IsRequired().HasMaxLength(50);

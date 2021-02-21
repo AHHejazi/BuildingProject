@@ -12,6 +12,7 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Incomes> entity)
         {
+            entity.ToTable(nameof(Incomes), MappingDefaults.BuildingSchema);
             entity.HasKey(o => o.Id);
             entity.Property(t => t.BuildingId).IsRequired();
             entity.Property(e => e.Amount).IsRequired();

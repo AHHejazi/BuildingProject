@@ -11,6 +11,7 @@ namespace App.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Building> entity)
         {
+            entity.ToTable(nameof(Building), MappingDefaults.BuildingSchema);
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Number).IsRequired().HasMaxLength(15);
             entity.Property(e => e.EstimatedCost).IsRequired();
