@@ -1,5 +1,6 @@
 ﻿
-using App.Application.Contracts.Persistence;
+using Application.App.Contracts.Persistence;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,12 @@ namespace App.Persistence.Repositories
 {
     public class BaseRepository<T> : IAsyncRepository<T> where T : class
     {
-        //protected readonly GloboTicketDbContext _dbContext;
+        protected readonly BuildingDbContext _dbContext;
 
-        //public BaseRepository(GloboTicketDbContext dbContext)
-        //{
-        //    _dbContext = dbContext;
-        //}
+        public BaseRepository(BuildingDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         //public virtual async Task<T> GetByIdAsync(Guid id)
         //{
@@ -70,10 +71,11 @@ namespace App.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IReadOnlyList<T>> ListAllAsync()
+        public async Task<IReadOnlyList<T>> ListAllAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<T>().ToListAsync();
         }
+
 
         public Task UpdateAsync(T entity)
         {

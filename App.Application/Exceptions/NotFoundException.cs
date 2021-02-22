@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace App.Application.Exceptions
+namespace Application.App.Exceptions
 {
     public class NotFoundException : ApplicationException
     {

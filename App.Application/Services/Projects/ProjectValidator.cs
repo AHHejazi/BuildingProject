@@ -1,10 +1,10 @@
-﻿using App.Application.Contracts.Persistence;
+﻿using Application.App.Contracts.Persistence;
 using FluentValidation;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace App.Application.Services.Projects
+namespace Application.App.Services.Projects
 {
     public class ProjectValidator : AbstractValidator<ProjectDto>
     {

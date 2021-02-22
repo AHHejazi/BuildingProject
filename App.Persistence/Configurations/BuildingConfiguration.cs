@@ -1,4 +1,4 @@
-﻿using App.Domain.Entities;
+﻿using Domain.App.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -14,8 +14,8 @@ namespace App.Persistence.Configurations
             entity.ToTable(nameof(Building), MappingDefaults.BuildingSchema);
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Number).IsRequired().HasMaxLength(15);
-            entity.Property(e => e.EstimatedCost).IsRequired();
-            entity.Property(e => e.TotalSurfaceArea).IsRequired();
+            entity.Property(e => e.EstimatedCost).HasColumnType("decimal(18,2)").IsRequired();
+            entity.Property(e => e.TotalSurfaceArea).HasColumnType("decimal(18,2)").IsRequired();
             entity.Property(e => e.NumberOfFloor).IsRequired();
             entity.Property(e => e.LicenseNumber).IsRequired();
             entity.Property(e => e.StampingNumber).IsRequired();

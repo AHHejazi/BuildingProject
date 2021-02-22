@@ -1,5 +1,5 @@
-﻿using App.Application.Contracts.Persistence;
-using App.Domain.Entities;
+﻿using Application.App.Contracts.Persistence;
+using Domain.App.Entities;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Application.Services.Projects
+namespace Application.App.Services.Projects
 {
     public class ProjectService : IProjectService
     {

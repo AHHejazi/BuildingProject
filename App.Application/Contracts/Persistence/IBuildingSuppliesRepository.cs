@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Application.Contracts.Persistence
+namespace Application.App.Contracts.Persistence
 {
    public interface IBuildingSuppliesRepository
     {

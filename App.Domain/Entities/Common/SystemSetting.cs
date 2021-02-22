@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace App.Domain.Common
+namespace Domain.App.Common
 {
     public class SystemSetting : AuditableEntity
     {

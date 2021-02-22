@@ -1,9 +1,9 @@
-﻿using App.Domain.Common;
+﻿using Domain.App.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Domain.Entities
+namespace Domain.App.Entities
 {
     public class Project : AuditableEntity
     {
@@ -20,7 +20,7 @@ namespace App.Domain.Entities
         public string PropertyNumber { get; set; }
         public string PropertyLatitude { get; set; }
         public string PropertyLongitude { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string SerialNumber { get; set; }
 
         // To check if we need to add 

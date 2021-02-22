@@ -1,4 +1,4 @@
-﻿namespace App.Application.Contracts
+﻿namespace Application.App.Contracts
 {
     public interface ILoggedInUserService
     {

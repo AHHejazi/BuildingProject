@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Domain.Entities.Lookup
+namespace Domain.App.Entities.Lookup
 {
    public class OutbuildingsType
     {

@@ -1,9 +1,9 @@
-﻿using App.Domain.Common;
+﻿using Domain.App.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Domain.Entities
+namespace Domain.App.Entities
 {
    public class Apartment : AuditableEntity
     {

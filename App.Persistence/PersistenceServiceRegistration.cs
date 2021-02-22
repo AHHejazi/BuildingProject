@@ -1,4 +1,4 @@
-﻿using App.Application.Contracts.Persistence;
+﻿using Application.App.Contracts.Persistence;
 using App.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

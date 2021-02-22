@@ -1,4 +1,4 @@
-﻿using App.Domain.Entities;
+﻿using Domain.App.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -15,7 +15,7 @@ namespace App.Persistence.Configurations
             entity.ToTable(nameof(Incomes), MappingDefaults.BuildingSchema);
             entity.HasKey(o => o.Id);
             entity.Property(t => t.BuildingId).IsRequired();
-            entity.Property(e => e.Amount).IsRequired();
+            entity.Property(e => e.Amount).HasColumnType("decimal(18,2)").IsRequired();
             entity.Property(e => e.ShareHolderId).IsRequired();
             entity.Property(e => e.IncomeDate).IsRequired();
             entity.Property(e => e.Description).IsRequired();

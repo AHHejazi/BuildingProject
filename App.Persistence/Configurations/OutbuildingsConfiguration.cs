@@ -1,4 +1,4 @@
-﻿using App.Domain.Entities;
+﻿using Domain.App.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -14,7 +14,7 @@ namespace App.Persistence.Configurations
         {
             entity.HasKey(o => o.Id);
             entity.Property(t => t.BuildingId).IsRequired();
-            entity.Property(e => e.TotalSurfaceArea).IsRequired();
+            entity.Property(e => e.TotalSurfaceArea).HasColumnType("decimal(18,2)").IsRequired();
             entity.Property(e => e.OutbuildingsTypeId).IsRequired();
             entity.Property(e => e.CreatedOn).IsRequired();
             entity.Property(e => e.CreatedBy).IsRequired().HasMaxLength(250);

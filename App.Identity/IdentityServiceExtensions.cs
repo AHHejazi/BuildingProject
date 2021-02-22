@@ -1,5 +1,5 @@
-﻿using App.Application.Contracts.Identity;
-using App.Application.Models.Authentication;
+﻿using Application.App.Contracts.Identity;
+using Application.App.Models.Authentication;
 using App.Identity.Models;
 using App.Identity.Services;
 //using Microsoft.AspNetCore.Authentication.JwtBearer;

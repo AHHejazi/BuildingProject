@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 
-namespace App.Domain.Common
+namespace Domain.App.Common
 {
 
     public class AttachmentType : AuditableEntity

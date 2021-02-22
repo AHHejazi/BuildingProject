@@ -1,4 +1,4 @@
-﻿namespace App.Application.Models.Authentication
+﻿namespace Application.App.Models.Authentication
 {
     public class RegistrationResponse
     {

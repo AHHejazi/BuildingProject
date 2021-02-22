@@ -1,4 +1,4 @@
-﻿using App.Domain.Entities;
+﻿using Domain.App.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

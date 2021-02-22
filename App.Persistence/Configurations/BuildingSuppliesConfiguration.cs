@@ -1,4 +1,4 @@
-﻿using App.Domain.Entities;
+﻿using Domain.App.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using pp.Domain.Entities.Lookup;
@@ -14,7 +14,7 @@ namespace App.Persistence.Configurations
         {
 
 
-            entity.Property(t => t.Payment).IsRequired();
+            entity.Property(t => t.Payment).HasColumnType("decimal(18,2)").IsRequired();
             entity.Property(e => e.BuildingId).IsRequired();
             entity.Property(e => e.SuppliesId).IsRequired();
             entity.Property(e => e.CreatedOn).IsRequired();

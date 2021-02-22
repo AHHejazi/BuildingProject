@@ -1,8 +1,8 @@
 ﻿
-using App.Application.Contracts;
-using App.Domain.Common;
-using App.Domain.Entities;
-using App.Domain.Entities.Lookup;
+using Application.App.Contracts;
+using Domain.App.Common;
+using Domain.App.Entities;
+using Domain.App.Entities.Lookup;
 using Microsoft.EntityFrameworkCore;
 using pp.Domain.Entities.Lookup;
 using System;

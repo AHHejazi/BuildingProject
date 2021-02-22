@@ -1,4 +1,4 @@
-﻿using App.Domain.Entities;
+﻿using Domain.App.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -14,9 +14,7 @@ namespace App.Persistence.Configurations
             entity.ToTable(nameof(Apartment), MappingDefaults.BuildingSchema);
             entity.HasKey(o => o.Id);
             entity.Property(t => t.Number).IsRequired().HasMaxLength(15);
-            entity.Property(e => e.TotalSurfaceArea).IsRequired();
-            // to ask him if I should remove it or keep it
-            entity.Property(e => e.Building).IsRequired();
+            entity.Property(e => e.TotalSurfaceArea).HasColumnType("decimal(18,2)").IsRequired();
             entity.Property(e => e.BuildingId).IsRequired();
             entity.Property(e => e.CreatedOn).IsRequired();
             entity.Property(e => e.CreatedBy).IsRequired().HasMaxLength(250);

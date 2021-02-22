@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using App.Domain.Entities;
+using Domain.App.Entities;
 using System.Threading.Tasks;
 
-namespace App.Application.Services.Projects
+namespace Application.App.Services.Projects
 {
     public interface IProjectService
     {

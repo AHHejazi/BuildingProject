@@ -1,4 +1,4 @@
-﻿using App.Application.Contracts;
+﻿using Application.App.Contracts;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 

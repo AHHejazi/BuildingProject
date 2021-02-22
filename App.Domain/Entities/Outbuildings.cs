@@ -1,10 +1,10 @@
-﻿using App.Domain.Common;
-using App.Domain.Entities.Lookup;
+﻿using Domain.App.Common;
+using Domain.App.Entities.Lookup;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Domain.Entities
+namespace Domain.App.Entities
 {
     public class Outbuildings : AuditableEntity
     {

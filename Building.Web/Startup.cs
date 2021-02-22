@@ -1,5 +1,5 @@
-using App.Application;
-using App.Application.Contracts;
+using Application.App;
+using Application.App.Contracts;
 using App.Persistence;
 using Building.Web.Data;
 using Building.Web.Services;
@@ -32,7 +32,7 @@ namespace Building.Web
             //services.AddInfrastructureServices(Configuration);
             services.AddPersistenceServices(Configuration);
             //services.AddIdentityServices(Configuration);
-
+            services.AddHttpContextAccessor();
             services.AddScoped<ILoggedInUserService, LoggedInUserService>();
 
             services.AddControllers();

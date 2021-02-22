@@ -1,9 +1,9 @@
-﻿using App.Domain.Common;
+﻿using Domain.App.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Domain.Entities
+namespace Domain.App.Entities
 {
     public class Incomes : AuditableEntity
     {
@@ -11,7 +11,7 @@ namespace App.Domain.Entities
 
         public Building Building { get; set; }
 
-        public Building BuildingId { get; set; }
+        public Guid BuildingId { get; set; }
 
         public decimal Amount { get; set; }
 

@@ -6,7 +6,7 @@
 
 using System;
 
-namespace App.Domain.Common
+namespace Domain.App.Common
 {
 
     public partial class Attachment : AuditableEntity

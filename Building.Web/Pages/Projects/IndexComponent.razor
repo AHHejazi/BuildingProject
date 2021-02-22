@@ -1,0 +1,46 @@
+﻿@page "/Project/index"
+
+@using Application.App.Services.Projects;
+@using Domain.App.Entities;
+@inject IProjectService _projectService;
+
+<h3>Prjects Managment</h3>
+
+@if (projectList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>NameAr</th>
+                <th>ContractorName</th>
+                <th>CityName</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prj in projectList)
+            {
+                <tr>
+                    <td>
+                        <NavLink class="nav-link" href="ProjectDetails">
+                             @prj.NameAr
+                        </NavLink>  
+                    </td>
+                    <td>@prj.ContractorName</td>
+                    <td>@prj.CityName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IReadOnlyList<Project> projectList;
+    protected override async Task OnInitializedAsync()
+    {
+        projectList = await _projectService.ProjectListQuery();
+    }
+}

@@ -1,7 +1,7 @@
-﻿using App.Domain.Entities;
+﻿using Domain.App.Entities;
 using System.Threading.Tasks;
 
-namespace App.Application.Contracts.Persistence
+namespace Application.App.Contracts.Persistence
 {
     public interface IProjectRepository : IAsyncRepository<Project>
     {

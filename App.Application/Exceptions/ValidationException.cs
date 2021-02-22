@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace App.Application.Exceptions
+namespace Application.App.Exceptions
 {
     public class ValidationException : ApplicationException
     {

@@ -1,4 +1,4 @@
-﻿using App.Domain.Entities.Lookup;
+﻿using Domain.App.Entities.Lookup;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

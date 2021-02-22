@@ -1,7 +1,7 @@
-﻿using App.Application.Models.Authentication;
+﻿using Application.App.Models.Authentication;
 using System.Threading.Tasks;
 
-namespace App.Application.Contracts.Identity
+namespace Application.App.Contracts.Identity
 {
     public interface IAuthenticationService
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace App.Application.Contracts.Persistence
+namespace Application.App.Contracts.Persistence
 {
     public interface IAsyncRepository<T> where T : class
     {

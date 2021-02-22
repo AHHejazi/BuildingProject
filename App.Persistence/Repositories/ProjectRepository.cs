@@ -1,6 +1,6 @@
 ﻿
-using App.Application.Contracts.Persistence;
-using App.Domain.Entities;
+using Application.App.Contracts.Persistence;
+using Domain.App.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace App.Persistence.Repositories
 {
     public class ProjectRepository : BaseRepository<Project>, IProjectRepository
     {
-        public ProjectRepository()
+        public ProjectRepository(BuildingDbContext dbContext) : base(dbContext)
         {
 
         }
