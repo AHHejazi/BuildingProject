@@ -4,7 +4,7 @@
 @using Domain.App.Entities;
 @inject IProjectService _projectService;
 
-<h3>Prjects Managment</h3>
+<h3>Projects Managment</h3>
 
 @if (projectList == null)
 {
@@ -16,22 +16,28 @@ else
         <thead>
             <tr>
                 <th>NameAr</th>
+                <th>NameEn</th>
                 <th>ContractorName</th>
                 <th>CityName</th>
+                <th>ConsultingOfficeName</th>
+                <th>IsActive</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var prj in projectList)
+            @foreach (var project in projectList)
             {
-                <tr>
-                    <td>
-                        <NavLink class="nav-link" href="ProjectDetails">
-                             @prj.NameAr
-                        </NavLink>  
-                    </td>
-                    <td>@prj.ContractorName</td>
-                    <td>@prj.CityName</td>
-                </tr>
+            <tr>
+                <td>
+                    <NavLink class="nav-link" href="ProjectDetails">
+                        @project.NameAr
+                    </NavLink>
+                </td>
+                <td>@project.NameEn</td>
+                <td>@project.ContractorName</td>
+                <td>@project.CityName</td>
+                <td>@project.ConsultingOfficeName</td>
+                <td>@project.IsActive</td>
+            </tr>
             }
         </tbody>
     </table>

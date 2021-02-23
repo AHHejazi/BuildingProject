@@ -8,7 +8,7 @@ namespace App.Persistence.Repositories
 {
     public class SuppliesRepository : BaseRepository<Supplies>, ISuppliesRepository
     {
-        public SuppliesRepository()
+        public SuppliesRepository(BuildingDbContext dbContext) : base(dbContext)
         {
 
         }

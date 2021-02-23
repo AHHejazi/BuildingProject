@@ -1,5 +1,6 @@
-﻿using App.Application.Contracts.Persistence;
-using App.Domain.Entities;
+﻿
+using Application.App.Contracts.Persistence;
+using Domain.App.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace App.Persistence.Repositories
 {
     public class OutbuildingsRepository : BaseRepository<Outbuildings>, IOutbuildingsRepository
     {
-        public OutbuildingsRepository()
+        public OutbuildingsRepository(BuildingDbContext dbContext) : base(dbContext)
         {
 
         }
