@@ -1,10 +1,6 @@
 ﻿using Domain.App.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using pp.Domain.Entities.Lookup;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Persistence.Configurations
 {

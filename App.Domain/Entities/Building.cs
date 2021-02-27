@@ -1,12 +1,11 @@
 ﻿using Domain.App.Common;
-using pp.Domain.Entities.Lookup;
+using Domain.App.Entities.Lookup;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.App.Entities
 {
-   public class Building : AuditableEntity
+    public class Building : AuditableEntity
     {
 
 

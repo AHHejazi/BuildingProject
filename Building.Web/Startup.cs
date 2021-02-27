@@ -27,7 +27,7 @@ namespace Building.Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-
+            services.AddCoreServices();
             services.AddApplicationServices();
             //services.AddInfrastructureServices(Configuration);
             services.AddPersistenceServices(Configuration);

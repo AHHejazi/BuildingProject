@@ -17,7 +17,7 @@ namespace App.Persistence
 
             services.AddScoped<IApartmentRepository, ApartmentRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
-            //services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ILookupRepository, LookupRepository>();
             //services.AddScoped<IOrderRepository, OrderRepository>();
             //services.AddScoped<IOrderRepository, OrderRepository>();
 

@@ -4,7 +4,6 @@ using Domain.App.Common;
 using Domain.App.Entities;
 using Domain.App.Entities.Lookup;
 using Microsoft.EntityFrameworkCore;
-using pp.Domain.Entities.Lookup;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,6 +38,8 @@ namespace App.Persistence
         public DbSet<Outbuildings> Outbuildings { get; set; }
 
         public DbSet<Project> Projects { get; set; }
+
+        public DbSet<ProjectType> ProjectTypes { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

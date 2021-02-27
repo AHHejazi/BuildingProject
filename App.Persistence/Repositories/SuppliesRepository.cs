@@ -1,8 +1,5 @@
 ﻿using App.Application.Contracts.Persistence;
-using pp.Domain.Entities.Lookup;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Domain.App.Entities.Lookup;
 
 namespace App.Persistence.Repositories
 {

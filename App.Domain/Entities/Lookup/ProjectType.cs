@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain.App.Entities.Lookup
 {
-    public class Supplies
+    public class ProjectType
     {
         public int Id { get; set; }
 
@@ -13,6 +13,7 @@ namespace Domain.App.Entities.Lookup
 
         public string NameEn { get; set; }
 
-        public ICollection<BuildingSupplies> BuildingSupplies { get; set; }
+        public ICollection<Project> Projects { get; set; }
+
     }
 }

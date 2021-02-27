@@ -1,7 +1,6 @@
 ﻿using Domain.App.Common;
-using System;
+using Domain.App.Entities.Lookup;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.App.Entities
 {
@@ -25,8 +24,9 @@ namespace Domain.App.Entities
 
         // To check if we need to add 
         public ICollection<Building> Buildings { get; set; }
+        public ICollection<ProjectType> ProjectTypes { get; set; }
         //// Added Attributes
-        public int ProjectType { get; set; }
+        public int ProjectTypeId { get; set; }
         public int TotalArea { get; set; }
         public int InstrumentNumber { get; set; }
         public int BuildingLicenseNumber { get; set; }
@@ -41,8 +41,7 @@ namespace Domain.App.Entities
         public string ElictricalDiagrams { get; set; }
         public string SoilReport { get; set; }
         public string SurveyReport { get; set; }
-        public int StocksNumber { get; set; }
-        public int Cost { get; set; }
+        
 
     }
 }
