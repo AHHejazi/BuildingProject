@@ -8,21 +8,19 @@ using System.Threading.Tasks;
 
 namespace Building.Web.Components.Projects
 {
-    public partial class ProjectDetails : ComponentBase
+    public partial class Details : ComponentBase
     {
         [Inject]
         public IProjectService _projectService { get; set; }
-        public IReadOnlyList<Project> projectList;
+        public Project project;
 
+        [Parameter]
+        public Guid Id { get; set; }
 
-        protected override void OnInitialized()
-        {
-            projectList = new List<Project>();
-            base.OnInitialized();
-        }
+       
         protected override async Task OnInitializedAsync()
         {
-            projectList = await _projectService.ProjectListQuery();
+            project = await _projectService.GetProjectByIdAsync(Id);
         }
     }
 }

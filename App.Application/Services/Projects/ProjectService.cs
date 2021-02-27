@@ -36,9 +36,17 @@ namespace Application.App.Services.Projects
             return prject.Id;
         }
 
-        public async Task DeleteBasketAsync(Project project)
+        public async Task DeleteProjectAsync(Project project)
         {
-            await _projectRepository.DeleteAsync(project);
+            throw new NotImplementedException();
+        }
+
+
+        public async Task<Project> GetProjectByIdAsync(Guid Id)
+        {
+            var obj = await _projectRepository.GetByIdAsync(Id);
+            return obj;
+              
         }
 
         public async Task<IReadOnlyList<Project>> ProjectListQuery()

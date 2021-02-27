@@ -30,7 +30,7 @@
                     {
                         <tr>
                             <td>
-                                <NavLink href="@($"ProjectDetails/{project.Id}")" class="nav-link" >
+                                <NavLink href="@($"details/{project.Id}")" class="nav-link" >
                                     @project.NameAr
                                 </NavLink>
                             </td>
@@ -40,7 +40,7 @@
                             <td>@project.ConsultingOfficeName</td>
                             <td>@project.IsActive</td>
                             <td>
-                                <a href="@($"EditProject/{project.Id}")" class="fa fa-edit" title="تعديل مشروع">
+                                <a href="@($"edit/{project.Id}")" class="fa fa-edit" title="تعديل مشروع">
                                     <span class="EditProject"></span>
                                 </a>
 

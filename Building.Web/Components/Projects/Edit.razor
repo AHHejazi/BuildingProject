@@ -1,4 +1,4 @@
-﻿@page "/EditProject/{Id:guid}"
+﻿@page "/edit/{Id:guid}"
 @using Domain.App.Entities;
 
 <h3>EditProject</h3>
@@ -48,8 +48,12 @@
 
 @code
 {
-    private Project project = new Project() 
-    { 
+    [Parameter]
+    public Guid Id { get; set; }
+
+
+    private Project project = new Project()
+    {
     };
 
     private void HandleValidSubmit()

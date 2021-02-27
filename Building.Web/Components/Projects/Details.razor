@@ -1,0 +1,67 @@
+﻿
+@page "/Details/{Id:guid}"
+
+
+<h3>Projects Managment</h3>
+
+@if (project == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+    <section class="employee-detail">
+        <h1 class="page-title">Details for @project.NameAr</h1>
+
+        <div class="col-12 row">
+            <div class="col-xs-12 col-sm-8">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">NameAr</label>
+                    <div class="col-sm-8">
+                        <label type="text" class="form-control-plaintext">@project.NameAr</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">NameEn</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@project.NameEn</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">ContractorName</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@project.ContractorName</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">ConsultingOfficeName</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@project.ConsultingOfficeName</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">CityName</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@project.CityName</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">IsActive</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@project.IsActive</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+}
+

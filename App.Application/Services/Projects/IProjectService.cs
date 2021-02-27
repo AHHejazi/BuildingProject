@@ -10,8 +10,11 @@ namespace Application.App.Services.Projects
     {
         Task<Guid> AddProject(ProjectDto project);
         Task UpdateProject(Project project);
-        Task DeleteBasketAsync(Project project);
+        Task DeleteProjectAsync(Project project);
 
         Task<IReadOnlyList<Project>> ProjectListQuery();
+
+
+        Task<Project> GetProjectByIdAsync(Guid Id);
     }
 }

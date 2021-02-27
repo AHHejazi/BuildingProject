@@ -61,9 +61,9 @@ namespace App.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<T> GetByIdAsync(Guid id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<T>().FindAsync(id);
         }
 
         public Task<IReadOnlyList<T>> GetPagedReponseAsync(int page, int size)
