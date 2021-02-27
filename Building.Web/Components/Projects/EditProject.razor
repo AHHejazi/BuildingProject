@@ -1,0 +1,58 @@
+﻿@page "/EditProject/{Id:guid}"
+@using Domain.App.Entities;
+
+<h3>EditProject</h3>
+
+<EditForm Model="@project" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <p>
+        <label>
+            NameAr:
+            <InputText @bind-Value="project.NameAr" />
+        </label>
+    </p>
+
+    <p>
+        <label>
+            NameEn:
+            <InputText @bind-Value="project.NameEn" />
+        </label>
+
+    </p>
+
+    <p>
+        <label>
+            City Name:
+            <InputText @bind-Value="project.CityName" />
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Contractor Name:
+            <InputText @bind-Value="project.ContractorName" />
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Consulting Office Name:
+            <InputText @bind-Value="project.ConsultingOfficeName" />
+        </label>
+    </p>
+
+<button type="submit">Submit</button>
+</EditForm>
+
+@code
+{
+    private Project project = new Project() 
+    { 
+    };
+
+    private void HandleValidSubmit()
+    {
+    }
+}

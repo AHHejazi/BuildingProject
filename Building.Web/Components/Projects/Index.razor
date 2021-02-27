@@ -1,44 +1,71 @@
 ﻿@page "/Project/index"
 
-<h3>Projects Managment</h3>
 
-@if (projectList == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class='table'>
-        <thead>
-            <tr>
-                <th>NameAr</th>
-                <th>NameEn</th>
-                <th>ContractorName</th>
-                <th>CityName</th>
-                <th>ConsultingOfficeName</th>
-                <th>IsActive</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var project in projectList)
-            {
-                <tr>
-                    <td>
-                        <NavLink class="nav-link" href="ProjectDetails">
-                            @project.NameAr
-                        </NavLink>
-                    </td>
-                    <td>@project.NameEn</td>
-                    <td>@project.ContractorName</td>
-                    <td>@project.CityName</td>
-                    <td>@project.ConsultingOfficeName</td>
-                    <td>@project.IsActive</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+        <h3>Projects Managment</h3>
 
-@code {
+        @if (projectList == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
 
-}
+
+            <table class='table'>
+                <thead> 
+                    <tr>
+                        <th>NameAr</th>
+                        <th>NameEn</th>
+                        <th>CityName</th>
+                        <th>ContractorName</th>
+                        <th>ConsultingOfficeName</th>
+                        <th>IsActive</th>
+                        <th>Options</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var project in projectList)
+                    {
+                        <tr>
+                            <td>
+                                <NavLink href="@($"ProjectDetails/{project.Id}")" class="nav-link" >
+                                    @project.NameAr
+                                </NavLink>
+                            </td>
+                            <td>@project.NameEn</td>
+                            <td>@project.CityName</td>
+                            <td>@project.ContractorName</td>
+                            <td>@project.ConsultingOfficeName</td>
+                            <td>@project.IsActive</td>
+                            <td>
+                                <a href="@($"EditProject/{project.Id}")" class="fa fa-edit" title="تعديل مشروع">
+                                    <span class="EditProject"></span>
+                                </a>
+
+                                <a href="#" class="	fa fa-refresh" title="تحديث">
+                                    <span class="Refresh"></span>
+                                </a>
+
+                                <a href="@($"Settings/{project.Id}")" class="fa fa-cog" title="إعدادات">
+
+                                    <span class="Settings"></span>
+                                </a>
+
+                                <a href="#" class="fa fa-trash" title="حذف مشروع">
+                                    <span class="DeleteProject"></span>
+                                </a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+        }
+
+        @code {
+
+        }
