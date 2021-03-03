@@ -22,10 +22,14 @@ namespace App.Persistence.Configurations
             entity.Property(e => e.PropertyLatitude).IsRequired(); 
             entity.Property(e => e.PropertyLongitude).IsRequired();
             entity.Property(e => e.SerialNumber).IsRequired().HasMaxLength(15); 
-            entity.Property(e => e.IsActive).IsRequired().HasDefaultValue(true); ;
+            entity.Property(e => e.IsActive).IsRequired().HasDefaultValue(true);
+            entity.Property(e => e.ProjectTypeId).IsRequired();
             entity.Property(e => e.CreatedOn).IsRequired();
             entity.Property(e => e.CreatedBy).IsRequired().HasMaxLength(250);
             entity.Property(e => e.UpdatedBy).HasMaxLength(250);
+
+            //Ask shall we add relation here
+
 
         }
     }

@@ -13,7 +13,13 @@ namespace Building.Web.Components.Projects
         [Inject]
         public IProjectService _projectService { get; set; }
         public IReadOnlyList<Project> projectList;
-       
+        public Project project;
+
+        //used to store state of screen
+        protected string Message = string.Empty;
+        protected string StatusClass = string.Empty;
+        protected bool Saved;
+
 
         protected override void OnInitialized()
         {
@@ -23,6 +29,15 @@ namespace Building.Web.Components.Projects
         protected override async Task OnInitializedAsync()
         {
             projectList = await _projectService.ProjectListQuery();
+        }
+
+        public async Task DeleteProject(Project project)
+        {
+            await _projectService.DeleteProjectAsync(project);
+            StatusClass = "alert-success";
+            Message = "Deleted successfully";
+
+            Saved = true;
         }
     }
 }

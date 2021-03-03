@@ -15,6 +15,11 @@ namespace Application.App.Services.Projects
         private readonly IMapper _mapper;
         private readonly ILogger<ProjectDto> _logger;
 
+        //used to store state of screen
+        protected string Message = string.Empty;
+        protected string StatusClass = string.Empty;
+        protected bool Saved;
+
 
         public ProjectService(IMapper mapper, IProjectRepository projectRepository, ILogger<ProjectDto> logger)
         {
@@ -36,11 +41,17 @@ namespace Application.App.Services.Projects
             return prject.Id;
         }
 
-        public async Task DeleteProjectAsync(Project project)
-        {
-            throw new NotImplementedException();
-        }
+        //public async Task<Guid> DeleteProject(ProjectDto project)
+        //{
+        //    var proj = _mapper.Map<Project>(project);
+        //    proj = await _projectRepository.DeleteAsync(proj);
+        //    return proj.Id;
+        //}
 
+        public async Task DeleteProject(Project project)
+        {
+            await _projectRepository.DeleteAsync(project);
+        }
 
         public async Task<Project> GetProjectByIdAsync(Guid Id)
         {
@@ -58,6 +69,9 @@ namespace Application.App.Services.Projects
         public async Task UpdateProject(Project project)
         {
             await _projectRepository.UpdateAsync(project);
+            StatusClass = "alert-success";
+            Message = "Employee updated successfully.";
+            Saved = true;
         }
     }
 }

@@ -1,71 +1,72 @@
 ﻿@page "/Project/index"
 
 
-        <h3>Projects Managment</h3>
+<h3>Projects Managment</h3>
 
-        @if (projectList == null)
-        {
-            <p><em>Loading...</em></p>
-        }
-        else
-        {
-
-
-            <table class='table'>
-                <thead> 
-                    <tr>
-                        <th>NameAr</th>
-                        <th>NameEn</th>
-                        <th>CityName</th>
-                        <th>ContractorName</th>
-                        <th>ConsultingOfficeName</th>
-                        <th>IsActive</th>
-                        <th>Options</th>
+@if (projectList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
 
 
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var project in projectList)
-                    {
-                        <tr>
-                            <td>
-                                <NavLink href="@($"details/{project.Id}")" class="nav-link" >
-                                    @project.NameAr
-                                </NavLink>
-                            </td>
-                            <td>@project.NameEn</td>
-                            <td>@project.CityName</td>
-                            <td>@project.ContractorName</td>
-                            <td>@project.ConsultingOfficeName</td>
-                            <td>@project.IsActive</td>
-                            <td>
-                                <a href="@($"edit/{project.Id}")" class="fa fa-edit" title="تعديل مشروع">
-                                    <span class="EditProject"></span>
-                                </a>
-
-                                <a href="#" class="	fa fa-refresh" title="تحديث">
-                                    <span class="Refresh"></span>
-                                </a>
-
-                                <a href="@($"Settings/{project.Id}")" class="fa fa-cog" title="إعدادات">
-
-                                    <span class="Settings"></span>
-                                </a>
-
-                                <a href="#" class="fa fa-trash" title="حذف مشروع">
-                                    <span class="DeleteProject"></span>
-                                </a>
-                            </td>
-
-                        </tr>
-                    }
-                </tbody>
-            </table>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>NameAr</th>
+                <th>NameEn</th>
+                <th>CityName</th>
+                <th>ContractorName</th>
+                <th>ConsultingOfficeName</th>
+                <th>IsActive</th>
+                <th>Options</th>
 
 
-        }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var project in projectList)
+            {
+                <tr>
+                    <td>
+                        <NavLink href="@($"details/{project.Id}")" class="nav-link">
+                            @project.NameAr
+                        </NavLink>
+                    </td>
+                    <td>@project.NameEn</td>
+                    <td>@project.CityName</td>
+                    <td>@project.ContractorName</td>
+                    <td>@project.ConsultingOfficeName</td>
+                    <td>@project.IsActive</td>
+                    <td>
+                        <a href="@($"edit/{project.Id}")" class="fa fa-edit" title="تعديل مشروع">
+                            <span class="EditProject"></span>
+                        </a>
 
-        @code {
+                        <a href="#" class="	fa fa-refresh" title="تحديث">
+                            <span class="Refresh"></span>
+                        </a>
 
-        }
+                        <a href="@($"Settings/{project.Id}")" class="fa fa-cog" title="إعدادات">
+
+                            <span class="Settings"></span>
+                        </a>
+
+                        <a href="#" title="حذف مشروع" class="fa fa-trash"@onclick="@DeleteProject(project)">
+                            <span class="DeleteProject"></span>
+                        </a>
+
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+}
+
+@code {
+
+}
