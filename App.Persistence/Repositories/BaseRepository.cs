@@ -46,11 +46,18 @@ namespace App.Persistence.Repositories
         //    await _dbContext.SaveChangesAsync();
         //}
 
-        public async Task DeleteAsync(T entity)
+        public async Task DeleteAsync(object entityId)
         {
+            var entity = await GetByIdAsync(entityId);
             _dbContext.Set<T>().Remove(entity);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<T> GetByIdAsync(object id)
+        {
+            return await _dbContext.Set<T>().FindAsync(id);
+        }
+
         public Task<T> AddAsync(T entity)
         {
             throw new NotImplementedException();
@@ -77,9 +84,15 @@ namespace App.Persistence.Repositories
         }
 
 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            _dbContext.Entry(entity).State = EntityState.Modified;
+             await _dbContext.SaveChangesAsync();
         }
+
+        //public Task DeleteAsync(T entity)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

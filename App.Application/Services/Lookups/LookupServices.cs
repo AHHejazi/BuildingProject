@@ -1,8 +1,7 @@
 ﻿using Application.App.Contracts.Persistence;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace Application.App.Services.Lookups
 {
@@ -14,9 +13,9 @@ namespace Application.App.Services.Lookups
             _lookupRepository = projectRepository;
         }
 
-        public List<SelectListItem> GetProjectTypeList()
+        public async Task<IEnumerable<SelectListItem>> GetProjectTypeList()
         {
-          return  _lookupRepository.GetProjectTypeList();
+          return await _lookupRepository.GetProjectTypeList();
         }
     }
 }

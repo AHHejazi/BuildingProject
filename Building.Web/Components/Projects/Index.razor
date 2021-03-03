@@ -11,15 +11,15 @@ else
 {
 
 
-    <table class='table'>
+    <table class='table table-striped'>
         <thead>
             <tr>
-                <th>NameAr</th>
-                <th>NameEn</th>
-                <th>CityName</th>
-                <th>ContractorName</th>
-                <th>ConsultingOfficeName</th>
-                <th>IsActive</th>
+                <th>Name Arabic</th>
+                <th>Name English</th>
+                <th>City Name</th>
+                <th>Contractor Name</th>
+                <th>ConsultingOffice Name</th>
+                <th>Active</th>
                 <th>Options</th>
 
 
@@ -38,29 +38,34 @@ else
                     <td>@project.CityName</td>
                     <td>@project.ContractorName</td>
                     <td>@project.ConsultingOfficeName</td>
-                    <td>@project.IsActive</td>
                     <td>
-                        <a href="@($"edit/{project.Id}")" class="fa fa-edit" title="تعديل مشروع">
-                            <span class="EditProject"></span>
-                        </a>
+                        @if (project.IsActive == true)
+                        {<span class="fa fa-check-square-o"></span>}
+                        else
+                        {<span class="fa fa-check-square-o"></span>}
+                </td>
+                <td>
+                    <a href="@($"edit/{project.Id}")" class="fa fa-edit" title="تعديل مشروع">
+                        <span class="EditProject"></span>
+                    </a>
 
-                        <a href="#" class="	fa fa-refresh" title="تحديث">
-                            <span class="Refresh"></span>
-                        </a>
+                    <a href="#" class="	fa fa-refresh" title="تحديث">
+                        <span class="Refresh"></span>
+                    </a>
 
-                        <a href="@($"Settings/{project.Id}")" class="fa fa-cog" title="إعدادات">
+                    <a href="@($"Settings/{project.Id}")" class="fa fa-cog" title="إعدادات">
 
-                            <span class="Settings"></span>
-                        </a>
+                        <span class="Settings"></span>
+                    </a>
 
-                        <a href="#" title="حذف مشروع" class="fa fa-trash"@onclick="@DeleteProject(project)">
-                            <span class="DeleteProject"></span>
-                        </a>
+                    <a href="#" title="حذف مشروع" class="fa fa-trash" @onclick="@(async()=>await DeleteProject(project.Id))">
+                        <span class="DeleteProject"></span>
+                    </a>
 
-                    </td>
+                </td>
 
-                </tr>
-            }
+            </tr>
+        }
         </tbody>
     </table>
 

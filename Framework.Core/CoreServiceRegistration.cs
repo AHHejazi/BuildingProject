@@ -8,9 +8,7 @@ namespace App.Persistence
     {
         public static IServiceCollection AddCoreServices(this IServiceCollection services)
         {
-            services.TryAddScoped<ICacheManager, MemoryCacheManager>();
             services.AddMemoryCache();
-
             return services;    
         }
     }

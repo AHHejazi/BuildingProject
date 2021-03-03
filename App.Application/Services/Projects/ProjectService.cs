@@ -48,9 +48,11 @@ namespace Application.App.Services.Projects
         //    return proj.Id;
         //}
 
-        public async Task DeleteProject(Project project)
+        
+
+        public async Task DeleteProjectAsync(Guid projectId)
         {
-            await _projectRepository.DeleteAsync(project);
+            await _projectRepository.DeleteAsync(projectId);
         }
 
         public async Task<Project> GetProjectByIdAsync(Guid Id)

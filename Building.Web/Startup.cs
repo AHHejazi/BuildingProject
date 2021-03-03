@@ -34,7 +34,6 @@ namespace Building.Web
             //services.AddIdentityServices(Configuration);
             services.AddHttpContextAccessor();
             services.AddScoped<ILoggedInUserService, LoggedInUserService>();
-
             services.AddControllers();
         }
 

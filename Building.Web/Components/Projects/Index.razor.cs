@@ -31,9 +31,9 @@ namespace Building.Web.Components.Projects
             projectList = await _projectService.ProjectListQuery();
         }
 
-        public async Task DeleteProject(Project project)
+        public async Task DeleteProject(Guid projectId)
         {
-            await _projectService.DeleteProjectAsync(project);
+            await _projectService.DeleteProjectAsync(projectId);
             StatusClass = "alert-success";
             Message = "Deleted successfully";
 

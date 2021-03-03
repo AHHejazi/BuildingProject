@@ -22,5 +22,10 @@ namespace Building.Web.Components.Projects
         {
             project = await _projectService.GetProjectByIdAsync(Id);
         }
+
+        public void ValidFormSubmitted()
+        {
+            _projectService.UpdateProject(project);
+        }
     }
 }

@@ -1,62 +1,46 @@
 ﻿@page "/edit/{Id:guid}"
 @using Domain.App.Entities;
 
-<h3>EditProject</h3>
+<h3>Edit Project</h3>
 
-<EditForm Model="@project" OnValidSubmit="@HandleValidSubmit">
+<EditForm Model="@project" OnValidSubmit="@ValidFormSubmitted">
     <DataAnnotationsValidator />
     <ValidationSummary />
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="NameAr">Name Arabic:</label>
+                <InputText class="form-control" @bind-Value="project.NameAr" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="NameEn">Name English:</label>
+                <InputText class="form-control" @bind-Value="project.NameEn" />
+            </div>
+        </div>
 
-    <p>
-        <label>
-            NameAr:
-            <InputText @bind-Value="project.NameAr" />
-        </label>
-    </p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="CityName">City Name:</label>
+                <InputText class="form-control" @bind-Value="project.CityName" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="ContractorName">Contractor Name:</label>
+                <InputText class="form-control" @bind-Value="project.ContractorName" />
+            </div>
+        </div>
 
-    <p>
-        <label>
-            NameEn:
-            <InputText @bind-Value="project.NameEn" />
-        </label>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="ConsultingOfficeName">Consulting Office Name:</label>
+                <InputText class="form-control" @bind-Value="project.ConsultingOfficeName" />
+            </div>
+        </div>
 
-    </p>
-
-    <p>
-        <label>
-            City Name:
-            <InputText @bind-Value="project.CityName" />
-        </label>
-    </p>
-
-    <p>
-        <label>
-            Contractor Name:
-            <InputText @bind-Value="project.ContractorName" />
-        </label>
-    </p>
-
-    <p>
-        <label>
-            Consulting Office Name:
-            <InputText @bind-Value="project.ConsultingOfficeName" />
-        </label>
-    </p>
-
-<button type="submit">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </EditForm>
 
 @code
 {
-    //[Parameter]
-    //public Guid Id { get; set; }
 
-    //ask him why private
-    //private Project project = new Project()
-    //{
-    //};
-
-    private void HandleValidSubmit()
-    {
-    }
 }
