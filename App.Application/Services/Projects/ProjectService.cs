@@ -68,12 +68,23 @@ namespace Application.App.Services.Projects
             return result;
         }
 
-        public async Task UpdateProject(Project project)
+        public async Task UpdateProject(ProjectDto project)
         {
-            await _projectRepository.UpdateAsync(project);
+             var validator = new ProjectValidator(_projectRepository);
+            var validationResult = await validator.ValidateAsync(project);
+
+            if (validationResult.Errors.Count > 0)
+                throw new Exceptions.ValidationException(validationResult);
+                await _projectRepository.UpdateAsync(project);
+
             StatusClass = "alert-success";
             Message = "Employee updated successfully.";
             Saved = true;
+        }
+
+        public Task UpdateProject(Project project)
+        {
+            throw new NotImplementedException();
         }
     }
 }

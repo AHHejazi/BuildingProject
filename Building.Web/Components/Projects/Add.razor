@@ -1,92 +1,89 @@
 ﻿@page "/Project/Add"
-<h3>New Building</h3>
+
+
+
 <EditForm Model="Model" OnValidSubmit="SubmitProject">
-    <div class="form-group row">
-        <label for="NameAr" class="col-sm-2 col-form-label">NameAr</label>
-        <div class="col-sm-10">
-            <InputText @bind-Value="Model.NameAr" id="NameAr" class="form-control"></InputText>
+
+    <h3>New Building</h3>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="NameAr">Name Arabic</label>
+            <InputText  @bind-Value="Model.NameAr" id="NameAr" class="form-control"></InputText>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="NameEn">Name English</label>
+            <InputText  @bind-Value="Model.NameEn" id="NameEn" class="form-control"></InputText>
         </div>
     </div>
 
-    <div class="form-group row">
-        <label for="NameEn" class="col-sm-2 col-form-label">NameEn</label>
-        <div class="col-sm-10">
-            <InputText @bind-Value="Model.NameEn" id="NameEn" class="form-control"></InputText>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="Number" class="col-sm-2 col-form-label">Number</label>
-        <div class="col-sm-10">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Number">Number</label>
             <InputText @bind-Value="Model.Number" id="Number" class="form-control"></InputText>
         </div>
-    </div>
 
-    <div class="form-group row">
-        <label for="ContractorName" class="col-sm-2 col-form-label">ContractorName</label>
-        <div class="col-sm-10">
+        <div class="form-group col-md-6">
+            <label for="ContractorName">Contractor Name</label>
             <InputText @bind-Value="Model.ContractorName" id="ContractorName" class="form-control"></InputText>
         </div>
     </div>
 
-    <div class="form-group row">
-        <label for="ConsultingOfficeName" class="col-sm-2 col-form-label">ConsultingOfficeName</label>
-        <div class="col-sm-10">
-            <InputText @bind-Value="Model.ConsultingOfficeName" id="ConsultingOfficeName" class="form-control"></InputText>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="ConsultingOfficeName">Consulting Office Name</label>
+            <InputText  @bind-Value="Model.ConsultingOfficeName" id="ConsultingOfficeName" class="form-control"></InputText>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="CityName">City Name</label>
+            <InputText  @bind-Value="Model.CityName" id="CityName" class="form-control"></InputText>
         </div>
     </div>
 
-    <div class="form-group row">
-        <label for="CityName" class="col-sm-2 col-form-label">CityName</label>
-        <div class="col-sm-10">
-            <InputText @bind-Value="Model.CityName" id="CityName" class="form-control"></InputText>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="QuarterName">Quarter Name</label>
+            <InputText  @bind-Value="Model.QuarterName" id="QuarterName" class="form-control"></InputText>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="PropertyFullAddress">Property Full Address</label>
+            <InputText  @bind-Value="Model.PropertyFullAddress" id="PropertyFullAddress" class="form-control"></InputText>
         </div>
     </div>
 
-    <div class="form-group row">
-        <label for="QuarterName" class="col-sm-2 col-form-label">QuarterName</label>
-        <div class="col-sm-10">
-            <InputText @bind-Value="Model.QuarterName" id="QuarterName" class="form-control"></InputText>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="PropertyNumber">Property Number</label>
+            <InputText  @bind-Value="Model.PropertyNumber" id="PropertyNumber" class="form-control"></InputText>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="PropertyLatitude">Property Latitude</label>
+            <InputText  @bind-Value="Model.PropertyLatitude" id="PropertyLatitude" class="form-control"></InputText>
         </div>
     </div>
 
-    <div class="form-group row">
-        <label for="PropertyFullAddress" class="col-sm-2 col-form-label">PropertyFullAddress</label>
-        <div class="col-sm-10">
-            <InputText @bind-Value="Model.PropertyFullAddress" id="PropertyFullAddress" class="form-control"></InputText>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="PropertyLongitude">Property Longitude</label>
+            <InputText  @bind-Value="Model.PropertyLongitude" id="PropertyLongitude" class="form-control"></InputText>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="SerialNumber">Serial Number</label>
+            <InputText  @bind-Value="Model.SerialNumber" id="SerialNumber" class="form-control"></InputText>
         </div>
     </div>
 
-    <div class="form-group row">
-        <label for="PropertyNumber" class="col-sm-2 col-form-label">PropertyNumber</label>
-        <div class="col-sm-10">
-            <InputText @bind-Value="Model.PropertyNumber" id="PropertyNumber" class="form-control"></InputText>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="PropertyLatitude" class="col-sm-2 col-form-label">PropertyLatitude</label>
-        <div class="col-sm-10">
-            <InputText @bind-Value="Model.PropertyLatitude" id="PropertyLatitude" class="form-control"></InputText>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="PropertyLongitude" class="col-sm-2 col-form-label">PropertyLongitude</label>
-        <div class="col-sm-10">
-            <InputText @bind-Value="Model.PropertyLongitude" id="PropertyLongitude" class="form-control"></InputText>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="SerialNumber" class="col-sm-2 col-form-label">SerialNumber</label>
-        <div class="col-sm-10">
-            <InputText @bind-Value="Model.SerialNumber" id="SerialNumber" class="form-control"></InputText>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="itemTypetimate" class="col-sm-2 col-form-label">ProjectType</label>
-        <div class="col-sm-10">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="itemTypetimate">Project Type</label>
             <InputSelect @bind-Value="Model.ProjectTypeId" id="ProjectTypeId" class="form-control">
 
                 @if (ProjectTypeList != null)
@@ -100,47 +97,36 @@
 
             </InputSelect>
         </div>
-    </div>
-  
-    <div class="form-group row">
-        <label for="TotalArea" class="col-sm-2 col-form-label">TotalArea</label>
-        <div class="col-sm-10">
-            <InputNumber @bind-Value="Model.TotalArea" id="TotalArea" class="form-control"></InputNumber>
+
+        <div class="form-group col-md-6">
+            <label for="TotalArea">Total Area</label>
+            <InputNumber  @bind-Value="Model.TotalArea" id="TotalArea" class="form-control"></InputNumber>
         </div>
     </div>
 
-    <div class="form-group row">
-        <label for="InstrumentNumber" class="col-sm-2 col-form-label">InstrumentNumber</label>
-        <div class="col-sm-10">
-            <InputNumber @bind-Value="Model.InstrumentNumber" id="InstrumentNumber" class="form-control"></InputNumber>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="InstrumentNumber">Instrument Number</label>
+            <InputNumber  @bind-Value="Model.InstrumentNumber" id="InstrumentNumber" class="form-control"></InputNumber>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="BuildingLicenseNumber">Building License Number</label>
+            <InputNumber  @bind-Value="Model.BuildingLicenseNumber" id="BuildingLicenseNumber" class="form-control"></InputNumber>
         </div>
     </div>
 
-    <div class="form-group row">
-        <label for="BuildingLicenseNumber" class="col-sm-2 col-form-label">BuildingLicenseNumber</label>
-        <div class="col-sm-10">
-            <InputNumber @bind-Value="Model.BuildingLicenseNumber" id="BuildingLicenseNumber" class="form-control"></InputNumber>
-        </div>
-    </div>
 
-    <div class="form-group row">
-        <label for="BuildingTechnique" class="col-sm-2 col-form-label">BuildingTechnique</label>
-        <div class="col-sm-10">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="BuildingTechnique">Building Technique</label>
             <InputText @bind-Value="Model.BuildingTechnique" id="BuildingTechnique" class="form-control"></InputText>
         </div>
-    </div>
 
-    <div class="form-group row">
-        <label for="EstimatedCost" class="col-sm-2 col-form-label">EstimatedCost</label>
-        <div class="col-sm-10">
-            <InputNumber @bind-Value="Model.EstimatedCost" id="EstimatedCost" class="form-control"></InputNumber>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="BuildingLicenseNumber" class="col-sm-2 col-form-label">BuildingLicenseNumber</label>
-        <div class="col-sm-10">
-            <InputNumber @bind-Value="Model.BuildingLicenseNumber" id="BuildingLicenseNumber" class="form-control"></InputNumber>
+        <div class="form-group col-md-6">
+            <label for="EstimatedCost">Estimated Cost</label>
+            <InputNumber  @bind-Value="Model.EstimatedCost" id="EstimatedCost" class="form-control"></InputNumber>
         </div>
     </div>
 
@@ -150,6 +136,8 @@
 
 
 
-@code { }
+@code {
+    
+}
 
 
