@@ -1,5 +1,6 @@
 ﻿using Application.App.Contracts.Persistence;
 using FluentValidation;
+using Localization.App;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,8 +15,7 @@ namespace Application.App.Services.Projects
             _projectRepository = projectRepository;
 
             RuleFor(p => p.NameAr)
-                .NotEmpty().WithMessage("{PropertyName} is required.")
-                .NotNull()
+                .NotNull().WithMessage(x => AppResources.Required)
                 .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
 
             RuleFor(p => p.QuarterName)

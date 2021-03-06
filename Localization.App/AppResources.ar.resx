@@ -141,4 +141,7 @@
   <data name="Options" xml:space="preserve">
     <value>الخيارات</value>
   </data>
+  <data name="Required" xml:space="preserve">
+    <value>حقل مطلوب</value>
+  </data>
 </root>

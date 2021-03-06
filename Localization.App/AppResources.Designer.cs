@@ -131,5 +131,14 @@ namespace Localization.App {
                 return ResourceManager.GetString("Options", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Required Field.
+        /// </summary>
+        public static string Required {
+            get {
+                return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
     }
 }

@@ -1,12 +1,13 @@
 ﻿@page "/Project/Add"
 <h3>New Building</h3>
 <EditForm Model="Model" OnValidSubmit="SubmitProject">
+    <FluentValidationValidator/>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="NameAr">@AppResources.NameArabic</label>
 
             <InputText @bind-Value="Model.NameAr" id="NameAr" class="form-control"></InputText>
-
+            <ValidationMessage For="@(() => Model.NameAr)" />
         </div>
         <div class="form-group col-md-6">
             <label for="NameEn">@AppResources.NameEnglish</label>
@@ -164,6 +165,8 @@
 
 
 
-@code { }
+@code {
+
+ }
 
 

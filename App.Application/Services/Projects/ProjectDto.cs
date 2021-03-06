@@ -38,5 +38,7 @@ namespace Application.App.Services.Projects
         public string SurveyReport { get; set; }
         public int StocksNumber { get; set; }
         public int Cost { get; set; }
+
+        public int ProjectTypeId { get; set; }
     }
 }
