@@ -82,7 +82,7 @@ namespace Framework.Core.Globalization
         /// </param>
         public static void InitializeCultureFromCookie(HttpContext context)
         {
-            var cookieName = CookieRequestCultureProvider.DefaultCookieName + "TMS";
+            var cookieName = CookieRequestCultureProvider.DefaultCookieName;
 
             var defaultCulture = "en-GB"; // USAMA READ FROM FRAMEWORK SETTINGS
 
