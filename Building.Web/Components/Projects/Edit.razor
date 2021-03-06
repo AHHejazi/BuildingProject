@@ -2,46 +2,44 @@
 @using Domain.App.Entities;
 
 <h3>Edit Project</h3>
-@if (project != null)
-{
-    <EditForm Model="@project" OnValidSubmit="@ValidFormSubmitted">
-        @*<DataAnnotationsValidator />
-        <ValidationSummary />*@
 
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="NameAr">Name Arabic:</label>
-                    <InputText class="form-control" @bind-Value="project.NameAr" />
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="NameEn">Name English:</label>
-                    <InputText class="form-control" @bind-Value="project.NameEn" />
-                </div>
+<EditForm Model="@project" OnValidSubmit="@ValidFormSubmitted">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="NameAr">@AppResources.NameArabic:</label>
+                <InputText class="form-control" @bind-Value="project.NameAr" />
             </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="CityName">City Name:</label>
-                    <InputText class="form-control" @bind-Value="project.CityName" />
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="ContractorName">Contractor Name:</label>
-                    <InputText class="form-control" @bind-Value="project.ContractorName" />
-                </div>
+            <div class="form-group col-md-6">
+                <label for="NameEn">Name English:</label>
+                <InputText class="form-control" @bind-Value="project.NameEn" />
             </div>
+        </div>
 
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="ConsultingOfficeName">Consulting Office Name:</label>
-                    <InputText class="form-control" @bind-Value="project.ConsultingOfficeName" />
-                </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="CityName">City Name:</label>
+                <InputText class="form-control" @bind-Value="project.CityName" />
             </div>
+            <div class="form-group col-md-6">
+                <label for="ContractorName">Contractor Name:</label>
+                <InputText class="form-control" @bind-Value="project.ContractorName" />
+            </div>
+        </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </EditForm>
-}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="ConsultingOfficeName">Consulting Office Name:</label>
+                <InputText class="form-control" @bind-Value="project.ConsultingOfficeName" />
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</EditForm>
+
 @code
 {
 

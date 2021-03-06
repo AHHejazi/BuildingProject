@@ -53,7 +53,7 @@ namespace Building.Web
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.ConfigureCommonRequestPipeline();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

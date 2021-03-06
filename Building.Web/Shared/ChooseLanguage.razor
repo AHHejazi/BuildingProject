@@ -1,0 +1,25 @@
+﻿@inject NavigationManager NavigationManager
+@inject IConfiguration Configuration
+@inject IJSRuntime JSRuntime
+@if (cultures != null)
+{
+   
+        <button class="btn btn-outline-primary" @onclick="RequestCultureChange">@(CultureHelper.IsArabic? "English" : "Arabic")</button>
+    
+}
+
+@code {
+    private string selectedCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+    private Dictionary<string, string> cultures;
+
+    protected override void OnInitialized()
+    {
+        cultures = Configuration.GetSection("Cultures")
+            .GetChildren().ToDictionary(x => x.Key, x => x.Value);
+    }
+
+    private void RequestCultureChange()
+    {
+        JSRuntime.InvokeVoidAsync("buildingApp.switchLang", selectedCulture);
+    }
+}

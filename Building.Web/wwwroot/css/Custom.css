@@ -1,2 +1,5 @@
 ﻿body {
+    font-family: 'DIN Next LT Arabic',sans-serif;
+    direction: rtl;
+    overflow-x: hidden;
 }
