@@ -16,9 +16,9 @@ namespace App.Persistence.Repositories
 
         }
 
-        public Task<bool> IsProjectNameUnique(string nameAr, string nameEn)
+        public async Task<bool> IsProjectNameUnique(string nameAr, string nameEn)
         {
-            throw new NotImplementedException();
+           return true ;
         }
 
         public Task UpdateAsync(ProjectDto project)

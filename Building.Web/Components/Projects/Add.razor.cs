@@ -1,10 +1,9 @@
 ﻿using Application.App.Services.Lookups;
-using Domain.App.Entities;
+using Application.App.Services.Projects;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -12,7 +11,7 @@ namespace Building.Web.Components.Projects
 {
     public partial class Add : ComponentBase
     {
-        public Project Model = new Project();
+        public ProjectDto Model = new ProjectDto();
         private IEnumerable<SelectListItem> ProjectTypeList;
 
         [Inject]
@@ -30,7 +29,7 @@ namespace Building.Web.Components.Projects
 
         private void SubmitProject()
         {
-            _navigationManager.NavigateTo("/Back");
+            Console.WriteLine("Form Submitted Successfully!");
         }
     }
 }

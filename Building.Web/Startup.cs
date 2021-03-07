@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using FluentValidation;
+using Application.App.Services.Projects;
 
 namespace Building.Web
 {
@@ -25,7 +27,8 @@ namespace Building.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddServerSideBlazor();
+            services.AddServerSideBlazor(c => c.DetailedErrors = true);
+            services.AddTransient<IValidator<ProjectDto>, ProjectValidator>();
             services.AddSingleton<WeatherForecastService>();
             services.AddCoreServices();
             services.AddApplicationServices();
@@ -34,6 +37,7 @@ namespace Building.Web
             //services.AddIdentityServices(Configuration);
             services.AddHttpContextAccessor();
             services.AddScoped<ILoggedInUserService, LoggedInUserService>();
+
             services.AddControllers();
         }
 
