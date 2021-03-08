@@ -1,7 +1,10 @@
 ﻿@page "/Project/Add"
+
 <h3>New Building</h3>
+
 <EditForm Model="Model" OnValidSubmit="SubmitProject">
-    <FluentValidationValidator/>
+    <FluentValidationValidator />
+
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="NameAr">@AppResources.NameArabic</label>
@@ -13,94 +16,88 @@
             <label for="NameEn">@AppResources.NameEnglish</label>
 
             <InputText @bind-Value="Model.NameEn" id="NameEn" class="form-control"></InputText>
-
+            <ValidationMessage For="@(() => Model.NameEn)" />
         </div>
     </div>
 
 
     <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="Number">@AppResources.Number</label>
-
-            <InputText @bind-Value="Model.Number" id="Number" class="form-control"></InputText>
-
-        </div>
-
         <div class="form-group col-md-6">
             <label for="ContractorName">@AppResources.ContractorName</label>
-
             <InputText @bind-Value="Model.ContractorName" id="ContractorName" class="form-control"></InputText>
+            <ValidationMessage For="@(() => Model.ContractorName)" />
+        </div>
 
+        <div class="form-group col-md-6">
+            <label for="ConsultingOfficeName">@AppResources.ConsultingOfficeName</label>
+            <InputText @bind-Value="Model.ConsultingOfficeName" id="ConsultingOfficeName" class="form-control"></InputText>
+            <ValidationMessage For="@(() => Model.ConsultingOfficeName)" />
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="ConsultingOfficeName">@AppResources.ConsultingOfficeName</label>
 
-            <InputText @bind-Value="Model.ConsultingOfficeName" id="ConsultingOfficeName" class="form-control"></InputText>
-
-        </div>
 
         <div class="form-group col-md-6">
             <label for="CityName">@AppResources.CityName</label>
 
             <InputText @bind-Value="Model.CityName" id="CityName" class="form-control"></InputText>
-
+            <ValidationMessage For="@(() => Model.CityName)" />
         </div>
-    </div>
-    <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="QuarterName">Quarter Name</label>
+            <label for="QuarterName">@AppResources.QuarterName</label>
 
             <InputText @bind-Value="Model.QuarterName" id="QuarterName" class="form-control"></InputText>
-
+            <ValidationMessage For="@(() => Model.QuarterName)" />
         </div>
 
+    </div>
+    <div class="form-row">
+
         <div class="form-group col-md-6">
-            <label for="PropertyFullAddress">Property Full Address</label>
+            <label for="PropertyFullAddress">@AppResources.PropertyFullAddress</label>
 
             <InputText @bind-Value="Model.PropertyFullAddress" id="PropertyFullAddress" class="form-control"></InputText>
-
+            <ValidationMessage For="@(() => Model.PropertyFullAddress)" />
         </div>
-    </div>
-
-    <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="PropertyNumber">Property Number</label>
+            <label for="PropertyNumber">@AppResources.PropertyNumber</label>
 
             <InputText @bind-Value="Model.PropertyNumber" id="PropertyNumber" class="form-control"></InputText>
-
+            <ValidationMessage For="@(() => Model.PropertyNumber)" />
         </div>
+    </div>
+
+    <div class="form-row">
+
 
         <div class="form-group col-md-6">
-            <label for="PropertyLatitude">Property Latitude</label>
+            <label for="PropertyLatitude">@AppResources.PropertyLatitude</label>
 
             <InputText @bind-Value="Model.PropertyLatitude" id="PropertyLatitude" class="form-control"></InputText>
-
+            <ValidationMessage For="@(() => Model.PropertyLatitude)" />
         </div>
-    </div>
-
-    <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="PropertyLongitude">Property Longitude</label>
+            <label for="PropertyLongitude">@AppResources.PropertyLongitude</label>
 
             <InputText @bind-Value="Model.PropertyLongitude" id="PropertyLongitude" class="form-control"></InputText>
-
-        </div>
-
-        <div class="form-group col-md-6">
-            <label for="SerialNumber">Serial Number</label>
-
-            <InputText @bind-Value="Model.SerialNumber" id="SerialNumber" class="form-control"></InputText>
-
+            <ValidationMessage For="@(() => Model.PropertyLongitude)" />
         </div>
     </div>
+
     <div class="form-row">
+
+
         <div class="form-group col-md-6">
-            <label for="itemTypetimate">Project Type</label>
+            <label for="SerialNumber">@AppResources.SerialNumber</label>
+
+            <InputText @bind-Value="Model.SerialNumber" id="SerialNumber" class="form-control"></InputText>
+            <ValidationMessage For="@(() => Model.SerialNumber)" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="itemTypetimate">@AppResources.ProjectTypeId</label>
 
             <InputSelect @bind-Value="Model.ProjectTypeId" id="ProjectTypeId" class="form-control">
-
+                <ValidationMessage For="@(() => Model.ProjectTypeId)" />
                 @if (ProjectTypeList != null)
                 {
                     foreach (var item in ProjectTypeList)
@@ -113,60 +110,90 @@
             </InputSelect>
 
         </div>
+    </div>
+    <div class="form-row">
+
 
         <div class="form-group col-md-6">
-            <label for="TotalArea">Total Area</label>
+            <label for="TotalArea">@AppResources.TotalArea</label>
 
             <InputNumber @bind-Value="Model.TotalArea" id="TotalArea" class="form-control"></InputNumber>
-
+            <ValidationMessage For="@(() => Model.TotalArea)" />
         </div>
-    </div>
-
-    <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="InstrumentNumber">Instrument Number</label>
+            <label for="InstrumentNumber">@AppResources.InstrumentNumber</label>
 
             <InputNumber @bind-Value="Model.InstrumentNumber" id="InstrumentNumber" class="form-control"></InputNumber>
-
+            <ValidationMessage For="@(() => Model.InstrumentNumber)" />
         </div>
+    </div>
+
+    <div class="form-row">
+
 
         <div class="form-group col-md-6">
-            <label for="BuildingLicenseNumber">BuildingLicense Number</label>
+            <label for="BuildingLicenseNumber">@AppResources.BuildingLicenseNumber</label>
 
             <InputNumber @bind-Value="Model.BuildingLicenseNumber" id="BuildingLicenseNumber" class="form-control"></InputNumber>
+            <ValidationMessage For="@(() => Model.BuildingLicenseNumber)" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="BuildingTechnique">@AppResources.BuildingTechnique</label>
 
+            <InputText @bind-Value="Model.BuildingTechnique" id="BuildingTechnique" class="form-control"></InputText>
+            <ValidationMessage For="@(() => Model.BuildingTechnique)" />
         </div>
     </div>
     <div class="form-row">
+
         <div class="form-group col-md-6">
-            <label for="BuildingTechnique">Building Technique</label>
+            <label for="BuildingLicenseNumber">@AppResources.FloorsNumber</label>
 
-            <InputText @bind-Value="Model.BuildingTechnique" id="BuildingTechnique" class="form-control"></InputText>
-
+            <InputNumber @bind-Value="Model.FloorsNumber" id="FloorsNumber" class="form-control"></InputNumber>
+            <ValidationMessage For="@(() => Model.FloorsNumber)" />
         </div>
-
         <div class="form-group col-md-6">
-            <label for="EstimatedCost">Estimated Cost</label>
+            <label for="EstimatedCost">@AppResources.EstimatedCost</label>
 
             <InputNumber @bind-Value="Model.EstimatedCost" id="EstimatedCost" class="form-control"></InputNumber>
-
+            <ValidationMessage For="@(() => Model.EstimatedCost)" />
         </div>
+    </div>
 
-        <div class="form-group col-md-6">
-            <label for="BuildingLicenseNumber">Building License Number</label>
-
-            <InputNumber @bind-Value="Model.BuildingLicenseNumber" id="BuildingLicenseNumber" class="form-control"></InputNumber>
+    <div class="form-row">
+        <div class="form-group col-md-6 form-check-inline">
+            <label for="IsActive">@AppResources.Active</label>
+            <input @bind="Model.IsActive" class="form-check-input form-control position-static" type="checkbox" id="IsActive">
+            <ValidationMessage For="@(() => Model.IsActive)" />
 
         </div>
     </div>
+    @*<div class="form-group row">
+            <div class="col-sm-2">Checkbox</div>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                        Example checkbox
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
+        </div>*@
+    <NavLink href="/Project/index" class="btn btn-primary">Back</NavLink>
     <button type="submit" class="btn btn-primary">Submit</button>
-    <NavLink href="Backlog">Back to List</NavLink>
+
 </EditForm>
 
 
 
 @code {
 
- }
+
+}
 
 

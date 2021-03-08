@@ -120,14 +120,56 @@
   <data name="Active" xml:space="preserve">
     <value>الحالة</value>
   </data>
+  <data name="AddNewProject" xml:space="preserve">
+    <value>إضافة مشروع جديد</value>
+  </data>
+  <data name="ArchitecturalDiagrams" xml:space="preserve">
+    <value>المخططات المعمارية</value>
+  </data>
+  <data name="BuildingLicenseAttachment" xml:space="preserve">
+    <value>مرفق رخصة البناء</value>
+  </data>
+  <data name="BuildingLicenseNumber" xml:space="preserve">
+    <value>رقم رخصة البنا</value>
+  </data>
+  <data name="BuildingTechnique" xml:space="preserve">
+    <value>تقنية البناء</value>
+  </data>
   <data name="CityName" xml:space="preserve">
-    <value>إسم المدينة</value>
+    <value>إالمدينة</value>
+  </data>
+  <data name="ConstructionDiagrams" xml:space="preserve">
+    <value>المخططات الإنشائية</value>
   </data>
   <data name="ConsultingOfficeName" xml:space="preserve">
     <value>اسم المكتب الإستشاري</value>
   </data>
   <data name="ContractorName" xml:space="preserve">
     <value>اسم المتعاقد</value>
+  </data>
+  <data name="DeleteProject" xml:space="preserve">
+    <value>حذف مشروع</value>
+  </data>
+  <data name="EditProject" xml:space="preserve">
+    <value>تعديل مشروع</value>
+  </data>
+  <data name="ElictricalDiagrams" xml:space="preserve">
+    <value>المخططات الكهربائية</value>
+  </data>
+  <data name="EstimatedCost" xml:space="preserve">
+    <value>التكلفة التقديرية</value>
+  </data>
+  <data name="FloorsNumber" xml:space="preserve">
+    <value>عدد الأدوار</value>
+  </data>
+  <data name="InstrumentAttachment" xml:space="preserve">
+    <value>مرفق الصك</value>
+  </data>
+  <data name="InstrumentNumber" xml:space="preserve">
+    <value>رقم الصك</value>
+  </data>
+  <data name="MechanicalDiagrams" xml:space="preserve">
+    <value>المخططات الميكانيكية</value>
   </data>
   <data name="NameArabic" xml:space="preserve">
     <value>الإسم عربي</value>
@@ -141,7 +183,40 @@
   <data name="Options" xml:space="preserve">
     <value>الخيارات</value>
   </data>
+  <data name="ProjectsManagment" xml:space="preserve">
+    <value>إدارة المشاريع</value>
+  </data>
+  <data name="ProjectTypeId" xml:space="preserve">
+    <value>نوع المشروع</value>
+  </data>
+  <data name="PropertyFullAddress" xml:space="preserve">
+    <value>عنوان العقار</value>
+  </data>
+  <data name="PropertyLatitude" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PropertyLongitude" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PropertyNumber" xml:space="preserve">
+    <value>رقم المبنى</value>
+  </data>
+  <data name="QuarterName" xml:space="preserve">
+    <value>اسم الحي</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>حقل مطلوب</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>الرقم التسلسلي</value>
+  </data>
+  <data name="SoilReport" xml:space="preserve">
+    <value>التقرير المساحي</value>
+  </data>
+  <data name="TotalArea" xml:space="preserve">
+    <value>إجمالي المساحة</value>
   </data>
 </root>

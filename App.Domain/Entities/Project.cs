@@ -41,7 +41,6 @@ namespace Domain.App.Entities
         public string ArchitecturalDiagrams { get; set; }
         public string ElictricalDiagrams { get; set; }
         public string SoilReport { get; set; }
-        public string SurveyReport { get; set; }
     }
 }
 

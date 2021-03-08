@@ -1,4 +1,5 @@
-﻿using Application.App.Services.Projects;
+﻿using Application.App.Services.Lookups;
+using Application.App.Services.Projects;
 using Domain.App.Entities;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Building.Web.Components.Projects
 {
@@ -14,19 +16,25 @@ namespace Building.Web.Components.Projects
         [Inject]
         public IProjectService _projectService { get; set; }
         public Project project;
+        public ProjectDto projectDto;
+        private IEnumerable<SelectListItem> ProjectTypeList;
+
+        [Inject]
+        private ILookupServices _lookupServices { get; set; }
 
         [Parameter]
         public Guid Id { get; set; }
 
 
-        protected override async Task OnInitializedAsync()
+        protected async override Task OnInitializedAsync()
         {
             project = await _projectService.GetProjectByIdAsync(Id);
+            ProjectTypeList = await _lookupServices.GetProjectTypeList();
         }
-
+        
         public void ValidFormSubmitted()
         {
-            _projectService.UpdateProject(project);
+            _projectService.UpdateProject(projectDto);
         }
     }
 }

@@ -1,43 +1,161 @@
 ﻿@page "/edit/{Id:guid}"
-@using Domain.App.Entities;
 
 <h3>Edit Project</h3>
 
 <EditForm Model="@project" OnValidSubmit="@ValidFormSubmitted">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <form>
+    <FluentValidationValidator />
+    
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="NameAr">@AppResources.NameArabic:</label>
-                <InputText class="form-control" @bind-Value="project.NameAr" />
+                <label for="NameAr">@AppResources.NameArabic</label>
+                <InputText id="NameAr" class="form-control" @bind-Value="project.NameAr" />
+                <ValidationMessage For="@(() => project.NameAr)" />
             </div>
             <div class="form-group col-md-6">
-                <label for="NameEn">Name English:</label>
-                <InputText class="form-control" @bind-Value="project.NameEn" />
+                <label for="NameEn">@AppResources.NameEnglish</label>
+                <InputText id="NameEn" class="form-control" @bind-Value="project.NameEn" />
+                <ValidationMessage For="@(() => project.NameEn)" />
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="CityName">City Name:</label>
-                <InputText class="form-control" @bind-Value="project.CityName" />
+                <label for="ContractorName">@AppResources.ContractorName</label>
+                <InputText id="ContractorName" class="form-control" @bind-Value="project.ContractorName" />
+                <ValidationMessage For="@(() => project.ContractorName)" />
             </div>
             <div class="form-group col-md-6">
-                <label for="ContractorName">Contractor Name:</label>
-                <InputText class="form-control" @bind-Value="project.ContractorName" />
+                <label for="ConsultingOfficeName">@AppResources.ConsultingOfficeName</label>
+                <InputText id="ContractorName" class="form-control" @bind-Value="project.ConsultingOfficeName" />
+                <ValidationMessage For="@(() => project.ConsultingOfficeName)" />
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="ConsultingOfficeName">Consulting Office Name:</label>
-                <InputText class="form-control" @bind-Value="project.ConsultingOfficeName" />
+                <label for="CityName">@AppResources.CityName</label>
+                <InputText id="CityName" class="form-control" @bind-Value="project.CityName" />
+                <ValidationMessage For="@(() => project.CityName)" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="QuarterName">@AppResources.QuarterName</label>
+
+                <InputText @bind-Value="project.QuarterName" id="QuarterName" class="form-control"></InputText>
+                <ValidationMessage For="@(() => project.QuarterName)" />
+            </div>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label for="PropertyFullAddress">@AppResources.PropertyFullAddress</label>
+
+                <InputText @bind-Value="project.PropertyFullAddress" id="PropertyFullAddress" class="form-control"></InputText>
+                <ValidationMessage For="@(() => project.PropertyFullAddress)" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="PropertyNumber">@AppResources.PropertyNumber</label>
+
+                <InputText @bind-Value="project.PropertyNumber" id="PropertyNumber" class="form-control"></InputText>
+                <ValidationMessage For="@(() => project.PropertyNumber)" />
+            </div>
+        </div>
+
+        <div class="form-row">
+
+
+            <div class="form-group col-md-6">
+                <label for="PropertyLatitude">@AppResources.PropertyLatitude</label>
+
+                <InputText @bind-Value="project.PropertyLatitude" id="PropertyLatitude" class="form-control"></InputText>
+                <ValidationMessage For="@(() => project.PropertyLatitude)" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="PropertyLongitude">@AppResources.PropertyLongitude</label>
+
+                <InputText @bind-Value="project.PropertyLongitude" id="PropertyLongitude" class="form-control"></InputText>
+                <ValidationMessage For="@(() => project.PropertyLongitude)" />
+            </div>
+        </div>
+
+        <div class="form-row">
+
+
+            <div class="form-group col-md-6">
+                <label for="SerialNumber">@AppResources.SerialNumber</label>
+
+                <InputText @bind-Value="project.SerialNumber" id="SerialNumber" class="form-control"></InputText>
+                <ValidationMessage For="@(() => project.SerialNumber)" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="itemTypetimate">@AppResources.ProjectTypeId</label>
+
+                <InputSelect @bind-Value="project.ProjectTypeId" id="ProjectTypeId" class="form-control">
+                    <ValidationMessage For="@(() => project.ProjectTypeId)" />
+                    @if (ProjectTypeList != null)
+                    {
+                        foreach (var item in ProjectTypeList)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    }
+
+
+                </InputSelect>
+
+            </div>
+        </div>
+        <div class="form-row">
+
+
+            <div class="form-group col-md-6">
+                <label for="TotalArea">@AppResources.TotalArea</label>
+
+                <InputNumber @bind-Value="project.TotalArea" id="TotalArea" class="form-control"></InputNumber>
+                <ValidationMessage For="@(() => project.TotalArea)" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="InstrumentNumber">@AppResources.InstrumentNumber</label>
+
+                <InputNumber @bind-Value="project.InstrumentNumber" id="InstrumentNumber" class="form-control"></InputNumber>
+                <ValidationMessage For="@(() => project.InstrumentNumber)" />
+            </div>
+        </div>
+
+        <div class="form-row">
+
+
+            <div class="form-group col-md-6">
+                <label for="BuildingLicenseNumber">@AppResources.BuildingLicenseNumber</label>
+
+                <InputNumber @bind-Value="project.BuildingLicenseNumber" id="BuildingLicenseNumber" class="form-control"></InputNumber>
+                <ValidationMessage For="@(() => project.BuildingLicenseNumber)" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="BuildingTechnique">@AppResources.BuildingTechnique</label>
+
+                <InputText @bind-Value="project.BuildingTechnique" id="BuildingTechnique" class="form-control"></InputText>
+                <ValidationMessage For="@(() => project.BuildingTechnique)" />
+            </div>
+        </div>
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label for="BuildingLicenseNumber">@AppResources.FloorsNumber</label>
+
+                <InputNumber @bind-Value="project.FloorsNumber" id="FloorsNumber" class="form-control"></InputNumber>
+                <ValidationMessage For="@(() => project.FloorsNumber)" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="EstimatedCost">@AppResources.EstimatedCost</label>
+
+                <InputNumber @bind-Value="project.EstimatedCost" id="EstimatedCost" class="form-control"></InputNumber>
+                <ValidationMessage For="@(() => project.EstimatedCost)" />
             </div>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    
 </EditForm>
 
 @code

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.App.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -40,5 +41,10 @@ namespace Application.App.Services.Projects
         public int Cost { get; set; }
 
         public int ProjectTypeId { get; set; }
+
+        public static implicit operator ProjectDto(Project v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

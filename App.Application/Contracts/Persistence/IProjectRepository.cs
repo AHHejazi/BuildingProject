@@ -1,5 +1,6 @@
 ﻿using Application.App.Services.Projects;
 using Domain.App.Entities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Application.App.Contracts.Persistence
@@ -8,5 +9,6 @@ namespace Application.App.Contracts.Persistence
     {
         Task<bool> IsProjectNameUnique(string nameAr, string nameEn);
         Task UpdateAsync(ProjectDto project);
+        Task<List<Project>> SearchAsync(string searchTerm);
     }
 }

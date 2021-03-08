@@ -11,7 +11,6 @@ namespace Application.App.Contracts.Persistence
         Task<T> AddAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(object entityId);
-
         Task<T> GetByIdAsync(object id);
 
         Task<IReadOnlyList<T>> GetPagedReponseAsync(int page, int size);

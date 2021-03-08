@@ -1,67 +1,149 @@
-﻿
-@page "/Details/{Id:guid}"
-
-
-<h3>Projects Managment</h3>
+﻿@page "/Details/{Id:guid}"
+<h3>Project Details for @project.NameAr</h3>
 
 @if (project == null)
 {
     <p><em>Loading...</em></p>
 }
+
 else
 {
-
-    <section class="employee-detail">
-        <h1 class="page-title">Details for @project.NameAr</h1>
-
-        <div class="col-12 row">
-            <div class="col-xs-12 col-sm-8">
-                <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">NameAr</label>
-                    <div class="col-sm-8">
-                        <label type="text" class="form-control-plaintext">@project.NameAr</label>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">NameEn</label>
-                    <div class="col-sm-8">
-                        <label type="text" readonly class="form-control-plaintext">@project.NameEn</label>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">ContractorName</label>
-                    <div class="col-sm-8">
-                        <label type="text" readonly class="form-control-plaintext">@project.ContractorName</label>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">ConsultingOfficeName</label>
-                    <div class="col-sm-8">
-                        <label type="text" readonly class="form-control-plaintext">@project.ConsultingOfficeName</label>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">CityName</label>
-                    <div class="col-sm-8">
-                        <label type="text" readonly class="form-control-plaintext">@project.CityName</label>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">IsActive</label>
-                    <div class="col-sm-8">
-                        <label type="text" readonly class="form-control-plaintext">@project.IsActive</label>
-                    </div>
-                </div>
-
-
-            </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="NameAr">@AppResources.NameArabic</label>
+            <label type="text" readonly id="NameAr" class="form-control">@project.NameAr</label>
         </div>
-    </section>
+        <div class="form-group col-md-6">
+            <label for="NameEn">@AppResources.NameEnglish</label>
+            <label type="text" readonly id="NameEn" class="form-control">@project.NameEn</label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="ContractorName ">@AppResources.ContractorName </label>
+            <label type="text" readonly id="ContractorName " class="form-control">@project.ContractorName </label>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="ConsultingOfficeName ">@AppResources.ConsultingOfficeName </label>
+            <label type="text" readonly id="ConsultingOfficeName " class="form-control">@project.ConsultingOfficeName </label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="CityName">@AppResources.CityName</label>
+            <label type="text" readonly id="CityName" class="form-control">@project.CityName</label>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="QuarterName ">@AppResources.QuarterName </label>
+            <label type="text" readonly id="QuarterName " class="form-control">@project.QuarterName </label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="PropertyFullAddress">@AppResources.PropertyFullAddress</label>
+            <label type="text" readonly id="PropertyFullAddress" class="form-control">@project.PropertyFullAddress</label>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="PropertyNumber">@AppResources.PropertyNumber </label>
+            <label type="text" readonly id="PropertyNumber " class="form-control">@project.PropertyNumber</label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="PropertyLatitude ">@AppResources.PropertyLatitude</label>
+            <label type="text" readonly id="PropertyLatitude" class="form-control">@project.PropertyLatitude</label>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="PropertyLongitude">@AppResources.PropertyLongitude</label>
+            <label type="text" readonly id="PropertyLongitude" class="form-control">@project.PropertyLongitude</label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="SerialNumber">@AppResources.SerialNumber</label>
+            <label type="text" readonly id="SerialNumber" class="form-control">@project.SerialNumber</label>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="ProjectType">@AppResources.ProjectTypeId</label>
+            <label type="text" readonly id="ProjectType" class="form-control">@project.ProjectType</label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="TotalArea">@AppResources.TotalArea</label>
+            <label type="text" readonly id="TotalArea" class="form-control">@project.TotalArea</label>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="InstrumentNumber">@AppResources.InstrumentNumber</label>
+            <label type="text" readonly id="InstrumentNumber" class="form-control">@project.InstrumentNumber</label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="BuildingLicenseNumber">@AppResources.BuildingLicenseNumber</label>
+            <label type="text" readonly id="BuildingLicenseNumber" class="form-control">@project.BuildingLicenseNumber</label>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="FloorsNumber">@AppResources.FloorsNumber</label>
+            <label type="text" readonly id="FloorsNumber" class="form-control">@project.FloorsNumber</label>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="BuildingTechnique">@AppResources.BuildingTechnique</label>
+            <label type="text" readonly id="BuildingTechnique" class="form-control">@project.BuildingTechnique</label>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="EstimatedCost">@AppResources.EstimatedCost</label>
+            <label type="text" readonly id="EstimatedCost" class="form-control">@project.EstimatedCost</label>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="IsActive">@AppResources.Active</label>
+            <label class="form-check-label form-control" type="checkbox" readonly id="IsActive">
+                @if (project.IsActive == true)
+                {<span class="fa fa-check-square-o"></span>}
+                else
+                {<span class="fa fa-minus-square-o"></span>}
+            </label>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

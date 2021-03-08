@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Application.App.Services.Projects
 {
@@ -48,7 +49,7 @@ namespace Application.App.Services.Projects
         //    return proj.Id;
         //}
 
-        
+
 
         public async Task DeleteProjectAsync(Guid projectId)
         {
@@ -59,7 +60,7 @@ namespace Application.App.Services.Projects
         {
             var obj = await _projectRepository.GetByIdAsync(Id);
             return obj;
-              
+
         }
 
         public async Task<IReadOnlyList<Project>> ProjectListQuery()
@@ -68,23 +69,21 @@ namespace Application.App.Services.Projects
             return result;
         }
 
+        public async Task<List<Project>> SearchProjectsAsync(string searchTerm)
+        {
+            return await _projectRepository.SearchAsync(searchTerm);
+        }
+
+        
+
         public async Task UpdateProject(ProjectDto project)
         {
-             var validator = new ProjectValidator(_projectRepository);
-            var validationResult = await validator.ValidateAsync(project);
-
-            if (validationResult.Errors.Count > 0)
-                throw new Exceptions.ValidationException(validationResult);
-                await _projectRepository.UpdateAsync(project);
-
+            await _projectRepository.UpdateAsync(project);
             StatusClass = "alert-success";
             Message = "Employee updated successfully.";
             Saved = true;
         }
 
-        public Task UpdateProject(Project project)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

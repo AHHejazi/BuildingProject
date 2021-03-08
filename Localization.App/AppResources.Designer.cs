@@ -70,11 +70,65 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new project.
+        /// </summary>
+        public static string AddNewProject {
+            get {
+                return ResourceManager.GetString("AddNewProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Architectural Diagrams.
+        /// </summary>
+        public static string ArchitecturalDiagrams {
+            get {
+                return ResourceManager.GetString("ArchitecturalDiagrams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Building License Attachment.
+        /// </summary>
+        public static string BuildingLicenseAttachment {
+            get {
+                return ResourceManager.GetString("BuildingLicenseAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Building License Number.
+        /// </summary>
+        public static string BuildingLicenseNumber {
+            get {
+                return ResourceManager.GetString("BuildingLicenseNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Building Technique.
+        /// </summary>
+        public static string BuildingTechnique {
+            get {
+                return ResourceManager.GetString("BuildingTechnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to City Name.
         /// </summary>
         public static string CityName {
             get {
                 return ResourceManager.GetString("CityName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Construction Diagrams.
+        /// </summary>
+        public static string ConstructionDiagrams {
+            get {
+                return ResourceManager.GetString("ConstructionDiagrams", resourceCulture);
             }
         }
         
@@ -97,6 +151,78 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Project.
+        /// </summary>
+        public static string DeleteProject {
+            get {
+                return ResourceManager.GetString("DeleteProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Project.
+        /// </summary>
+        public static string EditProject {
+            get {
+                return ResourceManager.GetString("EditProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elictrical Diagrams.
+        /// </summary>
+        public static string ElictricalDiagrams {
+            get {
+                return ResourceManager.GetString("ElictricalDiagrams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimated Cost.
+        /// </summary>
+        public static string EstimatedCost {
+            get {
+                return ResourceManager.GetString("EstimatedCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Floors Number.
+        /// </summary>
+        public static string FloorsNumber {
+            get {
+                return ResourceManager.GetString("FloorsNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instrument Attachment.
+        /// </summary>
+        public static string InstrumentAttachment {
+            get {
+                return ResourceManager.GetString("InstrumentAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instrument Number.
+        /// </summary>
+        public static string InstrumentNumber {
+            get {
+                return ResourceManager.GetString("InstrumentNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mechanical Diagrams.
+        /// </summary>
+        public static string MechanicalDiagrams {
+            get {
+                return ResourceManager.GetString("MechanicalDiagrams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name Arabic.
         /// </summary>
         public static string NameArabic {
@@ -115,15 +241,6 @@ namespace Localization.App {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Number.
-        /// </summary>
-        public static string Number {
-            get {
-                return ResourceManager.GetString("Number", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Options.
         /// </summary>
         public static string Options {
@@ -133,11 +250,110 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Projects Managment.
+        /// </summary>
+        public static string ProjectsManagment {
+            get {
+                return ResourceManager.GetString("ProjectsManagment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Type.
+        /// </summary>
+        public static string ProjectTypeId {
+            get {
+                return ResourceManager.GetString("ProjectTypeId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property Full Address.
+        /// </summary>
+        public static string PropertyFullAddress {
+            get {
+                return ResourceManager.GetString("PropertyFullAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property Latitude.
+        /// </summary>
+        public static string PropertyLatitude {
+            get {
+                return ResourceManager.GetString("PropertyLatitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property Longitude.
+        /// </summary>
+        public static string PropertyLongitude {
+            get {
+                return ResourceManager.GetString("PropertyLongitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property Number.
+        /// </summary>
+        public static string PropertyNumber {
+            get {
+                return ResourceManager.GetString("PropertyNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quarter Name.
+        /// </summary>
+        public static string QuarterName {
+            get {
+                return ResourceManager.GetString("QuarterName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Required Field.
         /// </summary>
         public static string Required {
             get {
                 return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serial Number.
+        /// </summary>
+        public static string SerialNumber {
+            get {
+                return ResourceManager.GetString("SerialNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Soil Report.
+        /// </summary>
+        public static string SoilReport {
+            get {
+                return ResourceManager.GetString("SoilReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Area.
+        /// </summary>
+        public static string TotalArea {
+            get {
+                return ResourceManager.GetString("TotalArea", resourceCulture);
             }
         }
     }

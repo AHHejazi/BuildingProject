@@ -20,7 +20,14 @@ namespace Building.Web.Components.Projects
         protected string StatusClass = string.Empty;
         protected bool Saved;
 
+        private string searchTerm;
 
+        async Task SearchProjects()
+        {
+            projectList = await _projectService.SearchProjectsAsync(searchTerm);
+        }
+
+        
         protected override void OnInitialized()
         {
             projectList = new List<Project>();

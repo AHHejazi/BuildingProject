@@ -1,7 +1,7 @@
 ﻿@page "/Project/index"
 
 
-<h3>Projects Managment</h3>
+<h3 class="mt-5">@AppResources.ProjectsManagment</h3>
 
 @if (projectList == null)
 {
@@ -10,7 +10,22 @@
 else
 {
 
+    <div class="row my-5 ">
+        <div class="col-4">
+            <NavLink href="/Project/Add" class="btn btn-info btn-block">@AppResources.AddNewProject     <i class="fa fa-plus-circle" aria-hidden="true"></i> </NavLink>
+</div>
 
+        <div class="input-group col">
+            <input type="text" class="form-control" placeholder="@AppResources.Search" @bind-value="@searchTerm">
+            <div>
+                <button class="btn btn-info rounded-0" type="button" value="Search" @onclick="@SearchProjects">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+
+    </div>
     <table class='table table-striped'>
         <thead>
             <tr>
@@ -42,30 +57,21 @@ else
                         @if (project.IsActive == true)
                         {<span class="fa fa-check-square-o"></span>}
                         else
-                        {<span class="fa fa-check-square-o"></span>}
-                </td>
-                <td>
-                    <a href="@($"edit/{project.Id}")" class="fa fa-edit" title="تعديل مشروع">
-                        <span class="EditProject"></span>
-                    </a>
+                        {<span class="fa fa-minus-square-o"></span>}
+                    </td>
+                    <td>
+                        <button type="button" href="@($"edit/{project.Id}")" class="btn btn-info" title="@AppResources.EditProject">
+                            <i class="fa fa-edit"></i>
+                        </button>
 
-                    <a href="#" class="	fa fa-refresh" title="تحديث">
-                        <span class="Refresh"></span>
-                    </a>
+                        <button type="button" title="@AppResources.DeleteProject" class="btn btn-danger" @onclick="@(async()=>await DeleteProject(project.Id))">
+                            <i class="fa fa-trash"></i>
+                        </button>
 
-                    <a href="@($"Settings/{project.Id}")" class="fa fa-cog" title="إعدادات">
+                    </td>
 
-                        <span class="Settings"></span>
-                    </a>
-
-                    <a title="حذف مشروع" class="fa fa-trash" @onclick="@(async()=>await DeleteProject(project.Id))">
-                        <span class="DeleteProject"></span>
-                    </a>
-
-                </td>
-
-            </tr>
-        }
+                </tr>
+            }
         </tbody>
     </table>
 

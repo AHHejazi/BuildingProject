@@ -120,8 +120,26 @@
   <data name="Active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="AddNewProject" xml:space="preserve">
+    <value>Add new project</value>
+  </data>
+  <data name="ArchitecturalDiagrams" xml:space="preserve">
+    <value>Architectural Diagrams</value>
+  </data>
+  <data name="BuildingLicenseAttachment" xml:space="preserve">
+    <value>Building License Attachment</value>
+  </data>
+  <data name="BuildingLicenseNumber" xml:space="preserve">
+    <value>Building License Number</value>
+  </data>
+  <data name="BuildingTechnique" xml:space="preserve">
+    <value>Building Technique</value>
+  </data>
   <data name="CityName" xml:space="preserve">
     <value>City Name</value>
+  </data>
+  <data name="ConstructionDiagrams" xml:space="preserve">
+    <value>Construction Diagrams</value>
   </data>
   <data name="ConsultingOfficeName" xml:space="preserve">
     <value>Consulting Office Name</value>
@@ -129,19 +147,73 @@
   <data name="ContractorName" xml:space="preserve">
     <value>Contractor Name</value>
   </data>
+  <data name="DeleteProject" xml:space="preserve">
+    <value>Delete Project</value>
+  </data>
+  <data name="EditProject" xml:space="preserve">
+    <value>Edit Project</value>
+  </data>
+  <data name="ElictricalDiagrams" xml:space="preserve">
+    <value>Elictrical Diagrams</value>
+  </data>
+  <data name="EstimatedCost" xml:space="preserve">
+    <value>Estimated Cost</value>
+  </data>
+  <data name="FloorsNumber" xml:space="preserve">
+    <value>Floors Number</value>
+  </data>
+  <data name="InstrumentAttachment" xml:space="preserve">
+    <value>Instrument Attachment</value>
+  </data>
+  <data name="InstrumentNumber" xml:space="preserve">
+    <value>Instrument Number</value>
+  </data>
+  <data name="MechanicalDiagrams" xml:space="preserve">
+    <value>Mechanical Diagrams</value>
+  </data>
   <data name="NameArabic" xml:space="preserve">
     <value>Name Arabic</value>
   </data>
   <data name="NameEnglish" xml:space="preserve">
     <value>Name English</value>
   </data>
-  <data name="Number" xml:space="preserve">
-    <value>Number</value>
-  </data>
   <data name="Options" xml:space="preserve">
     <value>Options</value>
   </data>
+  <data name="ProjectsManagment" xml:space="preserve">
+    <value>Projects Managment</value>
+  </data>
+  <data name="ProjectTypeId" xml:space="preserve">
+    <value>Project Type</value>
+  </data>
+  <data name="PropertyFullAddress" xml:space="preserve">
+    <value>Property Full Address</value>
+  </data>
+  <data name="PropertyLatitude" xml:space="preserve">
+    <value>Property Latitude</value>
+  </data>
+  <data name="PropertyLongitude" xml:space="preserve">
+    <value>Property Longitude</value>
+  </data>
+  <data name="PropertyNumber" xml:space="preserve">
+    <value>Property Number</value>
+  </data>
+  <data name="QuarterName" xml:space="preserve">
+    <value>Quarter Name</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>Required Field</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Serial Number</value>
+  </data>
+  <data name="SoilReport" xml:space="preserve">
+    <value>Soil Report</value>
+  </data>
+  <data name="TotalArea" xml:space="preserve">
+    <value>Total Area</value>
   </data>
 </root>

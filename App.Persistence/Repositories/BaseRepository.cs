@@ -1,5 +1,6 @@
 ﻿
 using Application.App.Contracts.Persistence;
+using Domain.App.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -63,10 +64,7 @@ namespace App.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        //public Task DeleteAsync(T entity)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        
 
         public async Task<T> GetByIdAsync(Guid id)
         {
@@ -90,9 +88,6 @@ namespace App.Persistence.Repositories
              await _dbContext.SaveChangesAsync();
         }
 
-        //public Task DeleteAsync(T entity)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        
     }
 }
