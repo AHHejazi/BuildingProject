@@ -12,8 +12,7 @@ namespace Building.Web.Components.Projects
     {
         [Inject]
         public IProjectService _projectService { get; set; }
-        public IReadOnlyList<Project> projectList;
-        public Project project;
+        public ProjectVM ProjectVM=new ProjectVM();
 
         //used to store state of screen
         protected string Message = string.Empty;
@@ -24,18 +23,13 @@ namespace Building.Web.Components.Projects
 
         async Task SearchProjects()
         {
-            projectList = await _projectService.SearchProjectsAsync(searchTerm);
+            ProjectVM = await _projectService.SearchProjectsAsync(ProjectVM);
         }
 
         
-        protected override void OnInitialized()
-        {
-            projectList = new List<Project>();
-            base.OnInitialized();
-        }
         protected override async Task OnInitializedAsync()
         {
-            projectList = await _projectService.ProjectListQuery();
+            ProjectVM.ProjectList = await _projectService.ProjectListQuery();
         }
 
         public async Task DeleteProject(Guid projectId)

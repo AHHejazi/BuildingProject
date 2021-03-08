@@ -1,81 +1,85 @@
 ﻿@page "/Project/index"
 
 
-<h3 class="mt-5">@AppResources.ProjectsManagment</h3>
+<h3>@AppResources.ProjectsManagment</h3>
 
-@if (projectList == null)
+@if (ProjectVM.ProjectList == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-
-    <div class="row my-5 ">
-        <div class="col-4">
-            <NavLink href="/Project/Add" class="btn btn-info btn-block">@AppResources.AddNewProject     <i class="fa fa-plus-circle" aria-hidden="true"></i> </NavLink>
-</div>
-
-        <div class="input-group col">
-            <input type="text" class="form-control" placeholder="@AppResources.Search" @bind-value="@searchTerm">
-            <div>
-                <button class="btn btn-info rounded-0" type="button" value="Search" @onclick="@SearchProjects">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
+<EditForm Model="ProjectVM" >
+    <div class="form-row">
+        <div class="form-group">
+            <NavLink href="/Project/Add" class="btn btn-info btn-block">@AppResources.AddNewProject<i class="fa fa-plus-circle" aria-hidden="true"></i> </NavLink>
         </div>
 
+        <div class="input-group">
+            <div class="form-group col-md-6">
+                <label for="NameAr">@AppResources.NameArabic</label>
 
+                <InputText @bind-Value="ProjectVM.NameAr" id="NameAr" class="form-control"></InputText>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="NameEn">@AppResources.NameEnglish</label>
+
+                <InputText @bind-Value="ProjectVM.NameEn" id="NameEn" class="form-control"></InputText>
+            </div>
+        </div>
     </div>
-    <table class='table table-striped'>
-        <thead>
-            <tr>
-                <th>@AppResources.NameArabic</th>
-                <th>@AppResources.NameEnglish</th>
-                <th>@AppResources.CityName</th>
-                <th>@AppResources.ContractorName</th>
-                <th>@AppResources.ConsultingOfficeName</th>
-                <th>@AppResources.Active</th>
-                <th>@AppResources.Options</th>
-
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var project in projectList)
-            {
+    <button type="submit" class="btn btn-primary" @onclick="@SearchProjects">@AppResources.Search</button>
+</EditForm>
+    <div class="form-row">
+        <table class='table table-striped'>
+            <thead>
                 <tr>
-                    <td>
-                        <NavLink href="@($"details/{project.Id}")" class="nav-link">
-                            @project.NameAr
-                        </NavLink>
-                    </td>
-                    <td>@project.NameEn</td>
-                    <td>@project.CityName</td>
-                    <td>@project.ContractorName</td>
-                    <td>@project.ConsultingOfficeName</td>
-                    <td>
-                        @if (project.IsActive == true)
-                        {<span class="fa fa-check-square-o"></span>}
-                        else
-                        {<span class="fa fa-minus-square-o"></span>}
-                    </td>
-                    <td>
-                        <button type="button" href="@($"edit/{project.Id}")" class="btn btn-info" title="@AppResources.EditProject">
-                            <i class="fa fa-edit"></i>
-                        </button>
+                    <th>@AppResources.NameArabic</th>
+                    <th>@AppResources.NameEnglish</th>
+                    <th>@AppResources.CityName</th>
+                    <th>@AppResources.ContractorName</th>
+                    <th>@AppResources.ConsultingOfficeName</th>
+                    <th>@AppResources.Active</th>
+                    <th>@AppResources.Options</th>
 
-                        <button type="button" title="@AppResources.DeleteProject" class="btn btn-danger" @onclick="@(async()=>await DeleteProject(project.Id))">
-                            <i class="fa fa-trash"></i>
-                        </button>
-
-                    </td>
 
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var project in ProjectVM.ProjectList)
+                {
+                    <tr>
+                        <td>
+                            <NavLink href="@($"details/{project.Id}")" class="nav-link">
+                                @project.NameAr
+                            </NavLink>
+                        </td>
+                        <td>@project.NameEn</td>
+                        <td>@project.CityName</td>
+                        <td>@project.ContractorName</td>
+                        <td>@project.ConsultingOfficeName</td>
+                        <td>
+                            @if (project.IsActive == true)
+                            {<span class="fa fa-check-square-o"></span>}
+                            else
+                            {<span class="fa fa-minus-square-o"></span>}
+                        </td>
+                        <td>
+                            <button type="button" href="@($"edit/{project.Id}")" class="btn btn-info" title="@AppResources.EditProject">
+                                <i class="fa fa-edit"></i>
+                            </button>
 
+                            <button type="button" title="@AppResources.DeleteProject" class="btn btn-danger" @onclick="@(async()=>await DeleteProject(project.Id))">
+                                <i class="fa fa-trash"></i>
+                            </button>
 
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }
 
 @code {

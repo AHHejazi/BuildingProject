@@ -16,7 +16,7 @@ namespace Application.App.Services.Projects
 
 
         Task<Project> GetProjectByIdAsync(Guid Id);
-        Task<List<Project>> SearchProjectsAsync(string searchTerm);
+        Task<ProjectVM> SearchProjectsAsync(ProjectVM projectVM);
         Task UpdateProject(ProjectDto projectDto);
     }
 }

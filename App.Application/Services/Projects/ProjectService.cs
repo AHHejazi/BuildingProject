@@ -69,9 +69,9 @@ namespace Application.App.Services.Projects
             return result;
         }
 
-        public async Task<List<Project>> SearchProjectsAsync(string searchTerm)
+        public async Task<ProjectVM> SearchProjectsAsync(ProjectVM projectVM)
         {
-            return await _projectRepository.SearchAsync(searchTerm);
+            return await _projectRepository.SearchAsync(projectVM);
         }
 
         
@@ -83,7 +83,6 @@ namespace Application.App.Services.Projects
             Message = "Employee updated successfully.";
             Saved = true;
         }
-
 
     }
 }
