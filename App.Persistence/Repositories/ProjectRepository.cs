@@ -47,6 +47,7 @@ namespace App.Persistence.Repositories
             var project = await _dbContext.Projects.Where(s => (string.IsNullOrEmpty(projectVM.NameAr) || s.NameAr.ToLower().Contains(projectVM.NameAr.ToLower()))
 
             && (string.IsNullOrEmpty(projectVM.NameEn) || s.NameEn.ToLower().Contains(projectVM.NameEn.ToLower()))
+            && (s.IsActive.Equals(projectVM.IsActive))
 
             ).ToListAsync();
 

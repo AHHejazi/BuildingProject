@@ -120,8 +120,8 @@
   <data name="Active" xml:space="preserve">
     <value>الحالة</value>
   </data>
-  <data name="AddNewProject" xml:space="preserve">
-    <value>إضافة مشروع جديد</value>
+  <data name="AddProject" xml:space="preserve">
+    <value>إضافة مشروع </value>
   </data>
   <data name="ArchitecturalDiagrams" xml:space="preserve">
     <value>المخططات المعمارية</value>
@@ -182,6 +182,9 @@
   </data>
   <data name="Options" xml:space="preserve">
     <value>الخيارات</value>
+  </data>
+  <data name="ProjectDetails" xml:space="preserve">
+    <value>تفاصيل المشروع</value>
   </data>
   <data name="ProjectsManagment" xml:space="preserve">
     <value>إدارة المشاريع</value>

@@ -70,11 +70,11 @@ namespace Localization.App {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add new project.
+        ///   Looks up a localized string similar to Add project.
         /// </summary>
-        public static string AddNewProject {
+        public static string AddProject {
             get {
-                return ResourceManager.GetString("AddNewProject", resourceCulture);
+                return ResourceManager.GetString("AddProject", resourceCulture);
             }
         }
         
@@ -246,6 +246,15 @@ namespace Localization.App {
         public static string Options {
             get {
                 return ResourceManager.GetString("Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Details.
+        /// </summary>
+        public static string ProjectDetails {
+            get {
+                return ResourceManager.GetString("ProjectDetails", resourceCulture);
             }
         }
         

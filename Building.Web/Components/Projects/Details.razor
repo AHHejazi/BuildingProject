@@ -1,5 +1,5 @@
 ﻿@page "/Details/{Id:guid}"
-<h3>Project Details for @project.NameAr</h3>
+<h3>@AppResources.ProjectDetails</h3>
 
 @if (project == null)
 {
@@ -105,45 +105,24 @@ else
             <label type="text" readonly id="EstimatedCost" class="form-control">@project.EstimatedCost</label>
         </div>
     </div>
+
     <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="IsActive">@AppResources.Active</label>
-            <label class="form-check-label form-control" type="checkbox" readonly id="IsActive">
-                @if (project.IsActive == true)
-                {<span class="fa fa-check-square-o"></span>}
-                else
-                {<span class="fa fa-minus-square-o"></span>}
-            </label>
+        <div class="custom-control custom-checkbox">
+            @if (project.IsActive == true)
+            {
+                <input type="checkbox" class="custom-control-input" id="customCheck1" checked disabled/>
+            }
+            else
+            {
+                <input type="checkbox" class="custom-control-input" id="customCheck1" disabled />
+            }
+            <label class="custom-control-label" for="customCheck1">@AppResources.Active</label>
         </div>
     </div>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <NavLink href="/Project/index" class="btn btn-primary">Back</NavLink>
 }
 

@@ -9,27 +9,33 @@
 }
 else
 {
-<EditForm Model="ProjectVM" >
-    <div class="form-row">
-        <div class="form-group">
-            <NavLink href="/Project/Add" class="btn btn-info btn-block">@AppResources.AddNewProject<i class="fa fa-plus-circle" aria-hidden="true"></i> </NavLink>
-        </div>
-
-        <div class="input-group">
-            <div class="form-group col-md-6">
-                <label for="NameAr">@AppResources.NameArabic</label>
-
-                <InputText @bind-Value="ProjectVM.NameAr" id="NameAr" class="form-control"></InputText>
+    <EditForm Model="ProjectVM">
+        <div class="form-row">
+            <div class="form-group">
+                <NavLink href="/Project/Add" class="btn btn-info btn-block">@AppResources.AddProject</NavLink>
             </div>
-            <div class="form-group col-md-6">
-                <label for="NameEn">@AppResources.NameEnglish</label>
 
-                <InputText @bind-Value="ProjectVM.NameEn" id="NameEn" class="form-control"></InputText>
+            <div class="input-group">
+                <div class="form-group col-md-6">
+                    <label for="NameAr">@AppResources.NameArabic</label>
+
+                    <InputText @bind-Value="ProjectVM.NameAr" id="NameAr" class="form-control"></InputText>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="NameEn">@AppResources.NameEnglish</label>
+
+                    <InputText @bind-Value="ProjectVM.NameEn" id="NameEn" class="form-control"></InputText>
+                </div>
+
+                <div class="custom-control custom-checkbox">
+                    <InputCheckbox @bind-Value="ProjectVM.IsActive" class="custom-control-input" id="customCheck1"></InputCheckbox>
+                    <label class="custom-control-label" for="customCheck1">@AppResources.Active</label>
+                </div>
+
             </div>
         </div>
-    </div>
-    <button type="submit" class="btn btn-primary" @onclick="@SearchProjects">@AppResources.Search</button>
-</EditForm>
+        <button type="submit" class="btn btn-info" @onclick="@SearchProjects">@AppResources.Search</button>
+    </EditForm>
     <div class="form-row">
         <table class='table table-striped'>
             <thead>
@@ -50,29 +56,35 @@ else
                 {
                     <tr>
                         <td>
-                            <NavLink href="@($"details/{project.Id}")" class="nav-link">
+                            <NavLink align="center" href="@($"details/{project.Id}")" class="nav-link">
                                 @project.NameAr
                             </NavLink>
                         </td>
-                        <td>@project.NameEn</td>
-                        <td>@project.CityName</td>
-                        <td>@project.ContractorName</td>
-                        <td>@project.ConsultingOfficeName</td>
-                        <td>
+                        <td align="center">@project.NameEn</td>
+                        <td align="center">@project.CityName</td>
+                        <td align="center">@project.ContractorName</td>
+                        <td align="center">@project.ConsultingOfficeName</td>
+                        <td align="center">
                             @if (project.IsActive == true)
-                            {<span class="fa fa-check-square-o"></span>}
+                            {
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" checked disabled>
+                                    <label class="custom-control-label" for="customCheck1"></label>
+                                </div>
+                            }
                             else
-                            {<span class="fa fa-minus-square-o"></span>}
+                            {
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" disabled>
+                                    <label class="custom-control-label" for="customCheck1"></label>
+                                </div>
+
+                            }
                         </td>
-                        <td>
-                            <button type="button" href="@($"edit/{project.Id}")" class="btn btn-info" title="@AppResources.EditProject">
-                                <i class="fa fa-edit"></i>
-                            </button>
 
-                            <button type="button" title="@AppResources.DeleteProject" class="btn btn-danger" @onclick="@(async()=>await DeleteProject(project.Id))">
-                                <i class="fa fa-trash"></i>
-                            </button>
-
+                        <td align="center">
+                            <a class="fa fa-edit" title="@AppResources.EditProject" href="@($"edit/{project.Id}")"></a>
+                            <a class="fa fa-trash" title="@AppResources.DeleteProject" @onclick="@(async()=>await DeleteProject(project.Id))"></a>
                         </td>
 
                     </tr>

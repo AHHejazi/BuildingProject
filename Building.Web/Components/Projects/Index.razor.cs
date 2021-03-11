@@ -37,7 +37,6 @@ namespace Building.Web.Components.Projects
             await _projectService.DeleteProjectAsync(projectId);
             StatusClass = "alert-success";
             Message = "Deleted successfully";
-
             Saved = true;
         }
     }

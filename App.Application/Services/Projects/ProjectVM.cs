@@ -9,6 +9,7 @@ namespace Application.App.Services.Projects
     {
         public string NameAr { get; set; }
         public string NameEn { get; set; }
+        public Boolean IsActive { get; set; }
 
         public IReadOnlyList<Project> ProjectList { get; set; }
 

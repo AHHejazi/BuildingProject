@@ -120,8 +120,8 @@
   <data name="Active" xml:space="preserve">
     <value>Active</value>
   </data>
-  <data name="AddNewProject" xml:space="preserve">
-    <value>Add new project</value>
+  <data name="AddProject" xml:space="preserve">
+    <value>Add project</value>
   </data>
   <data name="ArchitecturalDiagrams" xml:space="preserve">
     <value>Architectural Diagrams</value>
@@ -179,6 +179,9 @@
   </data>
   <data name="Options" xml:space="preserve">
     <value>Options</value>
+  </data>
+  <data name="ProjectDetails" xml:space="preserve">
+    <value>Project Details</value>
   </data>
   <data name="ProjectsManagment" xml:space="preserve">
     <value>Projects Managment</value>
