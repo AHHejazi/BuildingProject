@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Core", "Framework.Core\Framework.Core.csproj", "{36EFCDF6-7B1C-409A-A56D-375BBCB8565E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localization.App", "Localization.App\Localization.App.csproj", "{E928C7D9-E446-4290-8488-A786935711BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localization.App", "Localization.App\Localization.App.csproj", "{E928C7D9-E446-4290-8488-A786935711BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

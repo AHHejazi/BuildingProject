@@ -106,23 +106,21 @@ else
         </div>
     </div>
 
-    <div class="form-row">
-        <div class="custom-control custom-checkbox">
+    <div class="form-row form-group">
+        <div class="custom-control custom-switch">
             @if (project.IsActive == true)
             {
-                <input type="checkbox" class="custom-control-input" id="customCheck1" checked disabled/>
+                <input type="checkbox" class="custom-control-input" id="IsActive" checked disabled />
             }
             else
             {
-                <input type="checkbox" class="custom-control-input" id="customCheck1" disabled />
+                <input type="checkbox" class="custom-control-input" id="IsActive" disabled />
             }
             <label class="custom-control-label" for="customCheck1">@AppResources.Active</label>
         </div>
     </div>
-
-
-
-
-    <NavLink href="/Project/index" class="btn btn-primary">Back</NavLink>
+    <div class="form-row form-group">
+        <NavLink href="/Project/index" class="btn btn-primary">Back</NavLink>
+    </div>
 }
 

@@ -1,15 +1,15 @@
 ﻿using Application.App.Services.Projects;
-using Domain.App.Entities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Building.Web.Components.Projects
 {
     public partial class Index : ComponentBase
     {
+        [Inject]
+        private NavigationManager _navigationManager { get; set; }
         [Inject]
         public IProjectService _projectService { get; set; }
         public ProjectVM ProjectVM=new ProjectVM();
@@ -18,18 +18,42 @@ namespace Building.Web.Components.Projects
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;
         protected bool Saved;
+        [Parameter]
+        public string Page { get; set; } = "1";
 
-        private string searchTerm;
 
-        async Task SearchProjects()
-        {
-            ProjectVM = await _projectService.SearchProjectsAsync(ProjectVM);
-        }
-
-        
         protected override async Task OnInitializedAsync()
         {
-            ProjectVM.ProjectList = await _projectService.ProjectListQuery();
+            await GetProjects();
+        }
+
+        protected async  Task SearchProjects()
+        {
+            Page = "1";
+            ProjectVM.PageNumber = 1;
+            ProjectVM = await _projectService.SearchProjectsAsync(ProjectVM);
+            _navigationManager.NavigateTo("/Project/index/" + Page);
+            StateHasChanged();
+        }
+
+
+        protected async Task GetProjects()
+        {
+            ProjectVM = await _projectService.SearchProjectsAsync(ProjectVM);
+            _navigationManager.NavigateTo("/Project/index/");
+            StateHasChanged();
+        }
+
+        protected void PagerPageChanged(int page)
+        {
+            ProjectVM.PageNumber = page;
+           _navigationManager.NavigateTo("/Project/index/" + page);
+            
+        }
+
+        protected async override Task OnParametersSetAsync()
+        {
+            await GetProjects();
         }
 
         public async Task DeleteProject(Guid projectId)

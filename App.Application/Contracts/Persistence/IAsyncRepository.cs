@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Framework.Core.ListManagment;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Application.App.Contracts.Persistence
@@ -14,5 +17,8 @@ namespace Application.App.Contracts.Persistence
         Task<T> GetByIdAsync(object id);
 
         Task<IReadOnlyList<T>> GetPagedReponseAsync(int page, int size);
+
+
+       
     }
 }

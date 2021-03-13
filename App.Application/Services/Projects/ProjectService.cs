@@ -68,6 +68,7 @@ namespace Application.App.Services.Projects
             var result = await _projectRepository.ListAllAsync();
             return result;
         }
+       
 
         public async Task<ProjectVM> SearchProjectsAsync(ProjectVM projectVM)
         {
