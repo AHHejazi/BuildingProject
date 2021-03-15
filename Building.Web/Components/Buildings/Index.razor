@@ -1,0 +1,68 @@
+﻿@page "/Building/index"
+
+
+<h3>@AppResources.BuildingsManagment</h3>
+
+@if (BuildingVM.BuildingList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="BuildingVM">
+        <div class="form-row">
+            <div class="form-group">
+                <NavLink href="/Building/Add" class="btn btn-info btn-block">@AppResources.AddBuilding</NavLink>
+            </div>
+
+            <div class="input-group">
+                <div class="form-group col-md-6">
+                    <label for="Number">@AppResources.Number</label>
+
+                    <InputText @bind-Value="BuildingVM.Number" id="NameAr" class="form-control"></InputText>
+                </div>
+
+            </div>
+        </div>
+        <button type="submit" class="btn btn-info" @onclick="@SearchBuildings">@AppResources.Search</button>
+    </EditForm>
+    <div class="form-row">
+        <table class='table table-striped'>
+            <thead>
+                <tr align="center">
+                    <th>@AppResources.Number</th>
+                    <th>@AppResources.EstimatedCost</th>
+                    <th>@AppResources.TotalSurfaceArea</th>
+                    <th>@AppResources.NumberOfFloor</th>
+                    <th>@AppResources.Options</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var building in BuildingVM.BuildingList)
+                {
+                    <tr align="center">
+                        <td>
+                            <NavLink href="@($"details/{building.Id}")" class="nav-link">
+                                @building.Number
+                            </NavLink>
+                        </td>
+                        <td>@building.EstimatedCost</td>
+                        <td>@building.TotalSurfaceArea</td>
+                        <td>@building.NumberOfFloor</td>
+                        <td>
+                            <a class="fa fa-edit" title="@AppResources.Edit" href="@($"edit/{building.Id}")"></a>
+                            <a class="fa fa-trash" title="@AppResources.Delete" @onclick="@(async()=>await DeleteBuilding(building.Id))"></a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+
+}

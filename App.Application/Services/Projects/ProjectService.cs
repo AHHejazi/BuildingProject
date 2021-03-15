@@ -80,7 +80,7 @@ namespace Application.App.Services.Projects
         {
             await _projectRepository.UpdateAsync(project);
             StatusClass = "alert-success";
-            Message = "Employee updated successfully.";
+            Message = "Project updated successfully.";
             Saved = true;
         }
 

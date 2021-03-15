@@ -1,0 +1,63 @@
+﻿@page "/Building/edit/{Id:guid}"
+
+<h3>@AppResources.Edit</h3>
+
+<EditForm Model="@buildingDto" OnValidSubmit="@ValidFormSubmitted">
+    <FluentValidationValidator />
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Number">@AppResources.Number</label>
+            <InputText id="Number" class="form-control" @bind-Value="buildingDto.Number" />
+            <ValidationMessage For="@(() => buildingDto.Number)" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="EstimatedCost">@AppResources.EstimatedCost</label>
+            <InputNumber id="EstimatedCost" class="form-control" @bind-Value="buildingDto.EstimatedCost" />
+            <ValidationMessage For="@(() => buildingDto.EstimatedCost)" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="TotalSurfaceArea">@AppResources.TotalSurfaceArea</label>
+            <InputNumber id="TotalSurfaceArea" class="form-control" @bind-Value="buildingDto.TotalSurfaceArea" />
+            <ValidationMessage For="@(() => buildingDto.TotalSurfaceArea)" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="NumberOfFloor">@AppResources.NumberOfFloor</label>
+
+            <InputNumber @bind-Value="buildingDto.NumberOfFloor" id="NumberOfFloor" class="form-control"></InputNumber>
+            <ValidationMessage For="@(() => buildingDto.NumberOfFloor)" />
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="LicenseNumber">@AppResources.LicenseNumber</label>
+            <InputText id="LicenseNumber" class="form-control" @bind-Value="buildingDto.LicenseNumber" />
+            <ValidationMessage For="@(() => buildingDto.LicenseNumber)" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="StampingNumber">@AppResources.StampingNumber</label>
+            <InputText id="StampingNumber" class="form-control" @bind-Value="buildingDto.StampingNumber" />
+            <ValidationMessage For="@(() => buildingDto.StampingNumber)" />
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="NumberOfApartment">@AppResources.NumberOfApartment</label>
+            <InputText id="NumberOfApartment" class="form-control" @bind-Value="buildingDto.NumberOfApartment" />
+            <ValidationMessage For="@(() => buildingDto.NumberOfApartment)" />
+        </div>
+    </div>
+   
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</EditForm>
+
+@code
+{
+
+}

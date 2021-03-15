@@ -3,6 +3,7 @@ using Domain.App.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace App.Persistence.Repositories
 {
@@ -11,6 +12,11 @@ namespace App.Persistence.Repositories
         public BuildingRepository(BuildingDbContext dbContext) : base(dbContext)
         {
 
+        }
+
+        public async Task<bool> IsBuildingNameUnique(string Number)
+        {
+            return true;
         }
     }
 }

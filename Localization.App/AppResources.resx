@@ -120,17 +120,26 @@
   <data name="Active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="AddBuilding" xml:space="preserve">
+    <value>Add Building</value>
+  </data>
   <data name="AddProject" xml:space="preserve">
     <value>Add project</value>
   </data>
   <data name="ArchitecturalDiagrams" xml:space="preserve">
     <value>Architectural Diagrams</value>
   </data>
+  <data name="BuildingDetails" xml:space="preserve">
+    <value>Building Details</value>
+  </data>
   <data name="BuildingLicenseAttachment" xml:space="preserve">
     <value>Building License Attachment</value>
   </data>
   <data name="BuildingLicenseNumber" xml:space="preserve">
     <value>Building License Number</value>
+  </data>
+  <data name="BuildingsManagment" xml:space="preserve">
+    <value>Buildings Managment</value>
   </data>
   <data name="BuildingTechnique" xml:space="preserve">
     <value>Building Technique</value>
@@ -147,8 +156,14 @@
   <data name="ContractorName" xml:space="preserve">
     <value>Contractor Name</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="DeleteProject" xml:space="preserve">
     <value>Delete Project</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
   </data>
   <data name="EditProject" xml:space="preserve">
     <value>Edit Project</value>
@@ -168,6 +183,9 @@
   <data name="InstrumentNumber" xml:space="preserve">
     <value>Instrument Number</value>
   </data>
+  <data name="LicenseNumber" xml:space="preserve">
+    <value>License Number</value>
+  </data>
   <data name="MechanicalDiagrams" xml:space="preserve">
     <value>Mechanical Diagrams</value>
   </data>
@@ -176,6 +194,15 @@
   </data>
   <data name="NameEnglish" xml:space="preserve">
     <value>Name English</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="NumberOfApartment" xml:space="preserve">
+    <value>Number Of Apartment</value>
+  </data>
+  <data name="NumberOfFloor" xml:space="preserve">
+    <value>Number Of Floor</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>Options</value>
@@ -216,7 +243,13 @@
   <data name="SoilReport" xml:space="preserve">
     <value>Soil Report</value>
   </data>
+  <data name="StampingNumber" xml:space="preserve">
+    <value>Stamping Number</value>
+  </data>
   <data name="TotalArea" xml:space="preserve">
     <value>Total Area</value>
+  </data>
+  <data name="TotalSurfaceArea" xml:space="preserve">
+    <value>Total Surface Area</value>
   </data>
 </root>

@@ -13,6 +13,11 @@ namespace Application.App.Services.Lookups
             _lookupRepository = projectRepository;
         }
 
+        public Task<IEnumerable<SelectListItem>> GetBuildingTypeList()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<IEnumerable<SelectListItem>> GetProjectTypeList()
         {
           return await _lookupRepository.GetProjectTypeList();

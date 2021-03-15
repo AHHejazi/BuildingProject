@@ -120,17 +120,26 @@
   <data name="Active" xml:space="preserve">
     <value>الحالة</value>
   </data>
+  <data name="AddBuilding" xml:space="preserve">
+    <value>إضافة بناء</value>
+  </data>
   <data name="AddProject" xml:space="preserve">
     <value>إضافة مشروع </value>
   </data>
   <data name="ArchitecturalDiagrams" xml:space="preserve">
     <value>المخططات المعمارية</value>
   </data>
+  <data name="BuildingDetails" xml:space="preserve">
+    <value>تفاصيل البناء</value>
+  </data>
   <data name="BuildingLicenseAttachment" xml:space="preserve">
     <value>مرفق رخصة البناء</value>
   </data>
   <data name="BuildingLicenseNumber" xml:space="preserve">
     <value>رقم رخصة البنا</value>
+  </data>
+  <data name="BuildingsManagment" xml:space="preserve">
+    <value>إدارة المباني</value>
   </data>
   <data name="BuildingTechnique" xml:space="preserve">
     <value>تقنية البناء</value>
@@ -147,8 +156,14 @@
   <data name="ContractorName" xml:space="preserve">
     <value>اسم المتعاقد</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
   <data name="DeleteProject" xml:space="preserve">
     <value>حذف مشروع</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>تعديل</value>
   </data>
   <data name="EditProject" xml:space="preserve">
     <value>تعديل مشروع</value>
@@ -168,6 +183,9 @@
   <data name="InstrumentNumber" xml:space="preserve">
     <value>رقم الصك</value>
   </data>
+  <data name="LicenseNumber" xml:space="preserve">
+    <value>رقم الرخصة</value>
+  </data>
   <data name="MechanicalDiagrams" xml:space="preserve">
     <value>المخططات الميكانيكية</value>
   </data>
@@ -179,6 +197,12 @@
   </data>
   <data name="Number" xml:space="preserve">
     <value>رقم</value>
+  </data>
+  <data name="NumberOfApartment" xml:space="preserve">
+    <value>عدد الشقق</value>
+  </data>
+  <data name="NumberOfFloor" xml:space="preserve">
+    <value>عدد الطوابق</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>الخيارات</value>
@@ -219,7 +243,13 @@
   <data name="SoilReport" xml:space="preserve">
     <value>التقرير المساحي</value>
   </data>
+  <data name="StampingNumber" xml:space="preserve">
+    <value>رقم الطوابع</value>
+  </data>
   <data name="TotalArea" xml:space="preserve">
-    <value>إجمالي المساحة</value>
+    <value>المساحة الكلية</value>
+  </data>
+  <data name="TotalSurfaceArea" xml:space="preserve">
+    <value>المساحة الإجمالية</value>
   </data>
 </root>

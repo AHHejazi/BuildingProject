@@ -70,6 +70,15 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Building.
+        /// </summary>
+        public static string AddBuilding {
+            get {
+                return ResourceManager.GetString("AddBuilding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add project.
         /// </summary>
         public static string AddProject {
@@ -88,6 +97,15 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Building Details.
+        /// </summary>
+        public static string BuildingDetails {
+            get {
+                return ResourceManager.GetString("BuildingDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Building License Attachment.
         /// </summary>
         public static string BuildingLicenseAttachment {
@@ -102,6 +120,15 @@ namespace Localization.App {
         public static string BuildingLicenseNumber {
             get {
                 return ResourceManager.GetString("BuildingLicenseNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buildings Managment.
+        /// </summary>
+        public static string BuildingsManagment {
+            get {
+                return ResourceManager.GetString("BuildingsManagment", resourceCulture);
             }
         }
         
@@ -151,11 +178,29 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Project.
         /// </summary>
         public static string DeleteProject {
             get {
                 return ResourceManager.GetString("DeleteProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
         
@@ -214,6 +259,15 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to License Number.
+        /// </summary>
+        public static string LicenseNumber {
+            get {
+                return ResourceManager.GetString("LicenseNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mechanical Diagrams.
         /// </summary>
         public static string MechanicalDiagrams {
@@ -237,6 +291,33 @@ namespace Localization.App {
         public static string NameEnglish {
             get {
                 return ResourceManager.GetString("NameEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number.
+        /// </summary>
+        public static string Number {
+            get {
+                return ResourceManager.GetString("Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of Apartment.
+        /// </summary>
+        public static string NumberOfApartment {
+            get {
+                return ResourceManager.GetString("NumberOfApartment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of Floor.
+        /// </summary>
+        public static string NumberOfFloor {
+            get {
+                return ResourceManager.GetString("NumberOfFloor", resourceCulture);
             }
         }
         
@@ -358,11 +439,29 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stamping Number.
+        /// </summary>
+        public static string StampingNumber {
+            get {
+                return ResourceManager.GetString("StampingNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Area.
         /// </summary>
         public static string TotalArea {
             get {
                 return ResourceManager.GetString("TotalArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Surface Area.
+        /// </summary>
+        public static string TotalSurfaceArea {
+            get {
+                return ResourceManager.GetString("TotalSurfaceArea", resourceCulture);
             }
         }
     }

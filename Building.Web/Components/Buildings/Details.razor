@@ -1,0 +1,53 @@
+﻿@page "/Building/Details/{Id:guid}"
+<h3>@AppResources.BuildingDetails</h3>
+
+@if (buildingDto == null)
+{
+    <p><em>Loading...</em></p>
+}
+
+else
+{
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Number">@AppResources.Number</label>
+            <label type="text" readonly id="Number" class="form-control">@buildingDto.Number</label>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="EstimatedCost">@AppResources.EstimatedCost</label>
+            <label type="Number" readonly id="EstimatedCost" class="form-control">@buildingDto.EstimatedCost</label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="TotalSurfaceArea ">@AppResources.TotalSurfaceArea </label>
+            <label type="Number" readonly id="TotalSurfaceArea " class="form-control">@buildingDto.TotalSurfaceArea </label>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="NumberOfFloor">@AppResources.NumberOfFloor  </label>
+            <label type="Number" readonly id="NumberOfFloor" class="form-control">@buildingDto.NumberOfFloor</label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="LicenseNumber">@AppResources.LicenseNumber</label>
+            <label type="text" readonly id="LicenseNumber" class="form-control">@buildingDto.LicenseNumber</label>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="StampingNumber ">@AppResources.StampingNumber </label>
+            <label type="text" readonly id="StampingNumber " class="form-control">@buildingDto.StampingNumber </label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="NumberOfApartment">@AppResources.NumberOfApartment</label>
+            <label type="text" readonly id="NumberOfApartment" class="form-control">@buildingDto.NumberOfApartment</label>
+        </div>
+    </div>
+
+    <NavLink href="/Building/index" class="btn btn-primary">Back</NavLink>
+}
+
