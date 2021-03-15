@@ -1,10 +1,12 @@
 ﻿
 using Application.App.Contracts.Persistence;
 using Domain.App.Entities;
+using Framework.Core;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace App.Persistence.Repositories
@@ -88,6 +90,9 @@ namespace App.Persistence.Repositories
              await _dbContext.SaveChangesAsync();
         }
 
-        
+     
+
+
+
     }
 }
