@@ -22,7 +22,6 @@ namespace Application.App.Services.Projects
         public bool IsActive { get; set; }
         public string SerialNumber { get; set; }
         //// Added Attributes
-        public int ProjectType { get; set; }
         public int TotalArea { get; set; }
         public int InstrumentNumber { get; set; }
         public int BuildingLicenseNumber { get; set; }

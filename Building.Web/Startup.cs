@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using FluentValidation;
 using Application.App.Services.Projects;
+using App.Identity;
+using Application.App.Contracts.Identity;
 
 namespace Building.Web
 {
@@ -34,10 +36,10 @@ namespace Building.Web
             services.AddApplicationServices();
             //services.AddInfrastructureServices(Configuration);
             services.AddPersistenceServices(Configuration);
-            //services.AddIdentityServices(Configuration);
+            services.AddIdentityServices(Configuration);
+            services.AddScoped<TokenProvider>();
             services.AddHttpContextAccessor();
             services.AddScoped<ILoggedInUserService, LoggedInUserService>();
-
             services.AddControllers();
         }
 
@@ -54,14 +56,17 @@ namespace Building.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+          
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.ConfigureCommonRequestPipeline();
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

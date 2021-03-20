@@ -61,12 +61,15 @@ namespace App.Persistence.Repositories
             return await _dbContext.Set<T>().FindAsync(id);
         }
 
-        public Task<T> AddAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _dbContext.Set<T>().AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
+
+            return entity;
         }
 
-        
+
 
         public async Task<T> GetByIdAsync(Guid id)
         {
@@ -87,10 +90,15 @@ namespace App.Persistence.Repositories
         public async Task UpdateAsync(T entity)
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
-             await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
         }
 
-     
+        public T GenerateModelNumber(Expression<Func<T, bool>> condtion, Expression<Func<T, string>> orderBy)
+        {
+           var lastInsertedItem = _dbContext.Set<T>().AsNoTracking().OrderByDescending(orderBy).FirstOrDefault(condtion);
+
+            return lastInsertedItem;
+        }
 
 
 

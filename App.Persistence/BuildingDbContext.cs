@@ -55,7 +55,7 @@ namespace App.Persistence
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedOn = DateTime.Now;
-                        entry.Entity.CreatedBy = _loggedInUserService.UserId;
+                        entry.Entity.CreatedBy = _loggedInUserService.UserId??"ahejazi";
                         break;
                     case EntityState.Modified:
                         entry.Entity.UpdatedOn = DateTime.Now;
