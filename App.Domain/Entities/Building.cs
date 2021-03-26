@@ -32,7 +32,9 @@ namespace Domain.App.Entities
         //to check if I need to add this
         public ICollection<BuildingSupplies> BuildingSupplies { get; set; }
 
+        public BuildingType BuildingType { get; set; }
 
+        public int BuildingTypeId { get; set; }
 
 
         //to check if we need to add

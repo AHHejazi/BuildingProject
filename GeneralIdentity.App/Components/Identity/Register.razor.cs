@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace GeneralIdentity.App.Components.Identity
 {
-    public partial class Register
+    public partial class Register: ComponentBase
     {
         public RegisterViewModel RegisterViewModel { get; set; } //= new RegisterViewModel();
 
