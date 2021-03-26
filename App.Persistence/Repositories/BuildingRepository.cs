@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace App.Persistence.Repositories
 {
-    class BuildingRepository : BaseRepository<Building>, IBuildingRepository
+   public class BuildingRepository : BaseRepository<Building>, IBuildingRepository
     {
         public BuildingRepository(BuildingDbContext dbContext) : base(dbContext)
         {

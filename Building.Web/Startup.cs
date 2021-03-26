@@ -10,6 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using FluentValidation;
 using Application.App.Services.Projects;
+using Application.App.Services.Buildings;
+using Application.App.Contracts.Persistence;
+using App.Persistence.Repositories;
 
 namespace Building.Web
 {
@@ -29,6 +32,7 @@ namespace Building.Web
             services.AddRazorPages();
             services.AddServerSideBlazor(c => c.DetailedErrors = true);
             services.AddTransient<IValidator<ProjectDto>, ProjectValidator>();
+            //services.AddTransient<IValidator<BuildingDto>, BuildingValidator>();
             services.AddSingleton<WeatherForecastService>();
             services.AddCoreServices();
             services.AddApplicationServices();
@@ -37,6 +41,7 @@ namespace Building.Web
             //services.AddIdentityServices(Configuration);
             services.AddHttpContextAccessor();
             services.AddScoped<ILoggedInUserService, LoggedInUserService>();
+            services.AddScoped<IBuildingRepository, BuildingRepository>();
 
             services.AddControllers();
         }

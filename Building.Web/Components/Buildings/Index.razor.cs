@@ -28,7 +28,7 @@ namespace Building.Web.Components.Buildings
 
             protected override async Task OnInitializedAsync()
             {
-                BuildingVM.BuildingList = await _buildingService.BuildingListQuery();
+            BuildingVM.BuildingList = await _buildingService.BuildingListQuery();
             }
 
             public async Task DeleteBuilding(Guid buildingId)

@@ -26,7 +26,7 @@ namespace Building.Web.Components.Buildings
             protected async override Task OnInitializedAsync()
             {
             buildingDto = await _buildingService.GetBuildingByIdAsync(Id);
-            BuildingTypeList = await _lookupServices.GetBuildingTypeList();
+            
             }
 
             public void ValidFormSubmitted()

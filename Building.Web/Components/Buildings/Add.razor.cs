@@ -20,11 +20,17 @@ namespace Building.Web.Components.Buildings
 
         [Inject]
         private ILookupServices _lookupServices { get; set; }
+      
+
+        [Parameter]
+        public Guid Id { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
+
             BuildingTypeList = await _lookupServices.GetBuildingTypeList();
         }
+    
 
 
         private void SubmitBuilding()
