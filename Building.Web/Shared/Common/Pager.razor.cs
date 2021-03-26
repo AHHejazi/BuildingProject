@@ -8,7 +8,7 @@ namespace Building.Web.Shared.Common
     public partial class Pager : ComponentBase
     {
         [Parameter]
-        public StaticPagedList<Project> Result { get; set; }
+        public dynamic Result { get; set; } 
 
         [Parameter]
         public Action<int> PageChanged { get; set; }
@@ -23,6 +23,7 @@ namespace Building.Web.Shared.Common
 
             base.OnParametersSet();
         }
+       
 
         protected void PagerButtonClicked(int page)
         {

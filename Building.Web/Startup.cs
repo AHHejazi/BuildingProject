@@ -13,6 +13,12 @@ using Application.App.Services.Projects;
 using Application.App.Services.Buildings;
 using Application.App.Contracts.Persistence;
 using App.Persistence.Repositories;
+using App.Identity;
+using Application.App.Contracts.Identity;
+using Microsoft.AspNetCore.Http;
+using FluentValidation.AspNetCore;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Building.Web
 {
@@ -33,16 +39,17 @@ namespace Building.Web
             services.AddServerSideBlazor(c => c.DetailedErrors = true);
             services.AddTransient<IValidator<ProjectDto>, ProjectValidator>();
             //services.AddTransient<IValidator<BuildingDto>, BuildingValidator>();
+            services.AddValidatorsFromAssemblyContaining<ProjectDto>();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddCoreServices();
             services.AddApplicationServices();
             //services.AddInfrastructureServices(Configuration);
             services.AddPersistenceServices(Configuration);
-            //services.AddIdentityServices(Configuration);
+            services.AddIdentityServices(Configuration);
+            services.AddScoped<TokenProvider>();
             services.AddHttpContextAccessor();
             services.AddScoped<ILoggedInUserService, LoggedInUserService>();
-            services.AddScoped<IBuildingRepository, BuildingRepository>();
-
             services.AddControllers();
         }
 
@@ -59,14 +66,17 @@ namespace Building.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+          
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.ConfigureCommonRequestPipeline();
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

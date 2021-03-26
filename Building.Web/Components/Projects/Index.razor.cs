@@ -13,7 +13,7 @@ namespace Building.Web.Components.Projects
         [Inject]
         public IProjectService _projectService { get; set; }
         public ProjectVM ProjectVM=new ProjectVM();
-
+      
         //used to store state of screen
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;

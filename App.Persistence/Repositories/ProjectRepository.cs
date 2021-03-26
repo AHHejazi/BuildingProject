@@ -15,14 +15,16 @@ namespace App.Persistence.Repositories
 {
     public class ProjectRepository : BaseRepository<Project>, IProjectRepository
     {
+        private readonly BuildingDbContext _dbContext;
+
         public ProjectRepository(BuildingDbContext dbContext) : base(dbContext)
         {
-
+            this._dbContext = dbContext;
         }
 
         public async Task<bool> IsProjectNameUnique(string nameAr, string nameEn)
         {
-            return true;
+          return await _dbContext.Projects.AnyAsync(x => x.NameAr == nameAr || x.NameEn == nameEn);
         }
 
         public Task UpdateAsync(ProjectDto project)
@@ -38,8 +40,6 @@ namespace App.Persistence.Repositories
             filters.Add(!string.IsNullOrEmpty(projectVM.NameAr), u => u.NameAr.Contains(projectVM.NameAr));
             filters.Add(!string.IsNullOrEmpty(projectVM.NameEn), u => u.NameEn.Contains(projectVM.NameEn));
            
-
-
             var result = await _dbContext.Projects.AsNoTracking().Paginate(projectVM.PageNumber, projectVM.PageSize, filters);
 
             projectVM.Items =

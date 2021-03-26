@@ -25,7 +25,7 @@ namespace App.Persistence
             _loggedInUserService = loggedInUserService;
         }
 
-        public DbSet<SystemSetting> Attachments { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
         public virtual DbSet<SystemSetting> SystemSettings { get; set; }
         public DbSet<AttachmentContent> AttachmentContents { get; set; }
         public DbSet<AttachmentType> AttachmentTypes { get; set; }
@@ -55,7 +55,7 @@ namespace App.Persistence
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedOn = DateTime.Now;
-                        entry.Entity.CreatedBy = _loggedInUserService.UserId;
+                        entry.Entity.CreatedBy = _loggedInUserService.UserId??"ahejazi";
                         break;
                     case EntityState.Modified:
                         entry.Entity.UpdatedOn = DateTime.Now;

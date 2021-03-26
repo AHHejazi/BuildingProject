@@ -5,7 +5,8 @@ namespace Application.App.Contracts.Identity
 {
     public interface IAuthenticationService
     {
-        Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request);
-        Task<RegistrationResponse> RegisterAsync(RegistrationRequest request);
+        Task<bool> AuthenticateAsync(string email, string password);
+        Task<bool> RegisterAsync(string firstName, string lastName, string userName, string email, string password);
+        Task Logout();
     }
 }

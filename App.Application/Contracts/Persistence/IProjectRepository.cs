@@ -10,5 +10,8 @@ namespace Application.App.Contracts.Persistence
         Task<bool> IsProjectNameUnique(string nameAr, string nameEn);
         Task UpdateAsync(ProjectDto project);
         Task<ProjectVM> SearchAsync(ProjectVM projectVM);
+
+
+
     }
 }

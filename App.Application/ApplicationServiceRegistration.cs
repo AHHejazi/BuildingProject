@@ -1,4 +1,5 @@
-﻿using Application.App.Contracts.Persistence;
+﻿using Application.App.Services.Common;
+using Application.App.Contracts.Persistence;
 using Application.App.Services.Buildings;
 using Application.App.Services.Lookups;
 using Application.App.Services.Projects;
@@ -15,6 +16,8 @@ namespace Application.App
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddTransient<ILookupServices, LookupServices>();
             services.AddTransient<IProjectService,ProjectService>();
+            services.AddTransient<IAttachmentService, AttachmentService>();
+            services.AddTransient<IAppSettingsService, AppSettingsService>();
             services.AddTransient<IBuildingService, BuildingService>();
             
             return services;

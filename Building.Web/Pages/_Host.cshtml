@@ -1,11 +1,12 @@
 ﻿@page "/"
 @namespace Building.Web.Pages
 @using Framework.Core.Globalization
+@using Application.App.Contracts.Identity
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
 }
-
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,22 +18,32 @@
     @if (CultureHelper.IsArabic)
     {
         <link rel="stylesheet" href="css/bootstrap/bootstrap-rtl.min.css?d=@DateTime.Now.Millisecond" />
-        <link href="css/site.css" rel="stylesheet" />
-        <link href="Building.Web.styles.css" rel="stylesheet" />
         <link href="~/css/Custom.css" rel="stylesheet" />
     }
     else
     {
         <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-        <link href="css/site.css" rel="stylesheet" />
-        <link href="Building.Web.styles.css" rel="stylesheet" />
-    }
 
+    }
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
     <link href="~/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" />
 </head>
 <body>
 
-    <component type="typeof(App)" render-mode="Server" />
+    @{
+        var initialTokenState = new InitialApplicationState
+        {
+            XsrfToken = Xsrf.GetAndStoreTokens(HttpContext).RequestToken
+        };
+    }
+
+    <app>
+        <component type="typeof(App)" render-mode="ServerPrerendered"
+                   param-InitialState="initialTokenState" />
+    </app>
+
 
     <div id="blazor-error-ui">
         <environment include="Staging,Production">
