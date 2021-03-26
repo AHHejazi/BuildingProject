@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GeneralIdentity.App.Components.Identity
 {
-    public partial class Login
+    public partial class Login: ComponentBase
     {
         public LoginViewModel LoginViewModel { get; set; }
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Linq.Expressions;
+using Application.App.Services.Common;
 
 namespace Application.App.Services.Projects
 {
@@ -16,6 +17,7 @@ namespace Application.App.Services.Projects
         private readonly IProjectRepository _projectRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<ProjectDto> _logger;
+        private readonly IAttachmentService _attachmentService;
 
         //used to store state of screen
         protected string Message = string.Empty;
@@ -23,11 +25,12 @@ namespace Application.App.Services.Projects
         protected bool Saved;
 
 
-        public ProjectService(IMapper mapper, IProjectRepository projectRepository, ILogger<ProjectDto> logger)
+        public ProjectService(IMapper mapper, IProjectRepository projectRepository, ILogger<ProjectDto> logger, IAttachmentService attachmentService)
         {
             _mapper = mapper;
             _projectRepository = projectRepository;
             _logger = logger;
+            _attachmentService = attachmentService;
         }
 
 
@@ -42,6 +45,33 @@ namespace Application.App.Services.Projects
                     throw new Exceptions.ValidationException(validationResult);
                 var prject = _mapper.Map<Project>(project);
                 prject.Number = GenerateProjectNumber();
+
+                //if (selectedFiles != null)//take first image
+                //{
+                //    var file = selectedFiles[0];
+                //    Stream stream = file.OpenReadStream();
+                //    MemoryStream ms = new MemoryStream();
+                //    await stream.CopyToAsync(ms);
+                //    stream.Close();
+
+                //    Model.ImageName = file.Name;
+                //    Model.ImageContent = ms.ToArray();
+
+                //    string currentUrl = _httpContextAccessor.HttpContext.Request.Host.Value;
+                //    var path = $"{_webHostEnvironment.WebRootPath}\\uploads\\{Model.ImageName}";
+                //    var fileStream = System.IO.File.Create(path);
+                //    fileStream.Write(Model.ImageContent, 0, Model.ImageContent.Length);
+                //    fileStream.Close();
+                //    Model.ImageName = $"https://{currentUrl}/uploads/{Model.ImageName}";
+                //}
+                if (project.fileData != null && project.fileData.Count() > 0)
+                {
+                    foreach (var item in project.fileData)
+                    {
+                        var retAttachmentId = await _attachmentService.AddOrUpdateAttachment(item.FileName, item.FileType, item.Data, item.AttachemntType);
+                    }
+                }
+
 
                 prject = await _projectRepository.AddAsync(prject);
                 return prject.Id;

@@ -68,12 +68,34 @@ button {
     font-weight: bold;
     height: 30px;
     line-height: 12px;
-    margin-left: 25px;
     text-transform: uppercase;
     max-width: 300px;
+    outline: 0 !important
+}
+
+.anchor-link:link, .anchor-link:visited {
+    
+    border: 1px solid #51B5B1;
+    border-radius: 30px;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 28px;
+    text-transform: uppercase;
+    max-width: 300px;
+    display: inline-block;
+    padding: 0 1rem;
+    text-decoration: none
 }
 
 .submit-button {
+    background: #51b5b1;
+    color: #fff;
+}
+
+.link-button {
     background: #51b5b1;
     color: #fff;
 }

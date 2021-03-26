@@ -1,6 +1,9 @@
-﻿using Domain.App.Entities;
+﻿using Application.App.Enum;
+using Domain.App.Common;
+using Domain.App.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Application.App.Services.Projects
@@ -41,9 +44,19 @@ namespace Application.App.Services.Projects
 
         public int ProjectTypeId { get; set; }
 
-        public static implicit operator ProjectDto(Project v)
-        {
-            throw new NotImplementedException();
-        }
+        public List<FileData> fileData { get; set; }
+
+        public Guid AttachemntId { get; set; }
+
+
+    }
+
+    public class FileData
+    {
+        public byte[] Data { get; set; }
+        public string FileType { get; set; }
+        public long Size { get; set; }
+        public AttachmentTypesEnum AttachemntType { get; set; }
+        public string FileName { get; set; }
     }
 }

@@ -38,11 +38,6 @@ namespace Domain.App.Common
     }
 
 
-    public enum AttachmentTypes
-    {
-        GeneralFileAttachment = 1,
-
-        GeneralImageAttachment = 2
-    }
+    
 
 }

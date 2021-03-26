@@ -26,17 +26,10 @@ else
                     <InputText @bind-Value="ProjectVM.NameEn" id="NameEn" class="form-control"></InputText>
                 </div>
 
-                @*<div class="form-group col-md-6">
-                    <div class="custom-control custom-switch">
-                        <InputCheckbox @bind-Value="ProjectVM.IsActive" class="custom-control-input" id="IsActive"></InputCheckbox>
-                        <label class="custom-control-label" for="IsActive">@AppResources.Active</label>
-                    </div>
-                </div>*@
-
             </div>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-info" @onclick="@SearchProjects">@AppResources.Search</button>
+            <button type="submit" class="submit-button"  @onclick="@SearchProjects">@AppResources.Search</button>
         </div>
     </EditForm>
     <div class="form-row">

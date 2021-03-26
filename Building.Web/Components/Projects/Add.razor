@@ -1,14 +1,12 @@
 ﻿@page "/Project/Add"
-
+@inherits PageBase
 <h3>New Building</h3>
-
-<EditForm Model="Model" OnValidSubmit="@SubmitProject">
-   
+<EditForm Context="formContext" Model="Model" OnValidSubmit="@(SubmitProjectAsync)">
+    <FluentValidator></FluentValidator>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="NameAr">@AppResources.NameArabic</label>
-
             <InputText @bind-Value="Model.NameAr" id="NameAr" class="form-control"></InputText>
             <ValidationMessage For="@(() => Model.NameAr)" />
         </div>
@@ -160,18 +158,28 @@
         </div>
     </div>
     <div class="form-row">
-        <div class="custom-control custom-switch">
-            <input type="checkbox" @bind="Model.IsActive" class="custom-control-input" id="IsActive">
-            <label class="custom-control-label" for="IsActive">@AppResources.Active</label>
-            <ValidationMessage For="@(() => Model.IsActive)" />
+        <div class="form-group col-md-6">
+            <div class="custom-control custom-switch">
+                <input type="checkbox" @bind="Model.IsActive" class="custom-control-input" id="IsActive">
+                <label class="custom-control-label" for="IsActive">@AppResources.Active</label>
+                <ValidationMessage For="@(() => Model.IsActive)" />
+            </div>
+        </div>
+       
+        <div class="form-group col-md-6">
+            <label for="image">Select File: </label>
+            <InputFile OnChange="@(e=>OnInputFileChange(e,AttachmentTypesEnum.GeneralFileAttachment))" />
+            <ValidationMessage For="@(() => Model.AttachemntId)" />
         </div>
     </div>
-    
-    <NavLink href="/Project/index" class="btn btn-primary">Back</NavLink>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+    <NavLink class="anchor-link link-button mt-3" href="/Project/index">Back</NavLink>
+    <button type="submit" class="submit-button mt-3">Submit</button>
 
 </EditForm>
 
+<MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
 
 
 @code {

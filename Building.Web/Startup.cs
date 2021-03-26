@@ -12,6 +12,10 @@ using FluentValidation;
 using Application.App.Services.Projects;
 using App.Identity;
 using Application.App.Contracts.Identity;
+using Microsoft.AspNetCore.Http;
+using FluentValidation.AspNetCore;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Building.Web
 {
@@ -31,7 +35,9 @@ namespace Building.Web
             services.AddRazorPages();
             services.AddServerSideBlazor(c => c.DetailedErrors = true);
             services.AddTransient<IValidator<ProjectDto>, ProjectValidator>();
+            services.AddValidatorsFromAssemblyContaining<ProjectDto>();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddCoreServices();
             services.AddApplicationServices();
             //services.AddInfrastructureServices(Configuration);

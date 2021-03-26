@@ -1,5 +1,4 @@
-﻿using Application.App.Contracts.Persistence;
-using Application.App.Enum;
+﻿using Application.App.Enum;
 using Domain.App.Common;
 using Framework.Core;
 using Microsoft.AspNetCore.Http;
@@ -7,19 +6,19 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace App.Application.Contracts.Persistence
+namespace Application.App.Services.Common
 {
-    public interface IAttachmentRepository : IAsyncRepository<Attachment>
+    public interface IAttachmentService
     {
         Task<ReturnResult<Guid>> AddAttachment(IFormFile file, string title = null);
 
-        Task<ReturnResult<Attachment>> AddOrUpdateAttachmentAsync(
+        Task<ReturnResult<Attachment>> AddOrUpdateAttachment(
        IFormFile file,
        AttachmentTypesEnum attType,
        Guid? attachmentId = null,
        string title = null);
 
-        Task<Attachment> AddOrUpdateAttachmentAsync(
+        Task<Attachment> AddOrUpdateAttachment(
        string fileName,
        string contentType,
        byte[] fileBytes,
@@ -33,16 +32,28 @@ namespace App.Application.Contracts.Persistence
 
         Task<Attachment> GetAttachmentForDownloadAsync(Guid? attachmentId);
 
+
+
+
         public void RemoveRange(List<Guid> deleteIds);
 
+
+
+        //get
         List<Attachment> GetRange(List<Guid> ids);
+
+
 
         Task<bool> UpdateAttachmentsTitlesAsync(List<Guid> ids, List<string> titles);
 
         void DeleteAttachmentFromFileSystem(string fileRelativePath);
 
+
         byte[] GenerateThumbnail(byte[] bytes);
 
+
         string SaveAttachmentToFileSystem(Attachment attach);
+
+
     }
 }
