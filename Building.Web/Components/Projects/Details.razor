@@ -1,4 +1,4 @@
-﻿@page "/Details/{Id:guid}"
+﻿@page "/details/{Id:guid}"
 <h3>@AppResources.ProjectDetails</h3>
 
 @if (project == null)
@@ -68,9 +68,10 @@ else
             <label for="SerialNumber">@AppResources.SerialNumber</label>
             <label type="text" readonly id="SerialNumber" class="form-control">@project.SerialNumber</label>
         </div>
+        
         <div class="form-group col-md-6">
             <label for="ProjectType">@AppResources.ProjectTypeId</label>
-            <label type="text" readonly id="ProjectType" class="form-control">@project.ProjectType</label>
+            <label type="text" readonly id="ProjectType" class="form-control">@projectType.ProjectType</label>
         </div>
     </div>
 
@@ -123,4 +124,3 @@ else
         <NavLink href="/Project/index" class="btn btn-primary">Back</NavLink>
     </div>
 }
-

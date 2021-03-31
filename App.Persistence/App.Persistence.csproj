@@ -5,6 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20210327033727_26-03-presistnace.cs" />
+    <Compile Remove="Migrations\20210327033727_26-03-presistnace.Designer.cs" />
+    <Compile Remove="Migrations\20210327034709_26-03-presistnace.cs" />
+    <Compile Remove="Migrations\20210327034709_26-03-presistnace.Designer.cs" />
+    <Compile Remove="Migrations\20210327035121_26-03-presistnace.cs" />
+    <Compile Remove="Migrations\20210327035121_26-03-presistnace.Designer.cs" />
+    <Compile Remove="Migrations\20210327035413_26-03-presistnace.cs" />
+    <Compile Remove="Migrations\20210327035413_26-03-presistnace.Designer.cs" />
+    <Compile Remove="Migrations\20210327151130_27-03-presistnace.cs" />
+    <Compile Remove="Migrations\20210327151130_27-03-presistnace.Designer.cs" />
+    <Compile Remove="Migrations\20210327152044_26-03-presistnace.cs" />
+    <Compile Remove="Migrations\20210327152044_26-03-presistnace.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Blazored.FluentValidation" Version="1.4.1" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />

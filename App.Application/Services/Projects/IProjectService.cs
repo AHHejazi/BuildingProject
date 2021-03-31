@@ -16,7 +16,7 @@ namespace Application.App.Services.Projects
         Task<IReadOnlyList<Project>> ProjectListQuery();
 
 
-        Task<Project> GetProjectByIdAsync(Guid Id);
+        Task<ProjectDto> GetProjectByIdAsync(Guid Id);
         Task<ProjectVM> SearchProjectsAsync(ProjectVM projectVM);
         Task UpdateProject(ProjectDto projectDto);
     }

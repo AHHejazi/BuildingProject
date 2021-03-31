@@ -25,11 +25,6 @@ namespace Building.Web.Components.Buildings
         [Parameter]
         public Guid Id { get; set; }
 
-        protected async override Task OnInitializedAsync()
-        {
-
-            BuildingTypeList = await _lookupServices.GetBuildingTypeList();
-        }
     
 
 

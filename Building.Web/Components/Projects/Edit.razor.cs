@@ -16,8 +16,8 @@ namespace Building.Web.Components.Projects
     {
         [Inject]
         public IProjectService _projectService { get; set; }
-        public Project project;
-        public ProjectDto projectDto;
+        //public Project project;
+        public ProjectDto project;
         private IEnumerable<SelectListItem> ProjectTypeList;
 
         [Inject]
@@ -35,7 +35,7 @@ namespace Building.Web.Components.Projects
         
         public void ValidFormSubmitted()
         {
-            _projectService.UpdateProject(projectDto);
+            _projectService.UpdateProject(project);
         }
     }
 }

@@ -4,14 +4,16 @@ using App.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace App.Persistence.Migrations
 {
     [DbContext(typeof(BuildingDbContext))]
-    partial class BuildingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210329210722_29-03-presistnace")]
+    partial class _2903presistnace
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -260,6 +262,9 @@ namespace App.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("BuildingTypeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasMaxLength(250)
@@ -306,6 +311,8 @@ namespace App.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BuildingTypeId");
 
                     b.HasIndex("ProjectId");
 
@@ -387,6 +394,27 @@ namespace App.Persistence.Migrations
                     b.HasIndex("BuildingId");
 
                     b.ToTable("Incomes", "Building");
+                });
+
+            modelBuilder.Entity("Domain.App.Entities.Lookup.BuildingType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NameAr")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("NameEn")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BuildingType", "lookup");
                 });
 
             modelBuilder.Entity("Domain.App.Entities.Lookup.OutbuildingsType", b =>
@@ -662,11 +690,19 @@ namespace App.Persistence.Migrations
 
             modelBuilder.Entity("Domain.App.Entities.Building", b =>
                 {
+                    b.HasOne("Domain.App.Entities.Lookup.BuildingType", "BuildingType")
+                        .WithMany("Buildings")
+                        .HasForeignKey("BuildingTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Domain.App.Entities.Project", "Project")
                         .WithMany("Buildings")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BuildingType");
 
                     b.Navigation("Project");
                 });
@@ -761,6 +797,11 @@ namespace App.Persistence.Migrations
                     b.Navigation("Outbuildings");
 
                     b.Navigation("Supplies");
+                });
+
+            modelBuilder.Entity("Domain.App.Entities.Lookup.BuildingType", b =>
+                {
+                    b.Navigation("Buildings");
                 });
 
             modelBuilder.Entity("Domain.App.Entities.Lookup.OutbuildingsType", b =>

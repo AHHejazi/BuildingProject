@@ -20,9 +20,6 @@ namespace Application.App.Services.Lookups
           return await _lookupRepository.GetProjectTypeList();
         }
 
-        public async Task<IEnumerable<SelectListItem>> GetBuildingTypeList()
-        {
-            return await _lookupRepository.GetBuildingTypeList();
-        }
+       
     }
 }

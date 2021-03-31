@@ -40,7 +40,7 @@ namespace App.Persistence
         public DbSet<Project> Projects { get; set; }
 
         public DbSet<ProjectType> ProjectTypes { get; set; }
-        public DbSet<BuildingType> BuildingTypes { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

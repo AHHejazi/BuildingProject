@@ -15,8 +15,9 @@ namespace Application.App.Services.Buildings
         Task<IReadOnlyList<Building>> BuildingListQuery();
 
 
-        Task<Building> GetBuildingByIdAsync(Guid Id);
-        Task<BuildingVM> SearchBuildingAsync(BuildingVM buildingVM);
+        Task<BuildingDto> GetBuildingByIdAsync(Guid Id);
+        //Task<BuildingVM> SearchBuildingAsync(BuildingVM buildingVM);
         Task UpdateBuilding(BuildingDto buildingDto);
+        Task<BuildingVM> SearchBuildingAsync(BuildingVM buildingVM);
     }
 }

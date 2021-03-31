@@ -118,10 +118,11 @@ namespace Application.App.Services.Projects
             await _projectRepository.DeleteAsync(projectId);
         }
 
-        public async Task<Project> GetProjectByIdAsync(Guid Id)
+        public async Task<ProjectDto> GetProjectByIdAsync(Guid Id)
         {
             var obj = await _projectRepository.GetByIdAsync(Id);
-            return obj;
+            var retObj = _mapper.Map<ProjectDto>(obj);
+            return retObj;
 
         }
 

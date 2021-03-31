@@ -12,7 +12,8 @@ namespace Building.Web.Components.Projects
     {
         [Inject]
         public IProjectService _projectService { get; set; }
-        public Project project;
+        public ProjectDto project;
+        public Project projectType;
 
         [Parameter]
         public Guid Id { get; set; }

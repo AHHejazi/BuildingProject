@@ -30,9 +30,7 @@ namespace App.Persistence.Configurations
                .HasForeignKey(d => d.ProjectId);
 
 
-            entity.HasOne(d => d.BuildingType)
-               .WithMany(p => p.Buildings)
-               .HasForeignKey(d => d.BuildingTypeId);
+          
 
         }
     }

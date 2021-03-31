@@ -35,18 +35,7 @@ namespace App.Persistence.Repositories
 
         }
 
-        public async Task<IEnumerable<SelectListItem>> GetBuildingTypeList(CancellationToken cancellationToken = default)
-        {
-            return await _cache.GetOrCreateAsync(CacheHelpers.GenerateCacheKey("BuildingType"), async entry =>
-            {
-                entry.SlidingExpiration = CacheHelpers.DefaultCacheDuration;
-                var list = await _dbContext.BuildingTypes.ToListAsync(cancellationToken);
-                return list.Select(s =>
-                     new SelectListItem(
-                        CultureHelper.IsArabic ? s.Number : s.Number, s.Id.ToString())).ToList();
-            });
-
-        }
+        
 
 
 

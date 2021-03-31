@@ -65,10 +65,11 @@ namespace Application.App.Services.Buildings
 
 
 
-        public async Task<Building> GetBuildingByIdAsync(Guid Id)
+        public async Task<BuildingDto> GetBuildingByIdAsync(Guid Id)
         {
             var obj = await _buildingRepository.GetByIdAsync(Id);
-            return obj;
+            var retObj = _mapper.Map<BuildingDto>(obj);
+            return retObj;
 
         }
 

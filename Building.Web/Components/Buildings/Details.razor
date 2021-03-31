@@ -1,4 +1,4 @@
-﻿@page "/Building/Details/{Id:guid}"
+﻿@page "/detail/{Id:guid}"
 <h3>@AppResources.BuildingDetails</h3>
 
 @if (buildingDto == null)
@@ -48,6 +48,8 @@ else
         </div>
     </div>
 
-    <NavLink href="/Building/index" class="btn btn-primary">Back</NavLink>
+    <div class="form-row form-group">
+        <NavLink href="/Building/index" class="btn btn-primary">Back</NavLink>
+    </div>
 }
 

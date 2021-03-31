@@ -7,6 +7,6 @@ namespace Application.App.Services.Lookups
     public interface ILookupServices
     {
        public Task<IEnumerable<SelectListItem>> GetProjectTypeList();
-       public Task<IEnumerable<SelectListItem>> GetBuildingTypeList();
+       
     }
 }

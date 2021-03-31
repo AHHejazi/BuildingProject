@@ -13,7 +13,7 @@ namespace Application.App.Services.Buildings
 
         public decimal TotalSurfaceArea { get; set; }
 
-        public Nullable<byte> NumberOfFloor { get; set; }
+        public Nullable<int> NumberOfFloor { get; set; }
 
         public string LicenseNumber { get; set; }
         public string StampingNumber { get; set; }

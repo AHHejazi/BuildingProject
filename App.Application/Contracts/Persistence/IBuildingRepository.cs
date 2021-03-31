@@ -10,8 +10,9 @@ namespace Application.App.Contracts.Persistence
     public interface IBuildingRepository : IAsyncRepository<Building>
     {
         Task<bool> IsBuildingNameUnique(string Number);
-       // Task UpdateAsync(BuildingDto building);
-       // Task<BuildingVM> SearchAsync(BuildingVM buildingVM);
+        //Task<BuildingVM> SearchAsync(BuildingVM projectVM);
+        // Task UpdateAsync(BuildingDto building);
+        // Task<BuildingVM> SearchAsync(BuildingVM buildingVM);
 
     }
 }

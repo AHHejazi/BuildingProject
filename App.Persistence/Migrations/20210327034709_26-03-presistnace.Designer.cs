@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Persistence.Migrations
 {
     [DbContext(typeof(BuildingDbContext))]
-    [Migration("20210326205111_26-03-presistnace")]
+    [Migration("20210327034709_26-03-presistnace")]
     partial class _2603presistnace
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
