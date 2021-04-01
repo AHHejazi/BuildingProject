@@ -43,10 +43,7 @@ namespace Application.App.Services.Buildings
 
 
 
-        public Task DeleteBuildingAsync(Guid buildingId)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         //public Task<Building> GetBuildingByIdAsync(Guid Id)
         //{
@@ -81,10 +78,10 @@ namespace Application.App.Services.Buildings
         //    Saved = true;
         //}
 
-        //public async Task DeleteBuildingAsync(Guid buildingId)
-        //{
-        //    await _buildingRepository.DeleteAsync(buildingId);
-        //}
+        public async Task DeleteBuildingAsync(Guid buildingId)
+        {
+            await _buildingRepository.DeleteAsync(buildingId);
+        }
 
 
 
@@ -94,11 +91,12 @@ namespace Application.App.Services.Buildings
             return result;
         }
 
-        //public async Task<BuildingVM> SearchBuildingAsync(BuildingVM projectVM)
-        //{
-        //    return await _buildingRepository.SearchAsync(projectVM);
-        //}
+        public async Task<BuildingVM> SearchBuildingsAsync(BuildingVM buildingVM)
+        {
+            return await _buildingRepository.SearchAsync(buildingVM);
+        }
 
+        
 
 
 

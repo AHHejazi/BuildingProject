@@ -1,5 +1,6 @@
 ﻿@page "/Building/index"
-
+@page "/Building/index/{page}"
+@attribute [Authorize]
 
 <h3>@AppResources.BuildingsManagment</h3>
 
@@ -52,14 +53,15 @@ else
                         <td>@building.TotalSurfaceArea</td>
                         <td>@building.NumberOfFloor</td>
                         <td>
-                            <a class="fa fa-edit" title="@AppResources.Edit" href="@($"edit/{building.Id}")"></a>
-                            <a class="fa fa-trash" title="@AppResources.Delete" @onclick="@(async()=>await DeleteBuilding(building.Id))"></a>
+                            <a class="fa fa-edit fa-lg" title="@AppResources.Edit" href="@($"edit/{building.Id}")"></a>
+                            <a title="@AppResources.Delete" @onclick="@(async()=>await DeleteBuilding(building.Id))"><i class="fa fa-trash-o fa-lg"></i></a>
                         </td>
 
                     </tr>
                 }
             </tbody>
         </table>
+        <Pager Result=@BuildingVM.BuildingList PageChanged=@PagerPageChanged />
     </div>
 }
 

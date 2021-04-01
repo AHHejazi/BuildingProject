@@ -16,7 +16,7 @@ namespace Application.App.Services.Buildings
 
 
         Task<BuildingDto> GetBuildingByIdAsync(Guid Id);
-        //Task<BuildingVM> SearchBuildingAsync(BuildingVM buildingVM);
+        Task<BuildingVM> SearchBuildingsAsync(BuildingVM buildingVM);
         Task UpdateBuilding(BuildingDto buildingDto);
         Task<BuildingVM> SearchBuildingAsync(BuildingVM buildingVM);
     }

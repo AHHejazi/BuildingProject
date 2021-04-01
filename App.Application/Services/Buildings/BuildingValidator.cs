@@ -46,7 +46,7 @@ namespace Application.App.Services.Buildings
 
         private async Task<bool> EventNameAndDateUnique(BuildingDto e, CancellationToken token)
         {
-            return !(await _buildingRepository.IsBuildingNameUnique(e.Number));
+            return !(await _buildingRepository.IsBuildingNumberUnique(e.Number));
         }
     }
 }
