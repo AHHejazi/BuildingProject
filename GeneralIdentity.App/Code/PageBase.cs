@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components.Forms;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Building.Web.Code
+namespace GeneralIdentity.App.Code
 {
     public class PageBase : ComponentBase
     {

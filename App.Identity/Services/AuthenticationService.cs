@@ -1,13 +1,12 @@
 ﻿using Application.App.Contracts.Identity;
-using Application.App.Models.Authentication;
-using Blazored.LocalStorage;
+using Application.App.Responses;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Net.Http.Headers;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace App.Identity.Services
@@ -81,9 +80,10 @@ namespace App.Identity.Services
             throw new NotImplementedException();
         }
 
-        public async Task<bool> RegisterAsync(string firstName, string lastName, string userName, string email, string password)
+        public async Task<BaseResponse> RegisterAsync(string firstName, string lastName, string userName, string email, string password)
         {
-            bool isDone;
+         
+            var baseResponse = new BaseResponse();
             try
             {
                 var user = new IdentityUser { UserName = userName, Email = email };
@@ -92,19 +92,23 @@ namespace App.Identity.Services
                 {
                     _logger.LogInformation("User created a new account with password.");
                     _navigationManager.NavigateTo("/", true);
-                    isDone = true;
+                    return baseResponse;
                 }
                 else
                 {
-                    isDone = false;
+                    baseResponse.Success = false;
+                    baseResponse.ValidationErrors = new List<string>();
+                    baseResponse.ValidationErrors.Add(string.Join(";",result.Errors.Select(x=>x.Description).ToList()));
                 }
-                return isDone;
+                return baseResponse;
             }
             catch (Exception e)
             {
-                isDone = false;
                 _logger.LogInformation(e.ToString());
-                return isDone;
+                baseResponse.Success = false;
+                baseResponse.ValidationErrors = new List<string>();
+                baseResponse.ValidationErrors.Add(e.ToString());
+                return baseResponse;
             }
 
         }

@@ -1,9 +1,9 @@
 ﻿@page "/Project/Add"
 @inherits PageBase
 <h3>New Building</h3>
-<EditForm Context="formContext" Model="Model" OnValidSubmit="@(SubmitProjectAsync)">
-    <FluentValidator></FluentValidator>
-
+<EditForm Model="Model" Context="formContext" OnValidSubmit="@(SubmitProjectAsync)">
+    <FluentValidationValidator  DisableAssemblyScanning="@true" />
+    <ValidationSummary></ValidationSummary>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="NameAr">@AppResources.NameArabic</label>
@@ -67,7 +67,6 @@
 
     <div class="form-row">
 
-
         <div class="form-group col-md-6">
             <label for="PropertyLatitude">@AppResources.PropertyLatitude</label>
 
@@ -83,7 +82,6 @@
     </div>
 
     <div class="form-row">
-
 
         <div class="form-group col-md-6">
             <label for="SerialNumber">@AppResources.SerialNumber</label>
@@ -165,7 +163,7 @@
                 <ValidationMessage For="@(() => Model.IsActive)" />
             </div>
         </div>
-       
+
         <div class="form-group col-md-6">
             <label for="image">Select File: </label>
             <InputFile OnChange="@(e=>OnInputFileChange(e,AttachmentTypesEnum.GeneralFileAttachment))" />
@@ -175,16 +173,10 @@
 
 
     <NavLink class="anchor-link link-button mt-3" href="/Project/index">Back</NavLink>
-    <button type="submit" class="submit-button mt-3">Submit</button>
+    <button @onclick="@(async e => await ValidateForm(formContext))" type="submit" class="submit-button mt-3">Submit</button>
 
 </EditForm>
 
 <MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
-
-
-@code {
-
-
-}
 
 

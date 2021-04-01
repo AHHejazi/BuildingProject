@@ -18,13 +18,21 @@ namespace Application.App.Services.Projects
                 .NotNull().WithMessage(x => AppResources.Required)
                 .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
 
+            RuleFor(p => p.NameEn)
+                .NotNull().WithMessage(x => AppResources.Required)
+                .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
+
+            RuleFor(p => p.Number).NotNull().WithMessage(x => AppResources.Required)
+                .MinimumLength(10).WithMessage("{PropertyName} must not exceed 10 characters.");
+
             RuleFor(p => p.QuarterName)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .NotNull();
 
             RuleFor(e => e)
-                .MustAsync(EventNameAndDateUnique)
-                .WithMessage("An event with the same name and date already exists.");
+                .MustAsync(async (e, cancellationToken) => await EventNameAndDateUnique(e, cancellationToken))
+                .WithMessage("An event with the same name and date already exists.")
+            .When(p => !string.IsNullOrEmpty(p.NameAr) && !string.IsNullOrEmpty(p.NameEn));
 
             RuleFor(p => p.PropertyNumber)
                 .NotEmpty().WithMessage("{PropertyName} is required.");

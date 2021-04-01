@@ -1,24 +1,18 @@
+using App.Identity;
+using App.Persistence;
 using Application.App;
 using Application.App.Contracts;
-using App.Persistence;
+using Application.App.Contracts.Identity;
+using Application.App.Services.Projects;
 using Building.Web.Data;
 using Building.Web.Services;
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using FluentValidation;
-using Application.App.Services.Projects;
-using Application.App.Services.Buildings;
-using Application.App.Contracts.Persistence;
-using App.Persistence.Repositories;
-using App.Identity;
-using Application.App.Contracts.Identity;
-using Microsoft.AspNetCore.Http;
-using FluentValidation.AspNetCore;
-using System.Collections.Generic;
-using System.Reflection;
 
 namespace Building.Web
 {
@@ -39,7 +33,6 @@ namespace Building.Web
             services.AddServerSideBlazor(c => c.DetailedErrors = true);
             services.AddTransient<IValidator<ProjectDto>, ProjectValidator>();
             //services.AddTransient<IValidator<BuildingDto>, BuildingValidator>();
-            services.AddValidatorsFromAssemblyContaining<ProjectDto>();
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddCoreServices();

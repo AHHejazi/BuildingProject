@@ -1,17 +1,18 @@
 ﻿using Application.App.Contracts.Identity;
 using Domain.App.ViewModels;
+using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
+using System.Linq;
 
 namespace GeneralIdentity.App.Components.Identity
 {
-    public partial class Register: ComponentBase
+    public partial class Register: PageBase
     {
         public RegisterViewModel RegisterViewModel { get; set; } //= new RegisterViewModel();
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
-        public string Message { get; set; }
 
         [Inject]
         private IAuthenticationService AuthenticationService { get; set; }
@@ -29,11 +30,13 @@ namespace GeneralIdentity.App.Components.Identity
         {
             var result = await AuthenticationService.RegisterAsync(RegisterViewModel.FirstName, RegisterViewModel.LastName, RegisterViewModel.UserName, RegisterViewModel.Email, RegisterViewModel.Password);
 
-            if (result)
+            if (result.Success)
             {
                 NavigationManager.NavigateTo("home");
             }
-            Message = "Something went wrong, please try again.";
+
+            StatusClass = "alert alert-danger";
+            Message = result.ValidationErrors.FirstOrDefault();
         }
 
     }

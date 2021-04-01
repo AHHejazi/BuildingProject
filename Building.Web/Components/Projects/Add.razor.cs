@@ -1,14 +1,13 @@
 ﻿using Application.App.Enum;
 using Application.App.Services.Lookups;
 using Application.App.Services.Projects;
-using Building.Web.Code;
+using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace Building.Web.Components.Projects
@@ -16,15 +15,8 @@ namespace Building.Web.Components.Projects
     public partial class Add : PageBase
     {
         public ProjectDto Model = new ProjectDto();
+
         private IEnumerable<SelectListItem> ProjectTypeList;
-
-        [Inject]
-        private  IWebHostEnvironment _webHostEnvironment { get; set; }
-        [Inject]
-        private  IHttpContextAccessor _httpContextAccessor { get; set; }
-
-        [Inject]
-        private NavigationManager _navigationManager { get; set; }
 
         [Inject]
         private IProjectService _projectService { get; set; }
@@ -34,7 +26,12 @@ namespace Building.Web.Components.Projects
 
         private EditContext editContext;
 
+        [Parameter]
+        public EventCallback<ProjectDto> OnValidSubmit { get; set; }
+
         List<FileData> fileData = new List<FileData>();
+
+
 
         protected async override Task OnInitializedAsync()
         {
@@ -65,6 +62,16 @@ namespace Building.Web.Components.Projects
                 StatusClass = "alert alert-danger";
                 Message = "Something went wrong adding the new employee. Please try again.";
             }
+        }
+
+        public async Task ValidateForm(EditContext editContext)
+        {
+            
+            var isValid = editContext.Validate();
+
+            if (!isValid)
+                return;
+
         }
     }
 }
