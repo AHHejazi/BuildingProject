@@ -1,12 +1,13 @@
 ﻿using Application.App.Services.Projects;
+using ComponentsLibrary.DeleteConfirmation;
+using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
 namespace Building.Web.Components.Projects
 {
-    public partial class Index : ComponentBase
+    public partial class Index : PageBase
     {
         [Inject]
         private NavigationManager _navigationManager { get; set; }
@@ -14,13 +15,12 @@ namespace Building.Web.Components.Projects
         public IProjectService _projectService { get; set; }
         public ProjectVM ProjectVM=new ProjectVM();
       
-        //used to store state of screen
-        protected string Message = string.Empty;
-        protected string StatusClass = string.Empty;
-        protected bool Saved;
         [Parameter]
         public string Page { get; set; } = "1";
 
+        protected DeleteDialog DeleteDialog { get; set; }
+
+        private Guid SelectedPrjectId;
 
         protected override async Task OnInitializedAsync()
         {
@@ -56,12 +56,28 @@ namespace Building.Web.Components.Projects
             await GetProjects();
         }
 
-        public async Task DeleteProject(Guid projectId)
+        protected void DeleteConfirmationProject(Guid projectId)
         {
-            await _projectService.DeleteProjectAsync(projectId);
-            StatusClass = "alert-success";
-            Message = "Deleted successfully";
-            Saved = true;
+            DeleteDialog.Show();
+            SelectedPrjectId = projectId;
+            StateHasChanged();
+        }
+
+        public async void DeleteDialog_OnDialogClose()
+        {
+           var deleteStatus = await _projectService.DeleteProjectAsync(SelectedPrjectId);
+
+            if (deleteStatus.Success)
+            {
+                await GetProjects();
+            }
+            else
+            {
+                StatusClass = "alert alert-danger";
+                Message = deleteStatus.Message;
+            }
+
+            StateHasChanged();
         }
     }
 }

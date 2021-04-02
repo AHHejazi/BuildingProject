@@ -4,6 +4,7 @@ using System.Text;
 using Domain.App.Entities;
 using System.Threading.Tasks;
 using Framework.Core.ListManagment;
+using Application.App.Responses;
 
 namespace Application.App.Services.Projects
 {
@@ -11,7 +12,7 @@ namespace Application.App.Services.Projects
     {
         Task<Guid> AddProject(ProjectDto project);
         //Task UpdateProject(Project project);
-        Task DeleteProjectAsync(Guid projectId);
+        Task<BaseResponse> DeleteProjectAsync(Guid projectId);
 
         Task<IReadOnlyList<Project>> ProjectListQuery();
 

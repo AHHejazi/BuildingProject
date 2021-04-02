@@ -63,6 +63,8 @@ namespace Building.Web.Components.Buildings
             Message = "Deleted successfully";
             Saved = true;
         }
+
+       
     }
 }
 

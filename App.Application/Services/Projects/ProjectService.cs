@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Linq.Expressions;
 using Application.App.Services.Common;
+using Application.App.Responses;
 
 namespace Application.App.Services.Projects
 {
     public class ProjectService : IProjectService
     {
         private readonly IProjectRepository _projectRepository;
+        private readonly IBuildingRepository _buildingRepository;
+
         private readonly IMapper _mapper;
         private readonly ILogger<ProjectDto> _logger;
         private readonly IAttachmentService _attachmentService;
@@ -25,12 +28,14 @@ namespace Application.App.Services.Projects
         protected bool Saved;
 
 
-        public ProjectService(IMapper mapper, IProjectRepository projectRepository, ILogger<ProjectDto> logger, IAttachmentService attachmentService)
+        public ProjectService(IMapper mapper, IProjectRepository projectRepository, ILogger<ProjectDto> logger, IAttachmentService attachmentService,
+            IBuildingRepository buildingRepository)
         {
             _mapper = mapper;
             _projectRepository = projectRepository;
             _logger = logger;
             _attachmentService = attachmentService;
+            _buildingRepository = buildingRepository;
         }
 
 
@@ -46,24 +51,6 @@ namespace Application.App.Services.Projects
                 var prject = _mapper.Map<Project>(project);
                 prject.Number = GenerateProjectNumber();
 
-                //if (selectedFiles != null)//take first image
-                //{
-                //    var file = selectedFiles[0];
-                //    Stream stream = file.OpenReadStream();
-                //    MemoryStream ms = new MemoryStream();
-                //    await stream.CopyToAsync(ms);
-                //    stream.Close();
-
-                //    Model.ImageName = file.Name;
-                //    Model.ImageContent = ms.ToArray();
-
-                //    string currentUrl = _httpContextAccessor.HttpContext.Request.Host.Value;
-                //    var path = $"{_webHostEnvironment.WebRootPath}\\uploads\\{Model.ImageName}";
-                //    var fileStream = System.IO.File.Create(path);
-                //    fileStream.Write(Model.ImageContent, 0, Model.ImageContent.Length);
-                //    fileStream.Close();
-                //    Model.ImageName = $"https://{currentUrl}/uploads/{Model.ImageName}";
-                //}
                 if (project.fileData != null && project.fileData.Count() > 0)
                 {
                     foreach (var item in project.fileData)
@@ -71,7 +58,6 @@ namespace Application.App.Services.Projects
                         var retAttachmentId = await _attachmentService.AddOrUpdateAttachment(item.FileName, item.FileType, item.Data, item.AttachemntType);
                     }
                 }
-
 
                 prject = await _projectRepository.AddAsync(prject);
                 return prject.Id;
@@ -104,18 +90,21 @@ namespace Application.App.Services.Projects
             return $"{currentYear}-{currentMonth}-{(currentNo + 1):d4}";
         }
 
-        //public async Task<Guid> DeleteProject(ProjectDto project)
-        //{
-        //    var proj = _mapper.Map<Project>(project);
-        //    proj = await _projectRepository.DeleteAsync(proj);
-        //    return proj.Id;
-        //}
-
-
-
-        public async Task DeleteProjectAsync(Guid projectId)
+        public async Task<BaseResponse> DeleteProjectAsync(Guid projectId)
         {
+            var baseResponse = new BaseResponse();
+            var isHasRelatedbuiding = await _buildingRepository.CheckRelatedBuildingAsync(projectId);
+
+            if (isHasRelatedbuiding)
+            {
+                baseResponse.Success = false;
+                baseResponse.Message = "Project already related with building project " +
+                    "you have to delete realted project before";
+                return baseResponse;
+            }
+
             await _projectRepository.DeleteAsync(projectId);
+            return baseResponse;
         }
 
         public async Task<ProjectDto> GetProjectByIdAsync(Guid Id)

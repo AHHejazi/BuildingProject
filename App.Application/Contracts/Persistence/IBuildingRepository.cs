@@ -11,7 +11,7 @@ namespace Application.App.Contracts.Persistence
     {
         Task<bool> IsBuildingNumberUnique(string Number);
         Task<BuildingVM> SearchAsync(BuildingVM buildingVM);
-        
 
+        Task<bool> CheckRelatedBuildingAsync(Guid projectId);
     }
 }

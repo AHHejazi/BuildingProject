@@ -13,11 +13,18 @@ namespace App.Persistence.Repositories
 {
    public class BuildingRepository : BaseRepository<Building>, IBuildingRepository
     {
-        private readonly BuildingDbContext _dbContext;
+        private new readonly BuildingDbContext _dbContext;
         public BuildingRepository(BuildingDbContext dbContext) : base(dbContext)
         {
             this._dbContext = dbContext;
 
+        }
+
+        public async Task<bool> CheckRelatedBuildingAsync(Guid projectId)
+        {
+            var isRelated = await _dbContext.Buildings.AnyAsync(x => x.ProjectId == projectId);
+
+            return isRelated;
         }
 
         public async Task<bool> IsBuildingNumberUnique(string number)

@@ -67,10 +67,10 @@ button {
     font-size: 12px;
     font-weight: bold;
     height: 30px;
-    line-height: 12px;
+    line-height: 12px !important;
     text-transform: uppercase;
     max-width: 300px;
-    outline: 0 !important
+    outline: 0 !important;
 }
 
 .anchor-link:link, .anchor-link:visited {

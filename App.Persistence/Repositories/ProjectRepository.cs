@@ -15,7 +15,7 @@ namespace App.Persistence.Repositories
 {
     public class ProjectRepository : BaseRepository<Project>, IProjectRepository
     {
-        private readonly BuildingDbContext _dbContext;
+        private new readonly BuildingDbContext _dbContext;
 
         public ProjectRepository(BuildingDbContext dbContext) : base(dbContext)
         {
