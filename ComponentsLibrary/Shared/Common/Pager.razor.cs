@@ -1,9 +1,7 @@
-﻿using System;
-using Domain.App.Entities;
-using Microsoft.AspNetCore.Components;
-using PagedList.Core;
+﻿using Microsoft.AspNetCore.Components;
+using System;
 
-namespace Building.Web.Shared.Common
+namespace ComponentsLibrary.Shared.Common
 {
     public partial class Pager : ComponentBase
     {

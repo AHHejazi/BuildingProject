@@ -1,10 +1,10 @@
 ﻿using Application.App.Contracts.Persistence;
 using AutoMapper;
 using Domain.App.Entities;
+using Framework.Core.Exceptions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.App.Services.Buildings
@@ -35,7 +35,7 @@ namespace Application.App.Services.Buildings
             var validationResult = await validator.ValidateAsync(building);
 
             if (validationResult.Errors.Count > 0)
-                throw new Exceptions.ValidationException(validationResult);
+                throw new ValidationException(validationResult);
             var build = _mapper.Map<Building>(building);
             build = await _buildingRepository.AddAsync(build);
             return build.Id;

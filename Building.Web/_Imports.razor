@@ -5,17 +5,26 @@
 @using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.AspNetCore.Components.Web.Virtualization
-@using Microsoft.JSInterop
 @using Building.Web
-@using Building.Web.Shared
 @using Localization.App
-@using Microsoft.Extensions.Configuration
-@using Framework.Core.Globalization
 @using Blazored.FluentValidation
-@using Building.Web.Shared.Common
 @using Application.App.Contracts.Identity
 @using GeneralIdentity.App.Components.Identity
-@using ComponentsLibrary.DeleteConfirmation
-@using ComponentsLibrary.Alerts
 @using GeneralIdentity.App.Code
 @using Application.App.Enum
+@using ComponentsLibrary.Shared
+@using ComponentsLibrary.DeleteConfirmation
+@using ComponentsLibrary.Alerts
+@using ComponentsLibrary.ErrorHandler
+@using ComponentsLibrary.Shared.Common
+
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using ComponentsLibrary.Shared
+@using Microsoft.JSInterop
+@using Microsoft.Extensions.Configuration
+@using Framework.Core.Globalization

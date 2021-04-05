@@ -1,15 +1,15 @@
 ﻿using Application.App.Contracts.Persistence;
-using Domain.App.Entities;
+using Application.App.Responses;
+using Application.App.Services.Common;
 using AutoMapper;
+using Domain.App.Entities;
+using Framework.Core.Exceptions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using System.Linq;
 using System.Linq.Expressions;
-using Application.App.Services.Common;
-using Application.App.Responses;
+using System.Threading.Tasks;
 
 namespace Application.App.Services.Projects
 {
@@ -47,7 +47,7 @@ namespace Application.App.Services.Projects
                 var validationResult = await validator.ValidateAsync(project);
 
                 if (validationResult.Errors.Count > 0)
-                    throw new Exceptions.ValidationException(validationResult);
+                    throw new ValidationException(validationResult);
                 var prject = _mapper.Map<Project>(project);
                 prject.Number = GenerateProjectNumber();
 
@@ -101,6 +101,12 @@ namespace Application.App.Services.Projects
                 baseResponse.Message = "Project already related with building project " +
                     "you have to delete realted project before";
                 return baseResponse;
+            }
+            var project = _projectRepository.GetByIdAsync(projectId);
+
+            if (project == null)
+            {
+                throw new NotFoundException(nameof(project), projectId);
             }
 
             await _projectRepository.DeleteAsync(projectId);

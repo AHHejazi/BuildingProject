@@ -7,6 +7,7 @@ using Application.App.Services.Projects;
 using Building.Web.Data;
 using Building.Web.Services;
 using FluentValidation;
+using Framework.Core.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -63,6 +64,7 @@ namespace Building.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.ConfigureCommonRequestPipeline();
+            app.UseCustomExceptionHandler();
             app.UseRouting();
 
             app.UseAuthentication();

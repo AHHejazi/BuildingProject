@@ -1,5 +1,6 @@
 ﻿using Application.App.Services.Projects;
 using ComponentsLibrary.DeleteConfirmation;
+using ComponentsLibrary.ErrorHandler;
 using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -26,6 +27,9 @@ namespace Building.Web.Components.Projects
         {
             await GetProjects();
         }
+
+        [CascadingParameter]
+        public ErrorCasCading Error { get; set; }
 
         protected async  Task SearchProjects()
         {
@@ -65,19 +69,30 @@ namespace Building.Web.Components.Projects
 
         public async void DeleteDialog_OnDialogClose()
         {
-           var deleteStatus = await _projectService.DeleteProjectAsync(SelectedPrjectId);
-
-            if (deleteStatus.Success)
+            try
             {
-                await GetProjects();
+                throw new Exception("there is an error happen");
+                var deleteStatus = await _projectService.DeleteProjectAsync(SelectedPrjectId);
+
+                if (deleteStatus.Success)
+                {
+                    await GetProjects();
+                }
+                else
+                {
+                    StatusClass = "alert alert-danger";
+                    Message = deleteStatus.Message;
+                }
+
+                StateHasChanged();
             }
-            else
+            catch (Exception ex)
             {
-                StatusClass = "alert alert-danger";
-                Message = deleteStatus.Message;
+
+                Error.ProcessError(ex);
+                StateHasChanged();
             }
 
-            StateHasChanged();
         }
     }
 }

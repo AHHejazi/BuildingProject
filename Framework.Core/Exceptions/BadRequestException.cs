@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Application.App.Exceptions
+namespace Framework.Core.Exceptions
 {
     public class BadRequestException: ApplicationException
     {

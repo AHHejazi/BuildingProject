@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
-
 namespace ComponentsLibrary.DeleteConfirmation
 {
     public partial class DeleteDialog
