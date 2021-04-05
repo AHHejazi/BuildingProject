@@ -16,9 +16,6 @@ namespace Application.App.Services.Buildings
         {
             _buildingRepository = buildingRepository;
 
-            RuleFor(p => p.Number)
-                .NotNull().WithMessage(x => AppResources.Required);
-
             RuleFor(p => p.EstimatedCost)
                 .NotEmpty().WithMessage(x => AppResources.Required);
 

@@ -33,7 +33,7 @@ namespace Building.Web.Components.Projects
             ProjectTypeList = await _lookupServices.GetProjectTypeList();
         }
         
-        public void ValidFormSubmitted()
+        public void SubmitprojectAsync()
         {
             _projectService.UpdateProject(project);
         }

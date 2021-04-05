@@ -1,9 +1,9 @@
 ﻿@page "/edit/{Id:guid}"
 <h3>Edit Project</h3>
 @using Microsoft.AspNetCore.Components.Forms;
-<EditForm Model="@project" OnValidSubmit="@ValidFormSubmitted">
-    <FluentValidator></FluentValidator>
-    
+
+    <EditForm Model="@project" Context="formContext" OnValidSubmit="@(SubmitprojectAsync)">
+        <FluentValidationValidator DisableAssemblyScanning="@true" />
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="NameAr">@AppResources.NameArabic</label>
@@ -154,8 +154,8 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
-    
-</EditForm>
+
+    </EditForm>
 
 @code
 {

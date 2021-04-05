@@ -39,7 +39,7 @@ namespace App.Persistence.Repositories
 
             filters.Add(!string.IsNullOrEmpty(projectVM.NameAr), u => u.NameAr.Contains(projectVM.NameAr));
             filters.Add(!string.IsNullOrEmpty(projectVM.NameEn), u => u.NameEn.Contains(projectVM.NameEn));
-           
+
             var result = await _dbContext.Projects.AsNoTracking().Paginate(projectVM.PageNumber, projectVM.PageSize, filters);
 
             projectVM.Items =

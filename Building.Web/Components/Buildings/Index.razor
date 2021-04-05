@@ -1,6 +1,7 @@
 ﻿@page "/Building/index"
 @page "/Building/index/{page}"
 @attribute [Authorize]
+@inherits PageBase;
 
 <h3>@AppResources.BuildingsManagment</h3>
 
@@ -18,14 +19,35 @@ else
 
             <div class="input-group">
                 <div class="form-group col-md-6">
-                    <label for="Number">@AppResources.Number</label>
+                    <label for="ProjectId">@AppResources.ProjectId</label>
 
-                    <InputText @bind-Value="BuildingVM.Number" id="NameAr" class="form-control"></InputText>
+                    <InputSelect @bind-Value="BuildingVM.ProjectId" id="ProjectTypeId" class="form-control">
+                        
+                        @if (ProjectList != null)
+                            {
+                                foreach (var item in ProjectList)
+                                {
+                                <option value="@item.Value">@item.Text</option>
+                                }
+                            }
+
+
+                    </InputSelect>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="EstimatedCost">@AppResources.EstimatedCost</label>
+                    <InputNumber @bind-Value="BuildingVM.EstimatedCost" id="EstimatedCost" class="form-control"></InputNumber>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="NumberOfFloor">@AppResources.NumberOfFloor</label>
+                    <InputNumber @bind-Value="BuildingVM.NumberOfFloor" id="NumberOfFloor" class="form-control"></InputNumber>
                 </div>
 
             </div>
         </div>
-        <button type="submit" class="btn btn-info" @onclick="@SearchBuildings">@AppResources.Search</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-info" @onclick="@SearchBuildings">@AppResources.Search</button>
+        </div>
     </EditForm>
     <div class="form-row">
         <table class='table table-striped'>
@@ -53,8 +75,8 @@ else
                         <td>@building.TotalSurfaceArea</td>
                         <td>@building.NumberOfFloor</td>
                         <td>
-                            <a class="fa fa-edit fa-lg" title="@AppResources.Edit" href="@($"edit/{building.Id}")"></a>
-                            <a title="@AppResources.Delete" @onclick="@(async()=>await DeleteBuilding(building.Id))"><i class="fa fa-trash-o fa-lg"></i></a>
+                            <a class="fa fa-edit fa-lg" title="@AppResources.EditBuilding" href="@($"edit/{building.Id}")"></a>
+                            <a class="fa fa-trash-o fa-lg" title="@AppResources.DeleteBuilding" @onclick="()=>DeleteConfirmationBuilding(building.Id)"></a>
                         </td>
 
                     </tr>

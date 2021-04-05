@@ -1,4 +1,5 @@
 ﻿using Application.App.Contracts.Persistence;
+using Application.App.Responses;
 using AutoMapper;
 using Domain.App.Entities;
 using Microsoft.Extensions.Logging;
@@ -96,11 +97,10 @@ namespace Application.App.Services.Buildings
             return await _buildingRepository.SearchAsync(buildingVM);
         }
 
-        
-
-
-
-
+        Task<BaseResponse> IBuildingService.DeleteBuildingAsync(Guid projectId)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

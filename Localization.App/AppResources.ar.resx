@@ -159,11 +159,17 @@
   <data name="Delete" xml:space="preserve">
     <value>حذف</value>
   </data>
+  <data name="DeleteBuilding" xml:space="preserve">
+    <value>حذف بناء</value>
+  </data>
   <data name="DeleteProject" xml:space="preserve">
     <value>حذف مشروع</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>تعديل</value>
+  </data>
+  <data name="EditBuilding" xml:space="preserve">
+    <value>تعديل  بناء</value>
   </data>
   <data name="EditProject" xml:space="preserve">
     <value>تعديل مشروع</value>
@@ -209,6 +215,9 @@
   </data>
   <data name="ProjectDetails" xml:space="preserve">
     <value>تفاصيل المشروع</value>
+  </data>
+  <data name="ProjectId" xml:space="preserve">
+    <value>إختر مشروع</value>
   </data>
   <data name="ProjectsManagment" xml:space="preserve">
     <value>إدارة المشاريع</value>

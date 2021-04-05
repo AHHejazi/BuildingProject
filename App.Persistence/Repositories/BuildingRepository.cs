@@ -38,8 +38,9 @@ namespace App.Persistence.Repositories
 
             var filters = new Filters<Building>();
 
-            filters.Add(!string.IsNullOrEmpty(buildingVM.Number), u => u.Number.Contains(buildingVM.Number));
-
+            filters.Add(buildingVM.ProjectId.HasValue, u => u.ProjectId == buildingVM.ProjectId);
+            filters.Add(buildingVM.EstimatedCost.HasValue, u => u.EstimatedCost == buildingVM.EstimatedCost);
+            filters.Add(buildingVM.NumberOfFloor.HasValue, u => u.NumberOfFloor == buildingVM.NumberOfFloor); ;
             var result = await _dbContext.Buildings.AsNoTracking().Paginate(buildingVM.PageNumber, buildingVM.PageSize, filters);
 
             buildingVM.BuildingList =

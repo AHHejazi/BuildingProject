@@ -29,7 +29,7 @@ namespace Building.Web.Components.Buildings
             
             }
 
-            public void ValidFormSubmitted()
+            public void SubmitBuildingAsync()
             {
             _buildingService.UpdateBuilding(buildingDto);
             }
