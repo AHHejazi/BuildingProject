@@ -22,20 +22,71 @@ namespace Application.App.Services.Projects
                 .NotNull().WithMessage(x => AppResources.Required)
                 .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
 
-            RuleFor(p => p.Number).NotNull().WithMessage(x => AppResources.Required)
-                .MinimumLength(10).WithMessage("{PropertyName} must not exceed 10 characters.");
+            RuleFor(p => p.ContractorName).NotNull().WithMessage(x => AppResources.Required)
+                .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
 
-            RuleFor(p => p.QuarterName)
-                .NotEmpty().WithMessage("{PropertyName} is required.")
-                .NotNull();
+            RuleFor(p => p.ConsultingOfficeName).NotNull().WithMessage(x => AppResources.Required)
+                .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
+
+            RuleFor(p => p.CityName).NotNull().WithMessage(x => AppResources.Required)
+                .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
+
+            RuleFor(p => p.QuarterName).NotNull().WithMessage(x => AppResources.Required)
+                .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
+
+            RuleFor(p => p.PropertyFullAddress).NotNull().WithMessage(x => AppResources.Required)
+                .MaximumLength(300).WithMessage("{PropertyName} must not exceed 300 characters.");
+
+            RuleFor(p => p.PropertyNumber).NotEmpty().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.PropertyLatitude).NotEmpty().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.PropertyLongitude).NotEmpty().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.SerialNumber).NotEmpty().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.ProjectTypeId).NotNull().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.IsActive).NotNull().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.TotalArea).NotEmpty().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.InstrumentNumber).NotEmpty().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.BuildingLicenseNumber).NotEmpty().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.BuildingTechnique).NotNull().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.FloorsNumber).NotEmpty().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.EstimatedCost).NotEmpty().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.InstrumentAttachment).NotNull().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.BuildingLicenseAttachment).NotNull().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.ConstructionDiagrams).NotNull().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.MechanicalDiagrams).NotNull().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.ArchitecturalDiagrams).NotNull().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.ElictricalDiagrams).NotNull().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.SoilReport).NotNull().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.SurveyReport).NotNull().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.StocksNumber).NotEmpty().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.Cost).NotEmpty().WithMessage(x => AppResources.Required);
 
             RuleFor(e => e)
-                .MustAsync(async (e, cancellationToken) => await EventNameAndDateUnique(e, cancellationToken))
-                .WithMessage("An event with the same name and date already exists.")
-            .When(p => !string.IsNullOrEmpty(p.NameAr) && !string.IsNullOrEmpty(p.NameEn));
+             .MustAsync(async (e, cancellationToken) => await EventNameAndDateUnique(e, cancellationToken))
+             .WithMessage("An event with the same name and date already exists.")
+             .When(p => !string.IsNullOrEmpty(p.NameAr) && !string.IsNullOrEmpty(p.NameEn));
 
-            RuleFor(p => p.PropertyNumber)
-                .NotEmpty().WithMessage("{PropertyName} is required.");
+
         }
 
         private async Task<bool> EventNameAndDateUnique(ProjectDto e, CancellationToken token)

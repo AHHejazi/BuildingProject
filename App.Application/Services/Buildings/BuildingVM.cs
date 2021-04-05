@@ -9,8 +9,10 @@ namespace Application.App.Services.Buildings
 {
    public class BuildingVM : PagingDto
     {
-        public string Number { get; set; }
-        
+        public decimal? EstimatedCost { get; set; }
+        public int? NumberOfFloor { get; set; }
+        public Guid? ProjectId { get; set; }
+
         public StaticPagedList<Building> BuildingList { get; set; }
 
     }

@@ -159,11 +159,17 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="DeleteBuilding" xml:space="preserve">
+    <value>Delete Building</value>
+  </data>
   <data name="DeleteProject" xml:space="preserve">
     <value>Delete Project</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
+  </data>
+  <data name="EditBuilding" xml:space="preserve">
+    <value>Edit Building</value>
   </data>
   <data name="EditProject" xml:space="preserve">
     <value>Edit Project</value>
@@ -209,6 +215,9 @@
   </data>
   <data name="ProjectDetails" xml:space="preserve">
     <value>Project Details</value>
+  </data>
+  <data name="ProjectId" xml:space="preserve">
+    <value>Choose a Project</value>
   </data>
   <data name="ProjectsManagment" xml:space="preserve">
     <value>Projects Managment</value>

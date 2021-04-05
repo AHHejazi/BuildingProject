@@ -1,4 +1,5 @@
-﻿using Domain.App.Entities;
+﻿using Application.App.Responses;
+using Domain.App.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,10 +9,9 @@ namespace Application.App.Services.Buildings
 {
     public interface IBuildingService
     {
-       Task<Guid> AddBuilding(BuildingDto building);
-        
-       Task DeleteBuildingAsync(Guid buildingId);
+        Task<Guid> AddBuilding(BuildingDto building);
 
+        Task<BaseResponse> DeleteBuildingAsync(Guid projectId);
         Task<IReadOnlyList<Building>> BuildingListQuery();
 
 

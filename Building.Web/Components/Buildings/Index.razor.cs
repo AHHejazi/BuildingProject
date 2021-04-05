@@ -1,5 +1,9 @@
 ﻿using Application.App.Services.Buildings;
+using Application.App.Services.Projects;
+using ComponentsLibrary.DeleteConfirmation;
+using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +11,13 @@ using System.Threading.Tasks;
 
 namespace Building.Web.Components.Buildings
 {
-    public partial class Index : ComponentBase
+    public partial class Index : PageBase
     {
+        private IEnumerable<SelectListItem> ProjectList;
         [Inject]
         private NavigationManager _navigationManager { get; set; }
         [Inject]
+        public IProjectService _projectService { get; set; }
         public IBuildingService _buildingService { get; set; }
         public BuildingVM BuildingVM = new BuildingVM();
 
@@ -19,13 +25,15 @@ namespace Building.Web.Components.Buildings
 
         [Parameter]
         public string Page { get; set; } = "1";
-        //used to store state of screen
-        protected string Message = string.Empty;
-        protected string StatusClass = string.Empty;
-        protected bool Saved;
+        protected DeleteDialog DeleteDialog { get; set; }
+
+        private Guid SelectedBuildingId;
+
+        
         protected override async Task OnInitializedAsync()
         {
             await GetBuildings();
+        //    ProjectList = await _projectService.ProjectListQuery();
         }
         protected async Task SearchBuildings()
         {
@@ -56,15 +64,31 @@ namespace Building.Web.Components.Buildings
         {
             await GetBuildings();
         }
-        public async Task DeleteBuilding(Guid buildingId)
+        protected void DeleteConfirmationBuilding(Guid BuildingId)
         {
-            await _buildingService.DeleteBuildingAsync(buildingId);
-            StatusClass = "alert-success";
-            Message = "Deleted successfully";
-            Saved = true;
+            DeleteDialog.Show();
+            SelectedBuildingId = BuildingId;
+            StateHasChanged();
         }
 
-       
+        public async void DeleteDialog_OnDialogClose()
+        {
+            var deleteStatus = await _buildingService.DeleteBuildingAsync(SelectedBuildingId);
+
+            if (deleteStatus.Success)
+            {
+                await GetBuildings();
+            }
+            else
+            {
+                StatusClass = "alert alert-danger";
+                Message = deleteStatus.Message;
+            }
+
+            StateHasChanged();
+        }
+
+
     }
 }
 

@@ -2,6 +2,7 @@
 @page "/Project/index/{page}"
 @attribute [Authorize]
 @inherits PageBase;
+
 <h3>@AppResources.ProjectsManagment</h3>
 
 @if (ProjectVM.Items == null)
@@ -25,7 +26,12 @@ else
                     <label for="NameEn">@AppResources.NameEnglish</label>
                     <InputText @bind-Value="ProjectVM.NameEn" id="NameEn" class="form-control"></InputText>
                 </div>
-
+                @*<div class="form-group col-md-6">
+            <div class="custom-control custom-switch">
+                <InputCheckbox @bind-Value="ProjectVM.IsActive" class="custom-control-input" id="IsActive"></InputCheckbox>
+                <label class="custom-control-label" for="IsActive">@AppResources.Active</label>
+            </div>
+        </div>*@
             </div>
         </div>
         <div class="form-group">

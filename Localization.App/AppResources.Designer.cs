@@ -187,6 +187,15 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Building.
+        /// </summary>
+        public static string DeleteBuilding {
+            get {
+                return ResourceManager.GetString("DeleteBuilding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Project.
         /// </summary>
         public static string DeleteProject {
@@ -201,6 +210,15 @@ namespace Localization.App {
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Building.
+        /// </summary>
+        public static string EditBuilding {
+            get {
+                return ResourceManager.GetString("EditBuilding", resourceCulture);
             }
         }
         
@@ -336,6 +354,15 @@ namespace Localization.App {
         public static string ProjectDetails {
             get {
                 return ResourceManager.GetString("ProjectDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        public static string ProjectId {
+            get {
+                return ResourceManager.GetString("ProjectId", resourceCulture);
             }
         }
         

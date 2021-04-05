@@ -1,5 +1,6 @@
 ﻿using Application.App.Services.Buildings;
 using Application.App.Services.Lookups;
+using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -9,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Building.Web.Components.Buildings
 {
-    public partial class Add : ComponentBase
+    public partial class Add : PageBase
     {
         public BuildingDto Model = new BuildingDto();
-        private IEnumerable<SelectListItem> BuildingTypeList;
+        
 
         [Inject]
         private NavigationManager _navigationManager { get; set; }
@@ -28,7 +29,7 @@ namespace Building.Web.Components.Buildings
     
 
 
-        private void SubmitBuilding()
+        private void SubmitBuildingAsync()
         {
             Console.WriteLine("Form Submitted Successfully!");
         }
