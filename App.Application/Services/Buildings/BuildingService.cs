@@ -6,6 +6,7 @@ using Framework.Core.Exceptions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Application.App.Services.Buildings
@@ -32,19 +33,47 @@ namespace Application.App.Services.Buildings
 
         public async Task<Guid> AddBuilding(BuildingDto building)
         {
-            var validator = new BuildingValidator(_buildingRepository);
+            try
+            {
+                var validator = new BuildingValidator(_buildingRepository);
             var validationResult = await validator.ValidateAsync(building);
 
             if (validationResult.Errors.Count > 0)
                 throw new ValidationException(validationResult);
             var build = _mapper.Map<Building>(building);
+            build.Number = GenerateBuildingNumber();
+
             build = await _buildingRepository.AddAsync(build);
             return build.Id;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public string GenerateBuildingNumber()
+        {
+            var currentYear = DateTime.Now.Year.ToString().Substring(2, 2);
+            var currentMonth = DateTime.Now.Month.ToString("d2");
+
+            Expression<Func<Building, bool>> condtion = r => r.Number.StartsWith($"{currentYear}-{currentMonth}");
+            Expression<Func<Building, string>> orderBy = r => r.Number;
+
+
+            var lastInsertedBuilding = _buildingRepository.GenerateModelNumber(condtion, orderBy);
+
+            if (lastInsertedBuilding == null)
+            {
+                return $"{currentYear}-{currentMonth}-0001";
+            }
+
+            var currentNo = int.Parse(lastInsertedBuilding.Number.Substring(6, 4));
+            return $"{currentYear}-{currentMonth}-{(currentNo + 1):d4}";
         }
 
 
-
-        
 
         //public Task<Building> GetBuildingByIdAsync(Guid Id)
         //{

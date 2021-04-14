@@ -4,70 +4,61 @@
 <EditForm Model="Model" Context="formContext" OnValidSubmit="@(SubmitBuildingAsync)">
     <FluentValidationValidator DisableAssemblyScanning="@true" />
 
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="Number">@AppResources.Number</label>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="EstimatedCost">@AppResources.EstimatedCost</label>
+            <InputNumber @bind-Value="Model.EstimatedCost" id="EstimatedCost" class="form-control"></InputNumber>
+            <ValidationMessage For="@(() => Model.EstimatedCost)" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="TotalSurfaceArea">@AppResources.TotalSurfaceArea</label>
 
-                <InputText @bind-Value="Model.Number" id="Number" class="form-control"></InputText>
-                <ValidationMessage For="@(() => Model.Number)" />
-            </div>
-            <div class="form-group col-md-6">
-                <label for="EstimatedCost">@AppResources.EstimatedCost</label>
+            <InputNumber @bind-Value="Model.TotalSurfaceArea" id="TotalSurfaceArea" class="form-control"></InputNumber>
+            <ValidationMessage For="@(() => Model.TotalSurfaceArea)" />
+        </div>
+    </div>
 
-                <InputNumber @bind-Value="Model.EstimatedCost" id="EstimatedCost" class="form-control"></InputNumber>
-                <ValidationMessage For="@(() => Model.EstimatedCost)" />
-            </div>
+    <div class="form-row">
+
+        <div class="form-group col-md-6">
+            <label for="NumberOfFloor">@AppResources.NumberOfFloor</label>
+            <InputNumber @bind-Value="Model.NumberOfFloor" id="NumberOfFloor" class="form-control"></InputNumber>
+            <ValidationMessage For="@(() => Model.NumberOfFloor)" />
         </div>
 
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="TotalSurfaceArea">@AppResources.TotalSurfaceArea</label>
-
-                <InputNumber @bind-Value="Model.TotalSurfaceArea" id="TotalSurfaceArea" class="form-control"></InputNumber>
-                <ValidationMessage For="@(() => Model.TotalSurfaceArea)" />
-            </div>
-            <div class="form-group col-md-6">
-                <label for="NumberOfFloor">@AppResources.NumberOfFloor</label>
-
-                <InputNumber @bind-Value="Model.NumberOfFloor" id="NumberOfFloor" class="form-control"></InputNumber>
-                <ValidationMessage For="@(() => Model.NumberOfFloor)" />
-            </div>
+        <div class="form-group col-md-6">
+            <label for="LicenseNumber">@AppResources.LicenseNumber</label>
+            <InputText @bind-Value="Model.LicenseNumber" id="LicenseNumber" class="form-control"></InputText>
+            <ValidationMessage For="@(() => Model.LicenseNumber)" />
         </div>
+    </div>
 
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="LicenseNumber">@AppResources.LicenseNumber</label>
-
-                <InputText @bind-Value="Model.LicenseNumber" id="LicenseNumber" class="form-control"></InputText>
-                <ValidationMessage For="@(() => Model.LicenseNumber)" />
-            </div>
-
-            <div class="form-group col-md-6">
-                <label for="StampingNumber">@AppResources.StampingNumber</label>
-
-                <InputText @bind-Value="Model.StampingNumber" id="StampingNumber" class="form-control"></InputText>
-                <ValidationMessage For="@(() => Model.StampingNumber)" />
-            </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="StampingNumber">@AppResources.StampingNumber</label>
+            <InputText @bind-Value="Model.StampingNumber" id="StampingNumber" class="form-control"></InputText>
+            <ValidationMessage For="@(() => Model.StampingNumber)" />
         </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="NumberOfApartment">@AppResources.NumberOfApartment</label>
-
-                <InputText @bind-Value="Model.NumberOfApartment" id="NumberOfApartment" class="form-control"></InputText>
-                <ValidationMessage For="@(() => Model.NumberOfApartment)" />
-            </div>
+        <div class="form-group col-md-6">
+            <label for="NumberOfApartment">@AppResources.NumberOfApartment</label>
+            <InputText @bind-Value="Model.NumberOfApartment" id="NumberOfApartment" class="form-control"></InputText>
+            <ValidationMessage For="@(() => Model.NumberOfApartment)" />
         </div>
-        <NavLink href="/Building/index" class="btn btn-primary">Back</NavLink>
-        <button type="submit" class="btn btn-primary">Submit</button>
-
-    </EditForm>
+    </div>
 
 
+    <NavLink class="anchor-link link-button mt-3" href="/Building/index">Back</NavLink>
+    <button @onclick="@(async e => await ValidateForm(formContext))" type="submit" class="submit-button mt-3">Submit</button>
+    
+</EditForm>
 
-    @code {
+<MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
 
 
-    }
+
+@code {
+
+
+}
 
 
