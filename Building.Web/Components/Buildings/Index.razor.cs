@@ -18,6 +18,7 @@ namespace Building.Web.Components.Buildings
         private NavigationManager _navigationManager { get; set; }
         [Inject]
         public IProjectService _projectService { get; set; }
+        [Inject]
         public IBuildingService _buildingService { get; set; }
         public BuildingVM BuildingVM = new BuildingVM();
 
@@ -33,7 +34,7 @@ namespace Building.Web.Components.Buildings
         protected override async Task OnInitializedAsync()
         {
             await GetBuildings();
-        //    ProjectList = await _projectService.ProjectListQuery();
+            ProjectList = await _projectService.ProjectListByCurrentUserAsync();
         }
         protected async Task SearchBuildings()
         {

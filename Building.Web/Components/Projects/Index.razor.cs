@@ -23,13 +23,13 @@ namespace Building.Web.Components.Projects
 
         private Guid SelectedPrjectId;
 
-        protected override async Task OnInitializedAsync()
-        {
-            await GetProjects();
-        }
+        //protected override async Task OnInitializedAsync()
+        //{
+        //    await GetProjects();
+        //}
 
-        [CascadingParameter]
-        public ErrorCasCading Error { get; set; }
+        [CascadingParameter(Name = "ErrorComponent")]
+        protected IErrorComponent Error { get; set; }
 
         protected async  Task SearchProjects()
         {
@@ -41,11 +41,10 @@ namespace Building.Web.Components.Projects
         }
 
 
-        protected async Task GetProjects()
+        protected async Task  GetProjects()
         {
             ProjectVM = await _projectService.SearchProjectsAsync(ProjectVM);
-            _navigationManager.NavigateTo("/Project/index/");
-            StateHasChanged();
+          
         }
 
         protected void PagerPageChanged(int page)
@@ -57,8 +56,9 @@ namespace Building.Web.Components.Projects
 
         protected async override Task OnParametersSetAsync()
         {
-            await GetProjects();
+           await GetProjects();
         }
+
 
         protected void DeleteConfirmationProject(Guid projectId)
         {
@@ -71,9 +71,7 @@ namespace Building.Web.Components.Projects
         {
             try
             {
-                throw new Exception("there is an error happen");
                 var deleteStatus = await _projectService.DeleteProjectAsync(SelectedPrjectId);
-
                 if (deleteStatus.Success)
                 {
                     await GetProjects();
@@ -86,11 +84,10 @@ namespace Building.Web.Components.Projects
 
                 StateHasChanged();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-
-                Error.ProcessError(ex);
-                StateHasChanged();
+                Error.SetError(e.Message, e.StackTrace);
+                Error.ProcessError(e);
             }
 
         }

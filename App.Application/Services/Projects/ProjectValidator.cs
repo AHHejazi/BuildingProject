@@ -45,7 +45,7 @@ namespace Application.App.Services.Projects
 
             RuleFor(p => p.SerialNumber).NotEmpty().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.ProjectTypeId).NotNull().WithMessage(x => AppResources.Required);
+            RuleFor(p => p.ProjectTypeId).NotNull().NotEmpty().WithMessage(x => AppResources.Required);
 
             RuleFor(p => p.IsActive).NotNull().WithMessage(x => AppResources.Required);
 

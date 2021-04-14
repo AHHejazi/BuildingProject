@@ -4,6 +4,7 @@ using Application.App.Services.Common;
 using AutoMapper;
 using Domain.App.Entities;
 using Framework.Core.Exceptions;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -143,6 +144,9 @@ namespace Application.App.Services.Projects
             Saved = true;
         }
 
-
+        public async Task<IEnumerable<SelectListItem>> ProjectListByCurrentUserAsync(string userName=null)
+        {
+          return await _projectRepository.ProjectListByCurrentUserAsync(userName);
+        }
     }
 }

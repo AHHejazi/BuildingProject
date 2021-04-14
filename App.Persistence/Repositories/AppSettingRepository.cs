@@ -1,28 +1,25 @@
 ﻿using Application.App.Contracts.Persistence;
 using Application.App.Services.Common;
+using Domain.App.Common;
 using Framework.Core;
 using Framework.Core.Caching;
 using Framework.Core.Globalization;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace App.Persistence.Repositories
 {
-    public class AppSettingRepository : IAppSettingRepository
+    public class AppSettingRepository : BaseRepository<SystemSetting>, IAppSettingRepository
     {
         private readonly IMemoryCache _cache;
-        private readonly BuildingDbContext _dbContext;
 
-        public AppSettingRepository(IMemoryCache cache, BuildingDbContext dbContext)
+        public AppSettingRepository(IMemoryCache cache, IDbContextFactory<BuildingDbContext> dbContext):base(dbContext)
         {
             _cache = cache;
-            _dbContext = dbContext;
         }
 
 

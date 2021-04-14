@@ -5,18 +5,14 @@ using Framework.Core.ListManagment;
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace App.Persistence.Repositories
 {
-   public class BuildingRepository : BaseRepository<Building>, IBuildingRepository
+    public class BuildingRepository : BaseRepository<Building>, IBuildingRepository
     {
-        private new readonly BuildingDbContext _dbContext;
-        public BuildingRepository(BuildingDbContext dbContext) : base(dbContext)
+        public BuildingRepository(IDbContextFactory<BuildingDbContext> dbContext) : base(dbContext)
         {
-            this._dbContext = dbContext;
 
         }
 

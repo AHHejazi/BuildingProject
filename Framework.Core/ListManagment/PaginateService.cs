@@ -18,15 +18,29 @@ namespace Framework.Core.ListManagment
         /// <returns>A Page object with filtered data for the given page number and page size.</returns>
         public async static Task<Page<T>> Paginate<T>(this IQueryable<T> query, int pageNumber, int pageSize)
         {
-            var result = new Page<T>
+            try
             {
-                CurrentPage = pageNumber,
-                PageSize = pageSize,
-                RecordCount = query.Count(),
-                Results = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync()
-            };
-            result.PageCount = (int)Math.Ceiling((double)result.RecordCount / pageSize);
-            return result;
+                var skipRecords = (pageNumber - 1) * pageSize;
+
+                var resultData =  query.Skip(skipRecords).Take(pageSize);
+
+                var result = new Page<T>
+                {
+                    CurrentPage = pageNumber,
+                    PageSize = pageSize,
+                    RecordCount = query.Count(),
+                    Results = await resultData.ToListAsync()
+                };
+                result.PageCount = (int)Math.Ceiling((double)result.RecordCount / pageSize);
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+           
         }
 
         /// <summary>
@@ -64,7 +78,7 @@ namespace Framework.Core.ListManagment
         }
 
 
-        private static IQueryable<T> ApplyFilter<T>(this IQueryable<T> query, Filters<T> filters)
+        private  static IQueryable<T> ApplyFilter<T>(this IQueryable<T> query, Filters<T> filters)
         {
             return !filters.IsValid() ? query : filters.Get().Aggregate(query, (current, filter) => current.Where(filter.Expression));
         }
