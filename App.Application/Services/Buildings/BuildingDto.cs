@@ -11,6 +11,8 @@ namespace Application.App.Services.Buildings
         public string Number { get; set; }
         public decimal EstimatedCost { get; set; }
 
+        public Guid ProjectId { get; set; }
+
         public decimal TotalSurfaceArea { get; set; }
 
         public Nullable<int> NumberOfFloor { get; set; }

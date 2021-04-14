@@ -33,7 +33,6 @@ namespace Building.Web.Components.Buildings
         
         protected override async Task OnInitializedAsync()
         {
-            await GetBuildings();
             ProjectList = await _projectService.ProjectListByCurrentUserAsync();
         }
         protected async Task SearchBuildings()

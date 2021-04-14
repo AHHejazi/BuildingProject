@@ -1,5 +1,6 @@
 ﻿using Application.App.Services.Buildings;
 using Application.App.Services.Lookups;
+using Application.App.Services.Projects;
 using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -15,24 +16,24 @@ namespace Building.Web.Components.Buildings
     {
         public BuildingDto Model = new BuildingDto();
         
-
-        [Inject]
-        private NavigationManager _navigationManager { get; set; }
-       
         [Inject]
         private IBuildingService _buildingService { get; set; }
 
         [Inject]
-        private ILookupServices _lookupServices { get; set; }
-        private EditContext editContext;
+        public IProjectService _projectService { get; set; }
 
         [Parameter]
         public Guid Id { get; set; }
+
+        private EditContext editContext;
         public EventCallback<BuildingDto> OnValidSubmit { get; set; }
+
+        private IEnumerable<SelectListItem> ProjectList;
 
         protected async override Task OnInitializedAsync()
         {
             editContext = new EditContext(Model);
+            ProjectList = await _projectService.ProjectListByCurrentUserAsync();
         }
         private async Task SubmitBuildingAsync()
         {

@@ -3,6 +3,7 @@ using App.Persistence;
 using Application.App;
 using Application.App.Contracts;
 using Application.App.Contracts.Identity;
+using Application.App.Services.Buildings;
 using Application.App.Services.Projects;
 using Building.Web.Data;
 using Building.Web.Services;
@@ -33,7 +34,7 @@ namespace Building.Web
             services.AddRazorPages();
             services.AddServerSideBlazor(c => c.DetailedErrors = true);
             services.AddTransient<IValidator<ProjectDto>, ProjectValidator>();
-            //services.AddTransient<IValidator<BuildingDto>, BuildingValidator>();
+            services.AddTransient<IValidator<BuildingDto>, BuildingValidator>();
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddCoreServices();

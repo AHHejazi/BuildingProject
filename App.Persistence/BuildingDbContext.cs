@@ -49,13 +49,15 @@ namespace App.Persistence
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
+
+
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
                 switch (entry.State)
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedOn = DateTime.Now;
-                        entry.Entity.CreatedBy = _loggedInUserService.UserId??"ahejazi";
+                        entry.Entity.CreatedBy = "ahejazi";//_loggedInUserService.UserId??"ahejazi";
                         break;
                     case EntityState.Modified:
                         entry.Entity.UpdatedOn = DateTime.Now;
