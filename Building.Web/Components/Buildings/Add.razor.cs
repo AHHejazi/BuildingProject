@@ -24,38 +24,42 @@ namespace Building.Web.Components.Buildings
 
         [Inject]
         private ILookupServices _lookupServices { get; set; }
-   //     private EditContext editContext;
+        private EditContext editContext;
 
         [Parameter]
         public Guid Id { get; set; }
         public EventCallback<BuildingDto> OnValidSubmit { get; set; }
 
+        protected async override Task OnInitializedAsync()
+        {
+            editContext = new EditContext(Model);
+        }
         private async Task SubmitBuildingAsync()
         {
-            //var isValid = editContext.Validate();
+            var isValid = editContext.Validate();
 
-            //if (isValid)
-            //{
+            if (isValid)
+            {
 
-            //    var retObjid = await _buildingService.AddBuilding(Model);
-            //    StatusClass = "alert alert-success";
-            //    Message = "New Building added successfully.";
-            //}
-            //else
-            //{
-            //    StatusClass = "alert alert-danger";
-            //    Message = "Something went wrong adding the new Building. Please try again.";
-            //}
-            Console.WriteLine("Form Submitted Successfully!");
+                var retObjid = await _buildingService.AddBuilding(Model);
+                StatusClass = "alert alert-success";
+                Message = "New Building added successfully.";
+            }
+            else
+            {
+                StatusClass = "alert alert-danger";
+                Message = "Something went wrong adding the new Building. Please try again.";
+            }
+
         }
-        //public async Task ValidateForm(EditContext editContext)
-        //{
+        public async Task ValidateForm(EditContext editContext)
+        {
 
-        //    var isValid = editContext.Validate();
+            var isValid = editContext.Validate();
 
-        //    if (!isValid)
-        //        return;
+            if (!isValid)
+                return;
 
-        //}
+        }
     }
 }
