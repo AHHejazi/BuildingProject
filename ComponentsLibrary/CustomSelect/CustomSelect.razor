@@ -1,0 +1,37 @@
+﻿@if (DDList == null)
+{
+    <p>
+        <em>Loading ...</em>
+    </p>
+}
+else
+{
+    <select class="custom-select" @onchange="OnValueChanged">
+        <option  selected disabled="disabled">(--Choose--)</option>
+        @foreach (var item in DDList)
+        {
+            <option value=@(int.Parse(item.Value))> @item.Text</option>
+
+        }
+    </select>
+}
+
+@code{
+    [Parameter]
+    public IEnumerable<SelectListItem> DDList { get; set; }
+
+    [Parameter]
+    public EventCallback<int> ValueChanged { get; set; }
+
+    [Parameter]
+    public int Value { get; set; }
+
+    private Task OnValueChanged(ChangeEventArgs e)
+    {
+
+
+        Value = int.Parse(e.Value.ToString());
+        return ValueChanged.InvokeAsync(Value);
+
+    }
+}

@@ -1,14 +1,12 @@
 ﻿using App.Application.Contracts.Persistence;
 using Domain.App.Entities.Lookup;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace App.Persistence.Repositories
 {
     public class OutbuildingsTypeRepository : BaseRepository<OutbuildingsType>, IOutbuildingsTypeRepository
     {
-        public OutbuildingsTypeRepository(BuildingDbContext dbContext) : base(dbContext)
+        public OutbuildingsTypeRepository(IDbContextFactory<BuildingDbContext> dbContext) : base(dbContext)
         {
 
         }

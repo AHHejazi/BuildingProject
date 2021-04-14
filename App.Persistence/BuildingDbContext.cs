@@ -19,11 +19,11 @@ namespace App.Persistence
         {
         }
 
-        public BuildingDbContext(DbContextOptions<BuildingDbContext> options, ILoggedInUserService loggedInUserService)
-            : base(options)
-        {
-            _loggedInUserService = loggedInUserService;
-        }
+        //public BuildingDbContext(DbContextOptions<BuildingDbContext> options, ILoggedInUserService loggedInUserService)
+        //    : base(options)
+        //{
+        //    _loggedInUserService = loggedInUserService;
+        //}
 
         public DbSet<Attachment> Attachments { get; set; }
         public virtual DbSet<SystemSetting> SystemSettings { get; set; }

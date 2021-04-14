@@ -1,16 +1,13 @@
 ﻿
 using Application.App.Contracts.Persistence;
 using Domain.App.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace App.Persistence.Repositories
 {
     public class ApartmentRepository : BaseRepository<Project>, IApartmentRepository
     {
-        public ApartmentRepository(BuildingDbContext dbContext) : base(dbContext)
+        public ApartmentRepository(IDbContextFactory<BuildingDbContext> dbContext) : base(dbContext)
         {
 
         }

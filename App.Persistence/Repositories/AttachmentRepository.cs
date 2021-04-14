@@ -22,13 +22,11 @@ namespace App.Persistence.Repositories
 {
     public class AttachmentRepository : BaseRepository<Attachment>, IAttachmentRepository
     {
-        private readonly BuildingDbContext _dbContext;
         private readonly IAppSettingRepository _iAppSettingRepository;
 
-        public AttachmentRepository(IMemoryCache cache, BuildingDbContext dbContext,
+        public AttachmentRepository(IMemoryCache cache, IDbContextFactory<BuildingDbContext> dbContext,
             IAppSettingRepository iAppSettingRepository) : base(dbContext)
         {
-            _dbContext = dbContext;
             _iAppSettingRepository = iAppSettingRepository;
         }
 

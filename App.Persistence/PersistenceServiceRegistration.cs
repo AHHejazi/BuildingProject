@@ -11,8 +11,8 @@ namespace App.Persistence
     {
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<BuildingDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("BuildingConnectionString")), ServiceLifetime.Transient);
+            services.AddDbContextFactory<BuildingDbContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("BuildingConnectionString")));
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 

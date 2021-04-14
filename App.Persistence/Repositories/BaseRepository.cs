@@ -1,7 +1,4 @@
-﻿
-using Application.App.Contracts.Persistence;
-using Domain.App.Entities;
-using Framework.Core;
+﻿using Application.App.Contracts.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,9 +12,9 @@ namespace App.Persistence.Repositories
     {
         protected readonly BuildingDbContext _dbContext;
 
-        public BaseRepository(BuildingDbContext dbContext)
+        public BaseRepository(IDbContextFactory<BuildingDbContext> dbContextFactory)
         {
-            _dbContext = dbContext;
+            _dbContext = dbContextFactory.CreateDbContext();
         }
 
         //public virtual async Task<T> GetByIdAsync(Guid id)

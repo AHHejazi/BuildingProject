@@ -1,25 +1,11 @@
 ﻿
-@using Microsoft.Extensions.Logging
-@inject ILogger<Error> Logger
 
-<CascadingValue Value=this>
-    @ChildContent
-</CascadingValue>
-
-<LayoutView Layout="@typeof(MainLayout)">
-    <h1>Sorry, An error happen</h1>
-    <p>An error happen, please try again.</p>
-</LayoutView>
 
 @code {
     [Parameter]
-    public RenderFragment ChildContent { get; set; }
-    private string MyProperty;
-    public void ProcessError(Exception ex)
-    {
-        MyProperty = "An error happen, please try again";
-        Logger.LogError("Error:ProcessError - Type: {Type} Message: {Message}",
-            ex.GetType(), ex.Message);
-        StateHasChanged();
-    }
+    public bool isErrorActive { set; get; }
+    [Parameter]
+    public string title { set; get; }
+    [Parameter]
+    public string message { set; get; }
 }

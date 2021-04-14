@@ -16,10 +16,10 @@ namespace App.Persistence.Repositories
         private readonly IMemoryCache _cache;
         private readonly BuildingDbContext _dbContext;
 
-        public LookupRepository(IMemoryCache cache, BuildingDbContext dbContext)
+        public LookupRepository(IMemoryCache cache, IDbContextFactory<BuildingDbContext> dbContext)
         {
             _cache = cache;
-            _dbContext = dbContext;
+            _dbContext = dbContext.CreateDbContext();
         }
 
         public async Task<IEnumerable<SelectListItem>> GetProjectTypeList(CancellationToken cancellationToken = default)

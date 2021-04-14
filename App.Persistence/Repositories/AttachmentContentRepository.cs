@@ -1,14 +1,12 @@
 ﻿using App.Application.Contracts.Persistence;
 using Domain.App.Common;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace App.Persistence.Repositories
 {
     public class AttachmentContentRepository : BaseRepository<AttachmentContent>, IAttachmentContentRepository
     {
-        public AttachmentContentRepository(BuildingDbContext dbContext) : base(dbContext)
+        public AttachmentContentRepository(IDbContextFactory<BuildingDbContext> dbContext) : base(dbContext)
         {
 
         }

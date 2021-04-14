@@ -2,24 +2,23 @@
 using Application.App.Contracts.Persistence;
 using Application.App.Services.Projects;
 using Domain.App.Entities;
+using Framework.Core.Globalization;
 using Framework.Core.ListManagment;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace App.Persistence.Repositories
 {
     public class ProjectRepository : BaseRepository<Project>, IProjectRepository
     {
-        private new readonly BuildingDbContext _dbContext;
 
-        public ProjectRepository(BuildingDbContext dbContext) : base(dbContext)
+        public ProjectRepository(IDbContextFactory<BuildingDbContext> dbContext) : base(dbContext)
         {
-            this._dbContext = dbContext;
         }
 
         public async Task<bool> IsProjectNameUnique(string nameAr, string nameEn)
@@ -52,6 +51,13 @@ namespace App.Persistence.Repositories
             return projectVM;
         }
 
-
+        public async Task<IEnumerable<SelectListItem>> ProjectListByCurrentUserAsync(string userName)
+        {
+            //TODO you have to remove userName when u can get the userName correctly
+            return await _dbContext.Projects.Where(c=>c.CreatedBy == userName || string.IsNullOrEmpty(userName))
+            .Select(s =>
+                 new SelectListItem(
+                    CultureHelper.IsArabic ? s.NameAr : s.NameEn, s.Id.ToString())).ToListAsync();
+        }
     }
 }

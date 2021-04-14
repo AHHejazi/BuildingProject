@@ -5,6 +5,7 @@ using Domain.App.Entities;
 using System.Threading.Tasks;
 using Framework.Core.ListManagment;
 using Application.App.Responses;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Application.App.Services.Projects
 {
@@ -20,5 +21,7 @@ namespace Application.App.Services.Projects
         Task<ProjectDto> GetProjectByIdAsync(Guid Id);
         Task<ProjectVM> SearchProjectsAsync(ProjectVM projectVM);
         Task UpdateProject(ProjectDto projectDto);
+
+        Task<IEnumerable<SelectListItem>> ProjectListByCurrentUserAsync(string userName=null);
     }
 }

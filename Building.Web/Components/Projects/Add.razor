@@ -93,6 +93,7 @@
 
             <InputSelect @bind-Value="Model.ProjectTypeId" id="ProjectTypeId" class="form-control">
                 <ValidationMessage For="@(() => Model.ProjectTypeId)" />
+                <option selected>Select...</option>
                 @if (ProjectTypeList != null)
                 {
                     foreach (var item in ProjectTypeList)
