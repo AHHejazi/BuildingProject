@@ -75,7 +75,7 @@ else
                         <td>@building.TotalSurfaceArea</td>
                         <td>@building.NumberOfFloor</td>
                         <td>
-                            <a class="fa fa-edit fa-lg" title="@AppResources.EditBuilding" href="@($"edit/{building.Id}")"></a>
+                            <a class="fa fa-edit fa-lg" title="@AppResources.EditBuilding" href="@($"/Building/edit/{building.Id}")"></a>
                             <a class="fa fa-trash-o fa-lg" title="@AppResources.DeleteBuilding" @onclick="()=>DeleteConfirmationBuilding(building.Id)"></a>
                         </td>
 

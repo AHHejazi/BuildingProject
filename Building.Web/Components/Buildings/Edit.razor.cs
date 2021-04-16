@@ -25,12 +25,12 @@ namespace Building.Web.Components.Buildings
 
         [Parameter]
         public Guid Id { get; set; }
-        protected async override Task OnInitializedAsync()
+        protected async override Task OnParametersSetAsync()
         {
             buildingDto = await _buildingService.GetBuildingByIdAsync(Id);
             editContext = new EditContext(buildingDto);
         }
-
+        
         private async Task SubmitBuildingAsync()
         {
             

@@ -87,7 +87,8 @@ namespace Application.App.Services.Buildings
 
         public async Task UpdateBuilding(BuildingDto buildingDto)
         {
-            await _buildingRepository.UpdateAsync(buildingDto);
+            var building= _mapper.Map<Building>(buildingDto);
+            await _buildingRepository.UpdateAsync(building);
         }
 
 

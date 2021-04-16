@@ -61,7 +61,7 @@ namespace App.Persistence
                         break;
                     case EntityState.Modified:
                         entry.Entity.UpdatedOn = DateTime.Now;
-                        entry.Entity.UpdatedBy = _loggedInUserService.UserId;
+                        entry.Entity.UpdatedBy = "ahejazi";
                         break;
                 }
             }
