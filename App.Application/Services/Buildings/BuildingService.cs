@@ -85,9 +85,10 @@ namespace Application.App.Services.Buildings
             throw new NotImplementedException();
         }
 
-        public Task UpdateBuilding(BuildingDto buildingDto)
+        public async Task UpdateBuilding(BuildingDto buildingDto)
         {
-            throw new NotImplementedException();
+            var building= _mapper.Map<Building>(buildingDto);
+            await _buildingRepository.UpdateAsync(building);
         }
 
 

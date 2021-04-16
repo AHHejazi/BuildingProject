@@ -50,11 +50,7 @@ namespace App.Persistence.Repositories
         //    return entity;
         //}
 
-        //public async Task UpdateAsync(T entity)
-        //{
-        //    _dbContext.Entry(entity).State = EntityState.Modified;
-        //    await _dbContext.SaveChangesAsync();
-        //}
+        
 
         public async Task DeleteAsync(object entityId)
         {
@@ -75,7 +71,11 @@ namespace App.Persistence.Repositories
 
             return entity;
         }
-
+        public async Task UpdateAsync(object entity)
+        {
+            _dbContext.Entry(entity).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+        }
 
 
         public async Task<T> GetByIdAsync(Guid id)

@@ -46,7 +46,7 @@ else
             </div>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-info" @onclick="@SearchBuildings">@AppResources.Search</button>
+            <button type="submit" class="submit-button" @onclick="@SearchBuildings">@AppResources.Search</button>
         </div>
     </EditForm>
     <div class="form-row">
@@ -75,7 +75,7 @@ else
                         <td>@building.TotalSurfaceArea</td>
                         <td>@building.NumberOfFloor</td>
                         <td>
-                            <a class="fa fa-edit fa-lg" title="@AppResources.EditBuilding" href="@($"edit/{building.Id}")"></a>
+                            <a class="fa fa-edit fa-lg" title="@AppResources.EditBuilding" href="@($"/Building/edit/{building.Id}")"></a>
                             <a class="fa fa-trash-o fa-lg" title="@AppResources.DeleteBuilding" @onclick="()=>DeleteConfirmationBuilding(building.Id)"></a>
                         </td>
 
