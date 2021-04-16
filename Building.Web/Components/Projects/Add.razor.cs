@@ -12,24 +12,19 @@ namespace Building.Web.Components.Projects
 {
     public partial class Add : PageBase
     {
-        public ProjectDto Model = new ProjectDto();
-
-        private IEnumerable<SelectListItem> ProjectTypeList;
-
         [Inject]
         private IProjectService _projectService { get; set; }
-
         [Inject]
         private ILookupServices _lookupServices { get; set; }
 
-        private EditContext editContext;
-
         [Parameter]
         public EventCallback<ProjectDto> OnValidSubmit { get; set; }
-
+        public ProjectDto Model = new ProjectDto();
+        private IEnumerable<SelectListItem> ProjectTypeList;
+        private EditContext editContext;
         List<FileData> fileData = new List<FileData>();
-
-
+        
+        
 
         protected async override Task OnInitializedAsync()
         {
@@ -40,7 +35,7 @@ namespace Building.Web.Components.Projects
         private async Task OnInputFileChange(InputFileChangeEventArgs e, AttachmentTypesEnum attachmentType)
         {
             fileData.RemoveAll(x => x.AttachemntType == attachmentType);
-            fileData.AddRange(await this.ManageFormFiles(e,attachmentType));
+            fileData.AddRange(await this.ManageFormFiles(e, attachmentType));
             StateHasChanged();
         }
 
@@ -53,18 +48,18 @@ namespace Building.Web.Components.Projects
                 Model.fileData = fileData;
                 var retObjid = await _projectService.AddProject(Model);
                 StatusClass = "alert alert-success";
-                Message = "New employee added successfully.";
+                Message = "New Project added successfully.";
             }
             else
             {
                 StatusClass = "alert alert-danger";
-                Message = "Something went wrong adding the new employee. Please try again.";
+                Message = "Something went wrong adding the new Project. Please try again.";
             }
         }
 
         public async Task ValidateForm(EditContext editContext)
         {
-            
+
             var isValid = editContext.Validate();
 
             if (!isValid)

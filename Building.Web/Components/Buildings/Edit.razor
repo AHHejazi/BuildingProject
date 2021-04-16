@@ -1,9 +1,12 @@
 ﻿@page "/Building/edit/{Id:guid}"
-
+@inherits PageBase
 <h3>@AppResources.Edit</h3>
+@if (buildingDto != null)
+{ 
+    <EditForm Model="@buildingDto" Context="formContext" OnValidSubmit="@(SubmitBuildingAsync)">
+        <FluentValidationValidator DisableAssemblyScanning="@true" />
 
-<EditForm Model="@buildingDto" Context="formContext" OnValidSubmit="@(SubmitBuildingAsync)">
-    <FluentValidationValidator DisableAssemblyScanning="@true" />
+
 
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -52,12 +55,13 @@
             </div>
         </div>
 
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <NavLink class="anchor-link link-button mt-3" href="/Building/index">Back</NavLink>
+        <button @onclick="@(async e => await ValidateForm(formContext))" type="submit" class="submit-button mt-3">Submit</button>
 
     </EditForm>
-
-    @code
+}
+<MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
+@code
 {
 
-    }
+}

@@ -49,7 +49,6 @@ namespace App.Persistence.Repositories
             return buildingVM;
         }
 
-
     }
 }
 
