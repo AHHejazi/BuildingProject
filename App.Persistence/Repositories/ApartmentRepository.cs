@@ -7,10 +7,13 @@ namespace App.Persistence.Repositories
 {
     public class ApartmentRepository : BaseRepository<Project>, IApartmentRepository
     {
-        public ApartmentRepository(IDbContextFactory<BuildingDbContext> dbContext) : base(dbContext)
-        {
+        //public ApartmentRepository(IDbContextFactory<BuildingDbContext> dbContext) : base(dbContext)
+        //{
 
+        //}
+
+        public ApartmentRepository(BuildingDbContext dbContext) : base(dbContext)
+        {
         }
-        
     }
 }

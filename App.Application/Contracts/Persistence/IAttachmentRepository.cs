@@ -9,40 +9,17 @@ using System.Threading.Tasks;
 
 namespace App.Application.Contracts.Persistence
 {
-    public interface IAttachmentRepository : IAsyncRepository<Attachment>
+    public interface IAttachmentRepository
     {
-        Task<ReturnResult<Guid>> AddAttachment(IFormFile file, string title = null);
-
-        Task<ReturnResult<Attachment>> AddOrUpdateAttachmentAsync(
-       IFormFile file,
-       AttachmentTypesEnum attType,
-       Guid? attachmentId = null,
-       string title = null);
-
-        Task<Attachment> AddOrUpdateAttachmentAsync(
-       string fileName,
-       string contentType,
-       byte[] fileBytes,
-       AttachmentTypesEnum attType,
-       Guid? attachmentId = null,
-       string titleAr = null,
-       string titleEn = null,
-       string descriptionAr = null,
-       string descriptionEn = null,
-       int? itemOrder = null);
-
-        Task<Attachment> GetAttachmentForDownloadAsync(Guid? attachmentId);
-
-        public void RemoveRange(List<Guid> deleteIds);
-
-        List<Attachment> GetRange(List<Guid> ids);
-
-        Task<bool> UpdateAttachmentsTitlesAsync(List<Guid> ids, List<string> titles);
-
-        void DeleteAttachmentFromFileSystem(string fileRelativePath);
-
+        Task<ReturnResult<Guid>> AddAttachment(string attachmentsPath, IFormFile file, string title = null, bool saveToDB = true);
+        Task<ReturnResult<Attachment>> AddOrUpdateAttachmentAsync(string attachmentsPath, IFormFile file, AttachmentTypesEnum attType, Guid? attachmentId = null, string title = null, bool saveToDB = true);
+        Task<Attachment> AddOrUpdateAttachmentAsync(string attachmentsPath, string fileName, string contentType, byte[] fileBytes, AttachmentTypesEnum attType, Guid? attachmentId = null, string titleAr = null, string titleEn = null, string descriptionAr = null, string descriptionEn = null, int? itemOrder = null, bool saveToDB = true);
+        void DeleteAttachmentFromFileSystem(string fileRelativePath, string attachmentsPath);
         byte[] GenerateThumbnail(byte[] bytes);
-
-        string SaveAttachmentToFileSystem(Attachment attach);
+        Task<Attachment> GetAttachmentForDownloadAsync(Guid? attachmentId, bool saveToDB, string attachmentsPath);
+        List<Attachment> GetRange(List<Guid> ids);
+        void RemoveRange(List<Guid> deleteIds);
+        string SaveAttachmentToFileSystem(Attachment attach, string attachmentsPath);
+        Task<bool> UpdateAttachmentsTitlesAsync(List<Guid> ids, List<string> titles);
     }
 }

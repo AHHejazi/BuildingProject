@@ -1,4 +1,5 @@
-﻿using Application.App.Enum;
+﻿using Application.App.Contracts.UOW;
+using Application.App.Enum;
 using Application.App.Services.Projects;
 using Domain.App.Common;
 using Microsoft.AspNetCore.Components;
@@ -10,6 +11,8 @@ namespace GeneralIdentity.App.Code
 {
     public class PageBase : ComponentBase
     {
+       
+
         //used to store state of screen
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;

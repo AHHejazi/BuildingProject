@@ -6,7 +6,7 @@ namespace App.Persistence.Repositories
 {
     public class OutbuildingsRepository : BaseRepository<Outbuildings>, IOutbuildingsRepository
     {
-        public OutbuildingsRepository(IDbContextFactory<BuildingDbContext> dbContext) : base(dbContext)
+        public OutbuildingsRepository(BuildingDbContext dbContext) : base(dbContext)
         {
 
         }

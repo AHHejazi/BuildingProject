@@ -17,7 +17,7 @@ namespace Application.App
             services.AddTransient<ILookupServices, LookupServices>();
             services.AddTransient<IProjectService,ProjectService>();
             services.AddTransient<IAttachmentService, AttachmentService>();
-            services.AddTransient<IAppSettingsService, AppSettingsService>();
+            services.AddTransient<AppSettingsService>();
             services.AddTransient<IBuildingService, BuildingService>();
             
             return services;

@@ -6,7 +6,7 @@ namespace App.Persistence.Repositories
 {
     public class IncomesRepository : BaseRepository<Incomes>, IIncomesRepository
     {
-        public IncomesRepository(IDbContextFactory<BuildingDbContext> dbContext) : base(dbContext)
+        public IncomesRepository(BuildingDbContext dbContext) : base(dbContext)
         {
 
         }

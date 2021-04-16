@@ -11,7 +11,7 @@ namespace App.Persistence.Repositories
 {
     public class BuildingRepository : BaseRepository<Building>, IBuildingRepository
     {
-        public BuildingRepository(IDbContextFactory<BuildingDbContext> dbContext) : base(dbContext)
+        public BuildingRepository(BuildingDbContext dbContext) : base(dbContext)
         {
 
         }

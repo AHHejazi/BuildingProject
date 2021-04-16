@@ -1,5 +1,6 @@
 ﻿
 using Application.App.Contracts.Persistence;
+using Application.App.Contracts.UOW;
 using Application.App.Services.Projects;
 using Domain.App.Entities;
 using Framework.Core.Globalization;
@@ -16,8 +17,9 @@ namespace App.Persistence.Repositories
 {
     public class ProjectRepository : BaseRepository<Project>, IProjectRepository
     {
+        
 
-        public ProjectRepository(IDbContextFactory<BuildingDbContext> dbContext) : base(dbContext)
+        public ProjectRepository(BuildingDbContext dbContext) : base(dbContext)
         {
         }
 

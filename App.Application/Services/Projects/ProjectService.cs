@@ -1,4 +1,5 @@
 ﻿using Application.App.Contracts.Persistence;
+using Application.App.Contracts.UOW;
 using Application.App.Responses;
 using Application.App.Services.Common;
 using AutoMapper;
@@ -18,25 +19,21 @@ namespace Application.App.Services.Projects
     {
         private readonly IProjectRepository _projectRepository;
         private readonly IBuildingRepository _buildingRepository;
-
         private readonly IMapper _mapper;
-        private readonly ILogger<ProjectDto> _logger;
-        private readonly IAttachmentService _attachmentService;
-
-        //used to store state of screen
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;
         protected bool Saved;
-
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly AppSettingsService _appSettingsService;
 
         public ProjectService(IMapper mapper, IProjectRepository projectRepository, ILogger<ProjectDto> logger, IAttachmentService attachmentService,
-            IBuildingRepository buildingRepository)
+            IBuildingRepository buildingRepository, IUnitOfWork unitOfWork, AppSettingsService appSettingsService)
         {
             _mapper = mapper;
             _projectRepository = projectRepository;
-            _logger = logger;
-            _attachmentService = attachmentService;
             _buildingRepository = buildingRepository;
+            _unitOfWork = unitOfWork;
+            _appSettingsService = appSettingsService;
         }
 
 
@@ -56,11 +53,13 @@ namespace Application.App.Services.Projects
                 {
                     foreach (var item in project.fileData)
                     {
-                        var retAttachmentId = await _attachmentService.AddOrUpdateAttachment(item.FileName, item.FileType, item.Data, item.AttachemntType);
+                        var retAttachmentId = await _unitOfWork.Attachments.AddOrUpdateAttachmentAsync(_appSettingsService.AttachmentsPath, item.FileName, item.FileType, item.Data, item.AttachemntType);
+
                     }
                 }
 
-                prject = await _projectRepository.AddAsync(prject);
+                prject = await _unitOfWork.Projects.AddAsync(prject);
+                await _unitOfWork.SaveChangesAsync();
                 return prject.Id;
             }
             catch (Exception ex)
@@ -131,7 +130,7 @@ namespace Application.App.Services.Projects
 
         public async Task<ProjectVM> SearchProjectsAsync(ProjectVM projectVM)
         {
-            return await _projectRepository.SearchAsync(projectVM);
+            return await _unitOfWork.Projects.SearchAsync(projectVM);
         }
 
 
@@ -144,9 +143,9 @@ namespace Application.App.Services.Projects
             Saved = true;
         }
 
-        public async Task<IEnumerable<SelectListItem>> ProjectListByCurrentUserAsync(string userName=null)
+        public async Task<IEnumerable<SelectListItem>> ProjectListByCurrentUserAsync(string userName = null)
         {
-          return await _projectRepository.ProjectListByCurrentUserAsync(userName);
+            return await _projectRepository.ProjectListByCurrentUserAsync(userName);
         }
     }
 }

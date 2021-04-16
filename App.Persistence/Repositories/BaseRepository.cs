@@ -12,10 +12,20 @@ namespace App.Persistence.Repositories
     {
         protected readonly BuildingDbContext _dbContext;
 
-        public BaseRepository(IDbContextFactory<BuildingDbContext> dbContextFactory)
+        public BaseRepository(BuildingDbContext dbContext)
         {
-            _dbContext = dbContextFactory.CreateDbContext();
+            _dbContext = dbContext;
         }
+
+        //public BaseRepository(IDbContextFactory<BuildingDbContext> dbContext)
+        //{
+        //    _dbContext = dbContext.CreateDbContext();
+        //}
+
+        //public BaseRepository(BuildingDbContext dbContextFactory)
+        //{
+        //    _dbContext = dbContextFactory;
+        //}
 
         //public virtual async Task<T> GetByIdAsync(Guid id)
         //{
@@ -61,7 +71,7 @@ namespace App.Persistence.Repositories
         public async Task<T> AddAsync(T entity)
         {
             await _dbContext.Set<T>().AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
+            //await _dbContext.SaveChangesAsync();
 
             return entity;
         }

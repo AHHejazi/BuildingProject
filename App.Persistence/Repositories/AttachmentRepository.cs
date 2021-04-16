@@ -20,33 +20,33 @@ using System.Threading.Tasks;
 
 namespace App.Persistence.Repositories
 {
+   
+
     public class AttachmentRepository : BaseRepository<Attachment>, IAttachmentRepository
     {
-        private readonly IAppSettingRepository _iAppSettingRepository;
 
-        public AttachmentRepository(IMemoryCache cache, IDbContextFactory<BuildingDbContext> dbContext,
-            IAppSettingRepository iAppSettingRepository) : base(dbContext)
+        public AttachmentRepository(BuildingDbContext dbContext) : base(dbContext)
         {
-            _iAppSettingRepository = iAppSettingRepository;
+
         }
 
-        public async Task<Attachment> GetAttachmentForDownloadAsync(Guid? attachmentId)
+        public async Task<Attachment> GetAttachmentForDownloadAsync(Guid? attachmentId, bool saveToDB, string attachmentsPath)
         {
             var attachment = await _dbContext.Attachments.AsNoTracking().Where(at => at.Id == attachmentId).Include(c => c.AttachmentContent)
                 .AsNoTracking().SingleOrDefaultAsync();
 
-            if (await _iAppSettingRepository.GetValue<bool>("SaveFilesToDatabase") && attachment?.AttachmentContent.FileContent != null)
+            if (saveToDB && attachment?.AttachmentContent.FileContent != null)
             {
                 return attachment;
             }
 
-            if (string.IsNullOrEmpty(await _iAppSettingRepository.GetValue<string>("AttachmentsPath"))
+            if (string.IsNullOrEmpty(attachmentsPath)
                 || string.IsNullOrEmpty(attachment?.FilePath))
             {
                 return attachment;
             }
 
-            var filePath = $"{_iAppSettingRepository.GetValue<string>("AttachmentsPath")}{attachment.FilePath}";
+            var filePath = $"{attachmentsPath}{attachment.FilePath}";
             if (File.Exists(filePath))
             {
                 attachment.AttachmentContent.FileContent = File.ReadAllBytes(filePath);
@@ -98,14 +98,14 @@ namespace App.Persistence.Repositories
 
             return true;
         }
-        public void DeleteAttachmentFromFileSystem(string fileRelativePath)
+        public void DeleteAttachmentFromFileSystem(string fileRelativePath, string attachmentsPath)
         {
             if (string.IsNullOrEmpty(fileRelativePath))
             {
                 return;
             }
 
-            var filePath = $@"{_iAppSettingRepository.GetValue<string>("AttachmentsPath")}{fileRelativePath}";
+            var filePath = $@"{attachmentsPath}{fileRelativePath}";
             if (File.Exists(filePath))
             {
                 File.Delete(filePath);
@@ -136,10 +136,10 @@ namespace App.Persistence.Repositories
             }
         }
 
-        public string SaveAttachmentToFileSystem(Attachment attach)
+        public string SaveAttachmentToFileSystem(Attachment attach, string attachmentsPath)
         {
             var relativeFolderPath = $"\\{DateTime.Now.Year}\\{DateTime.Now.Month}\\{DateTime.Now.Day}";
-            var fullFolderPath = $"{ _iAppSettingRepository.GetValue<string>("AttachmentsPath")}{relativeFolderPath}";
+            var fullFolderPath = $"{attachmentsPath}{relativeFolderPath}";
             var fileName = attach.Id + attach.Extension;
             var fileRelativePath = $@"{relativeFolderPath}\{fileName}";
 
@@ -156,10 +156,10 @@ namespace App.Persistence.Repositories
             return fileRelativePath;
         }
 
-        public async Task<ReturnResult<Guid>> AddAttachment(IFormFile file, string title = null)
+        public async Task<ReturnResult<Guid>> AddAttachment(string attachmentsPath, IFormFile file, string title = null, bool saveToDB = true)
         {
             var result = new ReturnResult<Guid>();
-            var attResult = await this.AddOrUpdateAttachmentAsync(file, AttachmentTypesEnum.GeneralFileAttachment, null, title);
+            var attResult = await this.AddOrUpdateAttachmentAsync(attachmentsPath, file, AttachmentTypesEnum.GeneralFileAttachment, null, title, saveToDB);
             if (!attResult.IsValid)
             {
                 result.Merge(attResult);
@@ -171,10 +171,11 @@ namespace App.Persistence.Repositories
         }
 
         public async Task<ReturnResult<Attachment>> AddOrUpdateAttachmentAsync(
+            string attachmentsPath,
             IFormFile file,
             AttachmentTypesEnum attType,
             Guid? attachmentId = null,
-            string title = null)
+            string title = null, bool saveToDB = true)
         {
             var result = new ReturnResult<Attachment>();
             if (file == null)
@@ -188,9 +189,9 @@ namespace App.Persistence.Repositories
                 result.AddErrorItem(string.Empty, CommonResources.FileZeroLengthErrorMessage);
                 return result;
             }
-            var retbool = await _iAppSettingRepository.GetValue<bool>("SaveFilesToDatabase");
-            if (retbool
-                && string.IsNullOrEmpty(await _iAppSettingRepository.GetValue<string>("AttachmentsPath")))
+
+            if (saveToDB
+                && string.IsNullOrEmpty(attachmentsPath))
             {
                 throw new Exception(
                     "File can not be saved. Current Settings is. SaveFileToDatabase=true and Attachment Path is Missing");
@@ -202,7 +203,7 @@ namespace App.Persistence.Repositories
             var ms = new MemoryStream();
             file.OpenReadStream().CopyTo(ms);
 
-            result.Value = await this.AddOrUpdateAttachmentAsync(
+            result.Value = await this.AddOrUpdateAttachmentAsync(attachmentsPath,
                 file.FileName,
                 file.ContentType,
                 ms.ToArray(),
@@ -213,7 +214,7 @@ namespace App.Persistence.Repositories
             return result;
         }
 
-        public async Task<Attachment> AddOrUpdateAttachmentAsync(
+        public async Task<Attachment> AddOrUpdateAttachmentAsync(string attachmentsPath,
             string fileName,
             string contentType,
             byte[] fileBytes,
@@ -223,7 +224,7 @@ namespace App.Persistence.Repositories
             string titleEn = null,
             string descriptionAr = null,
             string descriptionEn = null,
-            int? itemOrder = null)
+            int? itemOrder = null, bool saveToDB = true)
         {
             var isUpdateFile = attachmentId.HasValue && attachmentId.Value != Guid.Empty;
 
@@ -257,19 +258,18 @@ namespace App.Persistence.Repositories
             // in updating delete old file
             if (isUpdateFile)
             {
-                this.DeleteAttachmentFromFileSystem(attachment.FilePath);
+                this.DeleteAttachmentFromFileSystem(attachment.FilePath, attachmentsPath);
             }
-            var retbool = await _iAppSettingRepository.GetValue<bool>("SaveFilesToDatabase");
-            attachment.FilePath = retbool
+            attachment.FilePath = saveToDB
                                       ? null
-                                      : this.SaveAttachmentToFileSystem(attachment);
+                                      : this.SaveAttachmentToFileSystem(attachment, attachmentsPath);
             attachment.AttachmentContent.Id = attachment.Id;
             attachment.AttachmentContent.FileContent =
-                retbool ? fileBytes : null;
+                saveToDB ? fileBytes : null;
 
             if (!isUpdateFile)
             {
-                await _dbContext.AddAsync(attachment);
+                _dbContext.Attachments.Add(attachment);
             }
 
             return attachment;

@@ -61,25 +61,25 @@ namespace Application.App.Services.Projects
 
             RuleFor(p => p.EstimatedCost).NotEmpty().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.InstrumentAttachment).NotNull().WithMessage(x => AppResources.Required);
+            //RuleFor(p => p.InstrumentAttachment).NotNull().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.BuildingLicenseAttachment).NotNull().WithMessage(x => AppResources.Required);
+            //RuleFor(p => p.BuildingLicenseAttachment).NotNull().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.ConstructionDiagrams).NotNull().WithMessage(x => AppResources.Required);
+            //RuleFor(p => p.ConstructionDiagrams).NotNull().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.MechanicalDiagrams).NotNull().WithMessage(x => AppResources.Required);
+            //RuleFor(p => p.MechanicalDiagrams).NotNull().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.ArchitecturalDiagrams).NotNull().WithMessage(x => AppResources.Required);
+            //RuleFor(p => p.ArchitecturalDiagrams).NotNull().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.ElictricalDiagrams).NotNull().WithMessage(x => AppResources.Required);
+            //RuleFor(p => p.ElictricalDiagrams).NotNull().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.SoilReport).NotNull().WithMessage(x => AppResources.Required);
+            //RuleFor(p => p.SoilReport).NotNull().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.SurveyReport).NotNull().WithMessage(x => AppResources.Required);
+            //RuleFor(p => p.SurveyReport).NotNull().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.StocksNumber).NotEmpty().WithMessage(x => AppResources.Required);
+            //RuleFor(p => p.StocksNumber).NotEmpty().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.Cost).NotEmpty().WithMessage(x => AppResources.Required);
+            //RuleFor(p => p.Cost).NotEmpty().WithMessage(x => AppResources.Required);
 
             RuleFor(e => e)
              .MustAsync(async (e, cancellationToken) => await EventNameAndDateUnique(e, cancellationToken))

@@ -6,7 +6,7 @@ namespace App.Persistence.Repositories
 {
     public class AttachmentContentRepository : BaseRepository<AttachmentContent>, IAttachmentContentRepository
     {
-        public AttachmentContentRepository(IDbContextFactory<BuildingDbContext> dbContext) : base(dbContext)
+        public AttachmentContentRepository(BuildingDbContext dbContext) : base(dbContext)
         {
 
         }
