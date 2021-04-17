@@ -14,6 +14,9 @@ namespace Application.App.Contracts.UOW
         IAttachmentRepository Attachments { get; }
 
         IAttachmentContentRepository AttachmentContents { get; }
+
+        IBuildingRepository Buildings { get; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken());
     }
 }

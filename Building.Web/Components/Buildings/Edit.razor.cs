@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Building.Web.Components.Buildings
@@ -27,6 +28,7 @@ namespace Building.Web.Components.Buildings
         public Guid Id { get; set; }
         protected async override Task OnParametersSetAsync()
         {
+            
             buildingDto = await _buildingService.GetBuildingByIdAsync(Id);
             editContext = new EditContext(buildingDto);
         }

@@ -20,6 +20,7 @@ namespace App.Persistence.UOW
         {
             _context = contextFactory;
             Projects = new ProjectRepository(_context);
+            Buildings = new BuildingRepository(_context);
             Attachments = new AttachmentRepository(_context);
             AttachmentContents = new AttachmentContentRepository(_context);
         }
@@ -27,7 +28,9 @@ namespace App.Persistence.UOW
         public IAttachmentContentRepository AttachmentContents { get; private set; }
         public IAttachmentRepository Attachments { get; private set; }
         public IProjectRepository Projects { get; private set; }
-       
+
+        public IBuildingRepository Buildings { get; private set; }
+
 
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace App.Persistence.Repositories
@@ -71,17 +72,16 @@ namespace App.Persistence.Repositories
 
             return entity;
         }
-        public async Task UpdateAsync(object entity)
+
+        public async Task<T> GetByIdAsync(Expression<Func<T, bool>> condtion)
         {
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
+            return await _dbContext.Set<T>().AsNoTracking().FirstOrDefaultAsync<T>(condtion);
         }
 
-
-        public async Task<T> GetByIdAsync(Guid id)
-        {
-            return await _dbContext.Set<T>().FindAsync(id);
-        }
+        //public async Task<T> GetByIdAsync(Guid id)
+        //{
+        //    return await _dbContext.Set<T>().FindAsync(id);
+        //}
 
         public Task<IReadOnlyList<T>> GetPagedReponseAsync(int page, int size)
         {
@@ -96,6 +96,7 @@ namespace App.Persistence.Repositories
 
         public async Task UpdateAsync(T entity)
         {
+            //_dbContext.ChangeTracker.Entries()
             _dbContext.Entry(entity).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }

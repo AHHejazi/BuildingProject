@@ -1,11 +1,12 @@
-﻿using Domain.App.Entities;
+﻿using Domain.App.Common;
+using Domain.App.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Application.App.Services.Buildings
 {
-   public class BuildingDto
+   public class BuildingDto: AuditableEntity
     {
         public System.Guid Id { get; set; }
         public string Number { get; set; }

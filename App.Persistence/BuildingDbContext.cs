@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace App.Persistence
 {
-    public class BuildingDbContext: DbContext
+    public class BuildingDbContext: DbContext,IDisposable
     {
         private readonly ILoggedInUserService _loggedInUserService;
 
@@ -66,6 +66,11 @@ namespace App.Persistence
                 }
             }
             return base.SaveChangesAsync(cancellationToken);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Application.App.Contracts.Persistence;
+using Application.App.Contracts.UOW;
 using Application.App.Responses;
 using AutoMapper;
 using Domain.App.Entities;
@@ -15,20 +16,19 @@ namespace Application.App.Services.Buildings
     {
         
         private readonly IBuildingRepository _buildingRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly ILogger<BuildingDto> _logger;
 
         //used to store state of screen
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;
         protected bool Saved;
 
-
-        public BuildingService(IMapper mapper, IBuildingRepository buildingRepository, ILogger<BuildingDto> logger)
+        public BuildingService(IUnitOfWork unitOfWork,IMapper mapper, IBuildingRepository buildingRepository, ILogger<BuildingDto> logger)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
             _buildingRepository = buildingRepository;
-            _logger = logger;
         }
 
         public async Task<Guid> AddBuilding(BuildingDto building)
@@ -75,11 +75,6 @@ namespace Application.App.Services.Buildings
 
 
 
-        //public Task<Building> GetBuildingByIdAsync(Guid Id)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public Task<BuildingVM> SearchBuildingAsync(BuildingVM buildingVM)
         {
             throw new NotImplementedException();
@@ -88,26 +83,21 @@ namespace Application.App.Services.Buildings
         public async Task UpdateBuilding(BuildingDto buildingDto)
         {
             var building= _mapper.Map<Building>(buildingDto);
-            await _buildingRepository.UpdateAsync(building);
+            await _unitOfWork.Buildings.UpdateAsync(building);
         }
 
 
 
         public async Task<BuildingDto> GetBuildingByIdAsync(Guid Id)
         {
-            var obj = await _buildingRepository.GetByIdAsync(Id);
+            Expression<Func<Building, bool>> condtion = r => r.Id==Id;
+
+            var obj = await _unitOfWork.Buildings.GetByIdAsync(condtion);
             var retObj = _mapper.Map<BuildingDto>(obj);
             return retObj;
 
         }
 
-        //public async Task UpdateBuilding(BuildingDto building)
-        //{
-        //    await _buildingRepository.UpdateAsync(building);
-        //    StatusClass = "alert-success";
-        //    Message = "Building updated successfully.";
-        //    Saved = true;
-        //}
 
         public async Task DeleteBuildingAsync(Guid buildingId)
         {
