@@ -1,4 +1,5 @@
-﻿using Application.App.Contracts.Identity;
+﻿using App.Identity.Models;
+using Application.App.Contracts.Identity;
 using Application.App.Responses;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.DataProtection;
@@ -13,21 +14,19 @@ namespace App.Identity.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<AuthenticationService> _logger;
         public readonly NavigationManager _navigationManager;
         private readonly IDataProtectionProvider _dataProtectionProvider;
 
-        public AuthenticationService(SignInManager<IdentityUser> signInManager,
+        public AuthenticationService(SignInManager<ApplicationUser> signInManager,
             ILogger<AuthenticationService> logger,
-            UserManager<IdentityUser> userManager, NavigationManager navigationManager,
+            UserManager<ApplicationUser> userManager, NavigationManager navigationManager,
             IDataProtectionProvider dataProtectionProvider)
         {
             _userManager = userManager;
             _navigationManager = navigationManager;
             _dataProtectionProvider = dataProtectionProvider;
-            _signInManager = signInManager;
             _logger = logger;
         }
 
@@ -86,7 +85,7 @@ namespace App.Identity.Services
             var baseResponse = new BaseResponse();
             try
             {
-                var user = new IdentityUser { UserName = userName, Email = email };
+                var user = new ApplicationUser { UserName = userName, Email = email };
                 var result = await _userManager.CreateAsync(user, password);
                 if (result.Succeeded)
                 {

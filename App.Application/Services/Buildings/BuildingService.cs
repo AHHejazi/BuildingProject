@@ -15,7 +15,6 @@ namespace Application.App.Services.Buildings
     public class BuildingService : IBuildingService
     {
         
-        private readonly IBuildingRepository _buildingRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
@@ -24,18 +23,17 @@ namespace Application.App.Services.Buildings
         protected string StatusClass = string.Empty;
         protected bool Saved;
 
-        public BuildingService(IUnitOfWork unitOfWork,IMapper mapper, IBuildingRepository buildingRepository, ILogger<BuildingDto> logger)
+        public BuildingService(IUnitOfWork unitOfWork,IMapper mapper, IBuildingRepository buildingRepository)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _buildingRepository = buildingRepository;
         }
 
         public async Task<Guid> AddBuilding(BuildingDto building)
         {
             try
             {
-                var validator = new BuildingValidator(_buildingRepository);
+                var validator = new BuildingValidator(_unitOfWork.Buildings);
             var validationResult = await validator.ValidateAsync(building);
 
             if (validationResult.Errors.Count > 0)
@@ -43,7 +41,7 @@ namespace Application.App.Services.Buildings
             var build = _mapper.Map<Building>(building);
             build.Number = GenerateBuildingNumber();
 
-            build = await _buildingRepository.AddAsync(build);
+            build = await _unitOfWork.Buildings.AddAsync(build);
             return build.Id;
             }
             catch (Exception ex)
@@ -62,7 +60,7 @@ namespace Application.App.Services.Buildings
             Expression<Func<Building, string>> orderBy = r => r.Number;
 
 
-            var lastInsertedBuilding = _buildingRepository.GenerateModelNumber(condtion, orderBy);
+            var lastInsertedBuilding = _unitOfWork.Buildings.GenerateModelNumber(condtion, orderBy);
 
             if (lastInsertedBuilding == null)
             {
@@ -101,20 +99,20 @@ namespace Application.App.Services.Buildings
 
         public async Task DeleteBuildingAsync(Guid buildingId)
         {
-            await _buildingRepository.DeleteAsync(buildingId);
+            await _unitOfWork.Buildings.DeleteAsync(buildingId);
         }
 
 
 
         public async Task<IReadOnlyList<Building>> BuildingListQuery()
         {
-            var result = await _buildingRepository.ListAllAsync();
+            var result = await _unitOfWork.Buildings.ListAllAsync();
             return result;
         }
 
         public async Task<BuildingVM> SearchBuildingsAsync(BuildingVM buildingVM)
         {
-            return await _buildingRepository.SearchAsync(buildingVM);
+            return await _unitOfWork.Buildings.SearchAsync(buildingVM);
         }
 
         Task<BaseResponse> IBuildingService.DeleteBuildingAsync(Guid projectId)

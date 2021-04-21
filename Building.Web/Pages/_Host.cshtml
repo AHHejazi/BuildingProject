@@ -40,7 +40,7 @@
     }
 
     <app>
-        <component type="typeof(App)" render-mode="ServerPrerendered"
+        <component type="typeof(App)" render-mode="Server"
                    param-InitialState="initialTokenState" />
     </app>
 
@@ -60,8 +60,10 @@
     <script src="~/lib/jquery-3.4.1.min.js"></script>
     <script src="_framework/blazor.server.js"></script>
     <script src="~/js/locliaztion.js"></script>
+
     @*<script src="Blazor.FlexGrid/flexGridIntereop.js"></script>*@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjuBJgrT5MhAA9mPp1x75aOADfSKHVy1g&callback=initMap"></script>
+    <script src="~/js/script.js"></script>
 </body>
 </html>

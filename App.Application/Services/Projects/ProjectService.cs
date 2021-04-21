@@ -1,5 +1,6 @@
 ﻿using Application.App.Contracts.Persistence;
 using Application.App.Contracts.UOW;
+using Application.App.Enum;
 using Application.App.Responses;
 using Application.App.Services.Common;
 using AutoMapper;
@@ -17,8 +18,6 @@ namespace Application.App.Services.Projects
 {
     public class ProjectService : IProjectService
     {
-        private readonly IProjectRepository _projectRepository;
-        private readonly IBuildingRepository _buildingRepository;
         private readonly IMapper _mapper;
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;
@@ -26,12 +25,9 @@ namespace Application.App.Services.Projects
         private readonly IUnitOfWork _unitOfWork;
         private readonly AppSettingsService _appSettingsService;
 
-        public ProjectService(IMapper mapper, IProjectRepository projectRepository, ILogger<ProjectDto> logger, IAttachmentService attachmentService,
-            IBuildingRepository buildingRepository, IUnitOfWork unitOfWork, AppSettingsService appSettingsService)
+        public ProjectService(IMapper mapper, IUnitOfWork unitOfWork, AppSettingsService appSettingsService)
         {
             _mapper = mapper;
-            _projectRepository = projectRepository;
-            _buildingRepository = buildingRepository;
             _unitOfWork = unitOfWork;
             _appSettingsService = appSettingsService;
         }
@@ -39,34 +35,26 @@ namespace Application.App.Services.Projects
 
         public async Task<Guid> AddProject(ProjectDto project)
         {
-            try
+            var validator = new ProjectValidator(_unitOfWork.Projects);
+            var validationResult = await validator.ValidateAsync(project);
+
+            if (validationResult.Errors.Count > 0)
+                throw new ValidationException(validationResult);
+            var prject = _mapper.Map<Project>(project);
+            prject.Number = GenerateProjectNumber();
+
+            if (project.fileData != null && project.fileData.Count() > 0)
             {
-                var validator = new ProjectValidator(_projectRepository);
-                var validationResult = await validator.ValidateAsync(project);
-
-                if (validationResult.Errors.Count > 0)
-                    throw new ValidationException(validationResult);
-                var prject = _mapper.Map<Project>(project);
-                prject.Number = GenerateProjectNumber();
-
-                if (project.fileData != null && project.fileData.Count() > 0)
+                foreach (var item in project.fileData)
                 {
-                    foreach (var item in project.fileData)
-                    {
-                        var retAttachmentId = await _unitOfWork.Attachments.AddOrUpdateAttachmentAsync(_appSettingsService.AttachmentsPath, item.FileName, item.FileType, item.Data, item.AttachemntType);
+                    var retAttachmentId = await _unitOfWork.Attachments.AddOrUpdateAttachmentAsync(_appSettingsService.AttachmentsPath, item.FileName, item.FileType, item.Data, AttachmentTypesEnum.GeneralImageAttachment);
 
-                    }
                 }
-
-                prject = await _unitOfWork.Projects.AddAsync(prject);
-                await _unitOfWork.SaveChangesAsync();
-                return prject.Id;
             }
-            catch (Exception ex)
-            {
 
-                throw ex;
-            }
+            prject = await _unitOfWork.Projects.AddAsync(prject);
+            await _unitOfWork.SaveChangesAsync();
+            return prject.Id;
 
         }
 
@@ -79,7 +67,7 @@ namespace Application.App.Services.Projects
             Expression<Func<Project, string>> orderBy = r => r.Number;
 
 
-            var lastInsertedProject = _projectRepository.GenerateModelNumber(condtion, orderBy);
+            var lastInsertedProject = _unitOfWork.Projects.GenerateModelNumber(condtion, orderBy);
 
             if (lastInsertedProject == null)
             {
@@ -93,7 +81,7 @@ namespace Application.App.Services.Projects
         public async Task<BaseResponse> DeleteProjectAsync(Guid projectId)
         {
             var baseResponse = new BaseResponse();
-            var isHasRelatedbuiding = await _buildingRepository.CheckRelatedBuildingAsync(projectId);
+            var isHasRelatedbuiding = await _unitOfWork.Buildings.CheckRelatedBuildingAsync(projectId);
 
             if (isHasRelatedbuiding)
             {
@@ -102,20 +90,20 @@ namespace Application.App.Services.Projects
                     "you have to delete realted project before";
                 return baseResponse;
             }
-            var project = _projectRepository.GetByIdAsync(projectId);
+            var project = _unitOfWork.Projects.GetByIdAsync(projectId);
 
             if (project == null)
             {
                 throw new NotFoundException(nameof(project), projectId);
             }
 
-            await _projectRepository.DeleteAsync(projectId);
+            await _unitOfWork.Projects.DeleteAsync(projectId);
             return baseResponse;
         }
 
         public async Task<ProjectDto> GetProjectByIdAsync(Guid Id)
         {
-            var obj = await _projectRepository.GetByIdAsync(Id);
+            var obj = await _unitOfWork.Projects.GetByIdAsync(Id);
             var retObj = _mapper.Map<ProjectDto>(obj);
             return retObj;
 
@@ -123,7 +111,7 @@ namespace Application.App.Services.Projects
 
         public async Task<IReadOnlyList<Project>> ProjectListQuery()
         {
-            var result = await _projectRepository.ListAllAsync();
+            var result = await _unitOfWork.Projects.ListAllAsync();
             return result;
         }
 
@@ -137,7 +125,7 @@ namespace Application.App.Services.Projects
 
         public async Task UpdateProject(ProjectDto project)
         {
-            await _projectRepository.UpdateAsync(project);
+            await _unitOfWork.Projects.UpdateAsync(project);
             StatusClass = "alert-success";
             Message = "Project updated successfully.";
             Saved = true;
@@ -145,7 +133,7 @@ namespace Application.App.Services.Projects
 
         public async Task<IEnumerable<SelectListItem>> ProjectListByCurrentUserAsync(string userName = null)
         {
-            return await _projectRepository.ProjectListByCurrentUserAsync(userName);
+            return await _unitOfWork.Projects.ProjectListByCurrentUserAsync(userName);
         }
     }
 }

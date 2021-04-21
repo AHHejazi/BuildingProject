@@ -1,4 +1,5 @@
 ﻿using App.Identity.Identity;
+using App.Identity.Models;
 using App.Identity.Services;
 using Application.App.Contracts.Identity;
 using Blazored.LocalStorage;
@@ -19,7 +20,7 @@ namespace App.Identity
                       options.UseSqlServer(
                           configuration.GetConnectionString("BuildingConnectionString")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<BuildingIdentityDbContext>();
 
 

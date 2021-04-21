@@ -35,7 +35,7 @@ namespace Building.Web
         {
             services.AddRazorPages();
             services.AddServerSideBlazor(c => c.DetailedErrors = true);
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IValidator<ProjectDto>, ProjectValidator>();
             services.AddTransient<IValidator<BuildingDto>, BuildingValidator>();
             services.AddSingleton<WeatherForecastService>();

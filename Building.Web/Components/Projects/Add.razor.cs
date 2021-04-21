@@ -1,6 +1,7 @@
 ﻿using Application.App.Enum;
 using Application.App.Services.Lookups;
 using Application.App.Services.Projects;
+using ComponentsLibrary.PopUp;
 using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -19,12 +20,11 @@ namespace Building.Web.Components.Projects
 
         [Parameter]
         public EventCallback<ProjectDto> OnValidSubmit { get; set; }
-        public ProjectDto Model = new ProjectDto();
+        public ProjectDto Model { get; set; } = new();
         private IEnumerable<SelectListItem> ProjectTypeList;
         private EditContext editContext;
         List<FileData> fileData = new List<FileData>();
-        
-        
+
 
         protected async override Task OnInitializedAsync()
         {
@@ -57,7 +57,7 @@ namespace Building.Web.Components.Projects
             }
         }
 
-        public async Task ValidateForm(EditContext editContext)
+        public void ValidateForm(EditContext editContext)
         {
 
             var isValid = editContext.Validate();
@@ -65,6 +65,25 @@ namespace Building.Web.Components.Projects
             if (!isValid)
                 return;
 
+        }
+
+        protected MapDialog MapDialog { get; set; }
+        protected void QuickShowMap()
+        {
+            MapDialog.Show();
+        }
+
+        protected void MapDialog_OnDialogClose(string location)
+        {
+            if (!string.IsNullOrEmpty(location))
+            {
+                var coordination = location.Split(',');
+
+                Model.PropertyLatitude = coordination[0];
+                Model.PropertyLongitude = coordination[1];
+            }
+
+            StateHasChanged();
         }
     }
 }

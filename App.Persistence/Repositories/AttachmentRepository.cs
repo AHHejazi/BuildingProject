@@ -24,7 +24,7 @@ namespace App.Persistence.Repositories
 
     public class AttachmentRepository : BaseRepository<Attachment>, IAttachmentRepository
     {
-
+        
         public AttachmentRepository(BuildingDbContext dbContext) : base(dbContext)
         {
 

@@ -10,16 +10,16 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Persistence.Migrations
 {
     [DbContext(typeof(BuildingDbContext))]
-    [Migration("20210227212958_BuildingV1")]
-    partial class BuildingV1
+    [Migration("20210417195157_17-04")]
+    partial class _1704
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "5.0.4")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Domain.App.Common.Attachment", b =>
                 {
@@ -42,11 +42,9 @@ namespace App.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DescriptionAr")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DescriptionEn")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Extension")
@@ -107,7 +105,7 @@ namespace App.Persistence.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AllowedFilesExtension")
                         .HasColumnType("nvarchar(max)");
@@ -165,7 +163,7 @@ namespace App.Persistence.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("ApplicationId")
                         .HasColumnType("int");
@@ -286,9 +284,9 @@ namespace App.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte?>("NumberOfFloor")
+                    b.Property<int?>("NumberOfFloor")
                         .IsRequired()
-                        .HasColumnType("tinyint");
+                        .HasColumnType("int");
 
                     b.Property<Guid>("ProjectId")
                         .HasColumnType("uniqueidentifier");
@@ -396,7 +394,7 @@ namespace App.Persistence.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("NameAr")
                         .IsRequired()
@@ -415,7 +413,7 @@ namespace App.Persistence.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("NameAr")
                         .IsRequired()
@@ -434,7 +432,7 @@ namespace App.Persistence.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<Guid?>("BuildingId")
                         .HasColumnType("uniqueidentifier");
@@ -602,9 +600,6 @@ namespace App.Persistence.Migrations
                     b.Property<string>("SoilReport")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SurveyReport")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("TotalArea")
                         .HasColumnType("int");
 
@@ -622,13 +617,13 @@ namespace App.Persistence.Migrations
 
             modelBuilder.Entity("ProjectProjectType", b =>
                 {
-                    b.Property<int>("ProjectTypesId")
+                    b.Property<int>("ProjectTypeId")
                         .HasColumnType("int");
 
                     b.Property<Guid>("ProjectsId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ProjectTypesId", "ProjectsId");
+                    b.HasKey("ProjectTypeId", "ProjectsId");
 
                     b.HasIndex("ProjectsId");
 
@@ -736,7 +731,7 @@ namespace App.Persistence.Migrations
                 {
                     b.HasOne("Domain.App.Entities.Lookup.ProjectType", null)
                         .WithMany()
-                        .HasForeignKey("ProjectTypesId")
+                        .HasForeignKey("ProjectTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

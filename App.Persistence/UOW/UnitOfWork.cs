@@ -1,5 +1,6 @@
 ﻿using App.Application.Contracts.Persistence;
 using App.Persistence.Repositories;
+using Application.App.Contracts;
 using Application.App.Contracts.Persistence;
 using Application.App.Contracts.UOW;
 using Domain.App.Common;
@@ -16,13 +17,15 @@ namespace App.Persistence.UOW
     public class UnitOfWork : IUnitOfWork
     {
         private readonly BuildingDbContext _context;
-        public UnitOfWork(BuildingDbContext contextFactory)
+        private readonly ILoggedInUserService _loggedInUserService;
+        public UnitOfWork(BuildingDbContext context, ILoggedInUserService loggedInUserService)
         {
-            _context = contextFactory;
+            _context = context;
             Projects = new ProjectRepository(_context);
             Buildings = new BuildingRepository(_context);
             Attachments = new AttachmentRepository(_context);
             AttachmentContents = new AttachmentContentRepository(_context);
+            _loggedInUserService = loggedInUserService;
         }
 
         public IAttachmentContentRepository AttachmentContents { get; private set; }
@@ -32,7 +35,7 @@ namespace App.Persistence.UOW
         public IBuildingRepository Buildings { get; private set; }
 
 
-        public Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
 
 
@@ -42,15 +45,15 @@ namespace App.Persistence.UOW
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedOn = DateTime.Now;
-                        entry.Entity.CreatedBy = "ahejazi";//_loggedInUserService.UserId??"ahejazi";
+                        entry.Entity.CreatedBy = _loggedInUserService.UserId ?? "ahejazi";
                         break;
                     case EntityState.Modified:
                         entry.Entity.UpdatedOn = DateTime.Now;
-                        entry.Entity.UpdatedBy = "ahejazi";
+                        entry.Entity.UpdatedBy = _loggedInUserService.UserId ?? "ahejazi";
                         break;
                 }
             }
-            return _context.SaveChangesAsync(cancellationToken);
+            return await _context.SaveChangesAsync(cancellationToken);
         }
 
         public void Dispose()

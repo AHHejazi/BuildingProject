@@ -15,12 +15,12 @@ namespace App.Persistence.Configurations
             entity.HasKey(e => e.Id);
         entity.Property(e => e.FileName).IsRequired();
         entity.Property(e => e.Extension).IsRequired();
-        entity.Property(e => e.FilePath).IsRequired();
+        entity.Property(e => e.FilePath).IsRequired(false);
         entity.Property(e => e.ContentType).IsRequired();
-        entity.Property(e => e.TitleAr).IsRequired();
-        entity.Property(e => e.TitleEn).IsRequired();
-        entity.Property(e => e.DescriptionAr).IsRequired();
-        entity.Property(e => e.DescriptionEn).IsRequired();
+        entity.Property(e => e.TitleAr).IsRequired(false);
+        entity.Property(e => e.TitleEn).IsRequired(false);
+        entity.Property(e => e.DescriptionAr).IsRequired(false);
+        entity.Property(e => e.DescriptionEn).IsRequired(false);
         entity.Property(e => e.AttachmentTypeId).IsRequired();
         entity.Property(e => e.Thumbnail).IsRequired();
         entity.Property(e => e.CreatedOn).IsRequired();

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace App.Persistence.Migrations
 {
-    public partial class buidingV1 : Migration
+    public partial class _1704 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -89,7 +89,7 @@ namespace App.Persistence.Migrations
                     PropertyLongitude = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     SerialNumber = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    ProjectType = table.Column<int>(type: "int", nullable: false),
+                    ProjectTypeId = table.Column<int>(type: "int", nullable: false),
                     TotalArea = table.Column<int>(type: "int", nullable: false),
                     InstrumentNumber = table.Column<int>(type: "int", nullable: false),
                     BuildingLicenseNumber = table.Column<int>(type: "int", nullable: false),
@@ -103,9 +103,6 @@ namespace App.Persistence.Migrations
                     ArchitecturalDiagrams = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ElictricalDiagrams = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SoilReport = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SurveyReport = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StocksNumber = table.Column<int>(type: "int", nullable: false),
-                    Cost = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -114,6 +111,21 @@ namespace App.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Project", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProjectType",
+                schema: "lookup",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameEn = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,8 +165,8 @@ namespace App.Persistence.Migrations
                     ContentType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TitleAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TitleEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescriptionAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescriptionEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DescriptionAr = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DescriptionEn = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AttachmentTypeId = table.Column<int>(type: "int", nullable: false),
                     Thumbnail = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -190,7 +202,7 @@ namespace App.Persistence.Migrations
                     Number = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     EstimatedCost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TotalSurfaceArea = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    NumberOfFloor = table.Column<byte>(type: "tinyint", nullable: false),
+                    NumberOfFloor = table.Column<int>(type: "int", nullable: false),
                     LicenseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StampingNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NumberOfApartment = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -208,6 +220,32 @@ namespace App.Persistence.Migrations
                         column: x => x.ProjectId,
                         principalSchema: "Building",
                         principalTable: "Project",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProjectProjectType",
+                columns: table => new
+                {
+                    ProjectTypeId = table.Column<int>(type: "int", nullable: false),
+                    ProjectsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectProjectType", x => new { x.ProjectTypeId, x.ProjectsId });
+                    table.ForeignKey(
+                        name: "FK_ProjectProjectType_Project_ProjectsId",
+                        column: x => x.ProjectsId,
+                        principalSchema: "Building",
+                        principalTable: "Project",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProjectProjectType_ProjectType_ProjectTypeId",
+                        column: x => x.ProjectTypeId,
+                        principalSchema: "lookup",
+                        principalTable: "ProjectType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -392,6 +430,11 @@ namespace App.Persistence.Migrations
                 column: "OutbuildingsTypeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProjectProjectType_ProjectsId",
+                table: "ProjectProjectType",
+                column: "ProjectsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Supplies_BuildingId",
                 schema: "lookup",
                 table: "Supplies",
@@ -419,6 +462,9 @@ namespace App.Persistence.Migrations
                 name: "Outbuildings");
 
             migrationBuilder.DropTable(
+                name: "ProjectProjectType");
+
+            migrationBuilder.DropTable(
                 name: "SystemSetting",
                 schema: "Common");
 
@@ -436,6 +482,10 @@ namespace App.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "OutbuildingsType",
+                schema: "lookup");
+
+            migrationBuilder.DropTable(
+                name: "ProjectType",
                 schema: "lookup");
 
             migrationBuilder.DropTable(
