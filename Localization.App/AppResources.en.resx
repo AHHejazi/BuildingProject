@@ -126,6 +126,9 @@
   <data name="AddProject" xml:space="preserve">
     <value>Add Project</value>
   </data>
+  <data name="AddSupply" xml:space="preserve">
+    <value>Add Supply</value>
+  </data>
   <data name="ArchitecturalDiagrams" xml:space="preserve">
     <value>Architectural Diagrams</value>
   </data>
@@ -165,6 +168,9 @@
   <data name="DeleteProject" xml:space="preserve">
     <value>Delete Project</value>
   </data>
+  <data name="DeleteSupply" xml:space="preserve">
+    <value>Delete Supply</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
@@ -173,6 +179,9 @@
   </data>
   <data name="EditProject" xml:space="preserve">
     <value>Edit Project</value>
+  </data>
+  <data name="EditSupply" xml:space="preserve">
+    <value>Edit Supply</value>
   </data>
   <data name="ElictricalDiagrams" xml:space="preserve">
     <value>Elictrical Diagrams</value>
@@ -254,6 +263,12 @@
   </data>
   <data name="StampingNumber" xml:space="preserve">
     <value>Stamping Number</value>
+  </data>
+  <data name="SuppliesManagment" xml:space="preserve">
+    <value>Supplies Managment</value>
+  </data>
+  <data name="SupplyDetails" xml:space="preserve">
+    <value>Supply Details</value>
   </data>
   <data name="TotalArea" xml:space="preserve">
     <value>Total Area</value>

@@ -7,6 +7,7 @@ using Application.App.Contracts.Identity;
 using Application.App.Contracts.UOW;
 using Application.App.Services.Buildings;
 using Application.App.Services.Projects;
+using Application.App.Services.Supplies;
 using Building.Web.Data;
 using Building.Web.Services;
 using FluentValidation;
@@ -38,6 +39,7 @@ namespace Building.Web
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IValidator<ProjectDto>, ProjectValidator>();
             services.AddTransient<IValidator<BuildingDto>, BuildingValidator>();
+            services.AddTransient<IValidator<SuppliesDto>, SuppliesValidator>(); 
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddCoreServices();

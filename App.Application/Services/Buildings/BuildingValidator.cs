@@ -16,13 +16,13 @@ namespace Application.App.Services.Buildings
         {
             _buildingRepository = buildingRepository;
 
-            RuleFor(p => p.EstimatedCost)
+            RuleFor(p => p.EstimatedCost).GreaterThan(100000)
                 .NotEmpty().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.NumberOfApartment)
+             RuleFor(p => p.NumberOfApartment).NotNull()/*.LessThan(50)*/
                 .NotEmpty().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.NumberOfFloor)
+            RuleFor(p => p.NumberOfFloor).LessThan(10)
                 .NotEmpty().WithMessage(x => AppResources.Required);
 
             RuleFor(p => p.StampingNumber)

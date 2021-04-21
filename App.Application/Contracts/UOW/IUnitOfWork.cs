@@ -11,6 +11,7 @@ namespace Application.App.Contracts.UOW
     public interface IUnitOfWork : IDisposable
     {
         IProjectRepository Projects { get; }
+        ISuppliesRepository Suppliess { get; }
         IAttachmentRepository Attachments { get; }
 
         IAttachmentContentRepository AttachmentContents { get; }

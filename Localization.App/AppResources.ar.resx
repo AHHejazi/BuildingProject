@@ -126,6 +126,9 @@
   <data name="AddProject" xml:space="preserve">
     <value>إضافة مشروع </value>
   </data>
+  <data name="AddSupply" xml:space="preserve">
+    <value>إضافة مستلزم</value>
+  </data>
   <data name="ArchitecturalDiagrams" xml:space="preserve">
     <value>المخططات المعمارية</value>
   </data>
@@ -165,6 +168,9 @@
   <data name="DeleteProject" xml:space="preserve">
     <value>حذف مشروع</value>
   </data>
+  <data name="DeleteSupply" xml:space="preserve">
+    <value>حذف مستلزم</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>تعديل</value>
   </data>
@@ -173,6 +179,9 @@
   </data>
   <data name="EditProject" xml:space="preserve">
     <value>تعديل مشروع</value>
+  </data>
+  <data name="EditSupply" xml:space="preserve">
+    <value>تعديل معلومات مستلزم</value>
   </data>
   <data name="ElictricalDiagrams" xml:space="preserve">
     <value>المخططات الكهربائية</value>
@@ -254,6 +263,12 @@
   </data>
   <data name="StampingNumber" xml:space="preserve">
     <value>رقم الطوابع</value>
+  </data>
+  <data name="SuppliesManagment" xml:space="preserve">
+    <value>إدارة المستلزمات</value>
+  </data>
+  <data name="SupplyDetails" xml:space="preserve">
+    <value>تفاصيل المستلزم</value>
   </data>
   <data name="TotalArea" xml:space="preserve">
     <value>المساحة الكلية</value>

@@ -1,0 +1,29 @@
+﻿@page "/Supplies/details/{Id:guid}"
+    <h3>@AppResources.SupplyDetails</h3>
+
+    @if (supply == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+
+    else
+    {
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="NameAr">@AppResources.NameArabic</label>
+                <label type="text" readonly id="NameAr" class="form-control">supply.NameAr</label>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="NameEn">@AppResources.NameEnglish</label>
+                <label type="text" readonly id="NameEn" class="form-control">@supply.NameEn</label>
+            </div>
+        </div>
+
+<div class="form-row form-group">
+    <NavLink href="/Supplies/index" class="btn btn-primary">Back</NavLink>
+</div>
+}
+
+@code {
+
+}

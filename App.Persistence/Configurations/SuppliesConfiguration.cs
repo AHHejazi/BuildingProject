@@ -7,11 +7,11 @@ using System.Text;
 
 namespace App.Persistence.Configurations
 {
-    public class SuppliesConfiguration : IEntityTypeConfiguration<Supplies>
+    public class SuppliesConfiguration : IEntityTypeConfiguration<Supplement>
     {
-        public void Configure(EntityTypeBuilder<Supplies> entity)
+        public void Configure(EntityTypeBuilder<Supplement> entity)
         {
-            entity.ToTable(nameof(Supplies), MappingDefaults.LookupSchema);
+            entity.ToTable(nameof(Supplement), MappingDefaults.LookupSchema);
             entity.HasKey(o => o.Id);
             entity.Property(e => e.NameAr).IsRequired();
             entity.Property(e => e.NameEn);

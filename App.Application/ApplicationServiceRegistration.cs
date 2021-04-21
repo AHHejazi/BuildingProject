@@ -1,11 +1,10 @@
 ﻿using Application.App.Services.Common;
-using Application.App.Contracts.Persistence;
 using Application.App.Services.Buildings;
 using Application.App.Services.Lookups;
 using Application.App.Services.Projects;
-using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using Application.App.Services.Supplies;
 
 namespace Application.App
 {
@@ -19,7 +18,7 @@ namespace Application.App
             services.AddTransient<IAttachmentService, AttachmentService>();
             services.AddTransient<AppSettingsService>();
             services.AddTransient<IBuildingService, BuildingService>();
-            
+            services.AddTransient<ISuppliesService, SuppliesService>();
             return services;
         }
     }

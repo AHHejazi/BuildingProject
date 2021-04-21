@@ -1,0 +1,82 @@
+﻿@page "/Supplies/index"
+@page "/Supplies/index/{page}"
+@attribute [Authorize]
+@inherits PageBase;
+
+<h3>@AppResources.SuppliesManagment</h3>
+
+@if (suppliesVM.SuppliesList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="suppliesVM">
+        <div class="form-row">
+            <div class="form-group">
+                <NavLink href="/Supplies/Add" class="btn btn-info btn-block">@AppResources.AddSupply</NavLink>
+            </div>
+
+            <div class="input-group">
+                <div class="form-group col-md-6">
+                    <label for="NameAr">@AppResources.NameArabic</label>
+                    <InputText @bind-Value="suppliesVM.NameAr" id="NameAr" class="form-control"></InputText>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="NameEn">@AppResources.NameEnglish</label>
+                    <InputText @bind-Value="suppliesVM.NameEn" id="NameEn" class="form-control"></InputText>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="submit-button" @onclick="@SearchSupplies">@AppResources.Search</button>
+        </div>
+    </EditForm>
+
+    <div class="form-row">
+        <table class='table table-striped'>
+            <thead>
+                <tr align="center">
+                    <th>@AppResources.NameArabic</th>
+                    <th>@AppResources.NameEnglish</th>
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var supply in suppliesVM.SuppliesList)
+                {
+                    <tr align="center">
+                        <td>
+                            <NavLink href="@($"/Supplies/details{supply.Id}")" class="nav-link">
+                                @supply.NameAr
+                            </NavLink>
+                        </td>
+                        <td>@supply.NameEn</td>
+
+                        <td>
+                            <a class="fa fa-edit fa-lg" title="@AppResources.EditSupply" href="@($"/Supplies/edit/{supply.Id}")"></a>
+                            <a title="@AppResources.DeleteSupply" @onclick="()=>DeleteConfirmationSupply(supply.Id)"><i class="fa fa-trash-o fa-lg"></i></a>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <Pager Result=@suppliesVM.SuppliesList PageChanged=@PagerPageChanged />
+    </div>
+}
+
+<DeleteDialog @ref="DeleteDialog" @*CloseEventCallback="@DeleteDialog_OnDialogClose" *@></DeleteDialog>
+
+
+<MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
+
+
+
+@code {
+
+}

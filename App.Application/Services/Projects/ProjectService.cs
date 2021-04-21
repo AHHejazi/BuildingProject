@@ -32,7 +32,7 @@ namespace Application.App.Services.Projects
             _appSettingsService = appSettingsService;
         }
 
-
+        
         public async Task<Guid> AddProject(ProjectDto project)
         {
             var validator = new ProjectValidator(_unitOfWork.Projects);

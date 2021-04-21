@@ -11,7 +11,7 @@ namespace Domain.App.Entities
 
         public Guid Id { get; set; }
 
-        public virtual ICollection<Supplies> Supplies { get; set; }
+        public virtual ICollection<Supplement> Supplies { get; set; }
         public string Number { get; set; }
         public decimal EstimatedCost { get; set; }
 
