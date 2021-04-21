@@ -36,7 +36,7 @@ namespace Application.App.Services.Projects
             _appSettingsService = appSettingsService;
         }
 
-
+        
         public async Task<Guid> AddProject(ProjectDto project)
         {
             try

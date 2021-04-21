@@ -1,0 +1,30 @@
+﻿@page "/Supplies/edit/{Id:guid}"
+    @inherits PageBase
+    <h3>@AppResources.EditSupply</h3>
+    @using Microsoft.AspNetCore.Components.Forms;
+
+        <EditForm Model="@supplyDto" Context="formContext" OnValidSubmit="@(SubmitSuppliesAsync)">
+            <FluentValidationValidator DisableAssemblyScanning="@true" />
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="NameAr">@AppResources.NameArabic</label>
+                    <InputText id="NameAr" class="form-control" @bind-Value="supplyDto.NameAr" />
+                    <ValidationMessage For="@(() => supplyDto.NameAr)" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="NameEn">@AppResources.NameEnglish</label>
+                    <InputText id="NameEn" class="form-control" @bind-Value="supplyDto.NameEn" />
+                    <ValidationMessage For="@(() => supplyDto.NameEn)" />
+                </div>
+            </div>
+<NavLink class="anchor-link link-button mt-3" href="/Supplement/index">Back</NavLink>
+<button @*@onclick="@(async e => await ValidateForm(formContext))" *@ type="submit" class="submit-button mt-3">Submit</button>
+
+    </EditForm>
+}
+<MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
+
+
+@code {
+
+}

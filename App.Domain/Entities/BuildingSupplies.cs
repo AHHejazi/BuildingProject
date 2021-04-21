@@ -9,13 +9,13 @@ namespace Domain.App.Entities
 
         public Building Building { get; set; }
 
-        public Supplies Supplies { get; set; }
+        public Supplement Supplies { get; set; }
 
 
         public Guid BuildingId { get; set; }
 
 
-        public int SuppliesId { get; set; }
+        public Guid SuppliesId { get; set; }
 
 
         public decimal Payment { get; set; }

@@ -88,6 +88,15 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Supply.
+        /// </summary>
+        public static string AddSupply {
+            get {
+                return ResourceManager.GetString("AddSupply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Architectural Diagrams.
         /// </summary>
         public static string ArchitecturalDiagrams {
@@ -205,6 +214,15 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Supply.
+        /// </summary>
+        public static string DeleteSupply {
+            get {
+                return ResourceManager.GetString("DeleteSupply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         public static string Edit {
@@ -228,6 +246,15 @@ namespace Localization.App {
         public static string EditProject {
             get {
                 return ResourceManager.GetString("EditProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Supply.
+        /// </summary>
+        public static string EditSupply {
+            get {
+                return ResourceManager.GetString("EditSupply", resourceCulture);
             }
         }
         
@@ -471,6 +498,24 @@ namespace Localization.App {
         public static string StampingNumber {
             get {
                 return ResourceManager.GetString("StampingNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplies Managment.
+        /// </summary>
+        public static string SuppliesManagment {
+            get {
+                return ResourceManager.GetString("SuppliesManagment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supply Details.
+        /// </summary>
+        public static string SupplyDetails {
+            get {
+                return ResourceManager.GetString("SupplyDetails", resourceCulture);
             }
         }
         

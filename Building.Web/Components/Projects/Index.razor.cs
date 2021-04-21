@@ -21,12 +21,9 @@ namespace Building.Web.Components.Projects
 
         protected DeleteDialog DeleteDialog { get; set; }
 
-        private Guid SelectedPrjectId;
+        private Guid  SelectedPrjectId;
 
-        //protected override async Task OnInitializedAsync()
-        //{
-        //    await GetProjects();
-        //}
+        
 
         [CascadingParameter(Name = "ErrorComponent")]
         protected IErrorComponent Error { get; set; }
