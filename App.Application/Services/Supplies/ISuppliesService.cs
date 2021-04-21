@@ -12,6 +12,6 @@ namespace Application.App.Services.Supplies
         Task<SuppliesDto> GetSuppliesByIdAsync(Guid Id);
         Task Updatesupply(SuppliesDto supplyDto);
         Task<SuppliesVM> SearchSuppliesAsync(SuppliesVM suppliesVM);
-        Task DeleteSuppliesAsync(Guid supplyId);
+        Task<BaseResponse> DeleteSuppliesAsync(Guid supplyId);
     }
 }

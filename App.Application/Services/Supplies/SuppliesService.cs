@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Domain.App.Entities.Lookup;
 using Microsoft.Extensions.Logging;
 using Framework.Core.Exceptions;
+using Application.App.Responses;
 
 namespace Application.App.Services.Supplies
 {
@@ -101,16 +102,26 @@ namespace Application.App.Services.Supplies
             
         }
 
-        public async Task DeleteSuppliesAsync(Guid supplyId)
+        public async Task<BaseResponse> DeleteSuppliesAsync(Guid supplyId)
         {
-            var supplies = _suppliesRepository.GetByIdAsync(supplyId);
-
-            if (supplies == null)
+            var baseResponse = new BaseResponse();
+            try
             {
-                throw new NotFoundException(nameof(supplies), supplyId);
-            }
+                
+                var supplies = _suppliesRepository.GetByIdAsync(supplyId);
 
-            await _suppliesRepository.DeleteAsync(supplyId);
+                if (supplies == null)
+                {
+                    throw new NotFoundException(nameof(supplies), supplyId);
+                }
+
+                await _suppliesRepository.DeleteAsync(supplyId);
+            }
+            catch (Exception)
+            {
+                baseResponse.Success = false;
+            }
+            return baseResponse;
         }
     }
 }

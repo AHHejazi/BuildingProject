@@ -50,14 +50,14 @@ else
                 {
                     <tr align="center">
                         <td>
-                            <NavLink href="@($"/Supplies/details{supply.Id}")" class="nav-link">
+                            <NavLink href="@($"/Supplies/details/{supply.Id}")" class="nav-link">
                                 @supply.NameAr
                             </NavLink>
                         </td>
                         <td>@supply.NameEn</td>
 
                         <td>
-                            <a class="fa fa-edit fa-lg" title="@AppResources.EditSupply" href="@($"/Supplies/edit/{supply.Id}")"></a>
+                            <NavLink class="fa fa-edit fa-lg" title="@AppResources.EditSupply" href="@($"/Supplies/edit/{supply.Id}")"></NavLink>
                             <a title="@AppResources.DeleteSupply" @onclick="()=>DeleteConfirmationSupply(supply.Id)"><i class="fa fa-trash-o fa-lg"></i></a>
                         </td>
 
@@ -70,13 +70,8 @@ else
     </div>
 }
 
-<DeleteDialog @ref="DeleteDialog" @*CloseEventCallback="@DeleteDialog_OnDialogClose" *@></DeleteDialog>
+<DeleteDialog @ref="DeleteDialog" CloseEventCallback="@DeleteDialog_OnDialogClose"></DeleteDialog>
 
 
 <MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
 
-
-
-@code {
-
-}

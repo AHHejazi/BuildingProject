@@ -49,7 +49,7 @@ namespace Building.Web.Components.Supplies
 
         }
 
-        protected async override Task OnParametersSetAsync()
+        protected async override Task OnInitializedAsync()
         {
             await GetSupplies();
         }
@@ -62,30 +62,30 @@ namespace Building.Web.Components.Supplies
             StateHasChanged();
         }
 
-        //    public async void DeleteDialog_OnDialogClose()
-        //    {
-        //        try
-        //        {
-        //            var deleteStatus = await _suppliesService.DeleteSuppliesAsync(SelectedSuppliId);
-        //            if (deleteStatus.Success)
-        //            {
-        //                await GetSupplies();
-        //            }
-        //            else
-        //            {
-        //                StatusClass = "alert alert-danger";
-        //                Message = deleteStatus.Message;
-        //            }
+        public async Task DeleteDialog_OnDialogClose()
+        {
+            try
+            {
+                var deleteStatus = await _suppliesService.DeleteSuppliesAsync(SelectedSuppliId);
+                if (deleteStatus.Success)
+                {
+                    await GetSupplies();
+                }
+                else
+                {
+                    StatusClass = "alert alert-danger";
+                    Message = deleteStatus.Message;
+                }
 
-        //            StateHasChanged();
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            Error.SetError(e.Message, e.StackTrace);
-        //            Error.ProcessError(e);
-        //        }
+                StateHasChanged();
+            }
+            catch (Exception e)
+            {
+                Error.SetError(e.Message, e.StackTrace);
+                Error.ProcessError(e);
+            }
 
-        //    }
+        }
 
     }
 }
