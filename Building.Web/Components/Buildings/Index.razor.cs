@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using ComponentsLibrary.ErrorHandler;
 
 namespace Building.Web.Components.Buildings
 {
@@ -30,7 +30,10 @@ namespace Building.Web.Components.Buildings
 
         private Guid SelectedBuildingId;
 
-        
+        [CascadingParameter(Name = "ErrorComponent")]
+        protected IErrorComponent Error { get; set; }
+
+
         protected override async Task OnInitializedAsync()
         {
             ProjectList = await _projectService.ProjectListByCurrentUserAsync();
@@ -64,28 +67,36 @@ namespace Building.Web.Components.Buildings
         {
             await GetBuildings();
         }
-        protected void DeleteConfirmationBuilding(Guid BuildingId)
+        protected void DeleteConfirmationBuilding(Guid buildingId)
         {
             DeleteDialog.Show();
-            SelectedBuildingId = BuildingId;
+            SelectedBuildingId = buildingId;
             StateHasChanged();
         }
 
-        public async void DeleteDialog_OnDialogClose()
+        public async Task DeleteDialog_OnDialogClose()
         {
-            var deleteStatus = await _buildingService.DeleteBuildingAsync(SelectedBuildingId);
-
-            if (deleteStatus.Success)
+            try
             {
-                await GetBuildings();
-            }
-            else
-            {
-                StatusClass = "alert alert-danger";
-                Message = deleteStatus.Message;
-            }
+                var deleteStatus = await _buildingService.DeleteBuildingAsync(SelectedBuildingId);
 
-            StateHasChanged();
+                if (deleteStatus.Success)
+                {
+                    await GetBuildings();
+                }
+                else
+                {
+                    StatusClass = "alert alert-danger";
+                    Message = deleteStatus.Message;
+                }
+
+                StateHasChanged();
+            }
+            catch (Exception e)
+            {
+                Error.SetError(e.Message, e.StackTrace);
+                Error.ProcessError(e);
+            }
         }
 
 

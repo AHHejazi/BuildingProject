@@ -34,10 +34,12 @@ namespace GeneralIdentity.App.Components.Identity
             {
                 NavigationManager.NavigateTo("home");
             }
-
-            StatusClass = "alert alert-danger";
-            Message = result.ValidationErrors.FirstOrDefault();
-        }
+            else
+            {
+                StatusClass = "alert alert-danger";
+                Message = result.ValidationErrors.FirstOrDefault();
+            }
+}
 
     }
 }

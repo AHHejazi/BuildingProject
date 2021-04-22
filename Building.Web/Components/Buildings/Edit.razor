@@ -48,13 +48,13 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="NumberOfApartment">@AppResources.NumberOfApartment</label>
-                <InputText id="NumberOfApartment" class="form-control" @bind-Value="buildingDto.NumberOfApartment" />
+                <InputNumber id="NumberOfApartment" class="form-control" @bind-Value="buildingDto.NumberOfApartment" />
                 <ValidationMessage For="@(() => buildingDto.NumberOfApartment)" />
             </div>
         </div>
 
         <NavLink class="anchor-link link-button mt-3" href="/Building/index">Back</NavLink>
-        <button @*@onclick="@(async e => await ValidateForm(formContext))"*@ type="submit" class="submit-button mt-3">Submit</button>
+        <button @onclick="@(async e => await ValidateForm(formContext))" type="submit" class="submit-button mt-3">Submit</button>
 
     </EditForm>
 }

@@ -11,13 +11,11 @@ namespace Application.App.Services.Buildings
     {
         Task<Guid> AddBuilding(BuildingDto building);
 
-        Task<BaseResponse> DeleteBuildingAsync(Guid projectId);
+        Task<BaseResponse> DeleteBuildingAsync(Guid buildingId);
         Task<IReadOnlyList<Building>> BuildingListQuery();
-
 
         Task<BuildingDto> GetBuildingByIdAsync(Guid Id);
         Task<BuildingVM> SearchBuildingsAsync(BuildingVM buildingVM);
         Task UpdateBuilding(BuildingDto buildingDto);
-        Task<BuildingVM> SearchBuildingAsync(BuildingVM buildingVM);
     }
 }

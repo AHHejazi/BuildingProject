@@ -17,6 +17,7 @@ namespace Application.App.Services.Buildings
         
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IBuildingRepository _buildingRepository;
 
         //used to store state of screen
         protected string Message = string.Empty;
@@ -27,6 +28,7 @@ namespace Application.App.Services.Buildings
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _buildingRepository = buildingRepository;
         }
 
         public async Task<Guid> AddBuilding(BuildingDto building)
@@ -73,10 +75,7 @@ namespace Application.App.Services.Buildings
 
 
 
-        public Task<BuildingVM> SearchBuildingAsync(BuildingVM buildingVM)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public async Task UpdateBuilding(BuildingDto buildingDto)
         {
@@ -97,12 +96,6 @@ namespace Application.App.Services.Buildings
         }
 
 
-        public async Task DeleteBuildingAsync(Guid buildingId)
-        {
-            await _unitOfWork.Buildings.DeleteAsync(buildingId);
-        }
-
-
 
         public async Task<IReadOnlyList<Building>> BuildingListQuery()
         {
@@ -115,9 +108,27 @@ namespace Application.App.Services.Buildings
             return await _unitOfWork.Buildings.SearchAsync(buildingVM);
         }
 
-        Task<BaseResponse> IBuildingService.DeleteBuildingAsync(Guid projectId)
+        public async Task<BaseResponse> DeleteBuildingAsync(Guid buildingId)
         {
-            throw new NotImplementedException();
+
+            var baseResponse = new BaseResponse();
+            try
+            {
+
+                var building = _buildingRepository.GetByIdAsync(buildingId);
+
+                if (building == null)
+                {
+                    throw new NotFoundException(nameof(building), buildingId);
+                }
+
+                await _buildingRepository.DeleteAsync(buildingId);
+            }
+            catch (Exception)
+            {
+                baseResponse.Success = false;
+            }
+            return baseResponse;
         }
     }
 

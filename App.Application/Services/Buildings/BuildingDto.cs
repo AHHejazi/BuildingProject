@@ -21,7 +21,7 @@ namespace Application.App.Services.Buildings
         public string LicenseNumber { get; set; }
         public string StampingNumber { get; set; }
 
-        public string NumberOfApartment { get; set; }
+        public int NumberOfApartment { get; set; }
 
         public static implicit operator BuildingDto(Building v)
         {

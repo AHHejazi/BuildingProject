@@ -22,7 +22,7 @@ namespace Domain.App.Entities
         public string LicenseNumber { get; set; }
         public string StampingNumber { get; set; }
 
-        public string NumberOfApartment { get; set; }
+        public int NumberOfApartment { get; set; }
 
         public ICollection<Apartment> Apartments { get; set; }
 

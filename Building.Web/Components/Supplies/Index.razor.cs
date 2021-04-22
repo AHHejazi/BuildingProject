@@ -4,8 +4,6 @@ using ComponentsLibrary.ErrorHandler;
 using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Building.Web.Components.Supplies

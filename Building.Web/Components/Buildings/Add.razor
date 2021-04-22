@@ -61,7 +61,7 @@
 
         <div class="form-group col-md-6">
             <label for="NumberOfApartment">@AppResources.NumberOfApartment</label>
-            <InputText @bind-Value="Model.NumberOfApartment" id="NumberOfApartment" class="form-control"></InputText>
+            <InputNumber @bind-Value="Model.NumberOfApartment" id="NumberOfApartment" class="form-control"></InputNumber>
             <ValidationMessage For="@(() => Model.NumberOfApartment)" />
         </div>
     </div>
@@ -73,12 +73,5 @@
 </EditForm>
 
 <MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
-
-
-
-@code {
-
-
-}
 
 
