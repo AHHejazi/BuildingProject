@@ -5,6 +5,7 @@ using Application.App.Services.Projects;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Application.App.Services.Supplies;
+using Application.App.Services.Components;
 
 namespace Application.App
 {
@@ -18,7 +19,9 @@ namespace Application.App
             services.AddTransient<IAttachmentService, AttachmentService>();
             services.AddTransient<AppSettingsService>();
             services.AddTransient<IBuildingService, BuildingService>();
+            services.AddScoped<IComponentService, ComponentService>();
             services.AddTransient<ISuppliesService, SuppliesService>();
+
             return services;
         }
     }

@@ -1,0 +1,74 @@
+﻿@page "/Component/index"
+@page "/Component/index/{page}"
+@attribute [Authorize]
+@inherits PageBase;
+
+<h3>@AppResources.ComponentManagment</h3>
+
+@if (componentVM.ComponentsList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="componentVM">
+        <div class="form-row">
+            <div class="form-group">
+                <NavLink href="/Component/Add" class="btn btn-info btn-block">@AppResources.AddComponent</NavLink>
+            </div>
+
+            <div class="input-group">
+                <div class="form-group col-md-6">
+                    <label for="NameAr">@AppResources.NameArabic</label>
+                    <InputText @bind-Value="componentVM.NameAr" id="NameAr" class="form-control"></InputText>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="NameEn">@AppResources.NameEnglish</label>
+                    <InputText @bind-Value="componentVM.NameEn" id="NameEn" class="form-control"></InputText>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="submit-button" @onclick="@SearchComponent">@AppResources.Search</button>
+        </div>
+    </EditForm>
+
+    <div class="form-row">
+        <table class='table table-striped'>
+            <thead>
+                <tr align="center">
+                    <th>@AppResources.NameArabic</th>
+                    <th>@AppResources.NameEnglish</th>
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var component in componentVM.ComponentsList)
+                {
+                    <tr align="center">
+                        <td>
+                            <NavLink href="@($"/Component/details/{component.Id}")" class="nav-link">
+                                @component.NameAr
+                            </NavLink>
+                        </td>
+                        <td>@component.NameEn</td>
+
+                        <td>
+                            <NavLink class="fa fa-edit fa-lg" title="@AppResources.EditComponent" href="@($"/Component/edit/{component.Id}")"></NavLink>
+                            <a title="@AppResources.DeleteComponent" @onclick="()=>DeleteConfirmationComponent(component.Id)"><i class="fa fa-trash-o fa-lg"></i></a>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <Pager Result=@componentVM.ComponentsList PageChanged=@PagerPageChanged />
+    </div>
+}
+<DeleteDialog @ref="DeleteDialog" CloseEventCallback="@DeleteDialog_OnDialogClose"></DeleteDialog>
+<MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
+

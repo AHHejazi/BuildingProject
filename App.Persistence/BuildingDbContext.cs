@@ -31,9 +31,11 @@ namespace App.Persistence
         public DbSet<AttachmentType> AttachmentTypes { get; set; }
         public DbSet<OutbuildingsType> OutbuildingsTypes { get; set; }
         public DbSet<Supplement> Suppliess { get; set; }
+        public DbSet<Component> Components { get; set; }
         public DbSet<Apartment> Apartments { get; set; }
         public DbSet<Building> Buildings { get; set; }
         public DbSet<BuildingSupplies> BuildingSupplies { get; set; }
+        public DbSet<BuildingComponent> BuildingComponent { get; set; }
         public DbSet<Incomes> Incomes { get; set; }
         public DbSet<Outbuildings> Outbuildings { get; set; }
 

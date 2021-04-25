@@ -10,7 +10,7 @@ namespace Application.App.Services.Supplies
     {
         Task<Guid> AddSupply(SuppliesDto supply);
         Task<SuppliesDto> GetSuppliesByIdAsync(Guid Id);
-        Task Updatesupply(SuppliesDto supplyDto);
+        Task UpdateSupply(SuppliesDto supplyDto);
         Task<SuppliesVM> SearchSuppliesAsync(SuppliesVM suppliesVM);
         Task<BaseResponse> DeleteSuppliesAsync(Guid supplyId);
     }
