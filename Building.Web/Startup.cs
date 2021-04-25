@@ -38,6 +38,7 @@ namespace Building.Web
             services.AddServerSideBlazor(c => c.DetailedErrors = true);
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IValidator<ProjectDto>, ProjectValidator>();
+            services.AddTransient<IValidator<ProjectDiagramsDto>, ProjectDiagramsValidator>();
             services.AddTransient<IValidator<BuildingDto>, BuildingValidator>();
             services.AddTransient<IValidator<SuppliesDto>, SuppliesValidator>(); 
             services.AddSingleton<WeatherForecastService>();

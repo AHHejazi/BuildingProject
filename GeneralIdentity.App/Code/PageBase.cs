@@ -17,7 +17,7 @@ namespace GeneralIdentity.App.Code
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;
 
-        protected async Task<List<FileData>> ManageFormFiles(InputFileChangeEventArgs e, AttachmentTypesEnum attachemntType)
+        protected async Task<List<FileData>> ManageFormFiles(InputFileChangeEventArgs e, int attachmentTypeId)
         {
            var selectedFiles = e.GetMultipleFiles();
             List<FileData> fileData = new List<FileData>();
@@ -30,7 +30,7 @@ namespace GeneralIdentity.App.Code
                     Data = buffers,
                     FileType = item.ContentType,
                     Size = item.Size,
-                    AttachemntType = attachemntType,
+                    AttachemntType = attachmentTypeId,
                     FileName= item.Name
                 });
             }

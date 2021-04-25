@@ -82,6 +82,7 @@ else
 
                         <td>
                             <a class="fa fa-edit fa-lg" title="@AppResources.EditProject" href="@($"edit/{project.Id}")"></a>
+                            <NavLink class="fa fa-edit fa-lg" title="Add Diagram" href="@($"Project/Diagrams/{project.Id}")"></NavLink>
                             <a title="@AppResources.DeleteProject" @onclick="()=>DeleteConfirmationProject(project.Id)"><i class="fa fa-trash-o fa-lg"></i></a>
                         </td>
 

@@ -173,26 +173,9 @@
             </div>
         </div>
 
-        <div class="form-group col-md-6">
-            <label for="image">Select File: </label>
-            <InputFile OnChange="@(e=>OnInputFileChange(e,AttachmentTypesEnum.GeneralFileAttachment))" />
-            <ValidationMessage For="@(() => Model.AttachemntId)" />
-        </div>
     </div>
 
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="image">Select File: </label>
-            <InputFile OnChange="@(e=>OnInputFileChange(e,AttachmentTypesEnum.GeneralFileAttachment))" />
-            <ValidationMessage For="@(() => Model.AttachemntId)" />
-        </div>
-
-        <div class="form-group col-md-6">
-            <label for="image">Select File: </label>
-            <InputFile OnChange="@(e=>OnInputFileChange(e,AttachmentTypesEnum.GeneralFileAttachment))" />
-            <ValidationMessage For="@(() => Model.AttachemntId)" />
-        </div>
-    </div>
+  
 
 
     <NavLink class="anchor-link link-button mt-3" href="/Project/index">Back</NavLink>

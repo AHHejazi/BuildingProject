@@ -34,13 +34,14 @@ namespace Domain.App.Entities
         public int FloorsNumber { get; set; }
         public string BuildingTechnique { get; set; }
         public int EstimatedCost { get; set; }
-        public string InstrumentAttachment { get; set; }
-        public string BuildingLicenseAttachment { get; set; }
-        public string ConstructionDiagrams { get; set; }
-        public string MechanicalDiagrams { get; set; }
-        public string ArchitecturalDiagrams { get; set; }
-        public string ElictricalDiagrams { get; set; }
-        public string SoilReport { get; set; }
+        public Guid? InstrumentAttachmentId { get; set; }
+        public Guid? BuildingLicenseAttachmentId { get; set; }
+        public Guid? ConstructionDiagramsId { get; set; }
+        public Guid? MechanicalDiagramsId { get; set; }
+        public Guid? ArchitecturalDiagramsId { get; set; }
+        public Guid? ElictricalDiagramsId { get; set; }
+        public Guid? SoilReportId { get; set; }
+        public Guid? SurveyReportId { get; set; }
     }
 }
 

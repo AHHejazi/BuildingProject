@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace Application.App.Enum
 {
-    public enum AttachmentTypesEnum
+    public enum AttachmentTypesEnm
     {
-        GeneralFileAttachment = 1,
-
-        GeneralImageAttachment = 2
+        InstrumentAttachmentId = 1,
+        BuildingLicenseAttachmentId,
+        ConstructionDiagramId,
+        MechanicalDiagramId,
+        ArchitecturalDiagramId,
+        ElictricalDiagramId,
+        SoilReportId,
+        SurveyReportId
     }
 }

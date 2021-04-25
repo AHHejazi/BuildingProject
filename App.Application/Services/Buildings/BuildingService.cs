@@ -14,21 +14,16 @@ namespace Application.App.Services.Buildings
 {
     public class BuildingService : IBuildingService
     {
-        
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly IBuildingRepository _buildingRepository;
-
-        //used to store state of screen
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;
         protected bool Saved;
 
-        public BuildingService(IUnitOfWork unitOfWork,IMapper mapper, IBuildingRepository buildingRepository)
+        public BuildingService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _buildingRepository = buildingRepository;
         }
 
         public async Task<Guid> AddBuilding(BuildingDto building)
@@ -36,19 +31,19 @@ namespace Application.App.Services.Buildings
             try
             {
                 var validator = new BuildingValidator(_unitOfWork.Buildings);
-            var validationResult = await validator.ValidateAsync(building);
+                var validationResult = await validator.ValidateAsync(building);
 
-            if (validationResult.Errors.Count > 0)
-                throw new ValidationException(validationResult);
-            var build = _mapper.Map<Building>(building);
-            build.Number = GenerateBuildingNumber();
+                if (validationResult.Errors.Count > 0)
+                    throw new ValidationException(validationResult);
+                var build = _mapper.Map<Building>(building);
+                build.Number = GenerateBuildingNumber();
 
-            build = await _unitOfWork.Buildings.AddAsync(build);
-            return build.Id;
+                build = await _unitOfWork.Buildings.AddAsync(build);
+                await _unitOfWork.SaveChangesAsync();
+                return build.Id;
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -75,11 +70,11 @@ namespace Application.App.Services.Buildings
 
 
 
-        
+
 
         public async Task UpdateBuilding(BuildingDto buildingDto)
         {
-            var building= _mapper.Map<Building>(buildingDto);
+            var building = _mapper.Map<Building>(buildingDto);
             await _unitOfWork.Buildings.UpdateAsync(building);
         }
 
@@ -87,7 +82,7 @@ namespace Application.App.Services.Buildings
 
         public async Task<BuildingDto> GetBuildingByIdAsync(Guid Id)
         {
-            Expression<Func<Building, bool>> condtion = r => r.Id==Id;
+            Expression<Func<Building, bool>> condtion = r => r.Id == Id;
 
             var obj = await _unitOfWork.Buildings.GetByIdAsync(condtion);
             var retObj = _mapper.Map<BuildingDto>(obj);
@@ -115,14 +110,14 @@ namespace Application.App.Services.Buildings
             try
             {
 
-                var building = _buildingRepository.GetByIdAsync(buildingId);
+                var building = _unitOfWork.Buildings.GetByIdAsync(buildingId);
 
                 if (building == null)
                 {
                     throw new NotFoundException(nameof(building), buildingId);
                 }
 
-                await _buildingRepository.DeleteAsync(buildingId);
+                await _unitOfWork.Buildings.DeleteAsync(buildingId);
             }
             catch (Exception)
             {

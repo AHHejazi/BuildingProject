@@ -42,16 +42,6 @@ namespace Application.App.Services.Projects
                 throw new ValidationException(validationResult);
             var prject = _mapper.Map<Project>(project);
             prject.Number = GenerateProjectNumber();
-
-            if (project.fileData != null && project.fileData.Count() > 0)
-            {
-                foreach (var item in project.fileData)
-                {
-                    var retAttachmentId = await _unitOfWork.Attachments.AddOrUpdateAttachmentAsync(_appSettingsService.AttachmentsPath, item.FileName, item.FileType, item.Data, AttachmentTypesEnum.GeneralImageAttachment);
-
-                }
-            }
-
             prject = await _unitOfWork.Projects.AddAsync(prject);
             await _unitOfWork.SaveChangesAsync();
             return prject.Id;
@@ -134,6 +124,28 @@ namespace Application.App.Services.Projects
         public async Task<IEnumerable<SelectListItem>> ProjectListByCurrentUserAsync(string userName = null)
         {
             return await _unitOfWork.Projects.ProjectListByCurrentUserAsync(userName);
+        }
+
+        public async Task<Guid> AddProjectDiagramAsync(ProjectDiagramsDto model)
+        {
+
+            var validator = new ProjectDiagramsValidator();
+            var validationResult = await validator.ValidateAsync(model);
+
+            if (validationResult.Errors.Count > 0)
+                throw new ValidationException(validationResult);
+
+            if (model.fileData != null && model.fileData.Count() > 0)
+            {
+                foreach (var item in model.fileData)
+                {
+                    var retAttachmentId = await _unitOfWork.Attachments.AddOrUpdateAttachmentAsync(_appSettingsService.AttachmentsPath, item.FileName, item.FileType, item.Data, (AttachmentTypesEnm)item.AttachemntType);
+
+                }
+                _unitOfWork.SaveChangesAsync();
+            }
+
+            return Guid.Empty;
         }
     }
 }

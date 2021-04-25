@@ -57,7 +57,6 @@ namespace App.Persistence.Repositories
         {
             var entity = await GetByIdAsync(entityId);
             _dbContext.Set<T>().Remove(entity);
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<T> GetByIdAsync(object id)
@@ -68,7 +67,6 @@ namespace App.Persistence.Repositories
         public async Task<T> AddAsync(T entity)
         {
             await _dbContext.Set<T>().AddAsync(entity);
-            //await _dbContext.SaveChangesAsync();
 
             return entity;
         }

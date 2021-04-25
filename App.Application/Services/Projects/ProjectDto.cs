@@ -31,32 +31,21 @@ namespace Application.App.Services.Projects
         public int FloorsNumber { get; set; }
         public string BuildingTechnique { get; set; }
         public int EstimatedCost { get; set; }
-        public string InstrumentAttachment { get; set; }
-        public string BuildingLicenseAttachment { get; set; }
-        public string ConstructionDiagrams { get; set; }
-        public string MechanicalDiagrams { get; set; }
-        public string ArchitecturalDiagrams { get; set; }
-        public string ElictricalDiagrams { get; set; }
-        public string SoilReport { get; set; }
-        public string SurveyReport { get; set; }
         public int StocksNumber { get; set; }
         public int Cost { get; set; }
-
         public int ProjectTypeId { get; set; }
 
-        public List<FileData> fileData { get; set; }
 
-        public Guid AttachemntId { get; set; }
-
+        public Guid? InstrumentAttachmentId { get; set; }
+        public Guid? BuildingLicenseAttachmentId { get; set; }
+        public Guid? ConstructionDiagramId { get; set; }
+        public Guid? MechanicalDiagramId { get; set; }
+        public Guid? ArchitecturalDiagramId { get; set; }
+        public Guid? ElictricalDiagramId { get; set; }
+        public Guid? SoilReportId { get; set; }
+        public Guid? SurveyReportId { get; set; }
 
     }
 
-    public class FileData
-    {
-        public byte[] Data { get; set; }
-        public string FileType { get; set; }
-        public long Size { get; set; }
-        public AttachmentTypesEnum AttachemntType { get; set; }
-        public string FileName { get; set; }
-    }
+   
 }

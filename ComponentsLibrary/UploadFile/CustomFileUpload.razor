@@ -1,0 +1,14 @@
+﻿@using System.Linq.Expressions
+
+@typeparam TValue
+
+<div class="form-group col-md-4">
+    <label for="image">@Label: </label>
+    <InputFile OnChange="@(e=>OnInputFileChange(e,AttachmentType))" />
+    @if (AttachmentId != null)
+    {
+        <a href="/Attachments/Download/?Id=@AttachmentId">download</a>
+    }
+    <ValidationMessage For="@For" />
+</div>
+

@@ -11,9 +11,9 @@ namespace App.Application.Contracts.Persistence
 {
     public interface IAttachmentRepository
     {
-        Task<ReturnResult<Guid>> AddAttachment(string attachmentsPath, IFormFile file, string title = null, bool saveToDB = true);
-        Task<ReturnResult<Attachment>> AddOrUpdateAttachmentAsync(string attachmentsPath, IFormFile file, AttachmentTypesEnum attType, Guid? attachmentId = null, string title = null, bool saveToDB = true);
-        Task<Attachment> AddOrUpdateAttachmentAsync(string attachmentsPath, string fileName, string contentType, byte[] fileBytes, AttachmentTypesEnum attType, Guid? attachmentId = null, string titleAr = null, string titleEn = null, string descriptionAr = null, string descriptionEn = null, int? itemOrder = null, bool saveToDB = true);
+           Task<ReturnResult<Guid>> AddAttachment(AttachmentTypesEnm attachmentTypes, string attachmentsPath, IFormFile file, string title = null, bool saveToDB = true);
+        Task<ReturnResult<Attachment>> AddOrUpdateAttachmentAsync(string attachmentsPath, IFormFile file, AttachmentTypesEnm attType, Guid? attachmentId = null, string title = null, bool saveToDB = true);
+        Task<Attachment> AddOrUpdateAttachmentAsync(string attachmentsPath, string fileName, string contentType, byte[] fileBytes, AttachmentTypesEnm attType, Guid? attachmentId = null, string titleAr = null, string titleEn = null, string descriptionAr = null, string descriptionEn = null, int? itemOrder = null, bool saveToDB = true);
         void DeleteAttachmentFromFileSystem(string fileRelativePath, string attachmentsPath);
         byte[] GenerateThumbnail(byte[] bytes);
         Task<Attachment> GetAttachmentForDownloadAsync(Guid? attachmentId, bool saveToDB, string attachmentsPath);

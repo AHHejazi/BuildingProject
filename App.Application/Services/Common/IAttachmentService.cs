@@ -10,11 +10,11 @@ namespace Application.App.Services.Common
 {
     public interface IAttachmentService
     {
-        Task<ReturnResult<Guid>> AddAttachment(IFormFile file, string title = null);
+        Task<ReturnResult<Guid>> AddAttachment(AttachmentTypesEnm attachmentType, IFormFile file, string title = null);
 
         Task<ReturnResult<Attachment>> AddOrUpdateAttachment(
        IFormFile file,
-       AttachmentTypesEnum attType,
+       AttachmentTypesEnm attType,
        Guid? attachmentId = null,
        string title = null);
 
@@ -22,7 +22,7 @@ namespace Application.App.Services.Common
        string fileName,
        string contentType,
        byte[] fileBytes,
-       AttachmentTypesEnum attType,
+       AttachmentTypesEnm attType,
        Guid? attachmentId = null,
        string titleAr = null,
        string titleEn = null,

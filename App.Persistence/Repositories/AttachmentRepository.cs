@@ -156,10 +156,10 @@ namespace App.Persistence.Repositories
             return fileRelativePath;
         }
 
-        public async Task<ReturnResult<Guid>> AddAttachment(string attachmentsPath, IFormFile file, string title = null, bool saveToDB = true)
+        public async Task<ReturnResult<Guid>> AddAttachment(AttachmentTypesEnm attachmentTypes,string attachmentsPath, IFormFile file, string title = null, bool saveToDB = true)
         {
             var result = new ReturnResult<Guid>();
-            var attResult = await this.AddOrUpdateAttachmentAsync(attachmentsPath, file, AttachmentTypesEnum.GeneralFileAttachment, null, title, saveToDB);
+            var attResult = await this.AddOrUpdateAttachmentAsync(attachmentsPath, file, attachmentTypes, null, title, saveToDB);
             if (!attResult.IsValid)
             {
                 result.Merge(attResult);
@@ -173,7 +173,7 @@ namespace App.Persistence.Repositories
         public async Task<ReturnResult<Attachment>> AddOrUpdateAttachmentAsync(
             string attachmentsPath,
             IFormFile file,
-            AttachmentTypesEnum attType,
+            AttachmentTypesEnm attType,
             Guid? attachmentId = null,
             string title = null, bool saveToDB = true)
         {
@@ -218,7 +218,7 @@ namespace App.Persistence.Repositories
             string fileName,
             string contentType,
             byte[] fileBytes,
-            AttachmentTypesEnum attType,
+            AttachmentTypesEnm attType,
             Guid? attachmentId = null,
             string titleAr = null,
             string titleEn = null,

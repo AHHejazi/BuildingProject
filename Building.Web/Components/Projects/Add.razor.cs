@@ -6,6 +6,7 @@ using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -23,7 +24,6 @@ namespace Building.Web.Components.Projects
         public ProjectDto Model { get; set; } = new();
         private IEnumerable<SelectListItem> ProjectTypeList;
         private EditContext editContext;
-        List<FileData> fileData = new List<FileData>();
 
 
         protected async override Task OnInitializedAsync()
@@ -32,29 +32,24 @@ namespace Building.Web.Components.Projects
             editContext = new EditContext(Model);
         }
 
-        private async Task OnInputFileChange(InputFileChangeEventArgs e, AttachmentTypesEnum attachmentType)
-        {
-            fileData.RemoveAll(x => x.AttachemntType == attachmentType);
-            fileData.AddRange(await this.ManageFormFiles(e, attachmentType));
-            StateHasChanged();
-        }
+
 
         private async Task SubmitProjectAsync()
         {
-            var isValid = editContext.Validate();
-
-            if (isValid)
+            try
             {
-                Model.fileData = fileData;
-                var retObjid = await _projectService.AddProject(Model);
+                await _projectService.AddProject(Model);
                 StatusClass = "alert alert-success";
                 Message = "New Project added successfully.";
             }
-            else
+            catch (Exception)
             {
+
                 StatusClass = "alert alert-danger";
                 Message = "Something went wrong adding the new Project. Please try again.";
+
             }
+
         }
 
         public void ValidateForm(EditContext editContext)

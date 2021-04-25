@@ -1,0 +1,73 @@
+﻿@page "/Project/Diagrams/{Id:guid}"
+@inherits PageBase
+<h3>New Project</h3>
+<EditForm Model="Model" Context="editContext" OnValidSubmit="@(SubmitProjectDiagramAsync)">
+    <FluentValidationValidator DisableAssemblyScanning="@true" />
+
+
+
+    <div class="form-row">
+
+        <CustomFileUpload For="(()=>Model.InstrumentAttachmentId)" AttachmentId="Model.InstrumentAttachmentId" Label="Instrument Attachment" AttachmentType="(int)AttachmentTypesEnm.InstrumentAttachmentId" SelectEventCallback="UpdateFileDate">
+
+        </CustomFileUpload>
+
+        <CustomFileUpload For="(()=>Model.BuildingLicenseAttachmentId)" AttachmentId="Model.BuildingLicenseAttachmentId" Label="Instrument Attachment" AttachmentType="(int)AttachmentTypesEnm.BuildingLicenseAttachmentId" SelectEventCallback="UpdateFileDate">
+
+        </CustomFileUpload>
+
+        <div class="form-group col-md-4">
+                <label for="image">Construction Diagram: </label>
+                <InputFile OnChange="@(e=>OnInputFileChange(e,(int)AttachmentTypesEnm.ConstructionDiagramId))" />
+                <ValidationMessage For="@(() => Model.ConstructionDiagramId)" />
+            </div>
+        
+
+        @*<div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="image">Select File: </label>
+                <InputFile OnChange="@(e=>OnInputFileChange(e,AttachmentTypesEnm.MechanicalDiagramId))" />
+                <ValidationMessage For="@(() => Model.AttachemntId)" />
+            </div>*@
+    </div>
+
+
+    <NavLink class="anchor-link link-button mt-3" href="/Project/index">Back</NavLink>
+    <button @onclick="@(async e => ValidateForm(editContext))" type="submit" class="submit-button mt-3">Submit</button>
+
+</EditForm>
+<MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
+
+
+@if (Model.Attachments == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+    <div class="form-row">
+        <table class='table table-striped'>
+            <thead>
+                <tr align="center">
+                    <th>Attachment Type</th>
+                    <th>@AppResources.Options</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var attachment in Model.Attachments)
+                {
+                    <tr align="center">
+
+                        <td>@attachment.AttachmentType</td>
+                        <td>donload</td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+}
