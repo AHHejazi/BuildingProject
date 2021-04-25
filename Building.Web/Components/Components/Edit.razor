@@ -1,0 +1,26 @@
+﻿@page "/Component/edit/{Id:guid}"
+    @inherits PageBase
+    <h3>@AppResources.EditComponent</h3>
+    @using Microsoft.AspNetCore.Components.Forms;
+
+        <EditForm Model="@componentDto" Context="formContext" OnValidSubmit="@(SubmitComponentAsync)">
+            <FluentValidationValidator DisableAssemblyScanning="@true" />
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="NameAr">@AppResources.NameArabic</label>
+                    <InputText id="NameAr" class="form-control" @bind-Value="componentDto.NameAr" />
+                    <ValidationMessage For="@(() => componentDto.NameAr)" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="NameEn">@AppResources.NameEnglish</label>
+                    <InputText id="NameEn" class="form-control" @bind-Value="componentDto.NameEn" />
+                    <ValidationMessage For="@(() => componentDto.NameEn)" />
+                </div>
+            </div>
+<NavLink class="anchor-link link-button mt-3" href="/Component/index">Back</NavLink>
+<button @onclick="@(async e => await ValidateForm(formContext))" type="submit" class="submit-button mt-3">Submit</button>
+
+    </EditForm>
+
+<MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
+

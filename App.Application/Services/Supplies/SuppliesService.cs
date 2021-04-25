@@ -11,10 +11,8 @@ using Application.App.Responses;
 
 namespace Application.App.Services.Supplies
 {
-    public class SuppliesService: ISuppliesService
+    public class SuppliesService : ISuppliesService
     {
-
-        private readonly ISuppliesRepository _suppliesRepository;
         private readonly IMapper _mapper;
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;
@@ -26,7 +24,6 @@ namespace Application.App.Services.Supplies
         IUnitOfWork unitOfWork)
         {
             _mapper = mapper;
-            _suppliesRepository = suppliesRepository;
             _unitOfWork = unitOfWork;
             
         }
@@ -36,7 +33,7 @@ namespace Application.App.Services.Supplies
 
             try
             {
-                var validator = new SuppliesValidator(_suppliesRepository);
+                var validator = new SuppliesValidator(_unitOfWork.Suppliess);
                 var validationResult = await validator.ValidateAsync(supply);
 
                 if (validationResult.Errors.Count > 0)
@@ -68,7 +65,7 @@ namespace Application.App.Services.Supplies
             Expression<Func<Supplement, string>> orderBy = r => r.Number;
 
 
-            var lastInsertedSupply = _suppliesRepository.GenerateModelNumber(condtion, orderBy);
+            var lastInsertedSupply = _unitOfWork.Suppliess.GenerateModelNumber(condtion, orderBy);
 
             if (lastInsertedSupply == null)
             {
@@ -82,7 +79,7 @@ namespace Application.App.Services.Supplies
 
         public async Task<SuppliesDto> GetSuppliesByIdAsync(Guid Id)
         {
-            var obj = await _suppliesRepository.GetByIdAsync(Id);
+            var obj = await _unitOfWork.Suppliess.GetByIdAsync(Id);
             var retObj = _mapper.Map<SuppliesDto>(obj);
             return retObj;
         }
@@ -94,7 +91,7 @@ namespace Application.App.Services.Supplies
 
 
 
-        public async Task Updatesupply(SuppliesDto supplyDto)
+        public async Task UpdateSupply(SuppliesDto supplyDto)
         {
             
                 var supply = _mapper.Map<Supplement>(supplyDto);
@@ -108,14 +105,14 @@ namespace Application.App.Services.Supplies
             try
             {
                 
-                var supplies = _suppliesRepository.GetByIdAsync(supplyId);
+                var supplies = _unitOfWork.Suppliess.GetByIdAsync(supplyId);
 
                 if (supplies == null)
                 {
                     throw new NotFoundException(nameof(supplies), supplyId);
                 }
 
-                await _suppliesRepository.DeleteAsync(supplyId);
+                await _unitOfWork.Suppliess.DeleteAsync(supplyId);
             }
             catch (Exception)
             {

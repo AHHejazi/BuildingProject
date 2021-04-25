@@ -4,14 +4,16 @@ using App.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace App.Persistence.Migrations
 {
     [DbContext(typeof(BuildingDbContext))]
-    partial class BuildingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210425193457_25-04")]
+    partial class _2504
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -548,11 +550,11 @@ namespace App.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ArchitecturalDiagramsId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("ArchitecturalDiagrams")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("BuildingLicenseAttachmentId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("BuildingLicenseAttachment")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("BuildingLicenseNumber")
                         .HasColumnType("int");
@@ -564,8 +566,8 @@ namespace App.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("ConstructionDiagramsId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("ConstructionDiagrams")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConsultingOfficeName")
                         .IsRequired()
@@ -583,8 +585,8 @@ namespace App.Persistence.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("ElictricalDiagramsId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("ElictricalDiagrams")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EstimatedCost")
                         .HasColumnType("int");
@@ -592,8 +594,8 @@ namespace App.Persistence.Migrations
                     b.Property<int>("FloorsNumber")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("InstrumentAttachmentId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("InstrumentAttachment")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("InstrumentNumber")
                         .HasColumnType("int");
@@ -604,8 +606,8 @@ namespace App.Persistence.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
 
-                    b.Property<Guid?>("MechanicalDiagramsId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("MechanicalDiagrams")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameAr")
                         .IsRequired()
@@ -649,11 +651,8 @@ namespace App.Persistence.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<Guid?>("SoilReportId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("SurveyReportId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("SoilReport")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TotalArea")
                         .HasColumnType("int");

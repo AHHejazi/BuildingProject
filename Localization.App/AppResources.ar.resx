@@ -123,6 +123,9 @@
   <data name="AddBuilding" xml:space="preserve">
     <value>إضافة بناء</value>
   </data>
+  <data name="AddComponent" xml:space="preserve">
+    <value>إضافة مكون</value>
+  </data>
   <data name="AddProject" xml:space="preserve">
     <value>إضافة مشروع </value>
   </data>
@@ -150,6 +153,12 @@
   <data name="CityName" xml:space="preserve">
     <value>إالمدينة</value>
   </data>
+  <data name="ComponentDetails" xml:space="preserve">
+    <value>تفاصيل المكون</value>
+  </data>
+  <data name="ComponentManagment" xml:space="preserve">
+    <value>إدارة المكونات</value>
+  </data>
   <data name="ConstructionDiagrams" xml:space="preserve">
     <value>المخططات الإنشائية</value>
   </data>
@@ -165,6 +174,9 @@
   <data name="DeleteBuilding" xml:space="preserve">
     <value>حذف بناء</value>
   </data>
+  <data name="DeleteComponent" xml:space="preserve">
+    <value>حذف مكون</value>
+  </data>
   <data name="DeleteProject" xml:space="preserve">
     <value>حذف مشروع</value>
   </data>
@@ -176,6 +188,9 @@
   </data>
   <data name="EditBuilding" xml:space="preserve">
     <value>تعديل  بناء</value>
+  </data>
+  <data name="EditComponent" xml:space="preserve">
+    <value>تعديل مكون</value>
   </data>
   <data name="EditProject" xml:space="preserve">
     <value>تعديل مشروع</value>

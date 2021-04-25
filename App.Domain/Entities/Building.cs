@@ -12,6 +12,7 @@ namespace Domain.App.Entities
         public Guid Id { get; set; }
 
         public virtual ICollection<Supplement> Supplies { get; set; }
+        public virtual ICollection<Component> Components { get; set; }
         public string Number { get; set; }
         public decimal EstimatedCost { get; set; }
 
@@ -32,7 +33,7 @@ namespace Domain.App.Entities
         //to check if I need to add this
         public ICollection<BuildingSupplies> BuildingSupplies { get; set; }
 
-       
+        public ICollection<BuildingComponent> BuildingComponents { get; set; }
 
 
         //to check if we need to add

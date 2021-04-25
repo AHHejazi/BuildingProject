@@ -123,6 +123,9 @@
   <data name="AddBuilding" xml:space="preserve">
     <value>Add Building</value>
   </data>
+  <data name="AddComponent" xml:space="preserve">
+    <value>Add Component</value>
+  </data>
   <data name="AddProject" xml:space="preserve">
     <value>Add Project</value>
   </data>
@@ -150,6 +153,12 @@
   <data name="CityName" xml:space="preserve">
     <value>City Name</value>
   </data>
+  <data name="ComponentDetails" xml:space="preserve">
+    <value>Component Details</value>
+  </data>
+  <data name="ComponentManagment" xml:space="preserve">
+    <value>Component Managment</value>
+  </data>
   <data name="ConstructionDiagrams" xml:space="preserve">
     <value>Construction Diagrams</value>
   </data>
@@ -165,6 +174,9 @@
   <data name="DeleteBuilding" xml:space="preserve">
     <value>Delete Building</value>
   </data>
+  <data name="DeleteComponent" xml:space="preserve">
+    <value>Delete Component</value>
+  </data>
   <data name="DeleteProject" xml:space="preserve">
     <value>Delete Project</value>
   </data>
@@ -176,6 +188,9 @@
   </data>
   <data name="EditBuilding" xml:space="preserve">
     <value>Edit Building</value>
+  </data>
+  <data name="EditComponent" xml:space="preserve">
+    <value>EditComponent</value>
   </data>
   <data name="EditProject" xml:space="preserve">
     <value>Edit Project</value>

@@ -1,51 +1,49 @@
-﻿using Application.App.Services.Supplies;
+﻿using Application.App.Services.Components;
 using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace Building.Web.Components.Supplies
+namespace Building.Web.Components.Components
 {
     public partial class Edit : PageBase
     {
 
-        public SuppliesDto supplyDto = new SuppliesDto();
+        public ComponentDto componentDto = new ComponentDto();
 
         private EditContext editContext;
 
         [Inject]
-        public ISuppliesService _suppliesService { get; set; }
+        public IComponentService _componentService { get; set; }
 
         [Parameter]
-        public EventCallback<SuppliesDto> OnValidSubmit { get; set; }
+        public EventCallback<ComponentDto> OnValidSubmit { get; set; }
 
         [Parameter]
         public Guid Id { get; set; }
         protected async override Task OnParametersSetAsync()
         {
 
-            supplyDto = await _suppliesService.GetSuppliesByIdAsync(Id);
-            editContext = new EditContext(supplyDto);
+            componentDto = await _componentService.GetComponentByIdAsync(Id);
+            editContext = new EditContext(componentDto);
         }
 
-        private async Task SubmitSuppliesAsync()
+        private async Task SubmitComponentAsync()
         {
 
             var isValid = editContext.Validate();
 
             if (isValid)
             {
-                await _suppliesService.UpdateSupply(supplyDto);
+                await _componentService.UpdateComponent(componentDto);
                 StatusClass = "alert alert-success";
                 Message = "Building updated successfully.";
             }
             else
             {
                 StatusClass = "alert alert-danger";
-                Message = "Something went wrong while updating Supply . Please try again.";
+                Message = "Something went wrong while updating Component . Please try again.";
             }
         }
 

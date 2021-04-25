@@ -79,6 +79,15 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Component.
+        /// </summary>
+        public static string AddComponent {
+            get {
+                return ResourceManager.GetString("AddComponent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add project.
         /// </summary>
         public static string AddProject {
@@ -160,6 +169,24 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Component Details.
+        /// </summary>
+        public static string ComponentDetails {
+            get {
+                return ResourceManager.GetString("ComponentDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Component Managment.
+        /// </summary>
+        public static string ComponentManagment {
+            get {
+                return ResourceManager.GetString("ComponentManagment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Construction Diagrams.
         /// </summary>
         public static string ConstructionDiagrams {
@@ -205,6 +232,15 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Component.
+        /// </summary>
+        public static string DeleteComponent {
+            get {
+                return ResourceManager.GetString("DeleteComponent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Project.
         /// </summary>
         public static string DeleteProject {
@@ -237,6 +273,15 @@ namespace Localization.App {
         public static string EditBuilding {
             get {
                 return ResourceManager.GetString("EditBuilding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Component.
+        /// </summary>
+        public static string EditComponent {
+            get {
+                return ResourceManager.GetString("EditComponent", resourceCulture);
             }
         }
         

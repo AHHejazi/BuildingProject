@@ -24,6 +24,7 @@ namespace App.Persistence.UOW
             Projects = new ProjectRepository(_context);
             Suppliess = new SuppliesRepository(_context);
             Buildings = new BuildingRepository(_context);
+            Components= new ComponentRepository(_context);
             Attachments = new AttachmentRepository(_context);
             AttachmentContents = new AttachmentContentRepository(_context);
             _loggedInUserService = loggedInUserService;
@@ -35,7 +36,7 @@ namespace App.Persistence.UOW
 
         public IBuildingRepository Buildings { get; private set; }
         public ISuppliesRepository Suppliess { get; private set; }
-
+        public IComponentRepository Components { get; private set; }
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
 
