@@ -33,8 +33,6 @@ namespace Building.Web.Components.Projects
             Page = "1";
             ProjectVM.PageNumber = 1;
             ProjectVM = await _projectService.SearchProjectsAsync(ProjectVM);
-            _navigationManager.NavigateTo("/Project/index/" + Page);
-            StateHasChanged();
         }
 
 
@@ -44,11 +42,11 @@ namespace Building.Web.Components.Projects
           
         }
 
-        protected void PagerPageChanged(int page)
+        protected async Task PagerPageChanged(int page)
         {
             ProjectVM.PageNumber = page;
-           _navigationManager.NavigateTo("/Project/index/" + page);
-            
+            await GetProjects();
+            StateHasChanged();
         }
 
         protected async override Task OnParametersSetAsync()
@@ -64,7 +62,7 @@ namespace Building.Web.Components.Projects
             StateHasChanged();
         }
 
-        public async void DeleteDialog_OnDialogClose()
+        public async Task DeleteDialog_OnDialogClose()
         {
             try
             {

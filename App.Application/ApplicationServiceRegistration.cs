@@ -19,7 +19,7 @@ namespace Application.App
             services.AddTransient<IAttachmentService, AttachmentService>();
             services.AddTransient<AppSettingsService>();
             services.AddTransient<IBuildingService, BuildingService>();
-            services.AddScoped<IComponentService, ComponentService>();
+            services.AddTransient<IComponentService, ComponentService>();
             services.AddTransient<ISuppliesService, SuppliesService>();
 
             return services;

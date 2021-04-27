@@ -7,9 +7,10 @@
             {
                 <ul class="pagination text-center">
                     <li><button type="button" @onclick="() => PagerButtonClicked(1)" class="btn shadow-none">&laquo;</button></li>
+                    @{int currentIndex = 0;}
                     @for (var i = StartIndex; i <= FinishIndex; i++)
                     {
-                        var currentIndex = i;
+                        currentIndex = i;
                         @if (i == Result.PageNumber)
                         {
                             <li><span class="btn btn-primary">@i</span></li>
@@ -19,7 +20,7 @@
                             <li><button type="button" @onclick="() => PagerButtonClicked(currentIndex)" class="btn shadow-none">@i</button></li>
                         }
                     }
-                    <li><button type="button" @onclick="() => PagerButtonClicked(Result.PageCount)" class="btn shadow-none">&raquo;</button></li>
+                    <li><button type="button" @onclick="() => PagerButtonClicked(currentIndex)" class="btn shadow-none">&raquo;</button></li>
                 </ul>
             }
         </div>

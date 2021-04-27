@@ -1,9 +1,11 @@
 ﻿using App.Application.Contracts.Persistence;
+using App.Persistence.UOW;
 using Application.App.Services.Components;
 using Domain.App.Entities.Lookup;
 using Framework.Core.ListManagment;
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace App.Persistence.Repositories
@@ -36,8 +38,8 @@ namespace App.Persistence.Repositories
 
         public async Task<bool> IsComponentNameUnique(string nameAr, string nameEn)
         {
-            return //Task.FromResult(true);
-                await _dbContext.Components.AnyAsync(x => x.NameAr == nameAr || x.NameEn == nameEn);
+            return await _dbContext.Components.AnyAsync(x => x.NameAr == nameAr || x.NameEn == nameEn);
+
         }
 
         

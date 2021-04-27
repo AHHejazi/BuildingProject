@@ -99,9 +99,9 @@ namespace App.Persistence.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public T GenerateModelNumber(Expression<Func<T, bool>> condtion, Expression<Func<T, string>> orderBy)
+        public async Task<T> GenerateModelNumber(Expression<Func<T, bool>> condtion, Expression<Func<T, string>> orderBy)
         {
-           var lastInsertedItem = _dbContext.Set<T>().AsNoTracking().OrderByDescending(orderBy).FirstOrDefault(condtion);
+           var lastInsertedItem = await _dbContext.Set<T>().AsNoTracking().OrderByDescending(orderBy).FirstOrDefaultAsync(condtion);
 
             return lastInsertedItem;
         }

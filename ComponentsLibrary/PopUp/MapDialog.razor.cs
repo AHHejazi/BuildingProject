@@ -11,6 +11,8 @@ namespace ComponentsLibrary.PopUp
         public bool ShowDialog { get; set; }
 
         private string location;
+        
+        
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {

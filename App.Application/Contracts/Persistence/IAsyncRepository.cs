@@ -18,7 +18,7 @@ namespace Application.App.Contracts.Persistence
 
         Task<IReadOnlyList<T>> GetPagedReponseAsync(int page, int size);
 
-        T GenerateModelNumber(Expression<Func<T, bool>> condtion, Expression<Func<T, string>> orderBy);
+        Task<T> GenerateModelNumber(Expression<Func<T, bool>> condtion, Expression<Func<T, string>> orderBy);
 
 
     }

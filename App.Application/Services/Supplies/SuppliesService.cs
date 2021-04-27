@@ -18,14 +18,14 @@ namespace Application.App.Services.Supplies
         protected string StatusClass = string.Empty;
         protected bool Saved;
         private readonly IUnitOfWork _unitOfWork;
-        
+
 
         public SuppliesService(IMapper mapper, ISuppliesRepository suppliesRepository, ILogger<SuppliesDto> logger,
         IUnitOfWork unitOfWork)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
-            
+
         }
 
         public async Task<Guid> AddSupply(SuppliesDto supply)
@@ -39,7 +39,7 @@ namespace Application.App.Services.Supplies
                 if (validationResult.Errors.Count > 0)
                     throw new ValidationException(validationResult);
                 var suppli = _mapper.Map<Supplement>(supply);
-                suppli.Number = GenerateSuppliesNumber();
+                suppli.Number = await GenerateSuppliesNumber();
 
 
 
@@ -56,7 +56,7 @@ namespace Application.App.Services.Supplies
 
         }
 
-        public string GenerateSuppliesNumber()
+        public async Task<string> GenerateSuppliesNumber()
         {
             var currentYear = DateTime.Now.Year.ToString().Substring(2, 2);
             var currentMonth = DateTime.Now.Month.ToString("d2");
@@ -65,7 +65,7 @@ namespace Application.App.Services.Supplies
             Expression<Func<Supplement, string>> orderBy = r => r.Number;
 
 
-            var lastInsertedSupply = _unitOfWork.Suppliess.GenerateModelNumber(condtion, orderBy);
+            var lastInsertedSupply = await _unitOfWork.Suppliess.GenerateModelNumber(condtion, orderBy);
 
             if (lastInsertedSupply == null)
             {
@@ -93,10 +93,10 @@ namespace Application.App.Services.Supplies
 
         public async Task UpdateSupply(SuppliesDto supplyDto)
         {
-            
-                var supply = _mapper.Map<Supplement>(supplyDto);
-                await _unitOfWork.Suppliess.UpdateAsync(supply);
-            
+
+            var supply = _mapper.Map<Supplement>(supplyDto);
+            await _unitOfWork.Suppliess.UpdateAsync(supply);
+
         }
 
         public async Task<BaseResponse> DeleteSuppliesAsync(Guid supplyId)
@@ -104,7 +104,7 @@ namespace Application.App.Services.Supplies
             var baseResponse = new BaseResponse();
             try
             {
-                
+
                 var supplies = _unitOfWork.Suppliess.GetByIdAsync(supplyId);
 
                 if (supplies == null)

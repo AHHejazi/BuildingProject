@@ -22,13 +22,13 @@ namespace Application.App.Services.Components
                     .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
 
             RuleFor(e => e)
-            .MustAsync(async (e, cancellationToken) => await EventNameAndDateUnique(e, cancellationToken))
+            .MustAsync(async (e, cancellationToken) => await EventNameAndDateUnique(e))
             .WithMessage("An event with the same name and date already exists.")
             .When(p => !string.IsNullOrEmpty(p.NameAr) && !string.IsNullOrEmpty(p.NameEn));
 
         }
 
-        private async Task<bool> EventNameAndDateUnique(ComponentDto e, CancellationToken token)
+        private async Task<bool> EventNameAndDateUnique(ComponentDto e)
         {
             return !(await _componentRepository.IsComponentNameUnique(e.NameAr, e.NameEn));
         }

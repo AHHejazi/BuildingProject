@@ -91,7 +91,7 @@ else
 
             </tbody>
         </table>
-        <Pager Result=@ProjectVM.Items PageChanged=@PagerPageChanged />
+        <Pager Result=@ProjectVM.Items PageChanged="@(async (Page)=> await PagerPageChanged(Page))" />
     </div>
 }
 

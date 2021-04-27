@@ -32,13 +32,13 @@ namespace Application.App.Services.Components
 
             try
             {
-               //// var validator = new ComponentValidator(_unitOfWork.Components);
-               //// var validationResult = await validator.ValidateAsync(component);
+                var validator = new ComponentValidator(_unitOfWork.Components);
+                var validationResult = await validator.ValidateAsync(component);
 
-               // if (validationResult.Errors.Count > 0)
-               //     throw new ValidationException(validationResult);
+                if (validationResult.Errors.Count > 0)
+                    throw new ValidationException(validationResult);
                 var Componentt = _mapper.Map<Component>(component);
-                Componentt.Number = GenerateComponentNumber();
+                Componentt.Number = await GenerateComponentNumber();
 
 
 
@@ -55,7 +55,7 @@ namespace Application.App.Services.Components
 
         }
 
-        public string GenerateComponentNumber()
+        public async Task<string> GenerateComponentNumber()
         {
             var currentYear = DateTime.Now.Year.ToString().Substring(2, 2);
             var currentMonth = DateTime.Now.Month.ToString("d2");
@@ -64,7 +64,7 @@ namespace Application.App.Services.Components
             Expression<Func<Component, string>> orderBy = r => r.Number;
 
 
-            var lastInsertedComponent = _unitOfWork.Components.GenerateModelNumber(condtion, orderBy);
+            var lastInsertedComponent = await _unitOfWork.Components.GenerateModelNumber(condtion, orderBy);
 
             if (lastInsertedComponent == null)
             {

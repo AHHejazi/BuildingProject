@@ -41,14 +41,14 @@ namespace Application.App.Services.Projects
             if (validationResult.Errors.Count > 0)
                 throw new ValidationException(validationResult);
             var prject = _mapper.Map<Project>(project);
-            prject.Number = GenerateProjectNumber();
+            prject.Number = await GenerateProjectNumber();
             prject = await _unitOfWork.Projects.AddAsync(prject);
             await _unitOfWork.SaveChangesAsync();
             return prject.Id;
 
         }
 
-        public string GenerateProjectNumber()
+        public async Task<string> GenerateProjectNumber()
         {
             var currentYear = DateTime.Now.Year.ToString().Substring(2, 2);
             var currentMonth = DateTime.Now.Month.ToString("d2");
@@ -57,7 +57,7 @@ namespace Application.App.Services.Projects
             Expression<Func<Project, string>> orderBy = r => r.Number;
 
 
-            var lastInsertedProject = _unitOfWork.Projects.GenerateModelNumber(condtion, orderBy);
+            var lastInsertedProject = await _unitOfWork.Projects.GenerateModelNumber(condtion, orderBy);
 
             if (lastInsertedProject == null)
             {

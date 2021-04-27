@@ -34,10 +34,10 @@ namespace Building.Web.Components.Buildings
         protected IErrorComponent Error { get; set; }
 
 
-        protected override async Task OnInitializedAsync()
-        {
-            ProjectList = await _projectService.ProjectListByCurrentUserAsync();
-        }
+        //protected override async Task OnInitializedAsync()
+        //{
+        //    ProjectList = await _projectService.ProjectListByCurrentUserAsync();
+        //}
         protected async Task SearchBuildings()
         {
             Page = "1";
@@ -52,8 +52,7 @@ namespace Building.Web.Components.Buildings
         protected async Task GetBuildings()
         {
             BuildingVM = await _buildingService.SearchBuildingsAsync(BuildingVM);
-            _navigationManager.NavigateTo("/Building/index/");
-            StateHasChanged();
+
         }
 
         protected void PagerPageChanged(int page)

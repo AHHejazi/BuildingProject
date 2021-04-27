@@ -36,7 +36,7 @@ namespace Application.App.Services.Buildings
                 if (validationResult.Errors.Count > 0)
                     throw new ValidationException(validationResult);
                 var build = _mapper.Map<Building>(building);
-                build.Number = GenerateBuildingNumber();
+                build.Number = await GenerateBuildingNumber();
 
                 build = await _unitOfWork.Buildings.AddAsync(build);
                 await _unitOfWork.SaveChangesAsync();
@@ -48,7 +48,7 @@ namespace Application.App.Services.Buildings
             }
         }
 
-        public string GenerateBuildingNumber()
+        public async Task<string> GenerateBuildingNumber()
         {
             var currentYear = DateTime.Now.Year.ToString().Substring(2, 2);
             var currentMonth = DateTime.Now.Month.ToString("d2");
@@ -57,7 +57,7 @@ namespace Application.App.Services.Buildings
             Expression<Func<Building, string>> orderBy = r => r.Number;
 
 
-            var lastInsertedBuilding = _unitOfWork.Buildings.GenerateModelNumber(condtion, orderBy);
+            var lastInsertedBuilding = await _unitOfWork.Buildings.GenerateModelNumber(condtion, orderBy);
 
             if (lastInsertedBuilding == null)
             {

@@ -4,6 +4,7 @@ using Domain.App.Entities.Lookup;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace App.Application.Contracts.Persistence
