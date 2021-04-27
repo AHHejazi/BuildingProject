@@ -36,13 +36,15 @@ namespace ComponentsLibrary.UploadFile
         private async Task OnInputFileChange(InputFileChangeEventArgs e, int AttachmentTypeId)
         {
             FileData fileData = await this.ManageFormFiles(e, AttachmentTypeId);
-            
+           
             await SelectEventCallback.InvokeAsync(fileData);
+            
             //fileData.RemoveAll(x => x.AttachemntType == attachmentType);
             //fileData.AddRange(await this.ManageFormFiles(e, attachmentType));
             //Model.fileData = fileData;
             StateHasChanged();
         }
+
 
 
         protected async Task<FileData> ManageFormFiles(InputFileChangeEventArgs e,int AttachmentTypeId)

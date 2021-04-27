@@ -16,19 +16,23 @@
 
         </CustomFileUpload>
 
-        <div class="form-group col-md-4">
-                <label for="image">Construction Diagram: </label>
-                <InputFile OnChange="@(e=>OnInputFileChange(e,(int)AttachmentTypesEnm.ConstructionDiagramId))" />
-                <ValidationMessage For="@(() => Model.ConstructionDiagramId)" />
-            </div>
-        
+        <CustomFileUpload For="(()=>Model.ConstructionDiagramId)" AttachmentId="Model.ConstructionDiagramId" Label="Instrument Attachment" AttachmentType="(int)AttachmentTypesEnm.ConstructionDiagramId" SelectEventCallback="UpdateFileDate">
+
+        </CustomFileUpload>
+
+        @*<div class="form-group col-md-4">
+            <label for="image">Construction Diagram: </label>
+            <InputFile OnChange="@(e=>OnInputFileChange(e,(int)AttachmentTypesEnm.ConstructionDiagramId))" />
+            <ValidationMessage For="@(() => Model.ConstructionDiagramId)" />
+        </div>*@
+
 
         @*<div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="image">Select File: </label>
-                <InputFile OnChange="@(e=>OnInputFileChange(e,AttachmentTypesEnm.MechanicalDiagramId))" />
-                <ValidationMessage For="@(() => Model.AttachemntId)" />
-            </div>*@
+        <div class="form-group col-md-4">
+            <label for="image">Select File: </label>
+            <InputFile OnChange="@(e=>OnInputFileChange(e,AttachmentTypesEnm.MechanicalDiagramId))" />
+            <ValidationMessage For="@(() => Model.AttachemntId)" />
+        </div>*@
     </div>
 
 
