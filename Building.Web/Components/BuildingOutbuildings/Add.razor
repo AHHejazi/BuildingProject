@@ -1,0 +1,47 @@
+﻿@page "/BuildingOutBuildings/Add"
+@inherits PageBase
+<h3>@AppResources.BuildingOutbuildings</h3>
+<EditForm Model="Model" Context="formContext" OnValidSubmit="@(SubmitBuildingOutbuildingsAsync)">
+    <FluentValidationValidator DisableAssemblyScanning="@true" />
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="itemTypetimate">@AppResources.ComponentId</label>
+
+            <InputSelect @bind-Value="Model.ComponentId" id="ComponentId" class="form-control">
+                <ValidationMessage For="@(() => Model.ComponentId)" />
+                <option selected>Select...</option>
+                @if (ComponentList != null)
+                {
+                    foreach (var item in ComponentList)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                }
+
+            </InputSelect>
+
+        </div>
+        <div class="form-group col-md-6">
+            <label for="itemTypetimate">@AppResources.OutbuildingId</label>
+
+            <InputSelect @bind-Value="Model.OutbuildingId" id="OutbuildingId" class="form-control">
+                <ValidationMessage For="@(() => Model.OutbuildingId)" />
+                <option selected>Select...</option>
+                @if (OutbuildingList != null)
+                {
+                    foreach (var item in OutbuildingList)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                }
+
+            </InputSelect>
+        </div>
+    </div>
+        <NavLink class="anchor-link link-button mt-3" href="/Building/index">Back</NavLink>
+        <button @*@onclick="@(async e => await ValidateForm(formContext))"*@ type="submit" class="submit-button mt-3">Submit</button>
+
+</EditForm>
+
+<MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>

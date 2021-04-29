@@ -503,7 +503,7 @@ namespace App.Persistence.Migrations
                     b.ToTable("Supplement", "lookup");
                 });
 
-            modelBuilder.Entity("Domain.App.Entities.Outbuildings", b =>
+            modelBuilder.Entity("Domain.App.Entities.Outbuilding", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -519,6 +519,15 @@ namespace App.Persistence.Migrations
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("NameAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("OutbuildingsTypeId")
                         .HasColumnType("int");
@@ -789,7 +798,7 @@ namespace App.Persistence.Migrations
                         .HasForeignKey("BuildingId");
                 });
 
-            modelBuilder.Entity("Domain.App.Entities.Outbuildings", b =>
+            modelBuilder.Entity("Domain.App.Entities.Outbuilding", b =>
                 {
                     b.HasOne("Domain.App.Entities.Building", "Building")
                         .WithMany("Outbuildings")

@@ -7,7 +7,7 @@
         <div class="form-group col-md-6">
             <label for="itemTypetimate">@AppResources.ProjectId</label>
 
-            <InputSelect @bind-Value="Model.ProjectId" id="ProjectTypeId" class="form-control">
+            <InputSelect @bind-Value="Model.ProjectId" id="ProjectId" class="form-control">
                 <ValidationMessage For="@(() => Model.ProjectId)" />
                 <option selected>Select...</option>
                 @if (ProjectList != null)

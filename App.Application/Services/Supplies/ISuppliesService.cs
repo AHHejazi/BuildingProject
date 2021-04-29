@@ -7,10 +7,10 @@ namespace Application.App.Services.Supplies
     public interface ISuppliesService
     {
         Task<Guid> AddSupply(SuppliesDto supply);
-        Task<BaseResponse> DeleteSuppliesAsync(Guid supplyId);
-        Task<string> GenerateSuppliesNumber();
-        Task<SuppliesDto> GetSuppliesByIdAsync(Guid Id);
-        Task<SuppliesVM> SearchSuppliesAsync(SuppliesVM suppliesVM);
+        Task<BaseResponse> DeleteSupplyAsync(Guid supplyId);
+        Task<string> GenerateSupplyNumber();
+        Task<SuppliesDto> GetSupplyByIdAsync(Guid Id);
+        Task<SuppliesVM> SearchSupplyAsync(SuppliesVM suppliesVM);
         Task UpdateSupply(SuppliesDto supplyDto);
     }
 }

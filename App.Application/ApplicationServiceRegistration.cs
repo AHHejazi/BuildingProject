@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Application.App.Services.Supplies;
 using Application.App.Services.Components;
+using Application.App.Services.Outbuildings;
 
 namespace Application.App
 {
@@ -21,6 +22,8 @@ namespace Application.App
             services.AddTransient<IBuildingService, BuildingService>();
             services.AddTransient<IComponentService, ComponentService>();
             services.AddTransient<ISuppliesService, SuppliesService>();
+            services.AddTransient<IOutbuildingService, OutbuildingService>(); 
+
 
             return services;
         }

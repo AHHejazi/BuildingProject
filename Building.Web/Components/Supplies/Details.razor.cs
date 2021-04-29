@@ -20,7 +20,7 @@ namespace Building.Web.Components.Supplies
 
         protected override async Task OnInitializedAsync()
         {
-            supply = await _suppliesService.GetSuppliesByIdAsync(Id);
+            supply = await _suppliesService.GetSupplyByIdAsync(Id);
         }
     }
 }

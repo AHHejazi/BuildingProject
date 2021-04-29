@@ -12,51 +12,28 @@ namespace Building.Web.Components.Supplies
     public partial class Edit : PageBase
     {
 
-        public SuppliesDto supplyDto = new SuppliesDto();
 
-        private EditContext editContext;
+        
 
         [Inject]
         public ISuppliesService _suppliesService { get; set; }
 
-        [Parameter]
-        public EventCallback<SuppliesDto> OnValidSubmit { get; set; }
+        public SuppliesDto supplyDto = new SuppliesDto();
 
         [Parameter]
         public Guid Id { get; set; }
-        protected async override Task OnParametersSetAsync()
-        {
 
-            supplyDto = await _suppliesService.GetSuppliesByIdAsync(Id);
-            editContext = new EditContext(supplyDto);
+        public EventCallback<SuppliesDto> OnValidSubmit { get; set; }
+
+        protected async override Task OnInitializedAsync()
+        {
+            supplyDto = await _suppliesService.GetSupplyByIdAsync(Id);
         }
 
-        private async Task SubmitSuppliesAsync()
+        private void SubmitSuppliesAsync()
         {
-
-            var isValid = editContext.Validate();
-
-            if (isValid)
-            {
-                await _suppliesService.UpdateSupply(supplyDto);
-                StatusClass = "alert alert-success";
-                Message = "Building updated successfully.";
-            }
-            else
-            {
-                StatusClass = "alert alert-danger";
-                Message = "Something went wrong while updating Supply . Please try again.";
-            }
-        }
-
-        public async Task ValidateForm(EditContext editContext)
-        {
-
-            var isValid = editContext.Validate();
-
-            if (!isValid)
-                return;
-
+            _suppliesService.UpdateSupply(supplyDto);
+                
         }
     }
 }

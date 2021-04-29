@@ -126,6 +126,9 @@
   <data name="AddComponent" xml:space="preserve">
     <value>Add Component</value>
   </data>
+  <data name="AddOutbuilding" xml:space="preserve">
+    <value>Add Outbuilding</value>
+  </data>
   <data name="AddProject" xml:space="preserve">
     <value>Add Project</value>
   </data>
@@ -144,8 +147,11 @@
   <data name="BuildingLicenseNumber" xml:space="preserve">
     <value>Building License Number</value>
   </data>
-  <data name="BuildingsManagment" xml:space="preserve">
-    <value>Buildings Managment</value>
+  <data name="BuildingOutbuildings" xml:space="preserve">
+    <value>Building Outbuildings</value>
+  </data>
+  <data name="BuildingsManagement" xml:space="preserve">
+    <value>Buildings Management</value>
   </data>
   <data name="BuildingTechnique" xml:space="preserve">
     <value>Building Technique</value>
@@ -156,8 +162,11 @@
   <data name="ComponentDetails" xml:space="preserve">
     <value>Component Details</value>
   </data>
-  <data name="ComponentManagment" xml:space="preserve">
-    <value>Component Managment</value>
+  <data name="ComponentId" xml:space="preserve">
+    <value>Component</value>
+  </data>
+  <data name="ComponentsManagement" xml:space="preserve">
+    <value>Components Management</value>
   </data>
   <data name="ConstructionDiagrams" xml:space="preserve">
     <value>Construction Diagrams</value>
@@ -177,6 +186,9 @@
   <data name="DeleteComponent" xml:space="preserve">
     <value>Delete Component</value>
   </data>
+  <data name="DeleteOutbuilding" xml:space="preserve">
+    <value>Delete Outbuilding</value>
+  </data>
   <data name="DeleteProject" xml:space="preserve">
     <value>Delete Project</value>
   </data>
@@ -191,6 +203,9 @@
   </data>
   <data name="EditComponent" xml:space="preserve">
     <value>EditComponent</value>
+  </data>
+  <data name="EditOutbuilding" xml:space="preserve">
+    <value>Edit Outbuilding</value>
   </data>
   <data name="EditProject" xml:space="preserve">
     <value>Edit Project</value>
@@ -237,14 +252,23 @@
   <data name="Options" xml:space="preserve">
     <value>Options</value>
   </data>
+  <data name="OutbuildingDetails" xml:space="preserve">
+    <value>Outbuilding Details</value>
+  </data>
+  <data name="OutbuildingId" xml:space="preserve">
+    <value>Outbuilding</value>
+  </data>
+  <data name="OutbuildingManagement" xml:space="preserve">
+    <value>Outbuilding Management</value>
+  </data>
   <data name="ProjectDetails" xml:space="preserve">
     <value>Project Details</value>
   </data>
   <data name="ProjectId" xml:space="preserve">
     <value>Choose a Project</value>
   </data>
-  <data name="ProjectsManagment" xml:space="preserve">
-    <value>Projects Managment</value>
+  <data name="ProjectsManagement" xml:space="preserve">
+    <value>Projects Management</value>
   </data>
   <data name="ProjectTypeId" xml:space="preserve">
     <value>Project Type</value>
@@ -279,8 +303,8 @@
   <data name="StampingNumber" xml:space="preserve">
     <value>Stamping Number</value>
   </data>
-  <data name="SuppliesManagment" xml:space="preserve">
-    <value>Supplies Managment</value>
+  <data name="SuppliesManagement" xml:space="preserve">
+    <value>Supplies Management</value>
   </data>
   <data name="SupplyDetails" xml:space="preserve">
     <value>Supply Details</value>

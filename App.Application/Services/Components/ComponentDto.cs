@@ -1,4 +1,5 @@
 ﻿using Domain.App.Common;
+using System;
 
 namespace Application.App.Services.Components
 {
@@ -9,6 +10,8 @@ namespace Application.App.Services.Components
         public string NameAr { get; set; }
 
         public string NameEn { get; set; }
-        
+        public Guid? ComponentId { get; set; }
+        public Guid? OutbuildingId { get; set; }
+
     }
 }

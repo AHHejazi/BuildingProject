@@ -10,51 +10,25 @@ namespace Building.Web.Components.Components
     public partial class Edit : PageBase
     {
 
-        public ComponentDto componentDto = new ComponentDto();
-
-        private EditContext editContext;
-
         [Inject]
         public IComponentService _componentService { get; set; }
 
-        [Parameter]
+        public ComponentDto componentDto = new ComponentDto();
         public EventCallback<ComponentDto> OnValidSubmit { get; set; }
 
         [Parameter]
         public Guid Id { get; set; }
-        protected async override Task OnParametersSetAsync()
+
+
+        protected async override Task OnInitializedAsync()
         {
 
             componentDto = await _componentService.GetComponentByIdAsync(Id);
-            editContext = new EditContext(componentDto);
         }
 
-        private async Task SubmitComponentAsync()
+        private void SubmitComponentAsync()
         {
-
-            var isValid = editContext.Validate();
-
-            if (isValid)
-            {
-                await _componentService.UpdateComponent(componentDto);
-                StatusClass = "alert alert-success";
-                Message = "Building updated successfully.";
-            }
-            else
-            {
-                StatusClass = "alert alert-danger";
-                Message = "Something went wrong while updating Component . Please try again.";
-            }
-        }
-
-        public async Task ValidateForm(EditContext editContext)
-        {
-
-            var isValid = editContext.Validate();
-
-            if (!isValid)
-                return;
-
+            _componentService.UpdateComponent(componentDto);
         }
     }
 }

@@ -11,20 +11,20 @@ using Application.App.Responses;
 
 namespace Application.App.Services.Components
 {
-    public class ComponentService: IComponentService
+    public class ComponentService : IComponentService
     {
         private readonly IMapper _mapper;
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;
         protected bool Saved;
         private readonly IUnitOfWork _unitOfWork;
-        
 
-        public ComponentService(IMapper mapper, ILogger<ComponentDto> logger,IUnitOfWork unitOfWork)
+
+        public ComponentService(IMapper mapper, ILogger<ComponentDto> logger, IUnitOfWork unitOfWork)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
-            
+
         }
 
         public async Task<Guid> AddComponent(ComponentDto component)
@@ -92,10 +92,13 @@ namespace Application.App.Services.Components
 
         public async Task UpdateComponent(ComponentDto componentDto)
         {
-            
-                var component = _mapper.Map<Component>(componentDto);
-                await _unitOfWork.Components.UpdateAsync(component);
-            
+
+            var component = _mapper.Map<Component>(componentDto);
+            await _unitOfWork.Components.UpdateAsync(component);
+            StatusClass = "alert-success";
+            Message = "Component updated successfully.";
+            Saved = true;
+
         }
 
         public async Task<BaseResponse> DeleteComponentAsync(Guid componentId)
@@ -103,7 +106,7 @@ namespace Application.App.Services.Components
             var baseResponse = new BaseResponse();
             try
             {
-                
+
                 var components = _unitOfWork.Components.GetByIdAsync(componentId);
 
                 if (components == null)
@@ -118,6 +121,11 @@ namespace Application.App.Services.Components
                 baseResponse.Success = false;
             }
             return baseResponse;
+        }
+
+        public Task AddBuildingOutbuildings(ComponentDto model)
+        {
+            throw new NotImplementedException();
         }
     }
 }

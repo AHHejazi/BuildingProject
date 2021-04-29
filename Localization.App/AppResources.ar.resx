@@ -126,6 +126,9 @@
   <data name="AddComponent" xml:space="preserve">
     <value>إضافة مكون</value>
   </data>
+  <data name="AddOutbuilding" xml:space="preserve">
+    <value>إضافة ملحق</value>
+  </data>
   <data name="AddProject" xml:space="preserve">
     <value>إضافة مشروع </value>
   </data>
@@ -144,7 +147,10 @@
   <data name="BuildingLicenseNumber" xml:space="preserve">
     <value>رقم رخصة البنا</value>
   </data>
-  <data name="BuildingsManagment" xml:space="preserve">
+  <data name="BuildingOutbuildings" xml:space="preserve">
+    <value>ملحقات المبنى</value>
+  </data>
+  <data name="BuildingsManagement" xml:space="preserve">
     <value>إدارة المباني</value>
   </data>
   <data name="BuildingTechnique" xml:space="preserve">
@@ -156,7 +162,10 @@
   <data name="ComponentDetails" xml:space="preserve">
     <value>تفاصيل المكون</value>
   </data>
-  <data name="ComponentManagment" xml:space="preserve">
+  <data name="ComponentId" xml:space="preserve">
+    <value>المستلزمات</value>
+  </data>
+  <data name="ComponentsManagement" xml:space="preserve">
     <value>إدارة المكونات</value>
   </data>
   <data name="ConstructionDiagrams" xml:space="preserve">
@@ -177,6 +186,9 @@
   <data name="DeleteComponent" xml:space="preserve">
     <value>حذف مكون</value>
   </data>
+  <data name="DeleteOutbuilding" xml:space="preserve">
+    <value>حذف ملحق</value>
+  </data>
   <data name="DeleteProject" xml:space="preserve">
     <value>حذف مشروع</value>
   </data>
@@ -191,6 +203,9 @@
   </data>
   <data name="EditComponent" xml:space="preserve">
     <value>تعديل مكون</value>
+  </data>
+  <data name="EditOutbuilding" xml:space="preserve">
+    <value>تعديل ملحق</value>
   </data>
   <data name="EditProject" xml:space="preserve">
     <value>تعديل مشروع</value>
@@ -237,6 +252,15 @@
   <data name="Options" xml:space="preserve">
     <value>الخيارات</value>
   </data>
+  <data name="OutbuildingDetails" xml:space="preserve">
+    <value>تفاصيل ملحق </value>
+  </data>
+  <data name="OutbuildingId" xml:space="preserve">
+    <value>الملحقات</value>
+  </data>
+  <data name="OutbuildingManagement" xml:space="preserve">
+    <value>إدارة الملحقات</value>
+  </data>
   <data name="ProjectDetails" xml:space="preserve">
     <value>تفاصيل المشروع</value>
   </data>
@@ -279,7 +303,7 @@
   <data name="StampingNumber" xml:space="preserve">
     <value>رقم الطوابع</value>
   </data>
-  <data name="SuppliesManagment" xml:space="preserve">
+  <data name="SuppliesManagement" xml:space="preserve">
     <value>إدارة المستلزمات</value>
   </data>
   <data name="SupplyDetails" xml:space="preserve">

@@ -15,6 +15,15 @@
                 <InputText @bind-Value="Model.NameEn" id="NameEn" class="form-control"></InputText>
                 <ValidationMessage For="@(() => Model.NameEn)" />
             </div>
+            <div class="form-group col-md-6">
+                <div class="form-check">
+                    <input @*@bind-Value="Model."*@ class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Is it OutBuilding
+                    </label>
+                </div>
+            </div>
+
         </div>
 <NavLink class="anchor-link link-button mt-3" href="/Component/index">Back</NavLink>
 <button @onclick="@(async e => await ValidateForm(formContext))" type="submit" class="submit-button mt-3">Submit</button>

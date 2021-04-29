@@ -28,7 +28,7 @@ namespace Domain.App.Entities
         public ICollection<Apartment> Apartments { get; set; }
 
 
-        public ICollection<Outbuildings> Outbuildings { get; set; }
+        public ICollection<Outbuilding> Outbuildings { get; set; }
 
         //to check if I need to add this
         public ICollection<BuildingSupplies> BuildingSupplies { get; set; }

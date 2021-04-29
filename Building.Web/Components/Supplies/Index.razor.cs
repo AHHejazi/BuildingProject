@@ -10,8 +10,7 @@ namespace Building.Web.Components.Supplies
 {
     public partial class Index : PageBase
     {
-        [Inject]
-        private NavigationManager _navigationManager { get; set; }
+        
         [Inject]
         public ISuppliesService _suppliesService { get; set; }
         public SuppliesVM suppliesVM = new SuppliesVM();
@@ -30,21 +29,20 @@ namespace Building.Web.Components.Supplies
         {
             Page = "1";
             suppliesVM.PageNumber = 1;
-            suppliesVM = await _suppliesService.SearchSuppliesAsync(suppliesVM);
-            _navigationManager.NavigateTo("/Supplies/index/" + Page);
-            StateHasChanged();
+            suppliesVM = await _suppliesService.SearchSupplyAsync(suppliesVM);
         }
 
         protected async Task GetSupplies()
         {
-            suppliesVM = await _suppliesService.SearchSuppliesAsync(suppliesVM);
+            suppliesVM = await _suppliesService.SearchSupplyAsync(suppliesVM);
 
         }
-        protected void PagerPageChanged(int page)
+        protected async Task PagerPageChanged(int page)
         {
-            suppliesVM.PageNumber = page;
-            _navigationManager.NavigateTo("/Supplies/index/" + page);
 
+            suppliesVM.PageNumber = page;
+            await GetSupplies();
+            StateHasChanged(); 
         }
 
         protected async override Task OnInitializedAsync()
@@ -64,7 +62,7 @@ namespace Building.Web.Components.Supplies
         {
             try
             {
-                var deleteStatus = await _suppliesService.DeleteSuppliesAsync(SelectedSuppliId);
+                var deleteStatus = await _suppliesService.DeleteSupplyAsync(SelectedSuppliId);
                 if (deleteStatus.Success)
                 {
                     await GetSupplies();

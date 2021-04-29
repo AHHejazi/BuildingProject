@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Components.Forms;
+using GeneralIdentity.App.Code;
 
 namespace Building.Web.Components.Projects
 {
-    public partial class Edit : ComponentBase
+    public partial class Edit : PageBase
     {
         [Inject]
         public IProjectService _projectService { get; set; }
-        //public Project project;
+
         public ProjectDto project;
         private IEnumerable<SelectListItem> ProjectTypeList;
 
@@ -32,7 +33,7 @@ namespace Building.Web.Components.Projects
             project = await _projectService.GetProjectByIdAsync(Id);
             ProjectTypeList = await _lookupServices.GetProjectTypeList();
         }
-        
+
         public void SubmitprojectAsync()
         {
             _projectService.UpdateProject(project);

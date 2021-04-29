@@ -39,7 +39,7 @@ namespace Application.App.Services.Supplies
                 if (validationResult.Errors.Count > 0)
                     throw new ValidationException(validationResult);
                 var suppli = _mapper.Map<Supplement>(supply);
-                suppli.Number = await GenerateSuppliesNumber();
+                suppli.Number = await GenerateSupplyNumber();
 
 
 
@@ -56,7 +56,7 @@ namespace Application.App.Services.Supplies
 
         }
 
-        public async Task<string> GenerateSuppliesNumber()
+        public async Task<string> GenerateSupplyNumber()
         {
             var currentYear = DateTime.Now.Year.ToString().Substring(2, 2);
             var currentMonth = DateTime.Now.Month.ToString("d2");
@@ -77,14 +77,14 @@ namespace Application.App.Services.Supplies
 
         }
 
-        public async Task<SuppliesDto> GetSuppliesByIdAsync(Guid Id)
+        public async Task<SuppliesDto> GetSupplyByIdAsync(Guid Id)
         {
             var obj = await _unitOfWork.Suppliess.GetByIdAsync(Id);
             var retObj = _mapper.Map<SuppliesDto>(obj);
             return retObj;
         }
 
-        public async Task<SuppliesVM> SearchSuppliesAsync(SuppliesVM suppliesVM)
+        public async Task<SuppliesVM> SearchSupplyAsync(SuppliesVM suppliesVM)
         {
             return await _unitOfWork.Suppliess.SearchAsync(suppliesVM);
         }
@@ -96,10 +96,13 @@ namespace Application.App.Services.Supplies
 
             var supply = _mapper.Map<Supplement>(supplyDto);
             await _unitOfWork.Suppliess.UpdateAsync(supply);
+            StatusClass = "alert-success";
+            Message = "Supply updated successfully.";
+            Saved = true;
 
         }
 
-        public async Task<BaseResponse> DeleteSuppliesAsync(Guid supplyId)
+        public async Task<BaseResponse> DeleteSupplyAsync(Guid supplyId)
         {
             var baseResponse = new BaseResponse();
             try

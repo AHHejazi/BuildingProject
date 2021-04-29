@@ -1,0 +1,23 @@
+﻿@page "/Outbuildings/edit/{Id:guid}"
+@inherits PageBase
+<h3>@AppResources.EditOutbuilding</h3>
+@using Microsoft.AspNetCore.Components.Forms;
+
+<EditForm Model="@outbuilding" Context="formContext" OnValidSubmit="@(SubmitoutbuildingAsync)">
+    <FluentValidationValidator DisableAssemblyScanning="@true" />
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="NameAr">@AppResources.NameArabic</label>
+            <InputText id="NameAr" class="form-control" @bind-Value="outbuilding.NameAr" />
+            <ValidationMessage For="@(() => outbuilding.NameAr)" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="NameEn">@AppResources.NameEnglish</label>
+            <InputText id="NameEn" class="form-control" @bind-Value="outbuilding.NameEn" />
+            <ValidationMessage For="@(() => outbuilding.NameEn)" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</EditForm>
