@@ -9,7 +9,6 @@ namespace Application.App.Services.Supplies
 {
     public class SuppliesVM : PagingDto
     {
-        public Guid Id { get; set; }
 
         public string NameAr { get; set; }
 

@@ -1,0 +1,24 @@
+﻿@page "/OutBuildings/details/{Id:guid}"
+<h3>@AppResources.OutbuildingDetails</h3>
+
+@if (outbuilding == null)
+{
+<p><em>Loading...</em></p>
+}
+
+else
+{
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="NameAr">@AppResources.NameArabic</label>
+        <label type="text" readonly id="NameAr" class="form-control">@outbuilding.NameAr</label>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="NameEn">@AppResources.NameEnglish</label>
+        <label type="text" readonly id="NameEn" class="form-control">@outbuilding.NameEn</label>
+    </div>
+</div>
+<div class="form-row form-group">
+    <NavLink href="/Outbuilding/index" class="btn btn-primary">Back</NavLink>
+</div>
+}

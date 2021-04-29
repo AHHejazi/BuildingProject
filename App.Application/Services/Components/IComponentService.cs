@@ -11,5 +11,6 @@ namespace Application.App.Services.Components
         Task UpdateComponent(ComponentDto componentDto);
         Task<ComponentVM> SearchComponentAsync(ComponentVM componentVM);
         Task<BaseResponse> DeleteComponentAsync(Guid componentId);
+        Task AddBuildingOutbuildings(ComponentDto model);
     }
 }

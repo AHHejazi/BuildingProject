@@ -3,7 +3,7 @@
 @attribute [Authorize]
 @inherits PageBase;
 
-<h3>@AppResources.ComponentManagment</h3>
+<h3>@AppResources.ComponentsManagement</h3>
 
 @if (componentVM.ComponentsList == null)
 {
@@ -40,9 +40,7 @@ else
                 <tr align="center">
                     <th>@AppResources.NameArabic</th>
                     <th>@AppResources.NameEnglish</th>
-
-
-
+                    <th>@AppResources.Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -66,7 +64,7 @@ else
 
             </tbody>
         </table>
-        <Pager Result=@componentVM.ComponentsList PageChanged=@PagerPageChanged />
+        <Pager Result=@componentVM.ComponentsList PageChanged="@(async (Page)=> await PagerPageChanged(Page))" />
     </div>
 }
 <DeleteDialog @ref="DeleteDialog" CloseEventCallback="@DeleteDialog_OnDialogClose"></DeleteDialog>

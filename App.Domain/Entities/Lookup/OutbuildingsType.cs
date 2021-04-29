@@ -12,6 +12,6 @@ namespace Domain.App.Entities.Lookup
 
         public string NameEn { get; set; }
 
-        public ICollection<Outbuildings> Outbuildings { get; set; }
+        public ICollection<Outbuilding> Outbuildings { get; set; }
     }
 }

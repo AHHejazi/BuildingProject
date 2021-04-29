@@ -13,25 +13,25 @@ namespace Building.Web.Components.Buildings
 {
     public partial class Index : PageBase
     {
-        private IEnumerable<SelectListItem> ProjectList;
-        [Inject]
-        private NavigationManager _navigationManager { get; set; }
+        
         [Inject]
         public IProjectService _projectService { get; set; }
+
         [Inject]
         public IBuildingService _buildingService { get; set; }
+
         public BuildingVM BuildingVM = new BuildingVM();
-
-
-
         [Parameter]
         public string Page { get; set; } = "1";
-        protected DeleteDialog DeleteDialog { get; set; }
 
         private Guid SelectedBuildingId;
 
+        private IEnumerable<SelectListItem> ProjectList;
+
         [CascadingParameter(Name = "ErrorComponent")]
         protected IErrorComponent Error { get; set; }
+        protected DeleteDialog DeleteDialog { get; set; }
+        
 
 
         //protected override async Task OnInitializedAsync()
@@ -43,11 +43,8 @@ namespace Building.Web.Components.Buildings
             Page = "1";
             BuildingVM.PageNumber = 1;
             BuildingVM = await _buildingService.SearchBuildingsAsync(BuildingVM);
-            _navigationManager.NavigateTo("/Building/index/" + Page);
-            StateHasChanged();
+            
         }
-
-
 
         protected async Task GetBuildings()
         {
@@ -55,10 +52,11 @@ namespace Building.Web.Components.Buildings
 
         }
 
-        protected void PagerPageChanged(int page)
+        protected async Task PagerPageChanged(int page)
         {
             BuildingVM.PageNumber = page;
-            _navigationManager.NavigateTo("/Building/index/" + page);
+            await GetBuildings();
+            StateHasChanged();
 
         }
 

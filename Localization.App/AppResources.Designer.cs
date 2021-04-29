@@ -88,6 +88,15 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Outbuilding.
+        /// </summary>
+        public static string AddOutbuilding {
+            get {
+                return ResourceManager.GetString("AddOutbuilding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add project.
         /// </summary>
         public static string AddProject {
@@ -142,11 +151,20 @@ namespace Localization.App {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Buildings Managment.
+        ///   Looks up a localized string similar to Building Outbuildings.
         /// </summary>
-        public static string BuildingsManagment {
+        public static string BuildingOutbuildings {
             get {
-                return ResourceManager.GetString("BuildingsManagment", resourceCulture);
+                return ResourceManager.GetString("BuildingOutbuildings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buildings Management.
+        /// </summary>
+        public static string BuildingsManagement {
+            get {
+                return ResourceManager.GetString("BuildingsManagement", resourceCulture);
             }
         }
         
@@ -178,11 +196,20 @@ namespace Localization.App {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Component Managment.
+        ///   Looks up a localized string similar to Component.
         /// </summary>
-        public static string ComponentManagment {
+        public static string ComponentId {
             get {
-                return ResourceManager.GetString("ComponentManagment", resourceCulture);
+                return ResourceManager.GetString("ComponentId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Components Management.
+        /// </summary>
+        public static string ComponentsManagement {
+            get {
+                return ResourceManager.GetString("ComponentsManagement", resourceCulture);
             }
         }
         
@@ -241,6 +268,15 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Outbuilding.
+        /// </summary>
+        public static string DeleteOutbuilding {
+            get {
+                return ResourceManager.GetString("DeleteOutbuilding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Project.
         /// </summary>
         public static string DeleteProject {
@@ -282,6 +318,15 @@ namespace Localization.App {
         public static string EditComponent {
             get {
                 return ResourceManager.GetString("EditComponent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Outbuilding.
+        /// </summary>
+        public static string EditOutbuilding {
+            get {
+                return ResourceManager.GetString("EditOutbuilding", resourceCulture);
             }
         }
         
@@ -421,6 +466,33 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Outbuilding Details.
+        /// </summary>
+        public static string OutbuildingDetails {
+            get {
+                return ResourceManager.GetString("OutbuildingDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outbuilding.
+        /// </summary>
+        public static string OutbuildingId {
+            get {
+                return ResourceManager.GetString("OutbuildingId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outbuilding Management.
+        /// </summary>
+        public static string OutbuildingsManagement {
+            get {
+                return ResourceManager.GetString("OutbuildingsManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project Details.
         /// </summary>
         public static string ProjectDetails {
@@ -439,11 +511,11 @@ namespace Localization.App {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Projects Managment.
+        ///   Looks up a localized string similar to Projects Management.
         /// </summary>
-        public static string ProjectsManagment {
+        public static string ProjectsManagement {
             get {
-                return ResourceManager.GetString("ProjectsManagment", resourceCulture);
+                return ResourceManager.GetString("ProjectsManagement", resourceCulture);
             }
         }
         
@@ -547,11 +619,11 @@ namespace Localization.App {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Supplies Managment.
+        ///   Looks up a localized string similar to Supplies Management.
         /// </summary>
-        public static string SuppliesManagment {
+        public static string SuppliesManagement {
             get {
-                return ResourceManager.GetString("SuppliesManagment", resourceCulture);
+                return ResourceManager.GetString("SuppliesManagement", resourceCulture);
             }
         }
         

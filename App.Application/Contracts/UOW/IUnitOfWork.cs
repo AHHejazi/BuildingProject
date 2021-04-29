@@ -13,6 +13,7 @@ namespace Application.App.Contracts.UOW
         IProjectRepository Projects { get; }
         ISuppliesRepository Suppliess { get; }
         IComponentRepository Components { get;}
+        IOutbuildingRepository Outbuildings { get; }
         IAttachmentRepository Attachments { get; }
 
         IAttachmentContentRepository AttachmentContents { get; }

@@ -5,6 +5,7 @@ using Application.App.Services.Buildings;
 using Domain.App.Entities.Lookup;
 using Application.App.Services.Supplies;
 using Application.App.Services.Components;
+using Application.App.Services.Outbuildings;
 
 namespace Application.App.Profiles
 {
@@ -16,6 +17,7 @@ namespace Application.App.Profiles
             CreateMap<Building, BuildingDto>().ReverseMap();
             CreateMap<SuppliesDto, Supplement>().ReverseMap();
             CreateMap<ComponentDto, Component>().ReverseMap();
+            CreateMap<OutbuildingDto, Outbuilding>().ReverseMap();
         }
 
     }

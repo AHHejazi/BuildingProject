@@ -76,6 +76,9 @@ namespace Application.App.Services.Buildings
         {
             var building = _mapper.Map<Building>(buildingDto);
             await _unitOfWork.Buildings.UpdateAsync(building);
+            StatusClass = "alert-success";
+            Message = "Building updated successfully.";
+            Saved = true;
         }
 
 

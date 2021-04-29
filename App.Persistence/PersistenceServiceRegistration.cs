@@ -21,6 +21,7 @@ namespace App.Persistence
             services.AddScoped<IBuildingRepository, BuildingRepository>();
             services.AddScoped<ISuppliesRepository, SuppliesRepository>();
             services.AddScoped<IComponentRepository, ComponentRepository>();
+            services.AddScoped<IOutbuildingRepository, OutbuildingRepository>(); 
             services.AddScoped<ILookupRepository, LookupRepository>();
             services.AddScoped<IAttachmentRepository, AttachmentRepository>();
             services.AddScoped<IAppSettingRepository, AppSettingRepository>();

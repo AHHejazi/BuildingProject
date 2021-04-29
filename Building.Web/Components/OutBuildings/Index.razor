@@ -1,0 +1,74 @@
+﻿@page "/Outbuildings/index"
+@page "/Outbuildings/index/{page}"
+@attribute [Authorize]
+@inherits PageBase;
+
+<h3>@AppResources.OutbuildingsManagement</h3>
+
+@if (OutbuildingVM.OutbuildingsList == null)
+{
+<p><em>Loading...</em></p>
+}
+else
+{
+<EditForm Model="OutbuildingVM">
+    <div class="form-row">
+        <div class="form-group">
+            <NavLink href="/Outbuilding/Add" class="btn btn-info btn-block">@AppResources.AddOutbuilding</NavLink>
+        </div>
+
+        <div class="input-group">
+            <div class="form-group col-md-6">
+                <label for="NameAr">@AppResources.NameArabic</label>
+                <InputText @bind-Value="OutbuildingVM.NameAr" id="NameAr" class="form-control"></InputText>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="NameEn">@AppResources.NameEnglish</label>
+                <InputText @bind-Value="OutbuildingVM.NameEn" id="NameEn" class="form-control"></InputText>
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="submit-button" @onclick="@SearchOutbuildings">@AppResources.Search</button>
+    </div>
+</EditForm>
+<div class="form-row">
+    <table class='table table-striped'>
+        <thead>
+            <tr align="center">
+                <th>@AppResources.NameArabic</th>
+                <th>@AppResources.NameEnglish</th>
+                <th>@AppResources.Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var outbuildingVM in OutbuildingVM.OutbuildingsList)
+                {
+            <tr align="center">
+                <td>
+                    <NavLink href="@($"/OutBuilding/details/{outbuildingVM.Id}")" class="nav-link">
+                        @outbuildingVM.NameAr
+                    </NavLink>
+                </td>
+                <td>@outbuildingVM.NameEn</td>
+                <td>
+                    <NavLink class="fa fa-edit fa-lg" title="@AppResources.EditOutbuilding" href="@($"/OutBuildings/edit/{outbuildingVM.Id}")"></NavLink>
+                    <NavLink title="@AppResources.DeleteOutbuilding" @onclick="()=>DeleteConfirmationOutbuilding(outbuildingVM.Id)"><i class="fa fa-trash-o fa-lg"></i></NavLink>
+                </td>
+
+            </tr>
+                }
+
+        </tbody>
+    </table>
+    <Pager Result=@OutbuildingVM.OutbuildingsList PageChanged="@(async (Page)=> await PagerPageChanged(Page))" />
+</div>
+}
+
+<DeleteDialog @ref="DeleteDialog" CloseEventCallback="@DeleteDialog_OnDialogClose"></DeleteDialog>
+
+
+<MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
+
+

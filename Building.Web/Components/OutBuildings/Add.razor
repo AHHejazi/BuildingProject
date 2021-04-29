@@ -1,0 +1,26 @@
+﻿@page "/Outbuilding/Add"
+@inherits PageBase
+<h3>@AppResources.AddOutbuilding</h3>
+<EditForm Model="Model" Context="formContext" OnValidSubmit="@(SubmitOutbuildingAsync)">
+    <FluentValidationValidator DisableAssemblyScanning="@true" />
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="NameAr">@AppResources.NameArabic</label>
+            <InputText @bind-Value="Model.NameAr" id="NameAr" class="form-control"></InputText>
+            <ValidationMessage For="@(() => Model.NameAr)" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="NameEn">@AppResources.NameEnglish</label>
+            <InputText @bind-Value="Model.NameEn" id="NameEn" class="form-control"></InputText>
+            <ValidationMessage For="@(() => Model.NameEn)" />
+        </div>
+    </div>
+    <NavLink class="anchor-link link-button mt-3" href="/OutBuildings/index">Back</NavLink>
+    <button @onclick="@(async e => await ValidateForm(formContext))" type="submit" class="submit-button mt-3">Submit</button>
+
+</EditForm>
+
+<MessageAlert MessageText="@Message" StatusClass="@StatusClass"></MessageAlert>
+
+

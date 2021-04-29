@@ -8,9 +8,9 @@ using System.Text;
 namespace App.Persistence.Configurations
 {
 
-    public class OutbuildingsConfiguration : IEntityTypeConfiguration<Outbuildings>
+    public class OutbuildingsConfiguration : IEntityTypeConfiguration<Outbuilding>
     {
-        public void Configure(EntityTypeBuilder<Outbuildings> entity)
+        public void Configure(EntityTypeBuilder<Outbuilding> entity)
         {
             entity.HasKey(o => o.Id);
             entity.Property(t => t.BuildingId).IsRequired();

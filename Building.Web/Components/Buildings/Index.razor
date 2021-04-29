@@ -3,7 +3,7 @@
 @attribute [Authorize]
 @inherits PageBase;
 
-<h3>@AppResources.BuildingsManagment</h3>
+<h3>@AppResources.BuildingsManagement</h3>
 
 @if (BuildingVM.BuildingList == null)
 {
@@ -83,7 +83,7 @@ else
                 }
             </tbody>
         </table>
-        <Pager Result=@BuildingVM.BuildingList PageChanged=@PagerPageChanged />
+        <Pager Result=@BuildingVM.BuildingList PageChanged="@(async (Page)=> await PagerPageChanged(Page))" />
     </div>
 }
 <DeleteDialog @ref="DeleteDialog" CloseEventCallback="@DeleteDialog_OnDialogClose"></DeleteDialog>

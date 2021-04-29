@@ -11,6 +11,8 @@ namespace Application.App.Services.Components
         public string NameAr { get; set; }
 
         public string NameEn { get; set; }
+
+        
         public StaticPagedList<Component> ComponentsList { get; set; }
 
     }

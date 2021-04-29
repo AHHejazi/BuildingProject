@@ -1,5 +1,4 @@
 ﻿using Application.App.Services.Components;
-using Application.App.Services.Supplies;
 using ComponentsLibrary.DeleteConfirmation;
 using ComponentsLibrary.ErrorHandler;
 using GeneralIdentity.App.Code;
@@ -12,18 +11,16 @@ namespace Building.Web.Components.Components
     public partial class Index : PageBase
     {
         [Inject]
-        private NavigationManager _navigationManager { get; set; }
-        [Inject]
         public IComponentService _componentService { get; set; }
+
         public ComponentVM componentVM = new ComponentVM();
 
         [Parameter]
         public string Page { get; set; } = "1";
 
-        protected DeleteDialog DeleteDialog { get; set; }
-
         private Guid SelectedComponentId;
-
+        protected DeleteDialog DeleteDialog { get; set; }
+        
         [CascadingParameter(Name = "ErrorComponent")]
         protected IErrorComponent Error { get; set; }
 
@@ -32,25 +29,24 @@ namespace Building.Web.Components.Components
             Page = "1";
             componentVM.PageNumber = 1;
             componentVM = await _componentService.SearchComponentAsync(componentVM);
-            _navigationManager.NavigateTo("/Component/index/" + Page);
-            StateHasChanged();
+            
         }
 
-        protected async Task GetComponent()
+        protected async Task GetComponents()
         {
             componentVM = await _componentService.SearchComponentAsync(componentVM);
 
         }
-        protected void PagerPageChanged(int page)
+        protected async Task PagerPageChanged(int page)
         {
             componentVM.PageNumber = page;
-            _navigationManager.NavigateTo("/Component/index/" + page);
-
+            await GetComponents();
+            StateHasChanged();
         }
 
         protected async override Task OnInitializedAsync()
         {
-            await GetComponent();
+            await GetComponents();
         }
 
 
@@ -68,7 +64,7 @@ namespace Building.Web.Components.Components
                 var deleteStatus = await _componentService.DeleteComponentAsync(SelectedComponentId);
                 if (deleteStatus.Success)
                 {
-                    await GetComponent();
+                    await GetComponents();
                 }
                 else
                 {

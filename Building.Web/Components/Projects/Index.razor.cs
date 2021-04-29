@@ -10,25 +10,21 @@ namespace Building.Web.Components.Projects
 {
     public partial class Index : PageBase
     {
-        [Inject]
-        private NavigationManager _navigationManager { get; set; }
+
         [Inject]
         public IProjectService _projectService { get; set; }
-        public ProjectVM ProjectVM=new ProjectVM();
-      
+
+        public ProjectVM ProjectVM = new ProjectVM();
+
         [Parameter]
         public string Page { get; set; } = "1";
 
-        protected DeleteDialog DeleteDialog { get; set; }
-
-        private Guid  SelectedPrjectId;
-
+        private Guid SelectedPrjectId;
         
-
         [CascadingParameter(Name = "ErrorComponent")]
         protected IErrorComponent Error { get; set; }
-
-        protected async  Task SearchProjects()
+        protected DeleteDialog DeleteDialog { get; set; }
+        protected async Task SearchProjects()
         {
             Page = "1";
             ProjectVM.PageNumber = 1;
@@ -36,10 +32,10 @@ namespace Building.Web.Components.Projects
         }
 
 
-        protected async Task  GetProjects()
+        protected async Task GetProjects()
         {
             ProjectVM = await _projectService.SearchProjectsAsync(ProjectVM);
-          
+
         }
 
         protected async Task PagerPageChanged(int page)
@@ -51,7 +47,7 @@ namespace Building.Web.Components.Projects
 
         protected async override Task OnParametersSetAsync()
         {
-           await GetProjects();
+            await GetProjects();
         }
 
 
