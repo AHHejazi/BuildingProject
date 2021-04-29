@@ -6,7 +6,7 @@ namespace ComponentsLibrary.Shared.Common
     public partial class Pager : ComponentBase
     {
         [Parameter]
-        public dynamic Result { get; set; } 
+        public dynamic Result { get; set; }
 
         [Parameter]
         public Action<int> PageChanged { get; set; }
@@ -21,7 +21,7 @@ namespace ComponentsLibrary.Shared.Common
 
             base.OnParametersSet();
         }
-       
+
 
         protected void PagerButtonClicked(int page)
         {
