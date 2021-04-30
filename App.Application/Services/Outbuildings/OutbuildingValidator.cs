@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Application.App.Services.Outbuildings
 {
-        public class OutbuildingValidator : AbstractValidator<OutbuildingDto>
+        public class OutbuildingTypeValidator : AbstractValidator<OutbuildingTypeDto>
         {
-            private readonly IOutbuildingRepository _OutbuildingRepository;
-            public OutbuildingValidator(IOutbuildingRepository OutbuildingRepository)
+            private readonly IOutbuildingsTypeRepository _OutbuildingtypeRepository;
+            public OutbuildingTypeValidator(IOutbuildingsTypeRepository OutbuildingtypeRepository)
             {
-            _OutbuildingRepository = OutbuildingRepository;
+            _OutbuildingtypeRepository = OutbuildingtypeRepository;
 
                 RuleFor(p => p.NameAr)
                     .NotNull().WithMessage(x => AppResources.Required)
@@ -32,9 +32,9 @@ namespace Application.App.Services.Outbuildings
 
         }
 
-        private async Task<bool> EventNameAndDateUnique(OutbuildingDto e, CancellationToken token)
+        private async Task<bool> EventNameAndDateUnique(OutbuildingTypeDto e, CancellationToken token)
         {
-            return !(await _OutbuildingRepository.IsOutbuildingNameUnique(e.NameAr, e.NameEn));
+            return !(await _OutbuildingtypeRepository.IsOutbuildingNameUnique(e.NameAr, e.NameEn));
         }
     }
     }

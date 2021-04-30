@@ -5,7 +5,27 @@
     <FluentValidationValidator DisableAssemblyScanning="@true" />
 
     <div class="form-row">
-        <div class="form-group col-md-6">
+
+        <div class="form-group col-md-4">
+            <label for="itemTypetimate">@AppResources.BuildingDetails</label>
+
+            <InputSelect @bind-Value="Model.BuildingId" id="ComponentId" class="form-control">
+                <ValidationMessage For="@(() => Model.BuildingId)" />
+                <option selected>Select...</option>
+                @if (buildingList != null)
+                {
+                    foreach (var item in ComponentList)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                }
+
+            </InputSelect>
+
+        </div>
+
+
+        <div class="form-group col-md-4">
             <label for="itemTypetimate">@AppResources.ComponentId</label>
 
             <InputSelect @bind-Value="Model.ComponentId" id="ComponentId" class="form-control">
@@ -22,11 +42,11 @@
             </InputSelect>
 
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
             <label for="itemTypetimate">@AppResources.OutbuildingId</label>
 
-            <InputSelect @bind-Value="Model.OutbuildingId" id="OutbuildingId" class="form-control">
-                <ValidationMessage For="@(() => Model.OutbuildingId)" />
+            <InputSelect @bind-Value="Model.OutbuildingsTypeId" id="OutbuildingId" class="form-control">
+                <ValidationMessage For="@(() => Model.OutbuildingsTypeId)" />
                 <option selected>Select...</option>
                 @if (OutbuildingList != null)
                 {

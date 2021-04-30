@@ -17,7 +17,7 @@ namespace Application.App.Profiles
             CreateMap<Building, BuildingDto>().ReverseMap();
             CreateMap<SuppliesDto, Supplement>().ReverseMap();
             CreateMap<ComponentDto, Component>().ReverseMap();
-            CreateMap<OutbuildingDto, Outbuilding>().ReverseMap();
+            CreateMap<OutbuildingTypeDto, OutbuildingsType>().ReverseMap();
         }
 
     }

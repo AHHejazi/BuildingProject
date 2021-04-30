@@ -4,14 +4,16 @@ using App.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace App.Persistence.Migrations
 {
     [DbContext(typeof(BuildingDbContext))]
-    partial class BuildingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210429214754_30-4v4")]
+    partial class _304v4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -422,14 +424,14 @@ namespace App.Persistence.Migrations
                     b.Property<Guid?>("BuildingId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("IsOutBuildingType")
-                        .HasColumnType("bit");
-
                     b.Property<string>("NameAr")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -696,7 +698,7 @@ namespace App.Persistence.Migrations
                         .IsRequired();
 
                     b.HasOne("Domain.App.Entities.Lookup.Component", "Component")
-                        .WithMany()
+                        .WithMany("BuildingComponents")
                         .HasForeignKey("ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -786,6 +788,11 @@ namespace App.Persistence.Migrations
                     b.Navigation("Components");
 
                     b.Navigation("Supplies");
+                });
+
+            modelBuilder.Entity("Domain.App.Entities.Lookup.Component", b =>
+                {
+                    b.Navigation("BuildingComponents");
                 });
 
             modelBuilder.Entity("Domain.App.Entities.Lookup.Supplement", b =>

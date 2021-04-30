@@ -39,9 +39,9 @@ namespace App.Persistence.Repositories
 
 
 
-        public async Task<IEnumerable<SelectListItem>> GetOutbuildingsTypes()
+        public async Task<IEnumerable<SelectListItem>> GetOutbuildingTypeList()
         {
-            return await _cache.GetOrCreateAsync(CacheHelpers.GenerateCacheKey("OutbuildingsTypes"), async entry =>
+            return await _cache.GetOrCreateAsync(CacheHelpers.GenerateCacheKey("GetOutbuildingTypeList"), async entry =>
             {
                 entry.SlidingExpiration = CacheHelpers.DefaultCacheDuration;
                 var list = await _dbContext.OutbuildingsTypes.ToListAsync();
@@ -51,5 +51,30 @@ namespace App.Persistence.Repositories
             });
         }
 
+
+        public async Task<IEnumerable<SelectListItem>> GetComponentList()
+        {
+            return await _cache.GetOrCreateAsync(CacheHelpers.GenerateCacheKey("GetComponentList"), async entry =>
+            {
+                entry.SlidingExpiration = CacheHelpers.DefaultCacheDuration;
+                var list = await _dbContext.Components.ToListAsync();
+                return list.Select(s =>
+                     new SelectListItem(
+                        CultureHelper.IsArabic ? s.NameAr : s.NameEn, s.Id.ToString())).ToList();
+            });
+        }
+
+
+        public async Task<IEnumerable<SelectListItem>> GetBuildingList()
+        {
+            return await _cache.GetOrCreateAsync(CacheHelpers.GenerateCacheKey("GetBuildingList"), async entry =>
+            {
+                entry.SlidingExpiration = CacheHelpers.DefaultCacheDuration;
+                var list = await _dbContext.Buildings.ToListAsync();
+                return list.Select(s =>
+                     new SelectListItem(
+                        CultureHelper.IsArabic ? s.Number : s.Number, s.Id.ToString())).ToList();
+            });
+        }
     }
 }

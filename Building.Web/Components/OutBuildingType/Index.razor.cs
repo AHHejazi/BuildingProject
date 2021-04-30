@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Components;
 using System;
 using System.Threading.Tasks;
 
-namespace Building.Web.Components.OutBuildings
+namespace Building.Web.Components.OutBuildingType
 {
     public partial class Index : PageBase
     {
         [Inject]
-        public IOutbuildingService _outbuildingService { get; set; }
+        public IOutbuildingTypeService _outbuildingService { get; set; }
 
-        public OutbuildingVM OutbuildingVM = new OutbuildingVM();
+        public OutbuildingTypeVM OutbuildingVM = new OutbuildingTypeVM();
 
         [Parameter]
         public string Page { get; set; } = "1";
@@ -28,13 +28,13 @@ namespace Building.Web.Components.OutBuildings
         {
             Page = "1";
             OutbuildingVM.PageNumber = 1;
-            OutbuildingVM = await _outbuildingService.SearchOutbuildingAsync(OutbuildingVM);
+            OutbuildingVM = await _outbuildingService.SearchOutbuildingTypeAsync(OutbuildingVM);
         }
 
 
         protected async Task GetOutbuildings()
         {
-            OutbuildingVM = await _outbuildingService.SearchOutbuildingAsync(OutbuildingVM);
+            OutbuildingVM = await _outbuildingService.SearchOutbuildingTypeAsync(OutbuildingVM);
 
         }
 
@@ -62,7 +62,7 @@ namespace Building.Web.Components.OutBuildings
         {
             try
             {
-                var deleteStatus = await _outbuildingService.DeleteOutbuildingAsync(SelectedOutbuildingId);
+                var deleteStatus = await _outbuildingService.DeleteOutbuildingTypeAsync(SelectedOutbuildingId);
                 if (deleteStatus.Success)
                 {
                     await GetOutbuildings();

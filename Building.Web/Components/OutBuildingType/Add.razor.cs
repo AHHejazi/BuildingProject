@@ -7,13 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Building.Web.Components.OutBuildings
+namespace Building.Web.Components.OutBuildingType
 {
     public partial class Add : PageBase
     {
         [Inject]
-        private IOutbuildingService _outbuildingService { get; set; }
-        public OutbuildingDto Model { get; set; } = new();
+        private IOutbuildingTypeService _outbuildingService { get; set; }
+        public OutbuildingTypeDto Model { get; set; } = new();
         private EditContext editContext;
 
         protected async override Task OnInitializedAsync()
@@ -27,7 +27,7 @@ namespace Building.Web.Components.OutBuildings
             if (isValid)
             {
 
-                await _outbuildingService.AddOutbuilding(Model);
+                await _outbuildingService.AddOutbuildingTypeAsync(Model);
                 StatusClass = "alert alert-success";
                 Message = "New Outbuilding added successfully.";
             }

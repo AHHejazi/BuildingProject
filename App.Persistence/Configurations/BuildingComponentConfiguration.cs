@@ -23,9 +23,7 @@ namespace App.Persistence.Configurations
              .WithMany(p => p.BuildingComponents)
              .HasForeignKey(d => d.BuildingId);
 
-            entity.HasOne(d => d.Component)
-                .WithMany(p => p.BuildingComponents)
-                .HasForeignKey(d => d.ComponentId);
+          
         }
     }
 }

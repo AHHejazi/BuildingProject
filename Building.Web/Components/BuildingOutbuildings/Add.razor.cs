@@ -1,5 +1,8 @@
-﻿using Application.App.Services.Components;
+﻿using Application.App.Services.Buildings;
+using Application.App.Services.Components;
+using Application.App.Services.Lookups;
 using Application.App.Services.Outbuildings;
+using Domain.App.Entities;
 using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,25 +16,28 @@ namespace Building.Web.Components.BuildingOutbuildings
     public partial class Add : PageBase
     {
         [Inject]
-        public IComponentService _componentService { get; set; }
-        [Inject]
-        public IOutbuildingService _outbuildingService { get; set; }
+        private ILookupServices _lookupServices { get; set; }
 
         private IEnumerable<SelectListItem> ComponentList;
         private IEnumerable<SelectListItem> OutbuildingList;
-        public ComponentDto Model { get; set; } = new();
+        private IEnumerable<SelectListItem> buildingList;
+        public BuildingOut Model { get; set; } = new();
 
 
+        protected async override Task OnInitializedAsync()
+        {
+            buildingList = await _lookupServices.GetBuildingList();
 
+            ComponentList = await _lookupServices.GetComponentList();
 
-
-
+            OutbuildingList = await _lookupServices.GetOutbuildingTypeList();
+        }
 
         private async Task SubmitBuildingOutbuildingsAsync()
         {
             try
             {
-                await _componentService.AddBuildingOutbuildings(Model);
+               // await _componentService.AddBuildingOutbuildings(Model);
                 StatusClass = "alert alert-success";
                 Message = "New Building Outbuilding added successfully.";
             }

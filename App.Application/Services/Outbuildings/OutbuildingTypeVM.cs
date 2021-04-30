@@ -6,14 +6,14 @@ using System;
 
 namespace Application.App.Services.Outbuildings
 {
-    public class OutbuildingVM : PagingDto
+    public class OutbuildingTypeVM : PagingDto
     {
 
         public string NameAr { get; set; }
 
         public string NameEn { get; set; }
         
-        public StaticPagedList<Outbuilding> OutbuildingsList { get; set; }
+        public StaticPagedList<OutbuildingsType> OutbuildingsList { get; set; }
 
     }
 }

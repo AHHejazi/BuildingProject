@@ -3,9 +3,9 @@ using System;
 
 namespace Application.App.Services.Outbuildings
 {
-   public class OutbuildingDto :  AuditableEntity 
+   public class OutbuildingTypeDto :  AuditableEntity 
     {
-        public System.Guid Id { get; set; }
+        public Guid Id { get; set; }
 
         public string NameAr { get; set; }
 

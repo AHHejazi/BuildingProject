@@ -22,7 +22,7 @@ namespace Application.App
             services.AddTransient<IBuildingService, BuildingService>();
             services.AddTransient<IComponentService, ComponentService>();
             services.AddTransient<ISuppliesService, SuppliesService>();
-            services.AddTransient<IOutbuildingService, OutbuildingService>(); 
+            services.AddTransient<IOutbuildingTypeService, OutbuildingTypeService>(); 
 
 
             return services;

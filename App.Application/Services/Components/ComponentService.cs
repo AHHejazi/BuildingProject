@@ -38,7 +38,6 @@ namespace Application.App.Services.Components
                 if (validationResult.Errors.Count > 0)
                     throw new ValidationException(validationResult);
                 var Componentt = _mapper.Map<Component>(component);
-                Componentt.Number = await GenerateComponentNumber();
 
 
 
@@ -55,27 +54,7 @@ namespace Application.App.Services.Components
 
         }
 
-        public async Task<string> GenerateComponentNumber()
-        {
-            var currentYear = DateTime.Now.Year.ToString().Substring(2, 2);
-            var currentMonth = DateTime.Now.Month.ToString("d2");
-
-            Expression<Func<Component, bool>> condtion = r => r.Number.StartsWith($"{currentYear}-{currentMonth}");
-            Expression<Func<Component, string>> orderBy = r => r.Number;
-
-
-            var lastInsertedComponent = await _unitOfWork.Components.GenerateModelNumber(condtion, orderBy);
-
-            if (lastInsertedComponent == null)
-            {
-                return $"{currentYear}-{currentMonth}-0001";
-            }
-
-            var currentNo = int.Parse(lastInsertedComponent.Number.Substring(6, 4));
-            return $"{currentYear}-{currentMonth}-{(currentNo + 1):d4}";
-
-        }
-
+ 
         public async Task<ComponentDto> GetComponentByIdAsync(Guid Id)
         {
             var obj = await _unitOfWork.Components.GetByIdAsync(Id);

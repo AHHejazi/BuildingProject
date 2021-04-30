@@ -13,7 +13,7 @@ namespace App.Persistence.Configurations
         {
             entity.ToTable(nameof(OutbuildingsType), MappingDefaults.LookupSchema);
             entity.HasKey(o => o.Id);
-   
+            entity.Property(p => p.Id).HasDefaultValueSql("NEWID()");
             entity.Property(e => e.NameAr).IsRequired();
             entity.Property(e => e.NameEn);
 
