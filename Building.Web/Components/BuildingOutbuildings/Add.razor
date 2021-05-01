@@ -3,14 +3,13 @@
 <h3>@AppResources.BuildingOutbuildings</h3>
 <EditForm Model="Model" Context="formContext" OnValidSubmit="SubmitBuildingOutsAsync">
     <FluentValidationValidator DisableAssemblyScanning="@true" />
-
     <div class="form-row">
 
         <div class="form-group col-md-4">
             <label for="itemTypetimate">@AppResources.BuildingsList</label>
 
             <InputSelect @bind-Value="Model.BuildingId" id="BuildingId" class="form-control">
-                <ValidationMessage For="@(() => Model.BuildingId)" />
+
                 <option selected>Select...</option>
                 @if (buildingList != null)
                 {
@@ -21,15 +20,15 @@
                 }
 
             </InputSelect>
-
+            <ValidationMessage For="@(() => Model.BuildingId)" />
         </div>
 
 
         <div class="form-group col-md-4">
             <label for="itemTypetimate">@AppResources.ComponentsList</label>
 
-            <InputSelect @bind-Value="Model.ComponentId" id="ComponentId" class="form-control">
-                <ValidationMessage For="@(() => Model.ComponentId)" />
+            <InputSelect ValueExpression="@(()=>Model.ComponentId)"  ValueChanged="@((Guid value) => CheckIsOutBuilding(value))" Value="@(Model.ComponentId)" id="ComponentId" class="form-control">
+
                 <option selected>Select...</option>
                 @if (ComponentList != null)
                 {
@@ -40,27 +39,31 @@
                 }
 
             </InputSelect>
-
+            <ValidationMessage For="@(() => Model.ComponentId)" />
         </div>
-        <div class="form-group col-md-4">
-            <label for="itemTypetimate">@AppResources.OutbuildingsList</label>
+        @if (isOutBildingComponent)
+        {
+    <div class="form-group col-md-4">
+        <label for="itemTypetimate">@AppResources.OutbuildingsList</label>
+        <InputSelect @bind-Value="Model.OutbuildingsTypeId" id="OutbuildingId" class="form-control">
 
-            <InputSelect @bind-Value="Model.OutbuildingsTypeId" id="OutbuildingId" class="form-control">
-                <ValidationMessage For="@(() => Model.OutbuildingsTypeId)" />
-                <option selected>Select...</option>
-                @if (OutbuildingList != null)
+            <option selected>Select...</option>
+            @if (OutbuildingList != null)
                 {
                     foreach (var item in OutbuildingList)
                     {
-                        <option value="@item.Value">@item.Text</option>
+                    <option value="@item.Value">@item.Text</option>
                     }
                 }
 
-            </InputSelect>
-        </div>
+        </InputSelect>
+        <ValidationMessage For="@(() => Model.OutbuildingsTypeId)" />
     </div>
-        <NavLink class="anchor-link link-button mt-3" href="/BuildingOuts/index">Back</NavLink>
-        <button @onclick="@(async e => await ValidateForm(formContext))" type="submit" class="submit-button mt-3">Submit</button>
+        }
+        
+    </div>
+    <NavLink class="anchor-link link-button mt-3" href="/BuildingOuts/index">Back</NavLink>
+    <button @onclick="@(async e => await ValidateForm(formContext))" type="submit" class="submit-button mt-3">Submit</button>
 
 </EditForm>
 

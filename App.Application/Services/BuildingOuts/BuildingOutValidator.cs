@@ -11,13 +11,14 @@ namespace Application.App.Services.BuildingOuts
         {
             _BuildingOutRepository = BuildingOutRepository;
 
-            RuleFor(p => p.NameAr)
-                .NotNull().WithMessage(x => AppResources.Required)
-                .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
+            RuleFor(p => p.BuildingId)
+                .NotNull().NotEmpty().WithMessage(x => AppResources.Required);
 
-            RuleFor(p => p.NameEn)
-                .NotNull().WithMessage(x => AppResources.Required)
-                .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
+            RuleFor(p => p.ComponentId)
+               .NotNull().NotEmpty().WithMessage(x => AppResources.Required);
+
+            RuleFor(p => p.OutbuildingsTypeId)
+               .NotNull().NotEmpty().WithMessage(x => AppResources.Required);
 
         }
     }

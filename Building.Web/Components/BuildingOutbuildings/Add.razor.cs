@@ -25,6 +25,8 @@ namespace Building.Web.Components.BuildingOutbuildings
 
         private EditContext editContext;
 
+        private bool isOutBildingComponent;
+
 
         protected async override Task OnInitializedAsync()
         {
@@ -45,7 +47,7 @@ namespace Building.Web.Components.BuildingOutbuildings
             }
             catch (Exception)
             {
-
+               
                 StatusClass = "alert alert-danger";
                 Message = "Something went wrong adding the new Building Outbuilding. Please try again.";
 
@@ -60,6 +62,16 @@ namespace Building.Web.Components.BuildingOutbuildings
             if (!isValid)
                 return;
 
+        }
+
+
+        public void CheckIsOutBuilding(Guid value)
+        {
+            Model.ComponentId = value;
+            //TODO get recored from component table and check the out buiding valu
+            // in case true shw out building or keep it hidding
+           var  selectedString = value;
+            isOutBildingComponent = true;
         }
     }
 }

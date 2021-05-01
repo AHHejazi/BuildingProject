@@ -76,7 +76,6 @@
             <label for="itemTypetimate">@AppResources.ProjectTypeId</label>
 
             <InputSelect @bind-Value="Model.ProjectTypeId" id="ProjectTypeId" class="form-control">
-                <ValidationMessage For="@(() => Model.ProjectTypeId)" />
                 <option selected>Select...</option>
                 @if (ProjectTypeList != null)
                 {
@@ -87,7 +86,7 @@
                 }
 
             </InputSelect>
-
+            <ValidationMessage For="@(() => Model.ProjectTypeId)" />
         </div>
     </div>
     <div class="form-row">
