@@ -18,6 +18,7 @@ namespace App.Persistence
 
             services.AddScoped<IApartmentRepository, ApartmentRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IBuildingOutRepository, BuildingOutRepository>();
             services.AddScoped<IBuildingRepository, BuildingRepository>();
             services.AddScoped<ISuppliesRepository, SuppliesRepository>();
             services.AddScoped<IComponentRepository, ComponentRepository>();

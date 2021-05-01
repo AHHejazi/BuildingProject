@@ -1,20 +1,20 @@
-﻿@page "/BuildingOutBuildings/Add"
+﻿@page "/BuildingOuts/Add"
 @inherits PageBase
 <h3>@AppResources.BuildingOutbuildings</h3>
-<EditForm Model="Model" Context="formContext" OnValidSubmit="@(SubmitBuildingOutbuildingsAsync)">
+<EditForm Model="Model" Context="formContext" OnValidSubmit="SubmitBuildingOutsAsync">
     <FluentValidationValidator DisableAssemblyScanning="@true" />
 
     <div class="form-row">
 
         <div class="form-group col-md-4">
-            <label for="itemTypetimate">@AppResources.BuildingDetails</label>
+            <label for="itemTypetimate">@AppResources.BuildingsList</label>
 
-            <InputSelect @bind-Value="Model.BuildingId" id="ComponentId" class="form-control">
+            <InputSelect @bind-Value="Model.BuildingId" id="BuildingId" class="form-control">
                 <ValidationMessage For="@(() => Model.BuildingId)" />
                 <option selected>Select...</option>
                 @if (buildingList != null)
                 {
-                    foreach (var item in ComponentList)
+                    foreach (var item in buildingList)
                     {
                         <option value="@item.Value">@item.Text</option>
                     }
@@ -26,7 +26,7 @@
 
 
         <div class="form-group col-md-4">
-            <label for="itemTypetimate">@AppResources.ComponentId</label>
+            <label for="itemTypetimate">@AppResources.ComponentsList</label>
 
             <InputSelect @bind-Value="Model.ComponentId" id="ComponentId" class="form-control">
                 <ValidationMessage For="@(() => Model.ComponentId)" />
@@ -43,7 +43,7 @@
 
         </div>
         <div class="form-group col-md-4">
-            <label for="itemTypetimate">@AppResources.OutbuildingId</label>
+            <label for="itemTypetimate">@AppResources.OutbuildingsList</label>
 
             <InputSelect @bind-Value="Model.OutbuildingsTypeId" id="OutbuildingId" class="form-control">
                 <ValidationMessage For="@(() => Model.OutbuildingsTypeId)" />
@@ -59,8 +59,8 @@
             </InputSelect>
         </div>
     </div>
-        <NavLink class="anchor-link link-button mt-3" href="/Building/index">Back</NavLink>
-        <button @*@onclick="@(async e => await ValidateForm(formContext))"*@ type="submit" class="submit-button mt-3">Submit</button>
+        <NavLink class="anchor-link link-button mt-3" href="/BuildingOuts/index">Back</NavLink>
+        <button @onclick="@(async e => await ValidateForm(formContext))" type="submit" class="submit-button mt-3">Submit</button>
 
 </EditForm>
 

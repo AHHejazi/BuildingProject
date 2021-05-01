@@ -150,6 +150,9 @@
   <data name="BuildingOutbuildings" xml:space="preserve">
     <value>Building Outbuildings</value>
   </data>
+  <data name="BuildingsList" xml:space="preserve">
+    <value>Buildings List</value>
+  </data>
   <data name="BuildingsManagement" xml:space="preserve">
     <value>Buildings Management</value>
   </data>
@@ -162,8 +165,8 @@
   <data name="ComponentDetails" xml:space="preserve">
     <value>Component Details</value>
   </data>
-  <data name="ComponentId" xml:space="preserve">
-    <value>Component</value>
+  <data name="ComponentsList" xml:space="preserve">
+    <value>Components List</value>
   </data>
   <data name="ComponentsManagement" xml:space="preserve">
     <value>Components Management</value>
@@ -255,8 +258,8 @@
   <data name="OutbuildingDetails" xml:space="preserve">
     <value>Outbuilding Details</value>
   </data>
-  <data name="OutbuildingId" xml:space="preserve">
-    <value>Outbuilding</value>
+  <data name="OutbuildingsList" xml:space="preserve">
+    <value>Outbuildings List</value>
   </data>
   <data name="OutbuildingsManagement" xml:space="preserve">
     <value>Outbuilding Management</value>

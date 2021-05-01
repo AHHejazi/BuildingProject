@@ -150,6 +150,9 @@
   <data name="BuildingOutbuildings" xml:space="preserve">
     <value>ملحقات المبنى</value>
   </data>
+  <data name="BuildingsList" xml:space="preserve">
+    <value>قائمة المباني</value>
+  </data>
   <data name="BuildingsManagement" xml:space="preserve">
     <value>إدارة المباني</value>
   </data>
@@ -162,8 +165,8 @@
   <data name="ComponentDetails" xml:space="preserve">
     <value>تفاصيل المكون</value>
   </data>
-  <data name="ComponentId" xml:space="preserve">
-    <value>المستلزمات</value>
+  <data name="ComponentsList" xml:space="preserve">
+    <value>قائمة المستلزمات</value>
   </data>
   <data name="ComponentsManagement" xml:space="preserve">
     <value>إدارة المكونات</value>
@@ -255,11 +258,11 @@
   <data name="OutbuildingDetails" xml:space="preserve">
     <value>تفاصيل ملحق </value>
   </data>
-  <data name="OutbuildingId" xml:space="preserve">
-    <value>الملحقات</value>
-  </data>
   <data name="OutbuildingManagement" xml:space="preserve">
     <value>إدارة الملحقات</value>
+  </data>
+  <data name="OutbuildingsList" xml:space="preserve">
+    <value>قائمة الملحقات</value>
   </data>
   <data name="ProjectDetails" xml:space="preserve">
     <value>تفاصيل المشروع</value>

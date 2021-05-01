@@ -34,6 +34,7 @@ namespace App.Persistence
         public DbSet<Component> Components { get; set; }
         public DbSet<Apartment> Apartments { get; set; }
         public DbSet<Building> Buildings { get; set; }
+        public DbSet<BuildingOut> BuildingOuts { get; set; }
         public DbSet<BuildingSupplies> BuildingSupplies { get; set; }
         public DbSet<BuildingComponent> BuildingComponent { get; set; }
         public DbSet<Incomes> Incomes { get; set; }

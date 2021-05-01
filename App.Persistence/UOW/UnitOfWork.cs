@@ -24,7 +24,8 @@ namespace App.Persistence.UOW
             Projects = new ProjectRepository(_context);
             Suppliess = new SuppliesRepository(_context);
             Buildings = new BuildingRepository(_context);
-            Components= new ComponentRepository(_context);
+            BuildingOuts = new BuildingOutRepository(_context);
+            Components = new ComponentRepository(_context);
             OutbuildingType = new OutbuildingsTypeRepository(_context);
             Attachments = new AttachmentRepository(_context);
             AttachmentContents = new AttachmentContentRepository(_context);
@@ -36,6 +37,7 @@ namespace App.Persistence.UOW
         public IProjectRepository Projects { get; private set; }
         public IOutbuildingsTypeRepository OutbuildingType { get; private set; }
         public IBuildingRepository Buildings { get; private set; }
+        public IBuildingOutRepository BuildingOuts { get; private set; }
         public ISuppliesRepository Suppliess { get; private set; }
         public IComponentRepository Components { get; private set; }
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

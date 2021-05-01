@@ -160,6 +160,15 @@ namespace Localization.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buildings List.
+        /// </summary>
+        public static string BuildingsList {
+            get {
+                return ResourceManager.GetString("BuildingsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Buildings Management.
         /// </summary>
         public static string BuildingsManagement {
@@ -196,11 +205,11 @@ namespace Localization.App {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Component.
+        ///   Looks up a localized string similar to Components List.
         /// </summary>
-        public static string ComponentId {
+        public static string ComponentsList {
             get {
-                return ResourceManager.GetString("ComponentId", resourceCulture);
+                return ResourceManager.GetString("ComponentsList", resourceCulture);
             }
         }
         
@@ -475,11 +484,11 @@ namespace Localization.App {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Outbuilding.
+        ///   Looks up a localized string similar to Outbuildings List.
         /// </summary>
-        public static string OutbuildingId {
+        public static string OutbuildingsList {
             get {
-                return ResourceManager.GetString("OutbuildingId", resourceCulture);
+                return ResourceManager.GetString("OutbuildingsList", resourceCulture);
             }
         }
         

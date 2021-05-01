@@ -1,14 +1,11 @@
-﻿using Application.App.Services.Buildings;
-using Application.App.Services.Components;
+﻿using Application.App.Services.BuildingOuts;
 using Application.App.Services.Lookups;
-using Application.App.Services.Outbuildings;
-using Domain.App.Entities;
 using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Building.Web.Components.BuildingOutbuildings
@@ -18,10 +15,15 @@ namespace Building.Web.Components.BuildingOutbuildings
         [Inject]
         private ILookupServices _lookupServices { get; set; }
 
+        [Inject]
+        private IBuildingOutService _buildingOutService { get; set; }
+
         private IEnumerable<SelectListItem> ComponentList;
         private IEnumerable<SelectListItem> OutbuildingList;
         private IEnumerable<SelectListItem> buildingList;
-        public BuildingOut Model { get; set; } = new();
+        public BuildingOutDto Model { get; set; } = new();
+
+        private EditContext editContext;
 
 
         protected async override Task OnInitializedAsync()
@@ -33,11 +35,11 @@ namespace Building.Web.Components.BuildingOutbuildings
             OutbuildingList = await _lookupServices.GetOutbuildingTypeList();
         }
 
-        private async Task SubmitBuildingOutbuildingsAsync()
+        private async Task SubmitBuildingOutsAsync()
         {
             try
             {
-               // await _componentService.AddBuildingOutbuildings(Model);
+                await _buildingOutService.AddBuildingOutAsync(Model);
                 StatusClass = "alert alert-success";
                 Message = "New Building Outbuilding added successfully.";
             }
@@ -48,6 +50,15 @@ namespace Building.Web.Components.BuildingOutbuildings
                 Message = "Something went wrong adding the new Building Outbuilding. Please try again.";
 
             }
+
+        }
+        public async Task ValidateForm(EditContext editContext)
+        {
+
+            var isValid = editContext.Validate();
+
+            if (!isValid)
+                return;
 
         }
     }

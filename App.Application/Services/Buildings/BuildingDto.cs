@@ -22,11 +22,12 @@ namespace Application.App.Services.Buildings
         public string StampingNumber { get; set; }
 
         public int NumberOfApartment { get; set; }
+        
 
-        public static implicit operator BuildingDto(Building v)
-        {
-            throw new NotImplementedException();
-        }
+        //public static implicit operator BuildingDto(Building v)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
     }
 }

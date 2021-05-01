@@ -1,10 +1,8 @@
-﻿using Application.App.Contracts.Persistence;
-using Application.App.Contracts.UOW;
+﻿using Application.App.Contracts.UOW;
 using Application.App.Responses;
 using AutoMapper;
 using Domain.App.Entities;
 using Framework.Core.Exceptions;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;

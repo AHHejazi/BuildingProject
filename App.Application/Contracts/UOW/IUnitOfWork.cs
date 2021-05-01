@@ -12,7 +12,7 @@ namespace Application.App.Contracts.UOW
     {
         IProjectRepository Projects { get; }
         ISuppliesRepository Suppliess { get; }
-        IComponentRepository Components { get;}
+        IComponentRepository Components { get; }
         IAttachmentRepository Attachments { get; }
 
         IOutbuildingsTypeRepository OutbuildingType { get; }
@@ -21,6 +21,7 @@ namespace Application.App.Contracts.UOW
 
         IBuildingRepository Buildings { get; }
 
+        IBuildingOutRepository BuildingOuts { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken());
     }
 }

@@ -32,6 +32,8 @@ namespace Domain.App.Entities
         public ICollection<BuildingSupplies> BuildingSupplies { get; set; }
 
         public ICollection<BuildingComponent> BuildingComponents { get; set; }
+        
+        public ICollection<BuildingOut> BuildingOuts { get; set; }
 
 
         //to check if we need to add

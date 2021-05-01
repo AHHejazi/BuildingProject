@@ -8,7 +8,6 @@ using Domain.App.Entities.Lookup;
 using Microsoft.Extensions.Logging;
 using Framework.Core.Exceptions;
 using Application.App.Responses;
-using Domain.App.Entities;
 
 namespace Application.App.Services.Outbuildings
 {

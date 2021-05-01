@@ -7,6 +7,7 @@ using System.Reflection;
 using Application.App.Services.Supplies;
 using Application.App.Services.Components;
 using Application.App.Services.Outbuildings;
+using Application.App.Services.BuildingOuts;
 
 namespace Application.App
 {
@@ -20,9 +21,11 @@ namespace Application.App
             services.AddTransient<IAttachmentService, AttachmentService>();
             services.AddTransient<AppSettingsService>();
             services.AddTransient<IBuildingService, BuildingService>();
+            services.AddTransient<IBuildingOutService,BuildingOutService>();
+            services.AddTransient<IOutbuildingTypeService, OutbuildingTypeService>();
             services.AddTransient<IComponentService, ComponentService>();
             services.AddTransient<ISuppliesService, SuppliesService>();
-            services.AddTransient<IOutbuildingTypeService, OutbuildingTypeService>(); 
+             
 
 
             return services;
