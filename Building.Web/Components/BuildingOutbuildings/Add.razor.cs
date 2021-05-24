@@ -1,4 +1,5 @@
 ﻿using Application.App.Services.BuildingOuts;
+using Application.App.Services.Components;
 using Application.App.Services.Lookups;
 using GeneralIdentity.App.Code;
 using Microsoft.AspNetCore.Components;
@@ -19,13 +20,18 @@ namespace Building.Web.Components.BuildingOutbuildings
         private IBuildingOutService _buildingOutService { get; set; }
 
         private IEnumerable<SelectListItem> ComponentList;
+
         private IEnumerable<SelectListItem> OutbuildingList;
+
         private IEnumerable<SelectListItem> buildingList;
-        public BuildingOutDto Model { get; set; } = new();
 
         private EditContext editContext;
 
-        private bool isOutBildingComponent;
+        private bool isOutBuildingComponent;
+        public BuildingOutDto Model { get; set; } = new();
+        
+
+
 
 
         protected async override Task OnInitializedAsync()
@@ -65,13 +71,21 @@ namespace Building.Web.Components.BuildingOutbuildings
         }
 
 
-        public void CheckIsOutBuilding(Guid value)
+        public async Task<bool>CheckIsOutBuilding(Guid componentvalue)
         {
-            Model.ComponentId = value;
-            //TODO get recored from component table and check the out buiding valu
-            // in case true shw out building or keep it hidding
-           var  selectedString = value;
-            isOutBildingComponent = true;
+            
+            //TODO get recored from component table
+            var component = await _lookupServices.GetComponentByIdAsync(componentvalue);
+            Model.ComponentId = componentvalue;
+            //and check the out building value
+
+            // in case true show out building 
+            if (component != null)
+            {
+                isOutBuildingComponent = component.IsOutBuildingType;
+            }
+            StateHasChanged();
+            return isOutBuildingComponent;
         }
     }
 }

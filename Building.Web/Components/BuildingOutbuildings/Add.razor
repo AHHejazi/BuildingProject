@@ -27,7 +27,7 @@
         <div class="form-group col-md-4">
             <label for="itemTypetimate">@AppResources.ComponentsList</label>
 
-            <InputSelect ValueExpression="@(()=>Model.ComponentId)"  ValueChanged="@((Guid value) => CheckIsOutBuilding(value))" Value="@(Model.ComponentId)" id="ComponentId" class="form-control">
+            <InputSelect ValueExpression="@(()=>Model.ComponentId)"  ValueChanged="@((Guid componentvalue) => CheckIsOutBuilding(componentvalue))" Value="@(Model.ComponentId)" id="ComponentId" class="form-control">
 
                 <option selected>Select...</option>
                 @if (ComponentList != null)
@@ -41,7 +41,7 @@
             </InputSelect>
             <ValidationMessage For="@(() => Model.ComponentId)" />
         </div>
-        @if (isOutBildingComponent)
+        @if (isOutBuildingComponent)
         {
     <div class="form-group col-md-4">
         <label for="itemTypetimate">@AppResources.OutbuildingsList</label>

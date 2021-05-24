@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Application.App.Services.Components;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,6 +13,6 @@ namespace Application.App.Services.Lookups
         public Task<IEnumerable<SelectListItem>> GetBuildingList();
         public Task<IEnumerable<SelectListItem>> GetComponentList();
         public Task<IEnumerable<SelectListItem>> GetOutbuildingTypeList();
-
+        public Task<ComponentDto> GetComponentByIdAsync(Guid Id);
     }
 }
